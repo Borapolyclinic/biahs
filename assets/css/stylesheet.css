@@ -1,0 +1,29 @@
+/* 
+=========== PALLET COLOURS =========== 
+#ec7f0d
+#182545
+*/
+
+* {
+  font-family: "Merriweather", serif;
+}
+
+/* =========== NAVBAR =========== */
+.navbar-brand {
+  max-width: 10% !important;
+}
+.navbar-brand img {
+  width: 100%;
+  height: auto;
+}
+.nav-link {
+  color: #182545 !important;
+}
+.nav-link:hover {
+  color: #ec7f0d !important;
+  transition: 0.3s all ease-in-out;
+}
+.dropdown-item {
+  color: #182545;
+  font-size: 14px !important;
+}
