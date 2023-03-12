@@ -8,6 +8,27 @@
   font-family: "Merriweather", serif;
 }
 
+/* =========== TOP NAVBAR =========== */
+.top-nav {
+  max-width: 100%;
+  background-color: #182545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.top-nav-content {
+  flex: 1;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.top-nav-content p {
+  margin: 0;
+  margin-left: 15px;
+}
+
 /* =========== NAVBAR =========== */
 .navbar-brand {
   max-width: 10% !important;
@@ -26,4 +47,118 @@
 .dropdown-item {
   color: #182545;
   font-size: 14px !important;
+}
+
+/* =========== HOME SECTION 2 =========== */
+.home-section-2-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e7e7e7e7;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 20px;
+}
+.home-section-2-content {
+  flex: 1;
+  padding: 20px;
+}
+.home-section-2-content ion-icon {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.home-section-2-content h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+.home-section-2-content p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* =========== FOOTER =========== */
+.footer {
+  background-color: #182545;
+  margin: 0;
+  padding: 30px;
+}
+.footer-menu-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.footer-menu {
+  flex: 1;
+}
+.footer-menu li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+.footer-menu a:hover {
+  color: #ec7f0d;
+  transition: 0.3s all ease-in-out;
+}
+.footer-menu a {
+  text-decoration: none;
+  color: #fff;
+}
+.footer-menu-client {
+  color: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.footer-menu-client ion-icon {
+  font-size: 20px;
+}
+.footer-menu-client p {
+  margin: 0;
+  margin-left: 10px;
+}
+.footer-menu-client img {
+  width: 50%;
+  height: auto;
+}
+
+/* =========== DEVELOPER FOOTER =========== */
+.developer-footer {
+  background-color: #ec7f0d;
+  padding: 10px;
+}
+.developer-footer p {
+  margin: 0;
+  text-align: center;
+}
+.developer-footer a {
+  text-decoration: none;
+  color: #182545;
+  font-weight: bold;
+}
+.developer-footer a:hover {
+  color: #fff;
+  transition: 0.3s all ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  /* =========== TOP NAVBAR =========== */
+  .top-nav {
+    display: none;
+  }
+
+  /* =========== NAVBAR =========== */
+  .navbar-brand {
+    max-width: 30% !important;
+  }
+
+  /* =========== HOME SECTION 2 =========== */
+  .home-section-2-grid {
+    flex-direction: column;
+  }
+  .home-section-2-content {
+    margin-bottom: 30px;
+  }
 }

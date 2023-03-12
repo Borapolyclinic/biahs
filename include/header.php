@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ============ TITLE ============ -->
-    <title>Bora Institute</title>
+    <title><?php echo $title; ?></title>
 
     <!-- ============ FAVICON ============ -->
     <link rel="shortcut icon" href="assets/images/logo/brand-favicon.webp" type="image/x-icon">
