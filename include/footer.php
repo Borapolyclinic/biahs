@@ -2,7 +2,7 @@
     <div class="footer-menu-grid">
         <div class="footer-menu">
             <div class="footer-menu-client">
-                <img src="assets/images/logo/brand-logo.webp" alt="">
+                <img src="assets/images/logo/white-logo.png" alt="">
             </div>
             <div class="footer-menu-client">
                 <ion-icon name="location-outline"></ion-icon>
@@ -37,8 +37,7 @@
 </div>
 
 <div class="developer-footer">
-    <p>All Rights Reserved | Designed & Developed by <a href="https://onlynus.com" target="_blank"
-            rel="noopener noreferrer">Onlyn</a></p>
+    <p>All Rights Reserved | Designed & Developed by <a href="https://onlynus.com" target="_blank">Onlyn</a></p>
 </div>
 
 <!-- =============================== BOOTSTRAP =============================== -->

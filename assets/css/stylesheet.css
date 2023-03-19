@@ -8,6 +8,11 @@
   font-family: "Merriweather", serif;
 }
 
+::selection {
+  color: #fff;
+  background: #ec7f0d;
+}
+
 /* =========== TOP NAVBAR =========== */
 .top-nav {
   max-width: 100%;
@@ -77,6 +82,76 @@
 .home-section-2-content p {
   font-size: 14px;
   margin: 0;
+}
+
+/* =========== HOME SECTION 3 =========== */
+.home-section-3 {
+  margin-top: 50px;
+  text-align: center;
+}
+.home-section-3 p {
+  margin-bottom: 50px;
+  text-align: center;
+}
+.home-section-3-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin-bottom: 50px;
+}
+.home-section-3-img-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* =========== HOME SECTION 4 =========== */
+.home-section-4 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.home-section-4-text-container {
+  padding: 10px;
+}
+.home-section-4-text-container h3 {
+  font-weight: bold;
+  margin: 0;
+  font-size: 16px;
+  color: #ec7f0d;
+}
+.home-section-4-text-container p {
+  margin-bottom: 50px;
+}
+.home-section-4-text-container a {
+  text-decoration: none;
+  border: 1px solid #ec7f0d !important;
+  padding: 10px;
+  border-radius: 100px;
+  color: #ec7f0d;
+}
+.home-section-4-text-container a:hover {
+  background-color: #ec7f0d;
+  color: #fff;
+  transition: 0.3s all ease-in-out;
+}
+.home-section-4-heading {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 50px !important;
+}
+.home-section-4-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+}
+.home-section-4-img-container img {
+  width: 70%;
+  height: auto;
 }
 
 /* =========== FOOTER =========== */
