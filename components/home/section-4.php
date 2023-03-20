@@ -1,5 +1,5 @@
 <div class="container home-section-4">
-    <div class="col-md-6 home-section-4-text-container">
+    <div class="col-md-6 home-section-4-text-container order-lg-0 order-1">
         <h3>Lorem ipsum dolor sit.</h3>
         <p class="home-section-4-heading">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque, deleniti.
         </p>
@@ -14,7 +14,7 @@
 
         <a href="#">Read More</a>
     </div>
-    <div class="col-md-6 home-section-4-img-container">
+    <div class="col-md-6 home-section-4-img-container order-lg-1 order-0">
         <img src="assets/images/banners/temp-1.png" alt="">
     </div>
 </div>
