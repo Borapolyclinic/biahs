@@ -270,6 +270,71 @@
   height: auto;
 }
 
+/* =========== ABOUT SECTION 2 =========== */
+.about-section-2-content-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+.about-section-2-img-grid {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.about-section-2-img-grid img {
+  flex: 1 1 1 100px;
+  width: auto;
+  height: 280px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.about-section-2-text {
+  background-color: #e7e7e7e7;
+  padding: 50px;
+  border-radius: 20px;
+}
+.about-section-2-text h3 {
+  font-weight: bold;
+  color: #ec7f0d;
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 20px;
+}
+.about-section-2-headline {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-bottom: 50px;
+}
+.about-section-2-part h3 {
+  font-weight: bold;
+  color: #ec7f0d;
+  font-size: 16px;
+  margin-bottom: 10px;
+  letter-spacing: 20px;
+}
+.about-section-2-part-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-section-2-part-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e7e7e7e7;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.about-section-2-part-card img {
+  width: 10%;
+  height: auto;
+  margin-right: 10px;
+}
+
 /* =========== FOOTER =========== */
 .footer {
   background-color: #182545;
@@ -421,5 +486,40 @@
   .about-section-1-img img {
     width: 100%;
     height: auto;
+  }
+
+  /* =========== ABOUT SECTION 2 =========== */
+  .about-section-2-content-grid {
+    flex-direction: column;
+  }
+  .about-section-2-img-grid {
+    margin-bottom: 50px;
+  }
+  .about-section-2-img-grid img {
+    flex: 1 1 1 100px;
+    width: auto;
+    height: 160px;
+    margin: 10px;
+    border-radius: 10px;
+  }
+  .about-section-2-text {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .about-section-2-text h3 {
+    text-align: center;
+  }
+  .about-section-2-headline {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .about-section-2-part-row {
+    flex-direction: column;
+  }
+  .about-section-2-part h3 {
+    text-align: center;
   }
 }

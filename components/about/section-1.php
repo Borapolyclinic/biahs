@@ -7,13 +7,19 @@
 <div class="container about-section-1-grid">
     <div class="col-md-6 about-section-1-grid-text order-lg-0 order-1">
         <h2>About the college</h2>
+        <p>Bora Institute of Nursing & Paramedical Sciences is a unit of “Bora Polyclinic”, established in 2008, which
+            aims at preparing professional nurses who are competent to render qualitative care to patients in all
+            settings and to practice within the established guidelines and standards to engage in continuous role
+            development and helps individual value and pursue life-long learning. Our Institute has a beautiful campus
+            of more than 10 acres with plush greenery away from the crowd of city and have full modern amenities.</p>
         <p>Master degree programme in Nursing (M.Sc. Nursing) and Basic degree programmes such as B.Sc. Nursing, Post
             Basic
             B.Sc Nursing, B.Sc MLT and B.P.T. courses which are recognised world-wide, with an excellent placement
             opportunity.</p>
 
         <p>The faculty are responsible as role models, mentor and teachers for providing a caring environment in which
-            students are free to explore and develop personally, rofessionally and intellectually. The teaching-learning
+            students are free to explore and develop personally, professionally and intellectually. The
+            teaching-learning
             process fosters intellectual and personal growth, stimulates inquiry, critical thinking and synthesis of
             knowledge.</p>
 
