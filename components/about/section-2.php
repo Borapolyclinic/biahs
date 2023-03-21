@@ -58,4 +58,13 @@
                 needs of the society.</p>
         </div>
     </div>
+
+    <h3 class="mt-5">PHILOSOPHY</h3>
+    <p>Bora Institute of Nursing & Paramedical Sciences mainly aims to make qualitative contribution to health care
+        though educational preparation based on sound educational principles and to prepare young health nursing
+        professionals competent to deliver holistic health care with special emphasis on community health services to
+        meet the health needs of medically underprivileged areas of our community. We focus upliftment of the population
+        of Lucknow district and surrounding area through quality educational reparations of students. Although provide
+        students centered quality education to equip them with application of relevant knowledge from humanities,
+        biological and behavioral sciences in carrying out health care.</p>
 </div>
