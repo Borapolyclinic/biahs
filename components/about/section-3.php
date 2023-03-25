@@ -1,4 +1,4 @@
-<div class="container about-section-3-row">
+<div class="about-section-3-row" id="founders">
     <div class="col-md-6 about-section-3-img">
         <img src="assets/images/temp/team-2.png" alt="">
     </div>
@@ -25,8 +25,8 @@
             experience and employability.</p>
 
 
-        <p class="">Dr. Neeraj Bora</p>
-        <p>MBBS, MBA</p>
+        <p class="about-section-3-name">Dr. Neeraj Bora</p>
+        <p class="about-section-3-designation">MBBS, MBA</p>
 
     </div>
 </div>

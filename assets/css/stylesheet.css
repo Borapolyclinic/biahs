@@ -341,6 +341,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 .about-section-3-img {
   max-width: 100%;
@@ -358,6 +359,15 @@
 }
 .about-section-3-txt strong {
   font-weight: 600 !important;
+}
+.about-section-3-name {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #ec7f0d;
+}
+.about-section-3-designation {
+  margin: 0;
 }
 
 /* =========== FOOTER =========== */
@@ -545,6 +555,19 @@
     flex-direction: column;
   }
   .about-section-2-part h3 {
+    text-align: center;
+  }
+  /* =========== ABOUT SECTION 3 =========== */
+  .about-section-3-row {
+    flex-direction: column;
+  }
+  .about-section-3-img {
+    margin-bottom: 20px;
+  }
+  .about-section-3-txt h3 {
+    text-align: center;
+  }
+  .about-section-3-txt p {
     text-align: center;
   }
 }
