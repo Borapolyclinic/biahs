@@ -476,11 +476,11 @@
 .infra-section-2-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start !important;
+  align-items: flex-start;
 }
 .infra-section-2-card {
-  width: 350px;
+  width: 400px !important;
   height: 350px;
   border: 1px solid #e7e7e7;
   border-radius: 5px;
@@ -524,50 +524,49 @@
 .footer {
   background-color: #182545;
   margin: 0;
-  padding: 30px;
-}
-.footer-menu-grid {
+  padding: 20px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-}
-.footer-menu {
-  flex: 1;
-}
-.footer-menu li {
-  list-style: none;
-  margin-bottom: 10px;
-}
-.footer-menu a:hover {
-  color: #ec7f0d;
-  transition: 0.3s all ease-in-out;
-}
-.footer-menu a {
-  text-decoration: none;
-  color: #fff;
-}
-.footer-menu-client {
-  color: #fff;
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
+}
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer img {
+  width: 30% !important;
+  height: auto;
+}
+.footer-divider {
+  border: 1px solid #777;
+  width: 30%;
+}
+.footer-text {
+  color: #777;
+  margin: 0;
+  font-size: 18px !important;
+}
+.footer-note {
+  font-size: 14px !important;
+  color: #777;
+}
+.footer-inner li {
+  list-style: none;
   margin-bottom: 30px;
 }
-.footer-menu-client ion-icon {
-  font-size: 20px;
-}
-.footer-menu-client p {
-  margin: 0;
-  margin-left: 10px;
-}
-.footer-menu-client img {
-  width: 50%;
-  height: auto;
+.footer-inner a {
+  text-decoration: none;
+  color: #fff;
 }
 
 /* =========== DEVELOPER FOOTER =========== */
 .developer-footer {
   background-color: #ec7f0d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
 }
 .developer-footer p {
@@ -576,12 +575,8 @@
 }
 .developer-footer a {
   text-decoration: none;
-  color: #182545;
-  font-weight: bold;
-}
-.developer-footer a:hover {
   color: #fff;
-  transition: 0.3s all ease-in-out;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 768px) {
@@ -728,5 +723,21 @@
   }
   .courses-section-2-menu-link {
     width: 100%;
+  }
+  /* =========== FOOTER =========== */
+  .footer {
+    flex-direction: column;
+  }
+  .footer-text {
+    color: #777;
+    margin: 0;
+    font-size: 12px !important;
+    text-align: center;
+  }
+  .footer-note {
+    font-size: 10px !important;
+    color: #777;
+    text-align: center !important;
+    margin-bottom: 100px;
   }
 }
