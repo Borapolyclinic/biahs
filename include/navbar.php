@@ -17,21 +17,20 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="about.php#about-college">About the College</a></li>
-                        <li><a class="dropdown-item" href="#">Facilities</a></li>
                         <li><a class="dropdown-item" href="about.php#founders">Founders</a></li>
                         <li><a class="dropdown-item" href="#">Directors</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php">Admissions</a>
+                    <a class="nav-link" aria-current="page" href="admissions.php">Admissions</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Academics
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Courses</a></li>
-                        <li><a class="dropdown-item" href="#">Infrastructure</a></li>
+                        <li><a class="dropdown-item" href="courses.php">Courses</a></li>
+                        <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

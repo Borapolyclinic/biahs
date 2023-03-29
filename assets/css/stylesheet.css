@@ -86,8 +86,15 @@
 
 /* =========== HOME SECTION 3 =========== */
 .home-section-3 {
-  margin-top: 50px;
+  margin-top: 100px;
   text-align: center;
+}
+.home-section-3 h2 {
+  color: #182545;
+  font-weight: bold;
+}
+.home-section-3 span {
+  color: #ec7f0d;
 }
 .home-section-3 p {
   margin-bottom: 50px;
@@ -234,6 +241,12 @@
   width: 100%;
   height: 650px;
 }
+.about-section-1-heading a {
+  font-size: 18px;
+  line-height: 25px;
+  text-decoration: none;
+  color: #182545 !important;
+}
 .about-section-1-heading p {
   color: #fff;
   text-align: center;
@@ -368,6 +381,143 @@
 }
 .about-section-3-designation {
   margin: 0;
+}
+
+/* =========== COURSES SECTION 2 =========== */
+.courses-section-2-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.courses-section-2-menu-link {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e7e7e7;
+  text-decoration: none !important;
+  color: #000;
+}
+.courses-section-2-menu-link:hover {
+  background-color: #ec7f0d;
+  color: #fff;
+  transition: 0.3s all ease-in-out;
+}
+.courses-section-2-menu-link p {
+  margin: 0;
+}
+
+/* =========== COURSES SECTION 3 =========== */
+.courses-section-3 h2 {
+  font-weight: bold;
+  color: #ec7f0d;
+  margin-bottom: 30px;
+}
+.courses-section-3-heading {
+  margin-bottom: 100px;
+}
+.courses-section-3-heading h3 {
+  margin: 0;
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.courses-section-3-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.courses-section-3-card {
+  border: 1px solid #e7e7e7e7;
+  border-radius: 5px;
+  width: 350px;
+  height: 370px;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 4px solid #ec7f0d;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 20px;
+}
+.courses-section-3-card h4 {
+  margin: 0;
+  color: #182545;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.courses-section-3-label {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+.courses-section-3-res {
+  color: #000;
+  font-size: bold !important;
+}
+.courses-section-3-button {
+  text-decoration: none;
+  border: 1px solid #ec7f0d;
+  padding: 10px;
+  color: #ec7f0d;
+
+  font-size: 14px !important;
+}
+.courses-section-3-button:hover {
+  color: #fff;
+  background-color: #ec7f0d;
+  border-radius: 5px;
+  transition: 0.3s all ease-in-out;
+}
+
+/* =========== INFRA SECTION 2 =========== */
+.infra-section-2-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.infra-section-2-card {
+  width: 350px;
+  height: 350px;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom: 4px solid #e7e7e7;
+  margin: 10px;
+}
+.infra-section-2-card:hover {
+  border-bottom: 4px solid #182545;
+  transition: 0.1s all ease-in-out;
+}
+.infra-section-2-card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+.infra-section-2-card h2 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: bold;
+}
+.infra-section-2-card p {
+  margin: 0;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+.infra-section-2-button {
+  border: 1px solid #ec7f0d;
+  color: #ec7f0d;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 /* =========== FOOTER =========== */
@@ -569,5 +719,14 @@
   }
   .about-section-3-txt p {
     text-align: center;
+  }
+
+  /* =========== COURSES SECTION 2 =========== */
+  .courses-section-2-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .courses-section-2-menu-link {
+    width: 100%;
   }
 }
