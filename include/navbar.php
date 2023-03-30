@@ -36,9 +36,9 @@
                         <li><a class="dropdown-item" href="infrastructure.php">Infrastructure</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#">Gallery</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="contact.php">Contact</a>
                 </li>

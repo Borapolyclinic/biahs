@@ -520,6 +520,94 @@
   padding: 5px;
 }
 
+/* =========== INFRA SECTION 3 =========== */
+.infra-section-3 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.infra-section-3 h4 {
+  color: #ec7f0d;
+  font-weight: bold;
+  font-size: 30px;
+}
+.infra-section-3 span {
+  color: #182545;
+}
+.infra-section-3-img {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.infra-section-3-img img {
+  width: 70%;
+  height: auto;
+}
+
+/* =========== CONTACT SECTION 2 =========== */
+.contact-section-2 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.contact-section-2-details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #e7e7e7e7;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.contact-section-2-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #182545;
+}
+.contact-section-2-details h2 {
+  font-weight: bold;
+  color: #ec7f0d;
+  font-size: 20px;
+  margin: 0;
+}
+.contact-section-2-details p {
+  color: #000;
+  margin: 0;
+}
+.contact-section-2-form {
+  padding: 20px;
+  border: 1px solid #e7e7e7e7;
+  margin-left: 20px;
+}
+.contact-section-2-btn {
+  border: 1px solid #ec7f0d;
+  color: #ec7f0d;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+.contact-section-2-btn:hover {
+  border: 1px solid #ec7f0d;
+  color: #fff;
+  background-color: #ec7f0d;
+  width: 100%;
+  padding: 10px;
+  transition: 0.3s all ease-in-out;
+}
+
 /* =========== FOOTER =========== */
 .footer {
   background-color: #182545;
@@ -724,6 +812,19 @@
   .courses-section-2-menu-link {
     width: 100%;
   }
+
+  /* =========== CONTACT SECTION 2 =========== */
+  .contact-section-2 {
+    flex-direction: column;
+  }
+  .contact-section-2-form {
+    padding: 20px;
+    border: 1px solid #e7e7e7e7;
+    margin-left: 0;
+    width: 100%;
+    margin-top: 50px;
+  }
+
   /* =========== FOOTER =========== */
   .footer {
     flex-direction: column;
