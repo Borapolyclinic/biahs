@@ -13,6 +13,12 @@
   background: #ec7f0d;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* =========== TOP NAVBAR =========== */
 .top-nav {
   max-width: 100%;
@@ -57,7 +63,7 @@
 /* =========== HOME SECTION 2 =========== */
 .home-section-2-grid {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border: 1px solid #e7e7e7e7;
   border-radius: 5px;
@@ -70,14 +76,16 @@
   flex: 1;
   padding: 20px;
 }
-.home-section-2-content ion-icon {
-  font-size: 24px;
-  margin-bottom: 20px;
+.home-section-2-content img {
+  width: 18%;
+  height: auto;
+  margin-bottom: 25px;
 }
 .home-section-2-content h1 {
   font-size: 18px;
   font-weight: bold;
   margin: 0;
+  color: #ec7f0d;
 }
 .home-section-2-content p {
   font-size: 14px;
@@ -147,8 +155,9 @@
 }
 .home-section-4-heading {
   font-weight: bold;
-  font-size: 30px;
-  margin-bottom: 50px !important;
+  font-size: 50px;
+  margin-bottom: 40px !important;
+  line-height: 50px;
 }
 .home-section-4-img-container {
   display: flex;
@@ -368,10 +377,15 @@
 }
 .about-section-3-txt h3 {
   font-weight: 300;
-  color: #ec7f0d;
+
+  font-size: 40px;
 }
 .about-section-3-txt strong {
   font-weight: 600 !important;
+  color: #ec7f0d !important;
+}
+.about-section-3-txt p {
+  font-size: 20px;
 }
 .about-section-3-name {
   font-size: 20px;
@@ -411,6 +425,9 @@
   font-weight: bold;
   color: #ec7f0d;
   margin-bottom: 30px;
+}
+.courses-section-para {
+  margin-bottom: 50px !important;
 }
 .courses-section-3-heading {
   margin-bottom: 100px;
@@ -608,6 +625,33 @@
   transition: 0.3s all ease-in-out;
 }
 
+/* =========== ADMISSION SECTION 2 =========== */
+.admission-section-2 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admission-section-2-img {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admission-section-2-img img {
+  width: 97.5%;
+  height: auto;
+  border-radius: 10px;
+}
+.admission-section-2-form {
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #fff;
+}
+
 /* =========== FOOTER =========== */
 .footer {
   background-color: #182545;
@@ -721,6 +765,12 @@
     text-align: center;
     width: fit-content;
   }
+  .home-section-4-heading {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 40px !important;
+    line-height: 35px;
+  }
 
   /* =========== ABOUT SECTION 1 =========== */
   .about-section-1-heading {
@@ -802,6 +852,15 @@
   }
   .about-section-3-txt p {
     text-align: center;
+  }
+
+  /* =========== ADMISSION SECTION 2 =========== */
+  .admission-section-2 {
+    margin-top: 50px;
+    flex-direction: column;
+  }
+  .admission-section-2-img {
+    margin-bottom: 30px;
   }
 
   /* =========== COURSES SECTION 2 =========== */
