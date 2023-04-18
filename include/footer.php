@@ -11,9 +11,9 @@
 
     <div class="col-md-6 footer-inner">
         <ul>
-            <li><a href="#">Disclaimer</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="disclaimer.php">Disclaimer</a></li>
+            <li><a href="privacy-policy.php">Privacy Policy</a></li>
+            <li><a href="terms.php">Terms & Conditions</a></li>
             <li><a href="#">Admin Login</a></li>
         </ul>
     </div>
