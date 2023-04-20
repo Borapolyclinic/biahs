@@ -1,0 +1,5 @@
+https://drneerajbora.in:2083/
+
+UserName: drneerajbora
+Password: shaan@12345
+ssh_pass: bora_2023

@@ -35,6 +35,10 @@
 <!-- =============================== CUSTOM JAVASCRIPT =============================== -->
 <script src="assets/custom.js"></script>
 
+<!-- =============================== ADDTHIS =============================== -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6440c962fae4a36e"></script>
+
+
 </body>
 
 </html>
