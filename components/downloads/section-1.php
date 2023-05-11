@@ -17,4 +17,10 @@
         <a href="assets/docs/PostBasicBScNursingInformationBrochure.pdf" target="_blank"
             rel="noopener noreferrer">Download</a>
     </div>
+
+
+    <div class="download-section-tab" id="orange">
+        <h2>Paramedical Bachelor Courses</h2>
+        <a href="assets/docs/Paramedical_Bachelors.pdf" target="_blank" rel="noopener noreferrer">Download</a>
+    </div>
 </div>
