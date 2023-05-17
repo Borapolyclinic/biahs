@@ -5,25 +5,25 @@ function showOption() {
   const hiddenOption3 = document.getElementById("option3");
   const hiddenOption4 = document.getElementById("option4");
 
-  if (selectedOption == "1") {
+  if (selectedOption == "Masters Degree Programme") {
     hiddenOption1.style.display = "block";
   } else {
     hiddenOption1.style.display = "none";
   }
 
-  if (selectedOption == "2") {
+  if (selectedOption == "Basic Degree Programme") {
     hiddenOption2.style.display = "block";
   } else {
     hiddenOption2.style.display = "none";
   }
 
-  if (selectedOption == "3") {
+  if (selectedOption == "Diploma Programme") {
     hiddenOption3.style.display = "block";
   } else {
     hiddenOption3.style.display = "none";
   }
 
-  if (selectedOption == "4") {
+  if (selectedOption == "Certificate Course") {
     hiddenOption4.style.display = "block";
   } else {
     hiddenOption4.style.display = "none";

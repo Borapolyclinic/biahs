@@ -12,41 +12,59 @@
             $admission_qual = mysqli_real_escape_string($connection, $_POST['admission_qual']);
             $admission_program = mysqli_real_escape_string($connection, $_POST['admission_program']);
 
-            if ($admission_program == "1") {
+            if ($admission_program == 'null') {
+                die("Please select a program!" . " " . mysqli_error($connection));
+            } else if ($admission_program == "Masters Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_1']);
-            } else if ($admission_program == "2") {
+                if ($admission_course == 'null') {
+                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                }
+            } else if ($admission_program == "Basic Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_2']);
-            } else if ($admission_program == "3") {
+                if ($admission_course == 'null') {
+                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                }
+            } else if ($admission_program == "Diploma Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_3']);
-            } else if ($admission_program == "4") {
+                if ($admission_course == 'null') {
+                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                }
+            } else if ($admission_program == "Certificate Course") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_4']);
+                if ($admission_course == 'null') {
+                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                }
             }
 
             $query = "INSERT INTO `bora_admissions`(
-            `admission_name`,
-            `admission_contact`,
-            `admission_email`,
-            `admission_qual`,
-            `admission_program`,
-            `admission_course`
-        )
-        VALUES(
-            '$admission_name',
-            '$admission_contact',
-            '$admission_email',
-            '$admission_qual',
-            '$admission_program',
-            '$admission_course'
-        )";
+                 `admission_name`,
+                 `admission_contact`,
+                 `admission_email`,
+                 `admission_qual`,
+                 `admission_program`,
+                 `admission_course`
+             )
+             VALUES(
+                 '$admission_name',
+                 '$admission_contact',
+                 '$admission_email',
+                 '$admission_qual',
+                 '$admission_program',
+                 '$admission_course'
+             )";
 
             $result = mysqli_query($connection, $query);
 
-            if (!$result) { ?>
+            if (!$result) {
+
+        ?>
 
         <div class="alert alert-danger mb-3 mt-3" role="alert">
             Oops! Looks like there was some error processing your form. Please try again!
         </div>
-        <?php } else { ?>
+        <?php
+            } else {
+            ?>
         <div class="alert alert-success mb-3 mt-3" role="alert">
             Thank you for applying for <?php echo $admission_course; ?>. We will connect with you shortly.
         </div>
@@ -78,28 +96,28 @@
             </div>
             <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">Select Programme</label>
-                <select onclick="showOption()" class="form-select mb-3" name="admission_program" id="programOption"
-                    aria-label="Default select example" required>
-                    <option>Click here to open menu</option>
-                    <option value="1">Masters Degree Programme</option>
-                    <option value="2">Basic Degree Programme</option>
-                    <option value="3">Diploma Programme</option>
-                    <option value="4">Certificate Course</option>
+                <select required onclick="showOption()" class="form-select mb-3" name="admission_program"
+                    id="programOption" aria-label="Default select example" required>
+                    <option value="null">Click here to open menu</option>
+                    <option value="Masters Degree Programme">Masters Degree Programme</option>
+                    <option value="Basic Degree Programme">Basic Degree Programme</option>
+                    <option value="Diploma Programme">Diploma Programme</option>
+                    <option value="Certificate Course">Certificate Course</option>
                 </select>
             </div>
 
             <div class="mb-4" style="display: none" id="option1">
                 <label for="exampleFormControlInput1" class="form-label">Select Masters Degree Programme</label>
-                <select class="form-select mb-3" name="admission_course_1" aria-label="Default select example">
-                    <option>Click here to Masters Degree Courses</option>
+                <select required class="form-select mb-3" name="admission_course_1" aria-label="Default select example">
+                    <option value="null">Click here to Masters Degree Courses</option>
                     <option value="M.Sc. Nursing">M.Sc. Nursing</option>
                 </select>
             </div>
 
             <div class="mb-4" style="display: none" id="option2">
                 <label for="exampleFormControlInput1" class="form-label">Select Basic Degree Programme</label>
-                <select class="form-select mb-3" name="admission_course_2" aria-label="Default select example">
-                    <option>Click here to open Basic Degree Courses</option>
+                <select required class="form-select mb-3" name="admission_course_2" aria-label="Default select example">
+                    <option value="null">Click here to open Basic Degree Courses</option>
                     <option value="B.Sc. Nursing">B.Sc. Nursing</option>
                     <option value="Post Basic B.Sc. NURSING">Post Basic B.Sc. NURSING</option>
                     <option value="Bachelor in Physiotherapy">Bachelor in Physiotherapy</option>
@@ -110,8 +128,8 @@
 
             <div class="mb-4" style="display: none" id="option3">
                 <label for="exampleFormControlInput1" class="form-label">Select Diploma Programme</label>
-                <select class="form-select mb-3" name="admission_course_3" aria-label="Default select example">
-                    <option>Click here to open Diploma Programme Courses</option>
+                <select required class="form-select mb-3" name="admission_course_3" aria-label="Default select example">
+                    <option value="null">Click here to open Diploma Programme Courses</option>
                     <option value="General Nursing & Midwifery">General Nursing & Midwifery</option>
                     <option value="Auxillary Nurse & Midwifery">Auxillary Nurse & Midwifery</option>
                     <option value="O.T.Technicians & Dialysis Technician">O.T.Technicians & Dialysis Technician</option>
@@ -122,8 +140,8 @@
 
             <div class="mb-4" style="display: none" id="option4">
                 <label for="exampleFormControlInput1" class="form-label">Select Certificate Course</label>
-                <select class="form-select mb-3" name="admission_course_4" aria-label="Default select example">
-                    <option>Click here to open Certification Courses</option>
+                <select required class="form-select mb-3" name="admission_course_4" aria-label="Default select example">
+                    <option value="null">Click here to open Certification Courses</option>
                     <option value="Phlebotomoy Technician">Phlebotomoy Technician</option>
                     <option value="Blood Bank Technician">Blood Bank Technician</option>
                     <option value="Assistant Physiotherapist">Assistant Physiotherapist</option>
