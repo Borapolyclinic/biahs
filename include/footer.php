@@ -14,7 +14,7 @@
             <li><a href="disclaimer.php">Disclaimer</a></li>
             <li><a href="privacy-policy.php">Privacy Policy</a></li>
             <li><a href="terms.php">Terms & Conditions</a></li>
-            <li><a href="#">Admin Login</a></li>
+            <li><a href="admin/index.php">Admin Login</a></li>
         </ul>
     </div>
 </div>
@@ -24,8 +24,7 @@
 
 
 <!-- =============================== BOOTSTRAP =============================== -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
 </script>
 
 <!-- =============================== IONICONS =============================== -->
