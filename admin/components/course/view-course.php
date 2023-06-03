@@ -38,33 +38,33 @@
                     $course_fee_monthly = $row['course_fee'] / 12;
                     $course_status = $row['course_status'];
                 ?>
-                    <tr>
-                        <th scope="row"><?php echo $course_name ?></th>
-                        <td><?php echo $course_tenure ?></td>
-                        <td><?php echo $course_semester ?></td>
-                        <td><?php echo "₹" . $course_fee ?></td>
-                        <td><?php echo "₹" . $course_fee_six ?></td>
-                        <td><?php echo "₹" . $course_fee_qtr ?></td>
-                        <td><?php echo "₹" . $course_fee_monthly ?></td>
-                        <td><?php if ($course_status == "1") {
+                <tr>
+                    <th scope="row"><?php echo $course_name ?></th>
+                    <td><?php echo $course_tenure ?></td>
+                    <td><?php echo $course_semester ?></td>
+                    <td><?php echo "₹" . $course_fee ?></td>
+                    <td><?php echo "₹" . $course_fee_six ?></td>
+                    <td><?php echo "₹" . $course_fee_qtr ?></td>
+                    <td><?php echo "₹" . $course_fee_monthly ?></td>
+                    <td><?php if ($course_status == "1") {
                                 echo 'Active';
                             } else {
                                 echo 'Disabled';
                             }
                             ?></td>
-                        <td>
-                            <form action="" method="POST">
-                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action="" method="POST">
-                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button class="btn btn-sm btn-outline-danger">Del</button>
-                            </form>
-                        </td>
-                    </tr>
+                    <td>
+                        <form action="" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button class="btn btn-sm btn-outline-secondary">Edit</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button class="btn btn-sm btn-outline-danger">Del</button>
+                        </form>
+                    </td>
+                </tr>
                 <?php } ?>
             </tbody>
         </table>

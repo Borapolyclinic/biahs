@@ -41,6 +41,39 @@ input::-webkit-inner-spin-button {
   z-index: 999;
 }
 
+/* ============ DASHBOARD ============ */
+.dashboard-greeting {
+  margin-bottom: 40px;
+}
+.dashboard-greeting h4 {
+  margin: 0;
+  font-weight: 500;
+}
+.dashboard-greeting p {
+  margin: 0;
+  font-weight: bold;
+  color: #ec7f0d;
+  font-size: 36px !important;
+}
+.dashboard-tab {
+  flex: 1;
+  width: 100%;
+  border: 1px solid #e7e7e7;
+  margin: 3px;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+}
+.dashboard-tab p {
+  margin: 0;
+}
+.dashboard-tab h5 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+  color: #182545 !important;
+}
+
 /* ============ ADD USER ============ */
 .user-form-container {
   position: absolute;
@@ -54,6 +87,26 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   width: 100%;
   margin-top: 100px;
+}
+.page-marker-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.page-marker-anchor {
+  margin: 0;
+  text-decoration: none !important;
+  color: #182545 !important;
+  font-weight: 400;
+  border: 1px solid #182545;
+  border-radius: 5px;
+  padding: 5px;
+}
+.page-marker-anchor:hover {
+  background-color: #182545;
+  color: #fff !important;
+  transition: 0.3s all ease-in-out;
 }
 .page-marker {
   margin-bottom: 30px;
@@ -168,6 +221,31 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
   margin-top: 10px;
 }
+.download-form-btn {
+  border: 1px solid green;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  text-decoration: none;
+  color: green;
+  margin-bottom: 20px;
+}
+.download-form-btn:hover {
+  background-color: green;
+  color: #fff !important;
+  transition: 0.3s all ease-in-out;
+}
+
+/* ============ RECIEPT ============ */
+.receipt-upper-section img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.receipt-upper-section h5 {
+  margin: 0;
+  font-weight: bold;
+}
 
 /* ============ VIEW USER ============ */
 .form-row {
@@ -243,6 +321,16 @@ input::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+.filter-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+}
+.filter-input-box {
+  flex: 1;
+  margin-right: 5px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -330,5 +418,17 @@ input::-webkit-inner-spin-button {
   .user-card p {
     margin: 0;
     flex: 1;
+  }
+  .container-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .doc-row {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
   }
 }
