@@ -20,9 +20,23 @@
         <?php
         require('includes/connection.php');
 
+        $results_per_page = 10;
+
         $query = "SELECT * FROM `bora_users` WHERE `user_type` = '2'";
         $result = mysqli_query($connection, $query);
         $count = mysqli_num_rows($result);
+
+        $number_of_page = ceil($count / $results_per_page);
+
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+
+        $page_first_result = ($page - 1) * $results_per_page;
+        $page_query = "SELECT * FROM `bora_users` WHERE `user_type` = '2' LIMIT "  . $page_first_result . ',' . $results_per_page;
+        $page_result = mysqli_query($connection, $page_query);
 
         if ($count == 0) { ?>
             <div>
@@ -30,7 +44,7 @@
             </div>
             <?php
         } else {
-            while ($row = mysqli_fetch_assoc($result)) {
+            while ($row = mysqli_fetch_assoc($page_result)) {
                 $user_id = $row['user_id'];
                 $user_name = $row['user_name'];
                 $user_contact = $row['user_contact'];
@@ -53,5 +67,15 @@
         }
         ?>
     </div>
+
+    <nav aria-label="Page navigation example" class="w-100 mt-3">
+        <ul class="pagination">
+            <?php
+            for ($page = 1; $page <= $number_of_page; $page++) {
+                echo '<li class="page-item"><a class="page-link" href="view-user.php?page=' . $page . '">' . $page . ' </a></li>';
+            }
+            ?>
+        </ul>
+    </nav>
 
 </div>

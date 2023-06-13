@@ -31,10 +31,25 @@
                 <?php
                 require('includes/connection.php');
 
+                $results_per_page = 10;
+
                 $fetch_students = "SELECT * FROM `bora_student` ORDER BY student_added_date DESC";
                 $fetch_res = mysqli_query($connection, $fetch_students);
+                $count = mysqli_num_rows($fetch_res);
 
-                while ($row = mysqli_fetch_assoc($fetch_res)) {
+                $number_of_page = ceil($count / $results_per_page);
+
+                if (!isset($_GET['page'])) {
+                    $page = 1;
+                } else {
+                    $page = $_GET['page'];
+                }
+
+                $page_first_result = ($page - 1) * $results_per_page;
+                $page_query = "SELECT * FROM `bora_student` LIMIT "  . $page_first_result . ',' . $results_per_page;
+                $page_result = mysqli_query($connection, $page_query);
+
+                while ($row = mysqli_fetch_assoc($page_result)) {
                     $student_id = $row['student_id'];
                     $student_img = "assets/student/" . $row['student_img'];
                     $student_name = $row['student_name'];
@@ -57,18 +72,28 @@
                                 Details</button>
                         </form>
                     </td>
-                    <td>
-                        <form action="collect-fee.php" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
-                                Fee</button>
-                        </form>
-                    </td>
+                    <!-- <td>
+                            <form action="collect-fee.php" method="POST">
+                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
+                                    Fee</button>
+                            </form>
+                        </td> -->
                 </tr>
                 <?php
                 }
                 ?>
             </tbody>
         </table>
+
+        <nav aria-label="Page navigation example" class="w-100 mt-3">
+            <ul class="pagination">
+                <?php
+                for ($page = 1; $page <= $number_of_page; $page++) {
+                    echo '<li class="page-item"><a class="page-link" href="view-students.php?page=' . $page . '">' . $page . ' </a></li>';
+                }
+                ?>
+            </ul>
+        </nav>
     </div>
 </div>

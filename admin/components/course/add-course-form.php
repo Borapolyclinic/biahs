@@ -31,14 +31,10 @@
 
             </select>
         </div>
-        <div class="mb-3">
-            <label for="courseSem" class="form-label">Total Semesters in Course</label>
-            <input type="number" name="course_semester" required class="form-control" id="courseSem">
-        </div>
-        <div class="mb-3">
-            <label for="courseFee" class="form-label">Course Fee (Annual)</label>
-            <input type="number" name="course_fee" required class="form-control" id="courseFee">
-        </div>
+        <!-- <div class="mb-3">
+            <label for="courseSem" class="form-label">Semesters Name</label>
+            <input type="text" name="course_semester_name" required class="form-control" id="courseSem">
+        </div> -->
         <button type="submit" name="submit" class="btn btn-primary">Add Course</button>
     </form>
 </div>

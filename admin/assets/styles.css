@@ -85,7 +85,7 @@ input::-webkit-inner-spin-button {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  width: 100%;
+  width: 100% !important;
   margin-top: 100px;
 }
 .page-marker-row {
@@ -238,13 +238,83 @@ input::-webkit-inner-spin-button {
 
 /* ============ RECIEPT ============ */
 .receipt-upper-section img {
-  width: 300px;
+  width: 250px;
   height: auto;
   margin-bottom: 10px;
 }
 .receipt-upper-section h5 {
   margin: 0;
   font-weight: bold;
+}
+.receipt-row {
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.receipt-billing-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.receipt-row p {
+  margin: 0;
+}
+.recipient {
+  flex: 1;
+}
+.recipient h6 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.recipient h4 {
+  margin: 0;
+  font-size: 20px;
+}
+.recipient p {
+  margin: 0 !important;
+  font-size: 16px;
+}
+.recipient-flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+}
+.bottom-table-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.receipt-calculation-row {
+  background-color: #e7e7e7 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px !important;
+}
+.receipt-calculation {
+  margin-right: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.receipt-calculation h6 {
+  margin: 0 !important;
+}
+.receipt-calculation p {
+  margin: 0 !important;
+  font-weight: bold;
+}
+.receipt-calculation #output {
+  margin: 0 !important;
+  font-weight: bold;
+  font-size: 18px !important;
+  color: green !important;
+  margin-left: 5px;
 }
 
 /* ============ VIEW USER ============ */
@@ -331,6 +401,20 @@ input::-webkit-inner-spin-button {
 .filter-input-box {
   flex: 1;
   margin-right: 5px;
+}
+.pagination-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100% !important;
+  margin-top: 10px !important;
+  background-color: #fafafa;
+}
+.table-header {
+  border-bottom: 2px solid #000 !important;
+  border-top: 2px solid #000;
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {

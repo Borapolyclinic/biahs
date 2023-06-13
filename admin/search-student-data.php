@@ -26,7 +26,7 @@
                     <th scope="col">Admission Date</th>
                     <th scope="col">Added By</th>
                     <th scope="col">Action</th>
-                    <th scope="col">Fee</th>
+                    <!-- <th scope="col">Fee</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -62,13 +62,13 @@
                                 Details</button>
                         </form>
                     </td>
-                    <td>
+                    <!-- <td>
                         <form action="collect-fee.php" method="POST">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
                             <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
                                 Fee</button>
                         </form>
-                    </td>
+                    </td> -->
                 </tr>
                 <?php
                         }

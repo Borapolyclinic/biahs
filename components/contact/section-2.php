@@ -16,7 +16,7 @@
             </div>
             <div>
                 <h2>Email</h2>
-                <p>email@address.com</p>
+                <p>info@borainstitute.com</p>
             </div>
         </div>
 
