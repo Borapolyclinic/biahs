@@ -35,4 +35,42 @@
             <h5><?php echo $count ?></h5>
         </div>
     </div>
+
+
+    <div class="w-100 mt-3">
+        <p>Last Login</p>
+        <div class="table-responsive dashboard-tab p-3">
+
+            <table class="table table-bordered">
+                <thead class="table-active">
+                    <tr>
+                        <th scope="col">NAME</th>
+                        <th scope="col">LOGIN TIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $fetch_login = "SELECT * FROM `bora_user_activity_tracker`";
+                    $fetch_login_res = mysqli_query($connection, $fetch_login);
+
+                    while ($row = mysqli_fetch_assoc($fetch_login_res)) {
+                        $activity_tracker_user_contact = $row['activity_tracker_user_contact'];
+                        $activity_tracker_time = $row['activity_tracker_time'];
+                    ?>
+                    <tr>
+                        <th scope="row"><?php
+                                            $fetch_user = "SELECT * FROM `bora_users` WHERE `user_id` = '$activity_tracker_user_contact'";
+                                            $fetch_user_res = mysqli_query($connection, $fetch_user);
+                                            $user_name = "";
+                                            while ($row = mysqli_fetch_assoc($fetch_user_res)) {
+                                                $user_name = $row['user_name'];
+                                            }
+                                            echo $user_name ?></th>
+                        <td><?php echo $activity_tracker_time ?></td>
+                    </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

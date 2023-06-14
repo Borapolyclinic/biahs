@@ -78,6 +78,13 @@
                                 setcookie("loggedin", "true", time() + (86400 * 30), "/");
                                 setcookie("user_id", $user_contact, time() + (86400 * 30), "/");
                                 setcookie("user_type", $row['user_type'], time() + (86400 * 30), "/");
+                                if ($row['user_type'] == 2) {
+                                    $login_time = date('Y-m-d H:i:s');
+                                    $user_contact = $row['user_id'];
+
+                                    $insert_activity_query = "INSERT INTO `bora_user_activity_tracker` (`activity_tracker_user_contact`, `activity_tracker_time`) VALUES ('$user_contact', '$login_time')";
+                                    mysqli_query($connection, $insert_activity_query);
+                                }
                                 header("location:dashboard.php");
                             } else { ?>
         <div class="alert alert-danger w-50" role="alert">
