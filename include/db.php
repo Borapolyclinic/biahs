@@ -1,9 +1,9 @@
 <?php
 
 $hostname = "localhost:3306";
-$username = "drneerajbora_drneerajbora";
-$database = "drneerajbora_biahs";
-$password = "Darthvader@order66";
+$username = "u442267587_biahs";
+$database = "u442267587_biahs";
+$password = "Biahs123!@#123";
 
 // Development
 // $hostname = "localhost";
