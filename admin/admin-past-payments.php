@@ -1,5 +1,5 @@
 <?php include('includes/header.php') ?>
-<?php include('components/navbar/user-navbar.php') ?>
+<?php include('components/navbar/admin-navbar.php') ?>
 <div class="container user-form-container">
     <div class="page-marker">
         <a href="dashboard.php">
@@ -22,7 +22,7 @@
     ?>
 
     <div class="w-100">
-        <form action="user-fee-search-data.php" method="POST" class="filter-row w-100">
+        <form action="admin-fee-search-data.php" method="POST" class="filter-row w-100">
             <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
                 placeholder="Enter Invoice Number, Student Name, Student Contact Number or Course to search">
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
@@ -83,7 +83,7 @@
                     <td><?php echo $bora_invoice_grand_total ?></td>
                     <td><?php echo $bora_invoice_by ?></td>
                     <td>
-                        <form action="user-view-generated-fee.php" method="post">
+                        <form action="admin-view-generated-fee.php" method="post">
                             <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
                             <button type="submit" name="edit" class="btn btn-sm btn-outline-success">View
                                 Details</button>

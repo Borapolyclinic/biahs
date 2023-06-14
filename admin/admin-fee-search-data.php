@@ -1,5 +1,5 @@
 <?php include('includes/header.php') ?>
-<?php include('components/navbar/user-navbar.php') ?>
+<?php include('components/navbar/admin-navbar.php') ?>
 <div class="container user-form-container">
     <div class="page-marker">
         <a href="dashboard.php">
@@ -8,7 +8,7 @@
         <h5>Past Payments</h5>
     </div>
     <div class="w-100">
-        <form action="user-fee-search-data.php" method="POST" class="filter-row w-100">
+        <form action="admin-fee-search-data.php" method="POST" class="filter-row w-100">
             <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
                 placeholder="Enter Invoice Number, Student Name, Student Contact Number or Course to search">
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>

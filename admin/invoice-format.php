@@ -96,7 +96,7 @@ if (isset($_POST['invoice'])) {
         <div>
             <h1>Bora Institute of Allied Health Sciences</h1>
             <p>Bora Institute of Nursing & Paramedical Sciences. Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong> abc@xyz.com.
+                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong> info@borainstitute.com
                 <strong>Website:</strong> borainstitute.com
             </p>
         </div>
@@ -159,12 +159,12 @@ if (isset($_POST['invoice'])) {
         </table>
 
         <table style="margin-top: 5px;">
-        <thead>
-            <tr>
-                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
-            </tr>
-        </thead>
-    </table>
+            <thead>
+                <tr>
+                    <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+                </tr>
+            </thead>
+        </table>
 
         <div>
             <p>Authorized Signatory: </p>

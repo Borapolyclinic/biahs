@@ -41,6 +41,10 @@
                         <li><a class="dropdown-item" href="course-settings.php">View all courses</a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="admin-past-payments.php">Fee Payment
+                        History</a>
+                </li>
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item">

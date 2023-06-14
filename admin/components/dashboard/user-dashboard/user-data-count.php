@@ -9,10 +9,6 @@
     $query = "SELECT * FROM `bora_student`";
     $res = mysqli_query($connection, $query);
     $student_count = mysqli_num_rows($res);
-
-    $user_query = "SELECT * FROM `bora_student`";
-    $user_res = mysqli_query($connection, $user_query);
-    $count = mysqli_num_rows($user_res);
     ?>
 
     <div class="w-100 mb-3">
@@ -28,11 +24,6 @@
         <div class="dashboard-tab">
             <p>Students</p>
             <h5><?php echo $student_count ?></h5>
-        </div>
-
-        <div class="dashboard-tab">
-            <p>Users</p>
-            <h5><?php echo $count ?></h5>
         </div>
     </div>
 </div>
