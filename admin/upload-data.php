@@ -49,9 +49,8 @@
             $column14 = $data[13];
             $column15 = $data[14];
             $column16 = $data[15];
-            $column16 = $data[16];
-            $column16 = $data[17];
-            $column16 = $data[18];
+            $column17 = $data[16];
+            $column18 = $data[17];
 
             // Execute the statement
             $stmt->execute();
