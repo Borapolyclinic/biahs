@@ -16,6 +16,8 @@
         $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
         $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
         $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
+        $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_father']);
+        $student_guardian_relation = mysqli_real_escape_string($connection, $_POST['student_mother']);
         $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
         $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
         $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
@@ -49,6 +51,8 @@
                 `student_contact`,
                 `student_father`,
                 `student_mother`,
+                `student_guardian_contact`,
+                `student_guardian_relation`,
                 `student_roll`,
                 `student_course`,
                 `student_admission_date`,
@@ -65,6 +69,8 @@
                 '$student_contact',
                 '$student_father',
                 '$student_mother',
+                '$student_guardian_contact',
+                '$student_guardian_relation',
                 '$student_roll',
                 '$student_course',
                 '$student_admission_date',
