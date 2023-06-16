@@ -211,8 +211,8 @@
                         <th scope="row" colspan="4">Cash</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cash"
-                                    onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
+                                    value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -220,8 +220,8 @@
                         <th scope="row" colspan="4">Cheque</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cheque"
-                                    onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
+                                    value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -229,8 +229,8 @@
                         <th scope="row" colspan="4">Online</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="online"
-                                    id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
+                                    value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
                     </tr>
@@ -238,8 +238,8 @@
                         <th scope="row" colspan="4">Demand Draft</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="DemandDraft"
-                                    id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
+                                    value="DemandDraft" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
                     </tr>

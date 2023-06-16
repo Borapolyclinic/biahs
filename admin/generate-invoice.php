@@ -26,7 +26,7 @@ include('includes/header.php') ?>
         $bora_invoice_student_course = $_POST['bora_invoice_student_course'];
         $bora_invoice_for = $_POST['invoice_for'];
         $bora_invoice_tenure = $_POST['invoice_tenure'];
-        $bora_invoice_payment_mode = $_POST['payment_mode'];
+        $bora_invoice_payment_mode = $_POST['bora_invoice_payment_mode'];
         $bora_invoice_value = $_POST['invoice_value'];
         $bora_invoice_disc = $_POST['invoice_disc'];
 
