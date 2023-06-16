@@ -1,15 +1,15 @@
 <?php
-
-$hostname = "localhost";
-$username = "u442267587_biahs";
-$database = "u442267587_biahs";
-$password = "Biahs123!@#123";
-
-// Development
+// PRODUCTION
 // $hostname = "localhost";
-// $username = "root";
-// $database = "sewa_hospital";
-// $password = "";
+// $username = "u442267587_biahs";
+// $database = "u442267587_biahs";
+// $password = "Biahs123!@#123";
+
+// DEVELOPMENT
+$hostname = "localhost";
+$username = "root";
+$database = "sewa_hospital";
+$password = "";
 
 // Validate Connection
 $connection = new mysqli($hostname, $username, $password, $database);
