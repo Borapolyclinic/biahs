@@ -207,6 +207,8 @@ include('includes/header.php') ?>
     </form>
 
     <?php
+        } else {
+            echo ('Description: ' . mysqli_error($connection));
         }
     }
 
