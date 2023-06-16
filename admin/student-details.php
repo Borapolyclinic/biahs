@@ -172,7 +172,7 @@
                 </div>
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentAdmissionDate" class="form-label">Admission Date</label>
-                    <input type="date" class="form-control" name="student_admission_date"
+                    <input type="text" class="form-control" name="student_admission_date"
                         value="<?php echo $student_admission_date  ?>" id="studentAdmissionDate"
                         aria-describedby="emailHelp">
                 </div>

@@ -152,26 +152,21 @@
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Selected Course</label>
                     <select class="form-select" name="student_course" aria-label="Default select example">
+                        <option value="">Click here to open course
+                        </option>
                         <?php
-                        $fetch_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
-                        $fetch_name_res = mysqli_query($connection, $fetch_name);
-                        $new_name_id = "";
-                        $new_name = "";
-                        while ($row = mysqli_fetch_assoc($fetch_name_res)) {
-                            $new_name_id = $row['course_name_id'];
-                            $new_name = $row['course_name'];
-                        }
-                        ?>
-                        <option value="<?php echo $new_name_id ?>"><?php echo $new_name ?> (Selected)</option>
-                        <?php
-                        $fetch_course_name = "SELECT * FROM `bora_course`";
+                        require('includes/connection.php');
+                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                         $fetch_course_res = mysqli_query($connection, $fetch_course_name);
+
+                        $course_id = "";
+                        $course_name = "";
 
                         while ($row = mysqli_fetch_assoc($fetch_course_res)) {
                             $course_id = $row['course_id'];
                             $course_name = $row['course_name'];
                         ?>
-                        <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                        <option value="<?php echo $course_name ?>"><?php echo $course_name ?></option>
                         <?php } ?>
                     </select>
                 </div>
