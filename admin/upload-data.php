@@ -30,7 +30,7 @@
         ) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ssssssssssssssss", $column1, $column2, $column3, $column4, $column5, $column6, $column7, $column8, $column9, $column10, $column11, $column12, $column13, $column14, $column15, $column16, $column17, $column18);
+        $stmt->bind_param("ssssssssssssssssss", $column1, $column2, $column3, $column4, $column5, $column6, $column7, $column8, $column9, $column10, $column11, $column12, $column13, $column14, $column15, $column16, $column17, $column18);
 
         while (($data = fgetcsv($handle)) !== false) {
             $column1 = $data[0];
