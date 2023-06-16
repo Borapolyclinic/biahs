@@ -40,11 +40,10 @@
         </form>
     </div>
 
-
-    <div class="w-100 mt-3 container-row">
+    <!-- <div class="w-100 mt-3 container-row">
         <div class="dashboard-tab">
             <p>Students</p>
             <h5><?php echo $student_count ?></h5>
         </div>
-    </div>
+    </div> -->
 </div>
