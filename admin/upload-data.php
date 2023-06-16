@@ -15,6 +15,8 @@
         student_contact,
         student_father,
         student_mother,
+        student_guardian_contact,
+        student_guardian_relation,
         student_roll,
         student_course,
         student_admission_date,
@@ -26,9 +28,9 @@
         student_added_date,
         student_added_by	
         ) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $connection->prepare($sql);
-        $stmt->bind_param("ssssssssssssssss", $column1, $column2, $column3, $column4, $column5, $column6, $column7, $column8, $column9, $column10, $column11, $column12, $column13, $column14, $column15, $column16);
+        $stmt->bind_param("ssssssssssssssss", $column1, $column2, $column3, $column4, $column5, $column6, $column7, $column8, $column9, $column10, $column11, $column12, $column13, $column14, $column15, $column16, $column17, $column18);
 
         while (($data = fgetcsv($handle)) !== false) {
             $column1 = $data[0];
@@ -47,6 +49,9 @@
             $column14 = $data[13];
             $column15 = $data[14];
             $column16 = $data[15];
+            $column16 = $data[16];
+            $column16 = $data[17];
+            $column16 = $data[18];
 
             // Execute the statement
             $stmt->execute();
