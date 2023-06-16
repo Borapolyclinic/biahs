@@ -152,10 +152,18 @@
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Selected Course</label>
                     <select class="form-select" name="student_course" aria-label="Default select example">
-                        <option value="">Click here to open course
-                        </option>
                         <?php
-                        require('includes/connection.php');
+                        $fetch_name = "SELECT * FROM `bora_course` WHERE 'course_id' = '$student_course'";
+                        $fetch_name_res = mysqli_query($connection, $fetch_name);
+                        $new_course_id = "";
+                        $new_course_name = "";
+                        while ($row = mysqli_fetch_assoc($fetch_name_res)) {
+                            $new_course_id = $row['course_id'];
+                            $new_course_name = $row['course_name'];
+                        }
+                        ?>
+                        <option value="<?php echo $new_course_id ?>"><?php echo $new_course_name ?></option>
+                        <?php
                         $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                         $fetch_course_res = mysqli_query($connection, $fetch_course_name);
 
