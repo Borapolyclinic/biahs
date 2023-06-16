@@ -44,12 +44,12 @@
         <div class="add-user-form-row mb-3">
             <div class="col-md-6 mobile-input m-1">
                 <label for="fathersName" class="form-label">Father's|Guardians Contact</label>
-                <input type="text" class="form-control" name="student_father" id="fathersName"
+                <input type="text" class="form-control" name="student_guardian_contact" id="fathersName"
                     aria-describedby="emailHelp">
             </div>
             <div class="col-md-6 mobile-input m-1">
                 <label for="mothersName" class="form-label">Relationship with Student</label>
-                <select class="form-select" aria-label="Default select example">
+                <select name="student_guardian_relation" class="form-select" aria-label="Default select example">
                     <option selected>Click here to open menu</option>
                     <option value="Father">Father</option>
                     <option value="Mother">Mother</option>
@@ -79,7 +79,7 @@
                         $course_id = $row['course_id'];
                         $course_name = $row['course_name'];
                     ?>
-                    <option value="<?php echo $course_name ?>"><?php echo $course_name ?></option>
+                    <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
                     <?php } ?>
                 </select>
             </div>

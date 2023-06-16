@@ -17,6 +17,7 @@
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
             $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
             $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
+            $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
             $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
             $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
             $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
@@ -35,6 +36,7 @@
                 `student_contact` = '$student_contact',
                 `student_father` = '$student_father',
                 `student_mother` = '$student_mother',
+                `student_guardian_contact` = '$student_guardian_contact',
                 `student_roll` = '$student_roll',
                 `student_course` = '$student_course',
                 `student_admission_date` = '$student_admission_date',
@@ -68,6 +70,8 @@
             $student_contact = "";
             $student_father = "";
             $student_mother = "";
+            $student_guardian_contact = "";
+            $student_guardian_relation = "";
             $student_roll = "";
             $student_course = "";
             $student_admission_date = "";
@@ -84,6 +88,8 @@
                 $student_contact = $row['student_contact'];
                 $student_father = $row['student_father'];
                 $student_mother = $row['student_mother'];
+                $student_guardian_contact = $row['student_guardian_contact'];
+                $student_guardian_relation = $row['student_guardian_relation'];
                 $student_roll = $row['student_roll'];
                 $student_course = $row['student_course'];
                 $student_admission_date = $row['student_admission_date'];
@@ -125,6 +131,19 @@
             </div>
 
             <div class="add-user-form-row mb-3">
+                <div class="col-md-6 mobile-input m-1">
+                    <label for="fathersName" class="form-label">Father's | Guardian's Contact</label>
+                    <input type="text" class="form-control" name="student_guardian_contact"
+                        value="<?php echo $student_guardian_contact ?>" id="fathersName" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-6 mobile-input m-1">
+                    <label for="mothersName" class="form-label">Father's | Guardian's Relation</label>
+                    <input type="text" class="form-control" name="student_guardian_relation" id="mothersName"
+                        value="<?php echo $student_guardian_relation ?>" aria-describedby="emailHelp" disabled>
+                </div>
+            </div>
+
+            <div class="add-user-form-row mb-3">
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentName" class="form-label">Roll Number</label>
                     <input type="text" class="form-control" value="<?php echo $student_roll ?>" name="student_roll"
@@ -133,12 +152,15 @@
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Selected Course</label>
                     <select class="form-select" name="student_course" aria-label="Default select example">
-                        <option value="<?php echo $student_course  ?>"><?php echo $student_course . " (Selected)" ?>
+                        <option value="">Click here to open course
                         </option>
                         <?php
                         require('includes/connection.php');
-                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_status` = '1'";
+                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                         $fetch_course_res = mysqli_query($connection, $fetch_course_name);
+
+                        $course_id = "";
+                        $course_name = "";
 
                         while ($row = mysqli_fetch_assoc($fetch_course_res)) {
                             $course_id = $row['course_id'];
@@ -191,7 +213,7 @@
                     Upload | Change Profile Picture
                 </button>
             </form>
-            <form method="POST" action="view-student-document.php" class="add-user-form-tab">
+            <form method="POST" action="user-view-student-document.php" class="add-user-form-tab">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
                     Upload | View Aadhar Image

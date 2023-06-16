@@ -20,7 +20,28 @@
         </form>
     </div>
 
-    <div class="w-100 container-row">
+    <div class="w-100 mt-3">
+        <p>Filter Students by Course</p>
+        <form action="user-view-students-by-course.php" method="POST" class="dashboard-tab p-4">
+            <select name="course_id" class="form-select" aria-label="Default select example">
+                <option selected>Click here to get course</option>
+                <?php
+                $fetch_course = "SELECT * FROM `bora_course`";
+                $fetch_course_res = mysqli_query($connection, $fetch_course);
+
+                while ($row = mysqli_fetch_assoc($fetch_course_res)) {
+                    $course_id = $row['course_id'];
+                    $course_name = $row['course_name'];
+                ?>
+                <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                <?php } ?>
+            </select>
+            <button type="submit" name="filter-course" class="btn w-100 mt-3 btn-success">Filter</button>
+        </form>
+    </div>
+
+
+    <div class="w-100 mt-3 container-row">
         <div class="dashboard-tab">
             <p>Students</p>
             <h5><?php echo $student_count ?></h5>

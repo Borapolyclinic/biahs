@@ -34,44 +34,47 @@
                 <?php
                 require('includes/connection.php');
 
-                $results_per_page = 10;
+                if (isset($_POST['filter-course'])) {
 
-                $fetch_students = "SELECT * FROM `bora_student` ORDER BY student_added_date DESC";
-                $fetch_res = mysqli_query($connection, $fetch_students);
-                $count = mysqli_num_rows($fetch_res);
+                    $course_id = $_POST['course_id'];
+                    $results_per_page = 10;
 
-                $number_of_page = ceil($count / $results_per_page);
+                    $fetch_students = "SELECT * FROM `bora_student` ORDER BY `student_added_date` DESC";
+                    $fetch_res = mysqli_query($connection, $fetch_students);
+                    $count = mysqli_num_rows($fetch_res);
 
-                if (!isset($_GET['page'])) {
-                    $page = 1;
-                } else {
-                    $page = $_GET['page'];
-                }
+                    $number_of_page = ceil($count / $results_per_page);
 
-                $page_first_result = ($page - 1) * $results_per_page;
-                $page_query = "SELECT * FROM `bora_student` LIMIT "  . $page_first_result . ',' . $results_per_page;
-                $page_result = mysqli_query($connection, $page_query);
+                    if (!isset($_GET['page'])) {
+                        $page = 1;
+                    } else {
+                        $page = $_GET['page'];
+                    }
 
-                while ($row = mysqli_fetch_assoc($page_result)) {
-                    $student_id = $row['student_id'];
-                    $student_img = "assets/student/" . $row['student_img'];
-                    $student_name = $row['student_name'];
-                    $student_contact = $row['student_contact'];
-                    $student_course = $row['student_course'];
-                    $student_roll = $row['student_roll'];
-                    $student_admission_date = $row['student_admission_date'];
-                    $student_added_by = $row['student_added_by']; ?>
+                    $page_first_result = ($page - 1) * $results_per_page;
+                    $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' LIMIT "  . $page_first_result . ',' . $results_per_page;
+                    $page_result = mysqli_query($connection, $page_query);
+
+                    while ($row = mysqli_fetch_assoc($page_result)) {
+                        $student_id = $row['student_id'];
+                        $student_img = "assets/student/" . $row['student_img'];
+                        $student_name = $row['student_name'];
+                        $student_contact = $row['student_contact'];
+                        $student_course = $row['student_course'];
+                        $student_roll = $row['student_roll'];
+                        $student_admission_date = $row['student_admission_date'];
+                        $student_added_by = $row['student_added_by']; ?>
                 <tr>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
                     <td><?php
-                            $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
-                            $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
-                            $course_name = "";
-                            while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
-                                $course_name = $row['course_name'];
-                            }
-                            echo $course_name ?></td>
+                                $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
+                                $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
+                                $course_name = "";
+                                while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
+                                    $course_name = $row['course_name'];
+                                }
+                                echo $course_name ?></td>
                     <td><?php echo $student_roll ?></td>
                     <td><?php echo $student_admission_date ?></td>
                     <td><?php echo $student_added_by ?></td>
@@ -89,8 +92,16 @@
                                 Fee</button>
                         </form>
                     </td>
+                    <!-- <td>
+                            <form action="collect-fee.php" method="POST">
+                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
+                                    Fee</button>
+                            </form>
+                        </td> -->
                 </tr>
                 <?php
+                    }
                 }
                 ?>
             </tbody>
@@ -100,7 +111,7 @@
             <ul class="pagination">
                 <?php
                 for ($page = 1; $page <= $number_of_page; $page++) {
-                    echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . $page . '">' . $page . ' </a></li>';
+                    echo '<li class="page-item"><a class="page-link" href="view-students-by-course.php?page=' . $page . '">' . $page . ' </a></li>';
                 }
                 ?>
             </ul>

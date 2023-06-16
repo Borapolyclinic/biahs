@@ -28,14 +28,14 @@
 
         $student_id = "";
         $student_name = "";
-        $student_course = "";
+        $student_course_id = "";
         $student_contact = "";
         $student_roll = "";
 
         while ($row = mysqli_fetch_assoc($fetch_data_res)) {
             $student_id = $row['student_id'];
             $student_name = $row['student_name'];
-            $student_course = $row['student_course'];
+            $student_course_id = $row['student_course'];
             $student_aadhar_address = $row['student_aadhar_address'];
             $student_contact = $row['student_contact'];
             $student_roll = $row['student_roll'];
@@ -109,7 +109,14 @@
                         </th>
                         <td>
                             <div class="recipient ">
-                                <h4><?php echo $student_course ?></h4>
+                                <h4><?php
+                                    $fetch_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course_id'";
+                                    $fetch_course_res = mysqli_query($connection, $fetch_course);
+                                    $course_name = "";
+                                    while ($row = mysqli_fetch_assoc($fetch_course_res)) {
+                                        $course_name = $row['course_name'];
+                                    }
+                                    echo $course_name ?></h4>
                             </div>
                         </td>
                     </tr>
@@ -121,7 +128,7 @@
             <input type="text" name="bora_invoice_student" value="<?php echo $student_name ?>" hidden>
             <input type="text" name="bora_invoice_student_address" value="<?php echo $student_aadhar_address ?>" hidden>
             <input type="text" name="bora_invoice_student_contact" value="<?php echo $student_contact ?>" hidden>
-            <input type="text" name="bora_invoice_student_course" value="<?php echo $student_course ?>" hidden>
+            <input type="text" name="bora_invoice_student_course" value="<?php echo $course_name ?>" hidden>
         </div>
 
         <div class="table-responsive mt-3">
@@ -147,10 +154,12 @@
                             <select name="invoice_tenure" class="form-select w-100" aria-label="Default select example">
                                 <option selected>Click here to open menu</option>
                                 <?php
-                                $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_name` = '$student_course'";
+                                $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course_id'";
                                 $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
+
                                 $course_id = "";
                                 $course_name = "";
+
                                 while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
                                     $course_id = $row['course_id'];
                                     $course_name = $row['course_name'];
@@ -163,22 +172,24 @@
                                     $semester_name = $row['semester_name'];
                                     $semester_fee = $row['semester_fee'];
                                 ?>
-                                    <option value="<?php echo $semester_name ?>">
-                                        <?php echo $semester_name ?> | ₹(<?php echo $semester_fee ?>)
-                                    </option>
+                                <option value="<?php echo $semester_name ?>">
+                                    <?php echo $semester_name ?> | ₹(<?php echo $semester_fee ?>)
+                                </option>
                                 <?php } ?>
                             </select>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="">
                             </div>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="invoice_disc" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_disc" id="discount" class="form-control"
+                                    id="exampleFormControlInput1" placeholder="">
                             </div>
                         </td>
                     </tr>
@@ -200,7 +211,8 @@
                         <th scope="row" colspan="4">Cash</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cash"
+                                    onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -208,7 +220,8 @@
                         <th scope="row" colspan="4">Cheque</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="payment_mode" class="form-check-input" type="checkbox" value="cheque"
+                                    onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -216,7 +229,8 @@
                         <th scope="row" colspan="4">Online</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="payment_mode" class="form-check-input" type="checkbox" value="online"
+                                    id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
                     </tr>
@@ -224,7 +238,8 @@
                         <th scope="row" colspan="4">Demand Draft</th>
                         <td>
                             <div class="form-check">
-                                <input name="payment_mode" class="form-check-input" type="checkbox" value="DemandDraft" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="payment_mode" class="form-check-input" type="checkbox" value="DemandDraft"
+                                    id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
                     </tr>
@@ -243,7 +258,8 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_dd_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" name="bora_invoice_dd_number" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </td>
                     </tr>
@@ -262,7 +278,8 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_payment_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" name="bora_invoice_payment_id" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </td>
                     </tr>
@@ -280,7 +297,8 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_cheque_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cheque Number">
+                                <input type="text" name="bora_invoice_cheque_number" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cheque Number">
                             </div>
                         </td>
                     </tr>
@@ -288,7 +306,8 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_bank_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank Name">
+                                <input type="text" name="bora_invoice_bank_name" class="form-control"
+                                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank Name">
                             </div>
                         </td>
                     </tr>
@@ -296,7 +315,8 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_ifsc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank IFSC Code">
+                                <input type="text" name="bora_invoice_ifsc" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Bank IFSC Code">
                             </div>
                         </td>
                     </tr>

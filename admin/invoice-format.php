@@ -120,8 +120,8 @@ if (isset($_POST['invoice'])) {
         <table style="margin-top: 5px;">
             <thead>
                 <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> BILL TO:<strong> ' . $bora_invoice_student . '</strong></th>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> BILLING FOR: <strong>' . $bora_invoice_student_address . "|" . $bora_invoice_student_contact . '</strong></th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> BILL TO:<strong> ' . $bora_invoice_student . '<br>' . $bora_invoice_student_address . "|" . $bora_invoice_student_contact . '</strong></th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> BILLING FOR: <strong>' . $bora_invoice_student_course . '</strong></th>
                 </tr>
             </thead>
         </table>

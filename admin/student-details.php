@@ -152,12 +152,15 @@
                 <div class="col-md-4 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Selected Course</label>
                     <select class="form-select" name="student_course" aria-label="Default select example">
-                        <option value="<?php echo $student_course  ?>"><?php echo $student_course . " (Selected)" ?>
+                        <option value="">Click here to open course
                         </option>
                         <?php
                         require('includes/connection.php');
-                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_status` = '1'";
+                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                         $fetch_course_res = mysqli_query($connection, $fetch_course_name);
+
+                        $course_id = "";
+                        $course_name = "";
 
                         while ($row = mysqli_fetch_assoc($fetch_course_res)) {
                             $course_id = $row['course_id'];
@@ -174,6 +177,7 @@
                         aria-describedby="emailHelp">
                 </div>
             </div>
+
             <div class="mb-3 w-100">
                 <div class="col-md-4 mobile-input m-1">
                     <label for="fathersName" class="form-label">Aadhar Card Number</label>

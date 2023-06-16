@@ -197,13 +197,14 @@ include('includes/header.php') ?>
 
 
     ?>
-            <form action="invoice-format.php" method="POST">
-                <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
+    <form action="invoice-format.php" method="POST">
+        <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
 
-                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                <p>Success! Invoice generated.</p>
-                <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
-            </form>
+        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent"
+            speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+        <p>Success! Invoice generated.</p>
+        <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
+    </form>
 
     <?php
         }
