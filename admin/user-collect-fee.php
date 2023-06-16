@@ -226,7 +226,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" colspan="4">Online</th>
+                        <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
                         <td>
                             <div class="form-check">
                                 <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"

@@ -23,8 +23,7 @@
                     <th scope="col">Contact</th>
                     <th scope="col">Course</th>
                     <th scope="col">Roll No.</th>
-                    <th scope="col">Admission Date</th>
-                    <th scope="col">Added By</th>
+                    <th scope="col">Admission Year</th>
                     <th scope="col">Action</th>
                     <th scope="col">Fee</th>
                 </tr>
@@ -54,7 +53,6 @@
                     <td><?php echo $student_course ?></td>
                     <td><?php echo $student_roll ?></td>
                     <td><?php echo $student_admission_date ?></td>
-                    <td><?php echo $student_added_by ?></td>
                     <td>
                         <form action="user-student-details.php" method="post">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>

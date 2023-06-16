@@ -16,7 +16,7 @@
                         Students
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="user-add-student.php">Add Student</a></li>
+                        <!-- <li><a class="dropdown-item" href="user-add-student.php">Add Student</a></li> -->
                         <li><a class="dropdown-item" href="user-view-students.php">View Student</a></li>
                     </ul>
                 </li>
