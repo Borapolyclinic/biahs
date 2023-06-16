@@ -8,7 +8,7 @@
         </a>
         <h5>Bulk Upload Student Data</h5>
     </div>
-    <a href="assets/format/bora_student.csv" class="download-form-btn">Download Format <ion-icon
+    <a href="assets/format/bora_student.csv" target="_blank" class="download-form-btn">Download Format <ion-icon
             name="download-outline"></ion-icon></a>
     <p>Note: Insert data into the columns of this .CSV file.
     <ul>
