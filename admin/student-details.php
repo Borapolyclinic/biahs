@@ -17,6 +17,7 @@
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
             $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
             $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
+            $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
             $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
             $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
             $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
@@ -35,6 +36,7 @@
                 `student_contact` = '$student_contact',
                 `student_father` = '$student_father',
                 `student_mother` = '$student_mother',
+                `student_guardian_contact` = '$student_guardian_contact',
                 `student_roll` = '$student_roll',
                 `student_course` = '$student_course',
                 `student_admission_date` = '$student_admission_date',
@@ -68,6 +70,8 @@
             $student_contact = "";
             $student_father = "";
             $student_mother = "";
+            $student_guardian_contact = "";
+            $student_guardian_relation = "";
             $student_roll = "";
             $student_course = "";
             $student_admission_date = "";
@@ -84,6 +88,8 @@
                 $student_contact = $row['student_contact'];
                 $student_father = $row['student_father'];
                 $student_mother = $row['student_mother'];
+                $student_guardian_contact = $row['student_guardian_contact'];
+                $student_guardian_relation = $row['student_guardian_relation'];
                 $student_roll = $row['student_roll'];
                 $student_course = $row['student_course'];
                 $student_admission_date = $row['student_admission_date'];
@@ -113,7 +119,7 @@
             </div>
             <div class="add-user-form-row mb-3">
                 <div class="col-md-6 mobile-input m-1">
-                    <label for="fathersName" class="form-label">Father's Name</label>
+                    <label for="fathersName" class="form-label">Father's | Guardian' Name</label>
                     <input type="text" class="form-control" name="student_father" value="<?php echo $student_father ?>"
                         id="fathersName" aria-describedby="emailHelp">
                 </div>
@@ -121,6 +127,19 @@
                     <label for="mothersName" class="form-label">Mother's Name</label>
                     <input type="text" class="form-control" name="student_mother" id="mothersName"
                         value="<?php echo $student_mother ?>" aria-describedby="emailHelp">
+                </div>
+            </div>
+
+            <div class="add-user-form-row mb-3">
+                <div class="col-md-6 mobile-input m-1">
+                    <label for="fathersName" class="form-label">Father's | Guardian's Contact</label>
+                    <input type="text" class="form-control" name="student_guardian_contact"
+                        value="<?php echo $student_guardian_contact ?>" id="fathersName" aria-describedby="emailHelp">
+                </div>
+                <div class="col-md-6 mobile-input m-1">
+                    <label for="mothersName" class="form-label">Father's | Guardian's Relation</label>
+                    <input type="text" class="form-control" name="student_guardian_relation" id="mothersName"
+                        value="<?php echo $student_guardian_relation ?>" aria-describedby="emailHelp" disabled>
                 </div>
             </div>
 
