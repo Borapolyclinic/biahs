@@ -14,15 +14,19 @@
         <button class="btn btn-outline-primary">Search</button>
     </form>
 
-
     <div class="user-table">
-
         <?php
         require('includes/connection.php');
 
-        $results_per_page = 10;
+        if (isset($_POST['yes-del'])) {
+            $user_id = $_POST['user_id'];
 
-        $query = "SELECT * FROM `bora_users` WHERE `user_type` = '2'";
+            $fetch_user_details = "DELETE FROM `bora_users` WHERE `user_id` = '$user_id'";
+            $fetch_user_res = mysqli_query($connection, $fetch_user_details);
+        }
+
+        $results_per_page = 10;
+        $query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
         $result = mysqli_query($connection, $query);
         $count = mysqli_num_rows($result);
 
@@ -39,10 +43,10 @@
         $page_result = mysqli_query($connection, $page_query);
 
         if ($count == 0) { ?>
-            <div>
-                <p>No user found</p>
-            </div>
-            <?php
+        <div>
+            <p>No user found</p>
+        </div>
+        <?php
         } else {
             while ($row = mysqli_fetch_assoc($page_result)) {
                 $user_id = $row['user_id'];
@@ -50,18 +54,21 @@
                 $user_contact = $row['user_contact'];
 
             ?>
-                <div class="user-card">
-                    <h6><?php echo $user_name ?></h6>
-                    <p><?php echo $user_contact ?></p>
-                    <form action="edit-user.php" method="POST" class="view-btn">
-                        <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
-                        <button type="submit" name="edit" class=" btn btn-sm btn-outline-secondary">Edit</button>
-                    </form>
-                    <form action="" method="POST" class="view-btn">
-                        <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
-                        <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
-                    </form>
-                </div>
+        <div class="user-card">
+            <h6><?php echo $user_name ?></h6>
+            <p><?php echo $user_contact ?></p>
+            <form action="edit-user.php" method="POST" class="view-btn">
+                <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
+                <button type="submit" name="edit" class=" btn btn-sm btn-outline-secondary">Edit</button>
+            </form>
+            <form action="admin-delete-user.php" method="POST" class="view-btn">
+                <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
+                <button type="submit" name="del" class="btn btn-sm btn-danger">
+                    Delete
+                </button>
+            </form>
+        </div>
+
         <?php
             }
         }

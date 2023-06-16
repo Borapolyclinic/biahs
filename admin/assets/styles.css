@@ -416,6 +416,14 @@ input::-webkit-inner-spin-button {
   border-top: 2px solid #000;
   width: 100%;
 }
+.btn-row-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.btn-row-end button {
+  margin: 10px;
+}
 
 @media only screen and (max-width: 768px) {
   /* ============ LOGIN FORM ============ */
