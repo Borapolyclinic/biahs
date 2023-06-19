@@ -18,7 +18,7 @@
         <?php
         require('includes/connection.php');
 
-        if (isset($_POST['yes-del'])) {
+        if (isset($_POST['del'])) {
             $user_id = $_POST['user_id'];
             $fetch_user_details = "DELETE FROM `bora_users` WHERE `user_id` = '$user_id'";
             $fetch_user_res = mysqli_query($connection, $fetch_user_details);
@@ -56,14 +56,13 @@
                 <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
                 <button type="submit" name="edit" class=" btn btn-sm btn-outline-secondary">Edit</button>
             </form>
-            <form action="admin-delete-user.php" method="POST" class="view-btn">
+            <form action="" method="POST" class="view-btn">
                 <input type="text" value="<?php echo $user_id ?>" name="user_id" hidden>
                 <button type="submit" name="del" class="btn btn-sm btn-danger">
                     Delete
                 </button>
             </form>
         </div>
-
         <?php
             }
         }
