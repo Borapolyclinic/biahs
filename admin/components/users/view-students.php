@@ -18,12 +18,11 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th scope="col">UID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Contact</th>
                     <th scope="col">Course</th>
-                    <th scope="col">Roll No.</th>
-                    <th scope="col">Admission Date</th>
-                    <th scope="col">Added By</th>
+                    <th scope="col">Admission Year</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -56,9 +55,11 @@
                     $student_contact = $row['student_contact'];
                     $student_course = $row['student_course'];
                     $student_roll = $row['student_roll'];
-                    $student_admission_date = $row['student_admission_date'];
+                    $student_admission_year = $row['student_admission_year'];
                     $student_added_by = $row['student_added_by']; ?>
                 <tr>
+
+                    <td><?php echo $student_roll ?></td>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
                     <td><?php
@@ -69,9 +70,7 @@
                                 $course_name = $row['course_name'];
                             }
                             echo $course_name ?></td>
-                    <td><?php echo $student_roll ?></td>
-                    <td><?php echo $student_admission_date ?></td>
-                    <td><?php echo $student_added_by ?></td>
+                    <td><?php echo $student_admission_year ?></td>
                     <td>
                         <form action="student-details.php" method="post">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
