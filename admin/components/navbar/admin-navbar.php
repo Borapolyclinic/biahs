@@ -37,7 +37,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="add-course.php">Add Course</a></li>
-                        <li><a class="dropdown-item" href="add-semester.php">Add Semester</a></li>
+                        <!-- <li><a class="dropdown-item" href="add-semester.php">Add Semester</a></li> -->
                         <li><a class="dropdown-item" href="course-settings.php">View all courses</a></li>
                     </ul>
                 </li>

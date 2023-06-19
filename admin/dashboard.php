@@ -12,7 +12,6 @@ if (isset($_COOKIE['user_id'])) {
     } else {
         $user_type = "";
         $user_name = "";
-
         while ($row = mysqli_fetch_assoc($res)) {
             $user_type = $row['user_type'];
             $user_name = $row['user_name'];

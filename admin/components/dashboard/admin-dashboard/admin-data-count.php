@@ -4,12 +4,10 @@
         <p><?php echo $user_name ?></p>
     </div>
 
-
     <?php
     $query = "SELECT * FROM `bora_student`";
     $res = mysqli_query($connection, $query);
     $student_count = mysqli_num_rows($res);
-
     $user_query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
     $user_res = mysqli_query($connection, $user_query);
     $count = mysqli_num_rows($user_res);
@@ -56,27 +54,6 @@
         </form>
     </div>
 
-    <!-- <div class="w-100 mt-3">
-        <p>Filter Students by Admission Year</p>
-        <form action="" method="POST" class="dashboard-tab p-4">
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Click here to get course</option>
-                <?php
-                $fetch_course = "SELECT * FROM `bora_course`";
-                $fetch_course_res = mysqli_query($connection, $fetch_course);
-
-                while ($row = mysqli_fetch_assoc($fetch_course_res)) {
-                    $course_name = $row['course_name'];
-                ?>
-                <option value="<?php echo $course_name ?>"><?php echo $course_name ?></option>
-                <?php } ?>
-            </select>
-            <button type="submit" name="filter-year" class="btn w-100 mt-3 btn-outline-success">Filter</button>
-        </form>
-    </div> -->
-
-
-
     <div class="w-100 mt-3">
         <p>Last Login</p>
         <div class="table-responsive dashboard-tab p-3">
@@ -98,14 +75,17 @@
                         $activity_tracker_time = $row['activity_tracker_time'];
                     ?>
                     <tr>
-                        <th scope="row"><?php
-                                            $fetch_user = "SELECT * FROM `bora_users` WHERE `user_id` = '$activity_tracker_user_contact'";
-                                            $fetch_user_res = mysqli_query($connection, $fetch_user);
-                                            $user_name = "";
-                                            while ($row = mysqli_fetch_assoc($fetch_user_res)) {
-                                                $user_name = $row['user_name'];
-                                            }
-                                            echo $user_name ?></th>
+                        <th scope="row">
+
+                            <?php
+                                $fetch_user = "SELECT * FROM `bora_users` WHERE `user_id` = '$activity_tracker_user_contact'";
+                                $fetch_user_res = mysqli_query($connection, $fetch_user);
+                                $user_name = "";
+                                while ($row = mysqli_fetch_assoc($fetch_user_res)) {
+                                    $user_name = $row['user_name'];
+                                }
+                                echo $user_name ?>
+                        </th>
                         <td><?php echo $activity_tracker_time ?></td>
                     </tr>
                     <?php } ?>
