@@ -20,7 +20,6 @@
 
         if (isset($_POST['yes-del'])) {
             $user_id = $_POST['user_id'];
-
             $fetch_user_details = "DELETE FROM `bora_users` WHERE `user_id` = '$user_id'";
             $fetch_user_res = mysqli_query($connection, $fetch_user_details);
         }
@@ -29,19 +28,15 @@
         $query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
         $result = mysqli_query($connection, $query);
         $count = mysqli_num_rows($result);
-
         $number_of_page = ceil($count / $results_per_page);
-
         if (!isset($_GET['page'])) {
             $page = 1;
         } else {
             $page = $_GET['page'];
         }
-
         $page_first_result = ($page - 1) * $results_per_page;
         $page_query = "SELECT * FROM `bora_users` WHERE `user_type` = '2' LIMIT "  . $page_first_result . ',' . $results_per_page;
         $page_result = mysqli_query($connection, $page_query);
-
         if ($count == 0) { ?>
         <div>
             <p>No user found</p>

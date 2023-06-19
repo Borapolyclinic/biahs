@@ -24,11 +24,24 @@
                     <th scope="col">Course</th>
                     <th scope="col">Admission Year</th>
                     <th scope="col">Action</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 require('includes/connection.php');
+
+                if (isset($_POST['delete'])) {
+                    $student_id = $_POST['student_id'];
+
+                    $delete_query = "DELETE FROM `bora_student` WHERE `student_id` = '$student_id'";
+                    $delete_res = mysqli_query($connection, $delete_query);
+
+                    if ($delete_res) { ?>
+                <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
+                <?php
+                    }
+                }
 
                 $results_per_page = 10;
 
@@ -74,17 +87,16 @@
                     <td>
                         <form action="student-details.php" method="post">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">View
+                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
                                 Details</button>
                         </form>
                     </td>
-                    <!-- <td>
-                            <form action="collect-fee.php" method="POST">
-                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                                <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
-                                    Fee</button>
-                            </form>
-                        </td> -->
+                    <td>
+                        <form action="" method="POST">
+                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                            <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <?php
                 }

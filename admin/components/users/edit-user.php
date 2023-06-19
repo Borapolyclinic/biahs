@@ -27,15 +27,18 @@
         <input type="text" name="user_id" value="<?php echo $user_id ?>" hidden>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Full Name</label>
-            <input type="text" name="user_name" required class="form-control" value="<?php echo $user_name ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="user_name" required class="form-control" value="<?php echo $user_name ?>"
+                id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="contactNumber" class="form-label">Contact Number</label>
-            <input type="number" name="user_contact" maxlength="10" required class="form-control" value="<?php echo $user_contact ?>" id="contactNumber">
+            <input type="number" name="user_contact" maxlength="10" required class="form-control"
+                value="<?php echo $user_contact ?>" id="contactNumber">
         </div>
         <div class="mb-3">
             <label for="userPassword" class="form-label">Password</label>
-            <input type="password" name="user_password" value="<?php echo $user_password ?>" class="form-control" required id="userPassword">
+            <input type="password" name="user_password" value="<?php echo $user_password ?>" class="form-control"
+                required id="userPassword">
         </div>
         <button type="submit" name="update" class="btn btn-primary">Generate User ID</button>
     </form>
