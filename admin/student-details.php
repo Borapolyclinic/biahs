@@ -7,6 +7,7 @@
         </a>
         <h5>View Student Details</h5>
     </div>
+
     <?php
     require('includes/connection.php');
     if (isset($_POST['update'])) {
@@ -48,14 +49,13 @@
 
         if ($update_res) {
     ?>
-    <div class="alert alert-primary" role="alert">
+    <div class="alert alert-primary w-100" role="alert">
         Student details updated!
     </div>
     <?php
 
         }
     }
-
     if (isset($_POST)) {
         $student_id = $_POST['student_id'];
 
@@ -162,7 +162,7 @@
                     </div>
                     <div class="col-md-3 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Selected Course</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" name="student_course" aria-label="Default select example">
                             <?php
                             $fetch_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                             $fetch_name_res = mysqli_query($connection, $fetch_name);

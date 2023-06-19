@@ -32,7 +32,6 @@
                 require('includes/connection.php');
 
                 $results_per_page = 10;
-
                 $fetch_students = "SELECT * FROM `bora_student` ORDER BY student_added_date DESC";
                 $fetch_res = mysqli_query($connection, $fetch_students);
                 $count = mysqli_num_rows($fetch_res);
