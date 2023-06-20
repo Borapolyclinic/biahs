@@ -51,7 +51,7 @@ function handleCheckboxChange(checkbox) {
   // Hide all input fields by default
   document.getElementById("paymentIdField").style.display = "none";
   document.getElementById("chequeFields").style.display = "none";
-  document.getElementById("ddNumberField").style.display = "none";
+  // document.getElementById("ddNumberField").style.display = "none";
 
   if (checkbox.checked) {
     switch (checkbox.value) {
@@ -64,9 +64,9 @@ function handleCheckboxChange(checkbox) {
       case "online":
         document.getElementById("paymentIdField").style.display = "block";
         break;
-      case "DemandDraft":
-        document.getElementById("ddNumberField").style.display = "block";
-        break;
+      // case "DemandDraft":
+      //   document.getElementById("ddNumberField").style.display = "block";
+      //   break;
     }
   }
 }

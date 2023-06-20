@@ -16,10 +16,12 @@ if (isset($_POST['invoice'])) {
         $bora_invoice_student_address = $row['bora_invoice_student_address'];
         $bora_invoice_student_contact = $row['bora_invoice_student_contact'];
         $bora_invoice_student_course = $row['bora_invoice_student_course'];
+
         $bora_invoice_for = $row['bora_invoice_for'];
         $bora_invoice_tenure = $row['bora_invoice_tenure'];
         $bora_invoice_value = $row['bora_invoice_value'];
         $bora_invoice_disc = $row['bora_invoice_disc'];
+        $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
 
         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
 
@@ -121,7 +123,6 @@ if (isset($_POST['invoice'])) {
             <thead>
                 <tr>
                     <th scope="col" colspan="4" style="border: 1px solid #000"> BILL TO:<strong> ' . $bora_invoice_student . '<br>' . $bora_invoice_student_address . "|" . $bora_invoice_student_contact . '</strong></th>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> BILLING FOR: <strong>' . $bora_invoice_student_course . '</strong></th>
                 </tr>
             </thead>
         </table>
@@ -132,16 +133,21 @@ if (isset($_POST['invoice'])) {
         <table class="table table-bordered ">
             <thead style="border: 1px solid #000">
                 <tr>
-                    <th style="border: 1px solid #000" scope="col"> ITEM</th>
-                    <th style="border: 1px solid #000" scope="col"> SEMESTER</th>
-                    <th style="border: 1px solid #000" scope="col"> COLLECTED AMOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> FEE TYPE</th>
+                    <th style="border: 1px solid #000" scope="col"> COURSE</th>
+                    <th style="border: 1px solid #000" scope="col"> YEAR</th>
+                    <th style="border: 1px solid #000" scope="col"> INVOICE AMOUNT</th>
                     <th style="border: 1px solid #000" scope="col"> DISCOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> ' . $bora_invoice_for . '</p>
+                    </td>
+                    <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
+                        <p> ' . $bora_invoice_student_course . '</p>
                     </td>
                     <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> ' . $bora_invoice_tenure . '</p>
@@ -154,10 +160,13 @@ if (isset($_POST['invoice'])) {
                     <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> Rs.' . $bora_invoice_disc . '</p>
                     </td>
+                    <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
+                        <p> Rs.' . $bora_invoice_grand_total . '</p>
+                    </td>
                 </tr>
             </tbody>
         </table>
-
+    
         <table style="margin-top: 5px;">
             <thead>
                 <tr>

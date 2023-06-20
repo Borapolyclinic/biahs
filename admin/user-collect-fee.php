@@ -60,8 +60,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="4" class="table-active">RECEIPT NUMBER</th>
-                        <th scope="col" class="table-active">RECEIPT DATE</th>
+                        <th scope="col" colspan="4" class="table-active">INVOICE NUMBER</th>
+                        <th scope="col" class="table-active">INVOICE DATE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,7 +84,7 @@
                     <tr>
                         <th scope="row" colspan="4"><strong><?php echo $receipt_number; ?></strong></th>
                         <td>
-                            <input type="date" name="bora_invoice_date" required>
+                            <?php echo date('d-m-Y'); ?>
                         </td>
                     </tr>
                     <input type="text" name="bora_invoice_number" value="<?php echo $receipt_number ?>" hidden>
@@ -97,7 +97,6 @@
                 <thead>
                     <tr>
                         <th scope="col" colspan="4" class="table-active">BILL TO</th>
-                        <th scope="col" class="table-active">BILLING FOR</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,18 +107,6 @@
                                 <p><?php echo $student_aadhar_address ?> | <?php echo $student_contact ?></p>
                             </div>
                         </th>
-                        <td>
-                            <div class="recipient ">
-                                <h4><?php
-                                    $fetch_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course_id'";
-                                    $fetch_course_res = mysqli_query($connection, $fetch_course);
-                                    $course_name = "";
-                                    while ($row = mysqli_fetch_assoc($fetch_course_res)) {
-                                        $course_name = $row['course_name'];
-                                    }
-                                    echo $course_name ?></h4>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -127,18 +114,19 @@
 
         <div class="receipt-billing-info-row">
             <input type="text" name="bora_invoice_student" value="<?php echo $student_name ?>" hidden>
+            <input type="text" name="bora_invoice_student_course" value="<?php echo $student_course_id ?>" hidden>
             <input type="text" name="bora_invoice_student_address" value="<?php echo $student_aadhar_address ?>" hidden>
             <input type="text" name="bora_invoice_student_contact" value="<?php echo $student_contact ?>" hidden>
-            <input type="text" name="bora_invoice_student_course" value="<?php echo $course_name ?>" hidden>
         </div>
 
         <div class="table-responsive mt-3">
             <table class="table table-bordered ">
                 <thead class="table-active">
                     <tr>
-                        <th scope="col">ITEM</th>
-                        <th scope="col">SEMESTER</th>
-                        <th scope="col">COLLECTING AMOUNT</th>
+                        <th scope="col">FEE TYPE</th>
+                        <th scope="col" style="width: 15%;">COURSE NAME</th>
+                        <th scope="col">YEAR</th>
+                        <th scope="col">INVOICE AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                     </tr>
                 </thead>
@@ -149,8 +137,27 @@
                                 <option selected>Click here to open menu</option>
                                 <option value="Examination">Examination Fee</option>
                                 <option value="Tution Fee">Tution Fee</option>
+                                <option value="Admission Fee">Admission Fee</option>
+                                <option value="Clinical Lab Fee">Clinical Lab Fee</option>
+                                <option value="Library Fee">Library Fee</option>
+                                <option value="Uniform Fee">Uniform Fee</option>
+                                <option value="SNA Charges">SNA Charges</option>
+                                <option value="Transport Fee">Transport Fee</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                                <option value="Security Deposit">Security Deposit</option>
                             </select>
                         </th>
+                        <td style="width: 15%;">
+                            <?php
+                            $get_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course_id'";
+                            $get_course_res = mysqli_query($connection, $get_course);
+                            $course_name = "";
+                            while ($row = mysqli_fetch_assoc($get_course_res)) {
+                                $course_name = $row['course_name'];
+                            }
+                            echo $course_name;
+                            ?>
+                        </td>
                         <td>
                             <select name="invoice_tenure" class="form-select w-100" aria-label="Default select example">
                                 <option selected>Click here to open menu</option>
@@ -160,22 +167,37 @@
 
                                 $course_id = "";
                                 $course_name = "";
+                                $course_year_1_fee = "";
+                                $course_year_2_fee = "";
+                                $course_year_3_fee = "";
+                                $course_year_4_fee = "";
 
                                 while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
                                     $course_id = $row['course_id'];
                                     $course_name = $row['course_name'];
+                                    $course_tenure = $row['course_tenure'];
+                                    $course_year_1_fee = $row['course_year_1_fee'];
+                                    $course_year_2_fee = $row['course_year_2_fee'];
+                                    $course_year_3_fee = $row['course_year_3_fee'];
+                                    $course_year_4_fee = $row['course_year_4_fee'];
                                 }
-
-                                $fetch_sem = "SELECT * FROM `bora_semester` WHERE `semester_course_id` = '$course_id'";
-                                $fetch_sem_res = mysqli_query($connection, $fetch_sem);
-                                while ($row = mysqli_fetch_assoc($fetch_sem_res)) {
-                                    $semester_id = $row['semester_id'];
-                                    $semester_name = $row['semester_name'];
-                                    $semester_fee = $row['semester_fee'];
-                                ?>
-                                <option value="<?php echo $semester_name ?>">
-                                    <?php echo $semester_name ?> | ₹(<?php echo $semester_fee ?>)
-                                </option>
+                                if ($course_tenure == '1') { ?>
+                                <option value="<?php echo $course_year_1_fee ?>">Year 1 Fee</option>
+                                <?php }
+                                if ($course_tenure == '2') { ?>
+                                <option value="Year 1 Fee">Year 1 Fee</option>
+                                <option value="Year 2 Fee">Year 2 Fee</option>
+                                <?php }
+                                if ($course_tenure == '3') { ?>
+                                <option value="Year 1 Fee">Year 1 Fee</option>
+                                <option value="Year 2 Fee">Year 2 Fee</option>
+                                <option value="Year 3 Fee">Year 3 Fee</option>
+                                <?php }
+                                if ($course_tenure == '4') { ?>
+                                <option value="Year 1 Fee">Year 1 Fee</option>
+                                <option value="Year 2 Fee">Year 2 Fee</option>
+                                <option value="Year 3 Fee">Year 3 Fee</option>
+                                <option value="Year 4 Fee">Year 4 Fee</option>
                                 <?php } ?>
                             </select>
                         </td>
@@ -193,6 +215,7 @@
                                     id="exampleFormControlInput1" placeholder="">
                             </div>
                         </td>
+
                     </tr>
                 </tbody>
             </table>
@@ -218,7 +241,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" colspan="4">Cheque</th>
+                        <th scope="row" colspan="4">Cheque | Demand Draft</th>
                         <td>
                             <div class="form-check">
                                 <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
@@ -232,35 +255,6 @@
                             <div class="form-check">
                                 <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
                                     value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" colspan="4">Demand Draft</th>
-                        <td>
-                            <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
-                                    value="DemandDraft" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div id="ddNumberField" style="display: none;" class="table-responsive">
-            <table class="table table-bordered">
-                <thead class="table-active">
-                    <tr>
-                        <th scope="col">Demand Draft Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div>
-                                <input type="text" name="bora_invoice_dd_number" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </td>
                     </tr>
@@ -299,7 +293,8 @@
                         <td>
                             <div>
                                 <input type="text" name="bora_invoice_cheque_number" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cheque Number">
+                                    id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    placeholder="Cheque Number | DD Number">
                             </div>
                         </td>
                     </tr>

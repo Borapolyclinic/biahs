@@ -18,12 +18,18 @@ include('includes/header.php') ?>
 
     if (isset($_POST['generate'])) {
         $bora_receipt_number = $_POST['bora_invoice_number'];
-        $bora_invoice_date = $_POST['bora_invoice_date'];
+        $bora_invoice_date = date('d-m-Y');
         $bora_invoice_student_id = $_POST['bora_invoice_student_id'];
         $bora_invoice_student = $_POST['bora_invoice_student'];
         $bora_invoice_student_address = $_POST['bora_invoice_student_address'];
         $bora_invoice_student_contact = $_POST['bora_invoice_student_contact'];
         $bora_invoice_student_course = $_POST['bora_invoice_student_course'];
+        $get_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$bora_invoice_student_course'";
+        $get_course_res = mysqli_query($connection, $get_course);
+        $course_name = "";
+        while ($row = mysqli_fetch_assoc($get_course_res)) {
+            $course_name = $row['course_name'];
+        }
         $bora_invoice_for = $_POST['invoice_for'];
         $bora_invoice_tenure = $_POST['invoice_tenure'];
         $bora_invoice_payment_mode = $_POST['bora_invoice_payment_mode'];
@@ -67,7 +73,7 @@ include('includes/header.php') ?>
                 '$bora_invoice_student',
                 '$bora_invoice_student_address',
                 '$bora_invoice_student_contact',
-                '$bora_invoice_student_course',
+                '$course_name',
                 '$bora_invoice_for',
                 '$bora_invoice_tenure',
                 '$bora_invoice_payment_mode',
@@ -107,49 +113,11 @@ include('includes/header.php') ?>
                 '$bora_invoice_student',
                 '$bora_invoice_student_address',
                 '$bora_invoice_student_contact',
-                '$bora_invoice_student_course',
+                '$course_name',
                 '$bora_invoice_for',
                 '$bora_invoice_tenure',
                 '$bora_invoice_payment_mode',
                 '$bora_invoice_payment_id',
-                '$bora_invoice_value',
-                '$bora_invoice_disc',
-                '$bora_invoice_grand_total',
-                '$user_name'
-                )";
-            $result = mysqli_query($connection, $query);
-        } else if ($bora_invoice_payment_mode == 'DemandDraft') {
-            $bora_invoice_dd_number = $_POST['bora_invoice_dd_number'];
-
-            $query = "INSERT INTO `bora_invoice`(
-                `bora_invoice_number`,
-                `bora_invoice_date`,
-                `bora_invoice_student_id`,
-                `bora_invoice_student`,
-                `bora_invoice_student_address`,
-                `bora_invoice_student_contact`,
-                `bora_invoice_student_course`,
-                `bora_invoice_for`,
-                `bora_invoice_tenure`,
-                `bora_invoice_payment_mode`,
-                `bora_invoice_dd_number`,
-                `bora_invoice_value`,
-                `bora_invoice_disc`,
-                `bora_invoice_grand_total`,
-                `bora_invoice_by`
-                )
-                VALUES(
-                '$bora_receipt_number',
-                '$bora_invoice_date',
-                '$bora_invoice_student_id',
-                '$bora_invoice_student',
-                '$bora_invoice_student_address',
-                '$bora_invoice_student_contact',
-                '$bora_invoice_student_course',
-                '$bora_invoice_for',
-                '$bora_invoice_tenure',
-                '$bora_invoice_payment_mode',
-                '$bora_invoice_dd_number',
                 '$bora_invoice_value',
                 '$bora_invoice_disc',
                 '$bora_invoice_grand_total',
@@ -180,7 +148,7 @@ include('includes/header.php') ?>
                     '$bora_invoice_student',
                     '$bora_invoice_student_address',
                     '$bora_invoice_student_contact',
-                    '$bora_invoice_student_course',
+                    '$course_name',
                     '$bora_invoice_for',
                     '$bora_invoice_tenure',
                     '$bora_invoice_payment_mode',
@@ -197,14 +165,13 @@ include('includes/header.php') ?>
 
 
     ?>
-    <form action="invoice-format.php" method="POST">
-        <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
+            <form action="invoice-format.php" method="POST">
+                <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
 
-        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent"
-            speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-        <p>Success! Invoice generated.</p>
-        <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
-    </form>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <p>Success! Invoice generated.</p>
+                <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
+            </form>
 
     <?php
         } else {
