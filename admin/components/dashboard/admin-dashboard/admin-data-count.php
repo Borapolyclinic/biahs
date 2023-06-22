@@ -67,10 +67,25 @@
                 </thead>
                 <tbody>
                     <?php
+                    $results_per_page = 5;
                     $fetch_login = "SELECT * FROM `bora_user_activity_tracker`";
                     $fetch_login_res = mysqli_query($connection, $fetch_login);
+                    $number_of_result = mysqli_num_rows($fetch_login_res);
 
-                    while ($row = mysqli_fetch_assoc($fetch_login_res)) {
+                    $number_of_page = ceil($number_of_result / $results_per_page);
+
+                    if (!isset($_GET['page'])) {
+                        $page = 1;
+                    } else {
+                        $page = $_GET['page'];
+                    }
+
+                    $page_first_result = ($page - 1) * $results_per_page;
+
+                    $fetch_login_q = "SELECT * FROM `bora_user_activity_tracker` ORDER BY `activity_tracker_id` ASC LIMIT " . $page_first_result . ',' . $results_per_page;
+                    $result = mysqli_query($connection, $fetch_login_q);
+
+                    while ($row = mysqli_fetch_assoc($result)) {
                         $activity_tracker_user_contact = $row['activity_tracker_user_contact'];
                         $activity_tracker_time = $row['activity_tracker_time'];
                     ?>
@@ -90,7 +105,22 @@
                     </tr>
                     <?php } ?>
                 </tbody>
+
+
             </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <?php
+                    for ($page = 1; $page <= $number_of_page; $page++) {
+                        echo '<li class="page-item"><a class="page-link" href = "dashboard.php?page=' . $page . '">' . $page . ' </a></li>';
+                    }
+                    ?>
+
+
+
+
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
