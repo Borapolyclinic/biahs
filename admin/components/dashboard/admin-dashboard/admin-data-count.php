@@ -82,7 +82,7 @@
 
                     $page_first_result = ($page - 1) * $results_per_page;
 
-                    $fetch_login_q = "SELECT * FROM `bora_user_activity_tracker` ORDER BY `activity_tracker_id` ASC LIMIT " . $page_first_result . ',' . $results_per_page;
+                    $fetch_login_q = "SELECT * FROM `bora_user_activity_tracker` ORDER BY `activity_tracker_id` DESC LIMIT " . $page_first_result . ',' . $results_per_page;
                     $result = mysqli_query($connection, $fetch_login_q);
 
                     while ($row = mysqli_fetch_assoc($result)) {
