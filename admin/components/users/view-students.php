@@ -8,8 +8,7 @@
 
     <div class="w-100">
         <form action="search-student-data.php" method="POST" class="filter-row w-100">
-            <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
-                placeholder="Enter Mobile Number, Aadhaar card number, Roll number, Name or Course to search user">
+            <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="Enter Mobile Number, Aadhaar card number, Roll number, Name or Course to search user">
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
     </div>
@@ -38,8 +37,8 @@
                     $delete_res = mysqli_query($connection, $delete_query);
 
                     if ($delete_res) { ?>
-                <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
-                <?php
+                        <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
+                    <?php
                     }
                 }
 
@@ -67,15 +66,16 @@
                     $student_name = $row['student_name'];
                     $student_contact = $row['student_contact'];
                     $student_course = $row['student_course'];
+                    $student_enrollment_number = $row['student_enrollment_number'];
                     $student_roll = $row['student_roll'];
                     $student_admission_year = $row['student_admission_year'];
                     $student_added_by = $row['student_added_by']; ?>
-                <tr>
+                    <tr>
 
-                    <td><?php echo $student_roll ?></td>
-                    <th scope="row"><?php echo $student_name ?></th>
-                    <td><?php echo $student_contact ?></td>
-                    <td><?php
+                        <td><?php echo $student_enrollment_number ?></td>
+                        <th scope="row"><?php echo $student_name ?></th>
+                        <td><?php echo $student_contact ?></td>
+                        <td><?php
                             $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                             $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
                             $course_name = "";
@@ -83,21 +83,21 @@
                                 $course_name = $row['course_name'];
                             }
                             echo $course_name ?></td>
-                    <td><?php echo $student_admission_year ?></td>
-                    <td>
-                        <form action="student-details.php" method="post">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
-                                Details</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                        <td><?php echo $student_admission_year ?></td>
+                        <td>
+                            <form action="student-details.php" method="post">
+                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
+                                    Details</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="" method="POST">
+                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
                 <?php
                 }
                 ?>
