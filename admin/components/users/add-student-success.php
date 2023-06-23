@@ -55,6 +55,7 @@
             $tempname_alot_letter = $_FILES["student_alot_letter"]["tmp_name"];
 
             $folder = "assets/student_aadhar_image/" . $student_aadhar_file;
+            $folder_back = "assets/student_aadhar_image/" . $student_aadhar_file;
             $folder_student = "assets/student/" . $student_img;
             $folder_marksheet = "assets/marksheet/" . $student_10th_marksheet;
             $folder_tc_certificate = "assets/tc_certificate/" . $student_tc_certificate;
@@ -65,7 +66,7 @@
             }
             if (
                 move_uploaded_file($tempname, $folder) &&
-                move_uploaded_file($tempname_back, $folder) &&
+                move_uploaded_file($tempname_back, $folder_back) &&
                 move_uploaded_file($tempname_student, $folder_student) &&
                 move_uploaded_file($tempname_marksheet, $folder_marksheet) &&
                 move_uploaded_file($tempname_tc_certificate, $folder_tc_certificate) &&
@@ -133,18 +134,19 @@
                 $insert_res = mysqli_query($connection, $insert);
 
                 if ($insert_res) {  ?>
-    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
-        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    <p>Success! Student added.</p>
-    <a href="add-student.php" class="go-back-btn">Go Back</a>
-    <?php
+                    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                    <p>Success! Student added.</p>
+                    <a href="add-student.php" class="go-back-btn">Go Back</a>
+            <?php
                 }
             }
-        } else { ?>
-    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1"
-        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    <p>This student already exists in our system.</p>
-    <a href="users.php" class="go-back-btn">Go Back</a>
+        } else if (!$insert_res) {
+            mysqli_error($connection);
+            ?>
+
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+            <p>This student already exists in our system.</p>
+            <a href="users.php" class="go-back-btn">Go Back</a>
 
     <?php
         }
