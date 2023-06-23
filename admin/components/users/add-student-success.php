@@ -36,7 +36,7 @@
 
         $student_aadhar_number = mysqli_real_escape_string($connection, $_POST['student_aadhar_number']);
         $student_aadhar_file = $_FILES["student_aadhar_file"]["name"];
-        $student_aadhar_back_file = $_FILES["student_aadhar_back_file"]["name"];
+
 
         $student_aadhar_address = mysqli_real_escape_string($connection, $_POST['student_aadhar_address']);
         $student_comm_address = mysqli_real_escape_string($connection, $_POST['student_comm_address']);
@@ -49,13 +49,11 @@
         if ($count == 0) {
             $tempname_student = $_FILES["student_img"]["tmp_name"];
             $tempname = $_FILES["student_aadhar_file"]["tmp_name"];
-            $tempname_back = $_FILES["student_aadhar_back_file"]["tmp_name"];
             $tempname_marksheet = $_FILES["student_10th_marksheet"]["tmp_name"];
             $tempname_tc_certificate = $_FILES["student_tc_certificate"]["tmp_name"];
             $tempname_alot_letter = $_FILES["student_alot_letter"]["tmp_name"];
 
             $folder = "assets/student_aadhar_image/" . $student_aadhar_file;
-            $folder_back = "assets/student_aadhar_image/" . $student_aadhar_file;
             $folder_student = "assets/student/" . $student_img;
             $folder_marksheet = "assets/marksheet/" . $student_10th_marksheet;
             $folder_tc_certificate = "assets/tc_certificate/" . $student_tc_certificate;
@@ -66,7 +64,6 @@
             }
             if (
                 move_uploaded_file($tempname, $folder) &&
-                move_uploaded_file($tempname_back, $folder_back) &&
                 move_uploaded_file($tempname_student, $folder_student) &&
                 move_uploaded_file($tempname_marksheet, $folder_marksheet) &&
                 move_uploaded_file($tempname_tc_certificate, $folder_tc_certificate) &&
@@ -97,7 +94,6 @@
                     `student_gender`,
                     `student_aadhar_number`,
                     `student_aadhar_file`,
-                    `student_aadhar_back_file`,
                     `student_aadhar_address`,
                     `student_comm_address`,
                     `student_added_by`
@@ -126,7 +122,6 @@
                     '$student_gender',
                     '$student_aadhar_number',
                     '$student_aadhar_file',
-                    '$student_aadhar_back_file',
                     '$student_aadhar_address',
                     '$student_comm_address',
                     '$student_added_by'
