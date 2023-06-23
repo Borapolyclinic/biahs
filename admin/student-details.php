@@ -192,7 +192,7 @@
                             aria-describedby="emailHelp">
                     </div>
                     <div class="col-md-3 mobile-input m-1">
-                        <label for="studentAdmissionDate" class="form-label">Admission Date</label>
+                        <label for="studentAdmissionDate" class="form-label">Admission Year</label>
                         <input type="text" class="form-control" name="student_admission_year"
                             value="<?php echo $student_admission_year  ?>" id="studentAdmissionDate"
                             aria-describedby="emailHelp">
