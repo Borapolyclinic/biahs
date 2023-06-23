@@ -35,16 +35,19 @@
         while ($row = mysqli_fetch_assoc($fetch_data_res)) {
             $student_id = $row['student_id'];
             $student_name = $row['student_name'];
+            $student_enrollment_number = $row['student_enrollment_number'];
             $student_course_id = $row['student_course'];
             $student_aadhar_address = $row['student_aadhar_address'];
             $student_contact = $row['student_contact'];
             $student_roll = $row['student_roll'];
+            $student_admission_year = $row['student_admission_year'];
         }
     }
 
     ?>
     <form class="add-user-form" method="POST" action="generate-invoice.php">
         <input type="text" name="bora_invoice_student_id" value="<?php echo $student_id ?>" hidden>
+        <input type="text" name="bora_invoice_student_en_no" value="<?php echo $student_enrollment_number ?>" hidden>
 
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
@@ -114,9 +117,10 @@
 
         <div class="receipt-billing-info-row">
             <input type="text" name="bora_invoice_student" value="<?php echo $student_name ?>" hidden>
-            <input type="text" name="bora_invoice_student_course" value="<?php echo $student_course_id ?>" hidden>
+            <input type="text" name="bora_invoice_student_course_id" value="<?php echo $student_course_id ?>" hidden>
             <input type="text" name="bora_invoice_student_address" value="<?php echo $student_aadhar_address ?>" hidden>
             <input type="text" name="bora_invoice_student_contact" value="<?php echo $student_contact ?>" hidden>
+            <input type="text" name="bora_invoice_student_admission_year" value="<?php echo $student_admission_year ?>" hidden>
         </div>
 
         <div class="table-responsive mt-3">
@@ -182,37 +186,35 @@
                                     $course_year_4_fee = $row['course_year_4_fee'];
                                 }
                                 if ($course_tenure == '1') { ?>
-                                <option value="<?php echo $course_year_1_fee ?>">Year 1 Fee</option>
+                                    <option value="<?php echo $course_year_1_fee ?>">Year 1 Fee</option>
                                 <?php }
                                 if ($course_tenure == '2') { ?>
-                                <option value="Year 1 Fee">Year 1 Fee</option>
-                                <option value="Year 2 Fee">Year 2 Fee</option>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 2 Fee">Year 2 Fee</option>
                                 <?php }
                                 if ($course_tenure == '3') { ?>
-                                <option value="Year 1 Fee">Year 1 Fee</option>
-                                <option value="Year 2 Fee">Year 2 Fee</option>
-                                <option value="Year 3 Fee">Year 3 Fee</option>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 2 Fee">Year 2 Fee</option>
+                                    <option value="Year 3 Fee">Year 3 Fee</option>
                                 <?php }
                                 if ($course_tenure == '4') { ?>
-                                <option value="Year 1 Fee">Year 1 Fee</option>
-                                <option value="Year 2 Fee">Year 2 Fee</option>
-                                <option value="Year 3 Fee">Year 3 Fee</option>
-                                <option value="Year 4 Fee">Year 4 Fee</option>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 2 Fee">Year 2 Fee</option>
+                                    <option value="Year 3 Fee">Year 3 Fee</option>
+                                    <option value="Year 4 Fee">Year 4 Fee</option>
                                 <?php } ?>
                             </select>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control" id="exampleFormControlInput1" placeholder="">
                             </div>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="invoice_disc" id="discount" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_disc" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="">
                             </div>
                         </td>
 
@@ -235,8 +237,7 @@
                         <th scope="row" colspan="4">Cash</th>
                         <td>
                             <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
-                                    value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -244,8 +245,7 @@
                         <th scope="row" colspan="4">Cheque | Demand Draft</th>
                         <td>
                             <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
-                                    value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
@@ -253,8 +253,7 @@
                         <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
                         <td>
                             <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
-                                    value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
                     </tr>
@@ -273,8 +272,7 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_payment_id" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <input type="text" name="bora_invoice_payment_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </td>
                     </tr>
@@ -292,9 +290,7 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_cheque_number" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp"
-                                    placeholder="Cheque Number | DD Number">
+                                <input type="text" name="bora_invoice_cheque_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cheque Number | DD Number">
                             </div>
                         </td>
                     </tr>
@@ -302,8 +298,7 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_bank_name" class="form-control"
-                                    id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank Name">
+                                <input type="text" name="bora_invoice_bank_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank Name">
                             </div>
                         </td>
                     </tr>
@@ -311,8 +306,7 @@
                     <tr>
                         <td>
                             <div>
-                                <input type="text" name="bora_invoice_ifsc" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Bank IFSC Code">
+                                <input type="text" name="bora_invoice_ifsc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank IFSC Code">
                             </div>
                         </td>
                     </tr>

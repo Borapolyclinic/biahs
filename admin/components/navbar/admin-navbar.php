@@ -45,6 +45,9 @@
                     <a class="nav-link" aria-current="page" href="admin-past-payments.php">Fee Payment
                         History</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="admin-reports.php">Reports</a>
+                </li>
             </ul>
             <ul class="navbar-nav ">
                 <li class="nav-item">

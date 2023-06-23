@@ -70,3 +70,17 @@ function handleCheckboxChange(checkbox) {
     }
   }
 }
+
+function showFields(showId, hideId) {
+  var showElement = document.getElementById(showId);
+  var hideElement = document.getElementById(hideId);
+
+  showElement.style.display = "block";
+  hideElement.style.display = "none";
+
+  // Uncheck the radio button in the hideElement
+  var hideRadioButtons = hideElement.querySelectorAll('input[type="radio"]');
+  for (var i = 0; i < hideRadioButtons.length; i++) {
+    hideRadioButtons[i].checked = false;
+  }
+}
