@@ -56,13 +56,13 @@ include('components/navbar/admin-navbar.php');
                         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
                         $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
                 ?>
-                        <tr>
-                            <th scope="row"><?php echo $bora_invoice_student ?></th>
-                            <td><?php echo $bora_invoice_student_en_no ?></td>
-                            <td><?php echo $bora_invoice_student_contact ?></td>
+                <tr>
+                    <th scope="row"><?php echo $bora_invoice_student ?></th>
+                    <td><?php echo $bora_invoice_student_en_no ?></td>
+                    <td><?php echo $bora_invoice_student_contact ?></td>
 
-                            <td>
-                                <?php
+                    <td>
+                        <?php
                                 $fetch_student_det = "SELECT * FROM `bora_student` WHERE student_id ='$bora_invoice_student_id'";
                                 $fetch_student_det_r = mysqli_query($connection, $fetch_student_det);
                                 $student_course = "";
@@ -80,36 +80,38 @@ include('components/navbar/admin-navbar.php');
                                 }
                                 echo $course_name;
                                 ?>
-                            </td>
-                            <td><?php echo $student_admission_year ?></td>
+                    </td>
+                    <td><?php echo $student_admission_year ?></td>
 
-                            <?php if ($bora_invoice_payment_mode == 'cash') { ?>
-                                <td><?php echo $bora_invoice_grand_total ?></td>
-                                <td>NA</td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                        <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
-                                    </form>
-                                </td>
-                            <?php } ?>
+                    <?php if ($bora_invoice_payment_mode == 'cash') { ?>
+                    <td><?php echo $bora_invoice_grand_total ?></td>
+                    <td>NA</td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
+                                hidden>
+                            <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
+                        </form>
+                    </td>
+                    <?php } ?>
 
-                            <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
-                                <td>NA</td>
-                                <td><?php echo $bora_invoice_grand_total ?></td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                        <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
-                                    </form>
-                                </td>
-                            <?php } ?>
+                    <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
+                    <td>NA</td>
+                    <td><?php echo $bora_invoice_grand_total ?></td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
+                                hidden>
+                            <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
+                        </form>
+                    </td>
+                    <?php } ?>
 
 
 
 
-                        </tr>
-                    <?php
+                </tr>
+                <?php
                     }
                 }
                 if (isset($_POST['generate_batch_wise'])) {
@@ -135,13 +137,13 @@ include('components/navbar/admin-navbar.php');
                         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
                         $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
                     ?>
-                        <tr>
-                            <th scope="row"><?php echo $bora_invoice_student ?></th>
-                            <td><?php echo $bora_invoice_student_en_no ?></td>
-                            <td><?php echo $bora_invoice_student_contact ?></td>
+                <tr>
+                    <th scope="row"><?php echo $bora_invoice_student ?></th>
+                    <td><?php echo $bora_invoice_student_en_no ?></td>
+                    <td><?php echo $bora_invoice_student_contact ?></td>
 
-                            <td>
-                                <?php
+                    <td>
+                        <?php
                                 $fetch_student_det = "SELECT * FROM `bora_student` WHERE student_id ='$bora_invoice_student_id'";
                                 $fetch_student_det_r = mysqli_query($connection, $fetch_student_det);
                                 $student_course = "";
@@ -159,39 +161,36 @@ include('components/navbar/admin-navbar.php');
                                 }
                                 echo $course_name;
                                 ?>
-                            </td>
-                            <td><?php echo $student_admission_year ?></td>
+                    </td>
+                    <td><?php echo $student_admission_year ?></td>
 
-                            <?php if ($bora_invoice_payment_mode == 'cash') { ?>
-                                <td><?php echo $bora_invoice_grand_total ?></td>
-                                <td>NA</td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                        <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
-                                    </form>
-                                </td>
-                            <?php } ?>
+                    <?php if ($bora_invoice_payment_mode == 'cash') { ?>
+                    <td><?php echo $bora_invoice_grand_total ?></td>
+                    <td>NA</td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
+                                hidden>
+                            <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
+                        </form>
+                    </td>
+                    <?php } ?>
 
-                            <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
-                                <td>NA</td>
-                                <td><?php echo $bora_invoice_grand_total ?></td>
-                                <td>
-                                    <form action="" method="post">
-                                        <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                        <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
-                                    </form>
-                                </td>
-                            <?php } ?>
-                        </tr>
-                    <?php
+                    <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
+                    <td>NA</td>
+                    <td><?php echo $bora_invoice_grand_total ?></td>
+                    <td>
+                        <form action="" method="post">
+                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
+                                hidden>
+                            <button class="btn btn-sm btn-outline-success">SHOW INVOICE</button>
+                        </form>
+                    </td>
+                    <?php } ?>
+                </tr>
+                <?php
                     }
-                } else { ?>
-                    <tr>
-                        <td colspan="5">NO DATA FOUND</td>
-                    </tr>
-
-                <?php } ?>
+                } ?>
 
             </tbody>
         </table>
