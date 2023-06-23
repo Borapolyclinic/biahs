@@ -15,6 +15,10 @@
             <input type="number" name="user_contact" maxlength="10" required class="form-control" id="contactNumber">
         </div>
         <div class="mb-3">
+            <label for="eMail" class="form-label">Email</label>
+            <input type="email" name="user_email" required class="form-control" id="eMail">
+        </div>
+        <div class="mb-3">
             <label for="userPassword" class="form-label">Password</label>
             <input type="password" name="user_password" class="form-control" required id="userPassword">
         </div>
