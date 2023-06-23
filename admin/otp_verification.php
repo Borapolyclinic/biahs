@@ -83,7 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container form-container">
         <form class="login-form" method="POST" action="">
             <input type="hidden" name="user_id" value="<?php echo $_GET['user_id']; ?>">
-            <input type="number" name="entered_otp" placeholder="Enter OTP" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <input type="number" name="entered_otp" placeholder="Enter OTP" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp" required>
             <button type="submit" name="submit" class="mt-3 btn btn-outline-success w-100">Verify OTP</button>
         </form>
     </div>

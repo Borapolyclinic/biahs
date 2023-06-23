@@ -74,6 +74,7 @@
             }
         }
     }
+
     ?>
 
     <form class="login-form" method="POST" action="">
