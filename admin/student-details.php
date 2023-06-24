@@ -5,7 +5,7 @@
         <a href="view-students.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
-        <h5>View Student Details</h5>
+        <h5>View | Edit Student Details</h5>
     </div>
 
     <?php
@@ -36,6 +36,7 @@
                 `student_father` = '$student_father',
                 `student_mother` = '$student_mother',
                 `student_guardian_contact` = '$student_guardian_contact',
+                `student_guardian_contact_2` = '$student_guardian_contact_2',
                 `student_roll` = '$student_roll',
                 `student_course` = '$student_course',
                 `student_admission_date` = '$student_admission_date',
@@ -56,7 +57,7 @@
 
         }
     }
-    if (isset($_POST)) {
+    if (isset($_POST['edit'])) {
         $student_id = $_POST['student_id'];
 
         $fetch = "SELECT * FROM `bora_student` WHERE `student_id` = '$student_id'";
@@ -73,6 +74,7 @@
         $student_dob = "";
         $student_guardian_name = "";
         $student_guardian_contact = "";
+        $student_guardian_contact_2 = "";
         $student_guardian_relation = "";
         $student_roll = "";
         $student_course = "";
@@ -103,6 +105,7 @@
             $student_dob = $row['student_dob'];
             $student_guardian_name = $row['student_guardian_name'];
             $student_guardian_contact = $row['student_guardian_contact'];
+            $student_guardian_contact_2 = $row['student_guardian_contact_2'];
             $student_guardian_relation = $row['student_guardian_relation'];
             $student_roll = $row['student_roll'];
             $student_course = $row['student_course'];
@@ -128,39 +131,41 @@
                 <input class="form-control" name="student_id" hidden type="text" value="<?php echo $student_id ?>"
                     id="formFile">
 
-                <div class="w-100 mb-3">
-                    <div class="col-md-6 mobile-input w-100">
-                        <label for="studentName" class="form-label">Enrollment Number</label>
-                        <input type="text" class="form-control" name="student_enrollment_number"
-                            value="<?php echo $student_enrollment_number ?>" id="studentName"
-                            aria-describedby="emailHelp">
-                    </div>
-                </div>
                 <div class="add-user-form-row mb-3">
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentName" class="form-label">Student Name</label>
                         <input type="text" class="form-control" name="student_name" value="<?php echo $student_name ?>"
                             id="studentName" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Mobile Number</label>
                         <input type="number" class="form-control" name="student_contact"
                             value="<?php echo $student_contact ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">DOB</label>
                         <input type="date" class="form-control" name="student_dob" value="<?php echo $student_dob ?>"
                             id="studentNumber" aria-describedby="emailHelp">
                     </div>
                 </div>
 
+                <div class="w-100 mb-3">
+                    <div class="w-100 mobile-input w-100">
+                        <label for="studentName" class="form-label">Enrollment Number</label>
+                        <input type="text" class="form-control" name="student_enrollment_number"
+                            value="<?php echo $student_enrollment_number ?>" id="studentName"
+                            aria-describedby="emailHelp">
+                    </div>
+                </div>
+
+
                 <div class="add-user-form-row mb-3">
-                    <div class="col-md-3 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentName" class="form-label">UID</label>
                         <input type="text" class="form-control" value="<?php echo $student_roll ?>" name="student_roll"
                             id="studentName" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-3 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Selected Course</label>
                         <select class="form-select" name="student_course" aria-label="Default select example">
                             <?php
@@ -185,53 +190,116 @@
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-md-3 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Date</label>
                         <input type="date" class="form-control" name="student_admission_date"
                             value="<?php echo $student_admission_date  ?>" id="studentAdmissionDate"
                             aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-3 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Year</label>
                         <input type="text" class="form-control" name="student_admission_year"
                             value="<?php echo $student_admission_year  ?>" id="studentAdmissionDate"
                             aria-describedby="emailHelp">
                     </div>
                 </div>
+
+                <div class="add-user-form-row mb-3">
+                    <div class="w-100 mobile-input m-1">
+                        <label for="studentNumber" class="form-label">Category</label>
+                        <select class="form-select" name="student_category" aria-label="Default select example">
+                            <?php
+                            $fetch_name = "SELECT * FROM `bora_student` WHERE `student_id` = '$student_id'";
+                            $fetch_name_res = mysqli_query($connection, $fetch_name);
+                            $student_category = "";
+                            while ($row = mysqli_fetch_assoc($fetch_name_res)) {
+                                $student_category = $row['student_category'];
+                            }
+                            ?>
+                            <option selected><?php echo $student_category ?>(Selected)</option>
+                            <option value="General">General</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OBC">OBC</option>
+                            <option value="Minority">Minority</option>
+
+                        </select>
+                    </div>
+                    <div class="w-100 mobile-input m-1">
+                        <label for="studentNumber" class="form-label">Mode of Admission</label>
+                        <select class="form-select" name="student_admission_mode" aria-label="Default select example">
+                            <?php
+                            $fetch_name = "SELECT * FROM `bora_student` WHERE `student_id` = '$student_id'";
+                            $fetch_name_res = mysqli_query($connection, $fetch_name);
+                            $student_admission_mode = "";
+                            while ($row = mysqli_fetch_assoc($fetch_name_res)) {
+                                $student_admission_mode = $row['student_admission_mode'];
+                            }
+                            ?>
+                            <option selected><?php echo $student_admission_mode ?></option>
+                            <option value="Counselling">Counselling</option>
+                            <option value="Direct">Direct</option>
+                        </select>
+                    </div>
+
+                    <div class="w-100 mobile-input m-1">
+                        <label for="studentNumber" class="form-label">Gender</label>
+                        <select class="form-select" name="student_gender" aria-label="Default select example">
+                            <?php
+                            $fetch_name = "SELECT * FROM `bora_student` WHERE `student_id` = '$student_id'";
+                            $fetch_name_res = mysqli_query($connection, $fetch_name);
+                            $student_gender = "";
+                            while ($row = mysqli_fetch_assoc($fetch_name_res)) {
+                                $student_gender = $row['student_gender'];
+                            }
+                            ?>
+                            <option selected><?php echo $student_gender ?></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
             <div class="add-user-form mt-3">
                 <div class="add-user-form-row mb-3">
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="fathersName" class="form-label">Father's Name</label>
                         <input type="text" class="form-control" name="student_father"
                             value="<?php echo $student_father ?>" id="fathersName" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="mothersName" class="form-label">Mother's Name</label>
                         <input type="text" class="form-control" name="student_mother" id="mothersName"
                             value="<?php echo $student_mother ?>" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
-                        <label for="mothersName" class="form-label">Father's Name</label>
+                    <div class="w-100 mobile-input m-1">
+                        <label for="mothersName" class="form-label">Father's Contact Number</label>
                         <input type="text" class="form-control" name="student_father_contact" id="mothersName"
                             value="<?php echo $student_father_contact ?>" aria-describedby="emailHelp">
                     </div>
                 </div>
 
                 <div class="add-user-form-row mb-3">
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
                         <label for="fathersName" class="form-label">Guardian's Name</label>
                         <input type="text" class="form-control" name="student_guardian_name"
                             value="<?php echo $student_guardian_name ?>" id="fathersName" aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
-                        <label for="fathersName" class="form-label">Guardian's Contact</label>
+                    <div class="w-100 mobile-input m-1">
+                        <label for="fathersName" class="form-label">Guardian's Contact No.</label>
                         <input type="text" class="form-control" name="student_guardian_contact"
                             value="<?php echo $student_guardian_contact ?>" id="fathersName"
                             aria-describedby="emailHelp">
                     </div>
-                    <div class="col-md-4 mobile-input m-1">
+                    <div class="w-100 mobile-input m-1">
+                        <label for="fathersName" class="form-label">Contact No. (Optional)</label>
+                        <input type="text" class="form-control" name="student_guardian_contact_2"
+                            value="<?php echo $student_guardian_contact_2 ?>" id="fathersName"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="w-100 mobile-input m-1">
                         <label for="mothersName" class="form-label">Relation</label>
                         <select class="form-select" name="student_guardian_relation"
                             aria-label="Default select example">

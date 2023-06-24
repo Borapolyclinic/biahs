@@ -61,7 +61,7 @@
                     <?php } ?>
                 </select>
 
-                <select name="course_year" class="form-select m-1" aria-label="Default select example">
+                <select name="course_year" class="form-select m-1" aria-label="Default select example" required>
                     <option selected>Select Year</option>
                     <?php
                     $fetch_course_year = "SELECT * FROM `bora_student`";

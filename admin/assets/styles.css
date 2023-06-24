@@ -155,12 +155,13 @@ input::-webkit-inner-spin-button {
   margin-top: 20px;
 }
 .go-back-btn {
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: green;
   border-radius: 10px;
+  border: 0 !important;
   padding: 8px;
   color: #fff;
-  width: 10%;
+  width: 100%;
   text-align: center;
 }
 .add-user-form-row {

@@ -1,5 +1,7 @@
+<?php require('includes/header.php') ?>
 <div class="container mt-5 add-user-success">
     <?php
+    require('includes/connection.php');
     if (isset($_POST['back'])) {
         $student_id = $_POST['student_id'];
         $student_aadhar_back_file = $_FILES["student_aadhar_back_file"]["name"];
@@ -17,11 +19,16 @@
         if ($update_res) {
             move_uploaded_file($tempname, $folder); ?>
 
-            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-            <p>Success! Image Updated.</p>
-            <a href="add-student.php" class="go-back-btn">Go Back</a>
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <p>Success! Image Updated.</p>
+    <form action="student-details.php" method="POST" class="w-100 d-flex justify-content-center align-items-center">
+        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+        <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Go Back</button>
+    </form>
     <?php
         }
     }
     ?>
 </div>
+<?php require('includes/footer.php') ?>

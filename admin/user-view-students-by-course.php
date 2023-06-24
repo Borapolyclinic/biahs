@@ -20,10 +20,10 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th scope="col">UID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Contact</th>
                     <th scope="col">Course</th>
-                    <th scope="col">Roll No.</th>
                     <th scope="col">Admission Year</th>
                     <th scope="col">Action</th>
                     <th scope="col">Fee</th>
@@ -36,6 +36,7 @@
                 if (isset($_POST['filter-course'])) {
 
                     $course_id = $_POST['course_id'];
+                    $course_year = $_POST['course_year'];
                     $results_per_page = 10;
 
                     $fetch_students = "SELECT * FROM `bora_student` ORDER BY `student_added_date` DESC";
@@ -51,7 +52,7 @@
                     }
 
                     $page_first_result = ($page - 1) * $results_per_page;
-                    $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' LIMIT "  . $page_first_result . ',' . $results_per_page;
+                    $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' AND `student_admission_year` = '$course_year' LIMIT "  . $page_first_result . ',' . $results_per_page;
                     $page_result = mysqli_query($connection, $page_query);
 
                     while ($row = mysqli_fetch_assoc($page_result)) {
@@ -60,10 +61,11 @@
                         $student_name = $row['student_name'];
                         $student_contact = $row['student_contact'];
                         $student_course = $row['student_course'];
-                        $student_roll = $row['student_roll'];
+                        $student_enrollment_number = $row['student_enrollment_number'];
                         $student_admission_date = $row['student_admission_date'];
                         $student_added_by = $row['student_added_by']; ?>
                 <tr>
+                    <td><?php echo $student_enrollment_number ?></td>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
                     <td><?php
@@ -74,7 +76,7 @@
                                     $course_name = $row['course_name'];
                                 }
                                 echo $course_name ?></td>
-                    <td><?php echo $student_roll ?></td>
+
                     <td><?php echo $student_admission_date ?></td>
                     <td>
                         <form action="user-student-details.php" method="post">

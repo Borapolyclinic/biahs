@@ -89,6 +89,31 @@
             <tbody>
                 <?php
 
+                // ====================== UPDATE ======================
+                if (isset($_POST['update-course'])) {
+                    $course_id = $_POST['course_id'];
+                    $course_name = $_POST['course_name'];
+                    $course_tenure = $_POST['course_tenure'];
+
+                    $update_query = "UPDATE
+                        `bora_course`
+                    SET
+                        `course_name` = '$course_name',
+                        `course_tenure` = '$course_tenure'
+                    WHERE
+                        `course_id` = '$course_id'";
+
+                    $update_res = mysqli_query($connection, $update_query);
+
+                    if ($update_res) { ?>
+                <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
+                    Course Updated!
+                </div>
+
+                <?php
+                    }
+                }
+
                 // ====================== DELETE ======================
                 if (isset($_POST['del'])) {
                     $course_id = $_POST['course_id'];
@@ -163,7 +188,7 @@
                     $course_year_2_fee = $row['course_year_2_fee'];
                     $course_year_3_fee = $row['course_year_3_fee'];
                     $course_year_4_fee = $row['course_year_4_fee'];
-                ?>
+                    ?>
                 <tr>
                     <th scope="row" class="w-30"><?php echo $course_name; ?></th>
                     <td><?php echo $course_tenure ?> Year</td>
@@ -184,7 +209,13 @@
                                 class="btn btn-sm btn-outline-success">Update</button>
                         </td>
                     </form>
-                    <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+
+                    <td>
+                        <form action="edit-course.php" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                        </form>
+                    </td>
 
                     <td>
                         <form action="" method="POST">
@@ -214,7 +245,12 @@
 
                         </td>
                     </form>
-                    <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                    <td>
+                        <form action="edit-course.php" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                        </form>
+                    </td>
 
                     <td>
                         <form action="" method="POST">
@@ -247,7 +283,12 @@
 
                         </td>
                     </form>
-                    <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                    <td>
+                        <form action="edit-course.php" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                        </form>
+                    </td>
 
                     <td>
                         <form action="" method="POST">
@@ -285,7 +326,12 @@
 
                         </td>
                     </form>
-                    <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                    <td>
+                        <form action="edit-course.php" method="POST">
+                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                        </form>
+                    </td>
 
                     <td>
                         <form action="" method="POST">

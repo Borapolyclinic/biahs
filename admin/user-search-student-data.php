@@ -32,9 +32,18 @@
                 <?php
                 require('includes/connection.php');
                 if (isset($_POST['search'])) {
+                    $search_type = $_POST['search_type'];
                     $student_search = $_POST['student_search'];
 
-                    $query = "SELECT * FROM `bora_student` WHERE `student_name` LIKE '%$student_search%' OR `student_contact` LIKE '%$student_search%' OR `student_roll` LIKE '%$student_search%' OR `student_course` LIKE '%$student_search%' OR `student_aadhar_number` LIKE '%$student_search%'";
+                    $query = "SELECT * FROM `bora_student` WHERE ";
+                    if ($search_type == '1') {
+                        $query .= "`student_name` LIKE '%$student_search%'";
+                    } else if ($search_type == '2') {
+                        $query .= "`student_contact` LIKE '%$student_search%'";
+                    } else if ($search_type == '3') {
+                        $query .= "`student_enrollment_number` LIKE '%$student_search%'";
+                    }
+
                     $res = mysqli_query($connection, $query);
                     if ($res) {
                         while ($row = mysqli_fetch_assoc($res)) {

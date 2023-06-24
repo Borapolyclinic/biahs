@@ -8,7 +8,8 @@
     <form class="add-user-form" method="POST" action="add-user-success.php">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Full Name</label>
-            <input type="text" name="user_name" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="text" name="user_name" required class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="contactNumber" class="form-label">Contact Number</label>

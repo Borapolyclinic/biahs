@@ -90,8 +90,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="4" class="table-active">INVOICE NUMBER</th>
-                        <th scope="col" class="table-active">INVOICE DATE</th>
+                        <th scope="col" colspan="4" class="table-active">RECEIPT NUMBER</th>
+                        <th scope="col" class="table-active">RECEIPT DATE</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,7 +134,7 @@
                         <th scope="col">FEE TYPE</th>
                         <th scope="col">COURSE</th>
                         <th scope="col">YEAR</th>
-                        <th scope="col">INVOICE AMOUNT</th>
+                        <th scope="col">RECEIPT AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                         <th scope="col">GRAND TOTAL</th>
                     </tr>
