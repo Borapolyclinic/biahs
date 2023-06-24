@@ -80,8 +80,9 @@
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
             <h5>Bora Institute of Allied Health Sciences</h5>
-            <p>Bora Institute of Nursing & Paramedical Sciences. Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong> abc@xyz.com.
+            <p>Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
+                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong>
+                info@borainstitute.com.
                 <strong>Website:</strong> borainstitute.com
             </p>
         </div>
