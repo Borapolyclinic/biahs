@@ -1,3 +1,28 @@
+let logoutTimer;
+
+function startLogoutTimer() {
+  logoutTimer = setTimeout(logoutUser, 600000);
+}
+
+function resetLogoutTimer() {
+  clearTimeout(logoutTimer);
+  startLogoutTimer();
+}
+
+function logoutUser() {
+  // Perform logout actions here
+  // For example, redirecting the user to a logout page:
+  window.location.href = "logout.php";
+}
+
+// Call startLogoutTimer whenever the user logs in or the page loads
+startLogoutTimer();
+
+// Call resetLogoutTimer on user activity
+document.addEventListener("mousemove", resetLogoutTimer);
+document.addEventListener("mousedown", resetLogoutTimer);
+document.addEventListener("keydown", resetLogoutTimer);
+
 function hideInputField() {
   var addressCheckBox = document.getElementById("addressCheckBox");
   var inputField = document.getElementById("communicationAddress");
