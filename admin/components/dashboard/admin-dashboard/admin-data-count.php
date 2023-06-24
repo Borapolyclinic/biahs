@@ -14,15 +14,24 @@
     ?>
 
     <div class="w-100 mb-3">
-        <form action="search-student-data.php" method="POST" class="filter-row w-100">
-            <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
-                placeholder="Enter Mobile Number, Aadhaar card number, Roll number, Name or Course to search user"
-                required>
+        <form action="search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
+            <div class="w-100 m-1">
+                <select name="search_type" class="form-select" aria-label="Default select example">
+                    <option selected>Click here for options</option>
+                    <option value="1">Name</option>
+                    <option value="2">Mobile Number</option>
+                    <option value="3">UID</option>
+                </select>
+            </div>
+            <div class="w-100 m-1">
+                <input type="text" name="student_search" class="form-control filter-input-box"
+                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+            </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
     </div>
 
-    <div class="w-100 mt-3 container-row">
+    <div class="w-100 mt-2 container-row">
         <div class="dashboard-tab">
             <p>Students</p>
             <h5><?php echo $student_count ?></h5>

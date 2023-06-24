@@ -43,10 +43,12 @@
                 }
 
                 if (isset($_POST['search'])) {
-
+                    $search_type = $_POST['search_type'];
                     $student_search = $_POST['student_search'];
+
                     $results_per_page = 10;
-                    $fetch_students = "SELECT * FROM `bora_student` ORDER BY student_added_date DESC";
+
+                    $fetch_students = "SELECT * FROM `bora_student` ORDER BY `student_added_date` DESC";
                     $fetch_res = mysqli_query($connection, $fetch_students);
                     $count = mysqli_num_rows($fetch_res);
 
@@ -59,12 +61,15 @@
                     }
 
                     $page_first_result = ($page - 1) * $results_per_page;
-                    $page_query = "SELECT * FROM `bora_student` WHERE 
-                `student_name` LIKE '%$student_search%' OR 
-                `student_contact` LIKE '%$student_search%' OR 
-                `student_roll` LIKE '%$student_search%' OR 
-                `student_course` LIKE '%$student_search%' OR 
-                `student_aadhar_number` LIKE '%$student_search%' LIMIT "  . $page_first_result . ',' . $results_per_page;
+                    $page_query = "SELECT * FROM `bora_student` WHERE ";
+                    if ($search_type == '1') {
+                        $page_query .= "`student_name` LIKE '%$student_search%' LIMIT " . $page_first_result . ',' . $results_per_page;
+                    } else if ($search_type == '2') {
+                        $page_query .= "`student_contact` LIKE '%$student_search%' LIMIT " . $page_first_result . ',' . $results_per_page;
+                    } else if ($search_type == '3') {
+                        $page_query .= "`student_enrollment_number` LIKE '%$student_search%' LIMIT " . $page_first_result . ',' . $results_per_page;
+                    }
+
                     $page_result = mysqli_query($connection, $page_query);
 
                     while ($row = mysqli_fetch_assoc($page_result)) {
@@ -73,12 +78,12 @@
                         $student_name = $row['student_name'];
                         $student_contact = $row['student_contact'];
                         $student_course = $row['student_course'];
-                        $student_roll = $row['student_roll'];
+                        $student_enrollment_number = $row['student_enrollment_number'];
                         $student_admission_year = $row['student_admission_year'];
                         $student_added_by = $row['student_added_by']; ?>
                 <tr>
 
-                    <td><?php echo $student_roll ?></td>
+                    <td><?php echo $student_enrollment_number ?></td>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
                     <td><?php
