@@ -2,7 +2,7 @@
 <?php include('components/navbar/user-navbar.php') ?>
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="dashboard.php">
+        <a href="user-past-payments.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Past Payments</h5>
@@ -22,12 +22,32 @@
     ?>
 
     <div class="w-100">
+        <form action="user-fee-search-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
+            <div class="w-100 m-1">
+                <select name="search_type" class="form-select" aria-label="Default select example">
+                    <option selected>Click here for options</option>
+                    <option value="1">Name</option>
+                    <option value="2">Mobile Number</option>
+                    <option value="3">UID</option>
+                    <option value="4">Receipt Number</option>
+                </select>
+            </div>
+            <div class="w-100 m-1">
+                <input type="text" name="student_search" class="form-control filter-input-box"
+                    id="exampleFormControlInput1" placeholder="" required>
+            </div>
+            <button type="submit" name="search" class="btn btn-outline-success">Search</button>
+        </form>
+    </div>
+
+
+    <!-- <div class="w-100">
         <form action="user-fee-search-data.php" method="POST" class="filter-row w-100">
             <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
                 placeholder="Enter Invoice Number, Student Name, Student Contact Number or Course to search">
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
-    </div>
+    </div> -->
 
     <div class="table-responsive user-table">
         <table class="table table-bordered table-striped">
