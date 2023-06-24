@@ -25,6 +25,10 @@ if (isset($_COOKIE['user_id'])) {
             include('components/navbar/user-navbar.php');
             include('components/dashboard/user-dashboard/user-data-count.php');
             include('includes/footer.php');
+        } else if ($user_type == 3) {
+            include('components/navbar/admin-navbar.php');
+            include('components/dashboard/admin-dashboard/admin-data-count.php');
+            include('includes/footer.php');
         }
     }
 }

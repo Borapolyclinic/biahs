@@ -16,8 +16,8 @@
                         Users
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="users.php">Create Sub-Admin</a></li>
-                        <li><a class="dropdown-item" href="view-user.php">View Sub-Admin</a></li>
+                        <li><a class="dropdown-item" href="users.php">Create User</a></li>
+                        <li><a class="dropdown-item" href="view-user.php">View User</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -38,11 +38,11 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="add-course.php">Add Course</a></li>
                         <!-- <li><a class="dropdown-item" href="add-semester.php">Add Semester</a></li> -->
-                        <li><a class="dropdown-item" href="course-settings.php">View all courses</a></li>
+                        <!-- <li><a class="dropdown-item" href="course-settings.php">View all courses</a></li> -->
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="admin-past-payments.php">Fee Payment
+                    <a class="nav-link" aria-current="page" href="admin-past-payments.php">Payment
                         History</a>
                 </li>
                 <li class="nav-item">
