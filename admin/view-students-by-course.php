@@ -10,20 +10,24 @@
 
     <?php
     require('includes/connection.php');
-    $query = "SELECT * FROM `bora_student`";
-    $res = mysqli_query($connection, $query);
-    $student_count = mysqli_num_rows($res);
-    $user_query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
-    $user_res = mysqli_query($connection, $user_query);
-    $count = mysqli_num_rows($user_res);
+    if (isset($_POST['filter-course'])) {
+        $course_id = $_POST['course_id'];
+        $course_year = $_POST['course_year'];
 
-    // Pagination logic
-    $results_per_page = 25;
-    $number_of_page = ceil($student_count / $results_per_page);
-    $page = isset($_GET['page']) ? $_GET['page'] : 1;
-    $page_first_result = ($page - 1) * $results_per_page;
-    $page_query = "SELECT * FROM `bora_student` LIMIT $page_first_result, $results_per_page";
-    $page_result = mysqli_query($connection, $page_query);
+        // $query = "SELECT * FROM `bora_student`";
+        // $res = mysqli_query($connection, $query);
+        // $student_count = mysqli_num_rows($res);
+        // $user_query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
+        // $user_res = mysqli_query($connection, $user_query);
+        // $count = mysqli_num_rows($user_res);
+
+        // Pagination logic
+        // $results_per_page = 25;
+        // $number_of_page = ceil($student_count / $results_per_page);
+        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        // $page_first_result = ($page - 1) * $results_per_page;
+        $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' AND `student_admission_year` = '$course_year'";
+        $page_result = mysqli_query($connection, $page_query);
     ?>
 
     <div class="table-responsive user-table">
@@ -41,18 +45,18 @@
             </thead>
             <tbody>
                 <?php
-                while ($row = mysqli_fetch_assoc($page_result)) {
-                    // Fetch data for each student
-                    $student_id = $row['student_id'];
-                    $student_img = "assets/student/" . $row['student_img'];
-                    $student_name = $row['student_name'];
-                    $student_contact = $row['student_contact'];
-                    $student_course = $row['student_course'];
-                    $student_roll = $row['student_roll'];
-                    $student_admission_date = $row['student_admission_date'];
-                    $student_admission_year = $row['student_admission_year'];
-                    $student_added_by = $row['student_added_by'];
-                ?>
+                    while ($row = mysqli_fetch_assoc($page_result)) {
+                        // Fetch data for each student
+                        $student_id = $row['student_id'];
+                        $student_img = "assets/student/" . $row['student_img'];
+                        $student_name = $row['student_name'];
+                        $student_contact = $row['student_contact'];
+                        $student_course = $row['student_course'];
+                        $student_roll = $row['student_roll'];
+                        $student_admission_date = $row['student_admission_date'];
+                        $student_admission_year = $row['student_admission_year'];
+                        $student_added_by = $row['student_added_by'];
+                    ?>
                 <!-- Table rows for each student -->
                 <tr>
                     <td><?php echo $student_roll ?></td>
@@ -60,14 +64,14 @@
                     <td><?php echo $student_contact ?></td>
                     <td>
                         <?php
-                            $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
-                            $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
-                            $course_name = "";
-                            while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
-                                $course_name = $row['course_name'];
-                            }
-                            echo $course_name;
-                            ?>
+                                $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
+                                $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
+                                $course_name = "";
+                                while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
+                                    $course_name = $row['course_name'];
+                                }
+                                echo $course_name;
+                                ?>
                     </td>
                     <td><?php echo $student_admission_year ?></td>
                     <td>
@@ -84,18 +88,21 @@
                         </form>
                     </td>
                 </tr>
-                <?php } ?>
+                <?php }
+                } ?>
             </tbody>
         </table>
-        <nav aria-label="Page navigation example" class="w-100 mt-3">
+        <!-- <nav aria-label="Page navigation example" class="w-100 mt-3">
             <ul class="pagination">
                 <?php
+
                 for ($page = 1; $page <= $number_of_page; $page++) {
                     echo '<li class="page-item"><a class="page-link" href="view-students-by-course.php?page=' . $page . '">' . $page . ' </a></li>';
                 }
+
                 ?>
             </ul>
-        </nav>
+        </nav> -->
     </div>
 </div>
 <?php include('includes/footer.php') ?>
