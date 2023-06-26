@@ -37,6 +37,7 @@
 
                     $course_id = $_POST['course_id'];
                     $course_year = $_POST['course_year'];
+
                     $results_per_page = 10;
 
                     $fetch_students = "SELECT * FROM `bora_student` ORDER BY `student_added_date` DESC";
@@ -92,13 +93,6 @@
                                 Fee</button>
                         </form>
                     </td>
-                    <!-- <td>
-                            <form action="collect-fee.php" method="POST">
-                                <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                                <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
-                                    Fee</button>
-                            </form>
-                        </td> -->
                 </tr>
                 <?php
                     }
