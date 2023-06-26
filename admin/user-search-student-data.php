@@ -89,7 +89,15 @@
                     <td><?php echo $student_enrollment_number ?></td>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
-                    <td><?php echo $student_course ?></td>
+                    <td><?php
+
+                                    $fetch_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
+                                    $fetch_course_r = mysqli_query($connection, $fetch_course);
+                                    $course_name = "";
+                                    while ($row = mysqli_fetch_assoc($fetch_course_r)) {
+                                        $course_name = $row['course_name'];
+                                    }
+                                    echo $course_name ?></td>
                     <td><?php echo $student_admission_year ?></td>
                     <td>
                         <form action="user-student-details.php" method="post">
