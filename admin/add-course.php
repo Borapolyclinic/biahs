@@ -81,7 +81,7 @@
                     <th scope="col">YEAR 2</th>
                     <th scope="col">YEAR 3</th>
                     <th scope="col">YEAR 4</th>
-                    <th scope="col">UPDATE</th>
+                    <!-- <th scope="col">UPDATE</th> -->
                     <th scope="col">ACTION</th>
                     <th scope="col">DELETE</th>
                 </tr>
@@ -203,17 +203,17 @@
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
+                        <!-- <td>
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
                             <button type="submit" name="add-fee-1"
                                 class="btn btn-sm btn-outline-success">Update</button>
-                        </td>
+                        </td> -->
                     </form>
 
                     <td>
                         <form action="edit-course.php" method="POST">
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
                         </form>
                     </td>
 
@@ -237,18 +237,18 @@
                         </td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
+                        <!-- <td>
 
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
                             <button type="submit" name="add-fee-2"
                                 class="btn btn-sm btn-outline-success">Update</button>
 
-                        </td>
+                        </td> -->
                     </form>
                     <td>
                         <form action="edit-course.php" method="POST">
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
                         </form>
                     </td>
 
@@ -275,18 +275,16 @@
                                 class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
                         </td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
-
+                        <!-- <td>
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
                             <button type="submit" name="add-fee-3"
                                 class="btn btn-sm btn-outline-success">Update</button>
-
-                        </td>
+                        </td> -->
                     </form>
                     <td>
                         <form action="edit-course.php" method="POST">
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
                         </form>
                     </td>
 
@@ -318,18 +316,18 @@
                                 class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_4_fee ?>">
                         </td>
 
-                        <td>
+                        <!-- <td>
 
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
                             <button type="submit" name="add-fee-4"
                                 class="btn btn-sm btn-outline-success">Update</button>
 
-                        </td>
+                        </td> -->
                     </form>
                     <td>
                         <form action="edit-course.php" method="POST">
                             <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-warning">Edit</button>
                         </form>
                     </td>
 
