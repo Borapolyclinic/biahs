@@ -43,6 +43,7 @@
         </div>
     </div>
 
+
     <div class="w-100 mt-3">
         <p>Filter Students by Course and Year</p>
         <form action="view-students-by-course.php" method="POST" class="dashboard-tab p-4">
@@ -61,19 +62,24 @@
                     <?php } ?>
                 </select>
 
-                <select name="course_year" class="form-select m-1" aria-label="Default select example" required>
+                <div class="w-100 m-1">
+                    <input type="number" name="course_year" placeholder="Enter Year" min="1999" max="2025"
+                        class="form-control filter-input-box w-100">
+                </div>
+
+                <!-- <select class="form-select m-1" aria-label="Default select example" required>
                     <option selected>Select Year</option>
                     <?php
                     $fetch_course_year = "SELECT * FROM `bora_student`";
                     $fetch_course_year_res = mysqli_query($connection, $fetch_course_year);
-
+                    $student_admission_year = "";
                     while ($row = mysqli_fetch_assoc($fetch_course_year_res)) {
                         $student_admission_year = $row['student_admission_year'];
                     ?>
                     <option value="<?php echo $student_admission_year ?>"><?php echo $student_admission_year ?></option>
                     <?php } ?>
-                </select>
-                <button type="submit" name="filter-course" class="btn w-100 btn-success">Filter</button>
+                </select> -->
+                <button type="submit" name="filter-course" class="ml-2 btn w-100 btn-success">Filter</button>
             </div>
         </form>
     </div>
