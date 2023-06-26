@@ -47,7 +47,12 @@
                     <?php } ?>
                 </select>
 
-                <select name="course_year" class="form-select m-1" aria-label="Default select example" required>
+                <div class="w-100 m-1">
+                    <input type="number" maxlength="4" min="1999" max="2025" name="course_year" class="form-control"
+                        id="exampleFormControlInput1" placeholder="Enter Year (YYYY)">
+                </div>
+
+                <!-- <select name="course_year" class="form-select m-1" aria-label="Default select example" required>
                     <option selected>Select Year</option>
                     <?php
                     $fetch_course_year = "SELECT * FROM `bora_student`";
@@ -58,7 +63,7 @@
                     ?>
                     <option value="<?php echo $student_admission_year ?>"><?php echo $student_admission_year ?></option>
                     <?php } ?>
-                </select>
+                </select> -->
                 <button type="submit" name="filter-course" class="btn w-100 btn-success">Filter</button>
             </div>
         </form>

@@ -8,13 +8,41 @@
         <h5>View Students</h5>
     </div>
 
-    <div class="w-100">
+    <?php
+    require('includes/connection.php');
+    $query = "SELECT * FROM `bora_student`";
+    $res = mysqli_query($connection, $query);
+    $student_count = mysqli_num_rows($res);
+    $user_query = "SELECT * FROM `bora_users` WHERE `user_type` = 2";
+    $user_res = mysqli_query($connection, $user_query);
+    $count = mysqli_num_rows($user_res);
+    ?>
+
+    <div class="w-100 mb-3">
+        <form action="user-search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
+            <div class="w-100 m-1">
+                <select name="search_type" class="form-select" aria-label="Default select example">
+                    <option selected>Click here for options</option>
+                    <option value="1">Name</option>
+                    <option value="2">Mobile Number</option>
+                    <option value="3">UID</option>
+                </select>
+            </div>
+            <div class="w-100 m-1">
+                <input type="text" name="student_search" class="form-control filter-input-box"
+                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+            </div>
+            <button type="submit" name="search" class="btn btn-outline-success">Search</button>
+        </form>
+    </div>
+
+    <!-- <div class="w-100">
         <form action="user-search-student-data.php" method="POST" class="filter-row w-100">
             <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1"
                 placeholder="Enter Mobile Number, Aadhaar card number, Roll number, Name or Course to search user">
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
-    </div>
+    </div> -->
 
     <div class="table-responsive user-table">
         <table class="table table-bordered table-striped">
