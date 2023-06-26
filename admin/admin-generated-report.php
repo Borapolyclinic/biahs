@@ -22,6 +22,7 @@ include('components/navbar/admin-navbar.php');
                     <th scope="col">ADMISSION YEAR</th>
                     <th scope="col">CASH</th>
                     <th scope="col">BANK</th>
+                    <th scope="col">DUE</th>
                     <th scope="col">INVOICE</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@ include('components/navbar/admin-navbar.php');
                 <?php
                 require('includes/connection.php');
 
+                // =========== STUDENT WISE ===========
                 if (isset($_POST['generate_student_wise'])) {
                     $date_from = date('Y-m-d', strtotime($_POST['date_from']));
                     $date_to = date('Y-m-d', strtotime($_POST['date_to']));
@@ -86,6 +88,10 @@ include('components/navbar/admin-navbar.php');
                     <?php if ($bora_invoice_payment_mode == 'cash') { ?>
                     <td><?php echo $bora_invoice_grand_total ?></td>
                     <td>NA</td>
+                    <?php
+
+                                ?>
+                    <td>NA</td>
                     <td>
                         <form action="" method="post">
                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
@@ -98,6 +104,7 @@ include('components/navbar/admin-navbar.php');
                     <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
                     <td>NA</td>
                     <td><?php echo $bora_invoice_grand_total ?></td>
+
                     <td>
                         <form action="" method="post">
                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
@@ -106,14 +113,12 @@ include('components/navbar/admin-navbar.php');
                         </form>
                     </td>
                     <?php } ?>
-
-
-
-
                 </tr>
                 <?php
                     }
                 }
+
+                // =========== BATCH WISE ===========
                 if (isset($_POST['generate_batch_wise'])) {
                     $date_from = date('Y-m-d', strtotime($_POST['date_from']));
                     $date_to = date('Y-m-d', strtotime($_POST['date_to']));
@@ -178,6 +183,7 @@ include('components/navbar/admin-navbar.php');
 
                     <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
                     <td>NA</td>
+                    <td><?php echo $bora_invoice_grand_total ?></td>
                     <td><?php echo $bora_invoice_grand_total ?></td>
                     <td>
                         <form action="" method="post">

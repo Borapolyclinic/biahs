@@ -95,6 +95,12 @@
                 </div>
 
                 <div class="form-check w-100">
+                    <label for="exampleFormControlInput1" class="form-label">Enter Admission Year</label>
+                    <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control"
+                        id="exampleFormControlInput1" placeholder="">
+                </div>
+
+                <!-- <div class="form-check w-100">
                     <label class="form-check-label">Admission Year</label>
                     <select name="batch_wise_year" class="form-select" aria-label="Default select example">
                         <option selected>Click here for options</option>
@@ -109,7 +115,7 @@
                         </option>
                         <?php } ?>
                     </select>
-                </div>
+                </div> -->
 
             </div>
             <button type="submit" name="generate_batch_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
