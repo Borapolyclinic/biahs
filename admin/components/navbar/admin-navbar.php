@@ -16,7 +16,7 @@
                         Users
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="users.php">Create User</a></li>
+                        <li><a class="dropdown-item" href="users.php">Add User</a></li>
                         <li><a class="dropdown-item" href="view-user.php">View User</a></li>
                     </ul>
                 </li>
@@ -27,20 +27,13 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="add-student.php">Add Student</a></li>
-                        <li><a class="dropdown-item" href="view-students.php">View Student</a></li>
+                        <li><a class="dropdown-item" href="view-students.php">View Students</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Course
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="add-course.php">Add Course</a></li>
-                        <!-- <li><a class="dropdown-item" href="add-semester.php">Add Semester</a></li> -->
-                        <!-- <li><a class="dropdown-item" href="course-settings.php">View all courses</a></li> -->
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="add-course.php">Courses</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="admin-past-payments.php">Payment
                         History</a>

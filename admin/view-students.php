@@ -32,7 +32,7 @@
             </div>
             <div class="w-100 m-1">
                 <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+                    id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
@@ -111,6 +111,7 @@
                                             <option selected>Open this select menu</option>
                                             <option value="1">Graduated</option>
                                             <option value="2">Active</option>
+                                            <option value="3">Left</option>
                                         </select>
                                     </div>
                                 </div>
@@ -171,6 +172,8 @@
                         <p class="btn btn-sm btn-dark">Graduated</p>
                         <?php } else if ($student_status == '2') { ?>
                         <p class="btn btn-sm btn-success">Active</p>
+                        <?php } else if ($student_status == '3') { ?>
+                        <p class="btn btn-sm btn-primary">Left</p>
                         <?php } else if (empty($student_status)) { ?>
                         <p class="btn btn-sm btn-info">Not Updated</p>
                         <?php } ?>

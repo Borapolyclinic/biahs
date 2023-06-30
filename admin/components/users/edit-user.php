@@ -40,6 +40,6 @@
             <input type="password" name="user_password" value="<?php echo $user_password ?>" class="form-control"
                 required id="userPassword">
         </div>
-        <button type="submit" name="update" class="btn btn-primary">Generate User ID</button>
+        <button type="submit" name="update" class="btn btn-primary">Update</button>
     </form>
 </div>

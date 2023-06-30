@@ -57,12 +57,12 @@
                     <input type="text" name="course_name" required class="form-control" id="courseName1">
                 </div>
                 <div class="m-1 mobile-input col-md-5">
-                    <label for="courseYear1" class="form-label">Course Year</label>
+                    <label for="courseYear1" class="form-label">Course Length</label>
                     <select class="form-select" name="course_tenure" id="courseYear1">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Year</option>
+                        <option value="3">3 Year</option>
+                        <option value="4">4 Year</option>
                     </select>
                 </div>
                 <button type="submit" name="add-course" class="mobile-input btn btn-sm btn-primary mt-4">+

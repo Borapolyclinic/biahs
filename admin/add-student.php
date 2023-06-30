@@ -173,7 +173,7 @@
                         aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
-                    <label for="fathersName" class="form-label">Guardian's Contact Number (Optional)</label>
+                    <label for="fathersName" class="form-label">Additional Number (Optional)</label>
                     <input type="number" class="form-control" name="student_guardian_contact_2" id="fathersName"
                         aria-describedby="emailHelp">
                 </div>

@@ -13,6 +13,8 @@
         }
     }
     if (isset($_POST['submit'])) {
+
+
         $student_img = $_FILES["student_img"]["name"];
         $student_enrollment_number = mysqli_real_escape_string($connection, $_POST['student_enrollment_number']);
         $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
