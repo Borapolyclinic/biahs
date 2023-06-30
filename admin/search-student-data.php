@@ -104,6 +104,7 @@
                     <th scope="col">Course</th>
                     <th scope="col">Admission Year</th>
                     <th scope="col">Action</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>

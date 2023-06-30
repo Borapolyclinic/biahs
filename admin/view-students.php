@@ -153,7 +153,7 @@
                     $student_status = $row['student_status'];
                 ?>
                 <tr>
-                    <td><?php echo $student_enrollment_number ?></td>
+                    <td><?php echo $student_roll ?></td>
                     <th scope="row"><?php echo $student_name ?></th>
                     <td><?php echo $student_contact ?></td>
                     <td><?php

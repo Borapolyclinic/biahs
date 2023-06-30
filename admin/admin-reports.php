@@ -60,7 +60,7 @@
         <div class="user-table" style="display: none;" id="student-wise">
             <div class="input-group mb-3">
                 <select name="student_wise_details" class="form-select" aria-label="Default select example">
-                    <option selected>Open this menu for options</option>
+                    <option value="null">Open this menu for options</option>
                     <option value="1">Name</option>
                     <option value="2">UID</option>
                     <option value="3">Contact Number</option>
@@ -80,7 +80,7 @@
                 <div class="form-check w-100">
                     <label class="form-check-label">Course</label>
                     <select name="batch_wise_course" class="form-select" aria-label="Default select example">
-                        <option selected>Click here to open courses</option>
+                        <option value="null">Click here to open courses</option>
                         <?php
                         $fetch_course = "SELECT * FROM `bora_course`";
                         $fetch_course_r = mysqli_query($connection, $fetch_course);
