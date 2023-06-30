@@ -40,6 +40,12 @@
             $("#emptyModal").modal("show");
         });
     }
+
+    function notFound() {
+        $(document).ready(function() {
+            $("#notFoundModal").modal("show");
+        });
+    }
     </script>
     <!-- ======================= MODAL ======================= -->
     <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -61,6 +67,31 @@
             </div>
         </div>
     </div>
+
+
+
+    <!-- ======================= NOT FOUND ======================= -->
+    <div class="modal fade hide" id="notFoundModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Oops!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <p>No Student found!</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                    <a href="dashboard.php" class="btn btn-primary">Go back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     <div class="table-responsive user-table">
@@ -101,35 +132,37 @@
                         } elseif ($search_type == "2") {
                             $page_query .= " `student_contact` LIKE '%$student_search%'";
                         } elseif ($search_type == "3") {
-                            $page_query .= " `student_enrollment_number` LIKE '%$student_search%'";
+                            $page_query .= " `student_roll` LIKE '%$student_search%'";
                         }
 
                         $page_result = mysqli_query($connection, $page_query);
+                        $page_result_count = mysqli_num_rows($page_result);
 
-                        while ($row = mysqli_fetch_assoc($page_result)) {
-                            $student_id = $row['student_id'];
-                            $student_img = "assets/student/" . $row['student_img'];
-                            $student_name = $row['student_name'];
-                            $student_contact = $row['student_contact'];
-                            $student_course = $row['student_course'];
-                            $student_enrollment_number = $row['student_enrollment_number'];
-                            $student_admission_year = $row['student_admission_year'];
-                            $student_added_by = $row['student_added_by'];
+                        if ($page_result_count > 0) {
+                            while ($row = mysqli_fetch_assoc($page_result)) {
+                                $student_id = $row['student_id'];
+                                $student_img = "assets/student/" . $row['student_img'];
+                                $student_name = $row['student_name'];
+                                $student_contact = $row['student_contact'];
+                                $student_course = $row['student_course'];
+                                $student_roll = $row['student_roll'];
+                                $student_admission_year = $row['student_admission_year'];
+                                $student_added_by = $row['student_added_by'];
                         ?>
                 <tr>
-                    <td><?php echo $student_enrollment_number; ?></td>
+                    <td><?php echo $student_roll; ?></td>
                     <td><?php echo $student_name; ?></td>
                     <td><?php echo $student_contact; ?></td>
                     <td>
                         <?php
-                                    $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
-                                    $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
-                                    $course_name = "";
-                                    while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
-                                        $course_name = $row['course_name'];
-                                    }
-                                    echo $course_name;
-                                    ?>
+                                        $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
+                                        $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
+                                        $course_name = "";
+                                        while ($row = mysqli_fetch_assoc($fetch_course_name_res)) {
+                                            $course_name = $row['course_name'];
+                                        }
+                                        echo $course_name;
+                                        ?>
                     </td>
                     <td><?php echo $student_admission_year; ?></td>
                     <td>
@@ -147,6 +180,9 @@
                     </td>
                 </tr>
                 <?php
+                            }
+                        } else if ($page_result_count == '0') {
+                            echo "<script>notFound()</script>";
                         }
                     }
                 }
