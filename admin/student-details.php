@@ -128,7 +128,7 @@
 
     ?>
     <div class="container-row w-100">
-        <form class="col-md-8 m-1" method="POST" action="" enctype="multipart/form-data">
+        <form class="col-md-10 m-1" method="POST" action="" enctype="multipart/form-data">
             <div class="add-user-form">
                 <input class="form-control" name="student_id" hidden type="text" value="<?php echo $student_id ?>"
                     id="formFile">
@@ -167,20 +167,25 @@
                         <input type="text" class="form-control" value="<?php echo $student_roll ?>" name="student_roll"
                             id="studentName" aria-describedby="emailHelp">
                     </div>
+                    <?php
+                    $fetch_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
+                    $fetch_name_res = mysqli_query($connection, $fetch_name);
+                    $new_course_id = "";
+                    $new_course_name = "";
+                    while ($row = mysqli_fetch_assoc($fetch_name_res)) {
+                        $new_course_id = $row['course_id'];
+                        $new_course_name = $row['course_name'];
+                    }
+                    ?>
                     <div class="w-100 mobile-input m-1">
-                        <label for="studentNumber" class="form-label">Selected Course</label>
+                        <label for="studentAdmissionDate" class="form-label">Selected Course</label>
+                        <input type="text" class="form-control" value="<?php echo $new_course_name  ?>"
+                            id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
+                    </div>
+                    <div class="w-100 mobile-input m-1">
+                        <label for="studentNumber" class="form-label">Change Course</label>
                         <select class="form-select" name="student_course" aria-label="Default select example">
-                            <?php
-                            $fetch_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
-                            $fetch_name_res = mysqli_query($connection, $fetch_name);
-                            $new_course_id = "";
-                            $new_course_name = "";
-                            while ($row = mysqli_fetch_assoc($fetch_name_res)) {
-                                $new_course_id = $row['course_id'];
-                                $new_course_name = $row['course_name'];
-                            }
-                            ?>
-                            <option selected><?php echo $new_course_name ?>(Selected)</option>
+                            <option selected>Click here for options</option>
                             <?php
                             $fetch_course_name = "SELECT * FROM `bora_course`";
                             $fetch_course_res = mysqli_query($connection, $fetch_course_name);
@@ -364,13 +369,25 @@
                     Upload | View Aadhaar Card
                 </button>
             </form>
-            <form method="POST" action="" class="add-user-form-tab">
+            <form method="POST" action="10th-marksheet-update.php" class="add-user-form-tab">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
                     Upload | View 10th Marksheet
                 </button>
             </form>
-            <form method="POST" action="" class="add-user-form-tab">
+            <form method="POST" action="12th-marksheet-update.php" class="add-user-form-tab">
+                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                <button type="submit" name="view" class="student-doc-btn">
+                    Upload | View 12th Marksheet
+                </button>
+            </form>
+            <form method="POST" action="cast-certificate-update.php" class="add-user-form-tab">
+                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                <button type="submit" name="view" class="student-doc-btn">
+                    Upload | View Cast Certificate
+                </button>
+            </form>
+            <form method="POST" action="tc-update.php" class="add-user-form-tab">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
                     Upload | View Transfer Certificate

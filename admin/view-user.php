@@ -8,14 +8,6 @@
         <h5>View User</h5>
     </div>
 
-    <form action="" method="POST" class="form-row">
-        <div class="form-floating w-100">
-            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Enter Mobile Number or Name </label>
-        </div>
-        <button class="btn btn-outline-primary">Search</button>
-    </form>
-
     <script>
     function openModal(userId) {
         $(document).ready(function() {

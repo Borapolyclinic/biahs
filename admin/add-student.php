@@ -1,5 +1,20 @@
 <?php include('includes/header.php') ?>
 <?php include('components/navbar/admin-navbar.php') ?>
+
+<script>
+function hideInputField() {
+    var addressCheckBox = document.getElementById("addressCheckBox");
+    var inputField = document.getElementById("communicationAddress");
+
+    if (addressCheckBox.checked) {
+        inputField.style.display = "none";
+        inputField.setAttribute("disabled", true); // Add this line
+    } else {
+        inputField.style.display = "block";
+        inputField.removeAttribute("disabled"); // Add this line
+    }
+}
+</script>
 <div class="container user-form-container">
     <div class="page-marker-row">
         <div class="page-marker">
@@ -89,25 +104,6 @@
             </div>
 
             <div class="add-user-form-row mb-3">
-                <div class="m-1 w-100 mobile-input">
-                    <label for="formFile" class="form-label">Upload 10th Marksheet</label>
-                    <input class="form-control" name="student_10th_marksheet" type="file" id="formFile" required>
-                </div>
-                <div class="m-1 w-100 mobile-input">
-                    <label for="formFile" class="form-label">Upload 12th Marksheet</label>
-                    <input class="form-control" name="student_12th_marksheet" type="file" id="formFile" required>
-                </div>
-                <div class="m-1 w-100 mobile-input">
-                    <label for="formFile" class="form-label">Upload TC | Migration Certificate</label>
-                    <input class="form-control" name="student_tc_certificate" type="file" id="formFile" required>
-                </div>
-                <div class="m-1 w-100 mobile-input">
-                    <label for="formFile" class="form-label">Upload Allotment Letter</label>
-                    <input class="form-control" name="student_alot_letter" type="file" id="formFile" required>
-                </div>
-            </div>
-
-            <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Category</label>
                     <select required class="form-select" name="student_category" aria-label="Default select example">
@@ -138,8 +134,33 @@
                     </select>
                 </div>
             </div>
+        </div>
 
-
+        <div class="add-user-form mt-3">
+            <div class="add-user-form-row mb-3">
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Upload 10th Marksheet</label>
+                    <input class="form-control" name="student_10th_marksheet" type="file" id="formFile" required>
+                </div>
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Upload 12th Marksheet</label>
+                    <input class="form-control" name="student_12th_marksheet" type="file" id="formFile" required>
+                </div>
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Upload TC | Migration Certificate</label>
+                    <input class="form-control" name="student_tc_certificate" type="file" id="formFile" required>
+                </div>
+            </div>
+            <div class="add-user-form-row mb-3">
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Upload Allotment Letter</label>
+                    <input class="form-control" name="student_alot_letter" type="file" id="formFile" required>
+                </div>
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Upload Cast Certificate</label>
+                    <input class="form-control" name="student_cast_certificate" type="file" id="formFile" required>
+                </div>
+            </div>
         </div>
 
         <div class="add-user-form mt-3">
@@ -221,8 +242,8 @@
             </div>
             <div class="mb-3" id="communicationAddress">
                 <label for="exampleFormControlTextarea1" class="form-label">Mailing Address</label>
-                <textarea class="form-control" name="student_comm_address" id="exampleFormControlTextarea1" rows="3"
-                    required></textarea>
+                <textarea class="form-control" name="student_comm_address" id="exampleFormControlTextarea1"
+                    rows="3"></textarea>
             </div>
             <button type="submit" name="submit" class="w-100 btn btn-outline-primary">Add Student</button>
         </div>

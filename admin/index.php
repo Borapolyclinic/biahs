@@ -1,7 +1,6 @@
 <?php include('includes/header.php') ?>
 <div class="container form-container">
     <?php
-
     require('includes/connection.php');
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
@@ -54,11 +53,10 @@
     }
     ?>
 
-    <form class="login-form" method="POST" action="">
+    <form class="login-form " method="POST" action="">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Registered Mobile Number</label>
-            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
+            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
