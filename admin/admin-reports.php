@@ -21,7 +21,7 @@
     }
     ?>
 
-    <form action="admin-generated-report.php" class="w-100" method="POST">
+    <form target="_blank" action="admin-generated-report.php" class="w-100" method="POST">
         <div class="user-table">
             <div class="filter-row">
                 <div class="w-100 m-1">
@@ -44,13 +44,13 @@
                 <div class="form-check w-100">
                     <input class="form-check-input" type="radio" value="Student" name="selected_radio"
                         id="student-wise-radio" onclick="showFields('student-wise', 'batch-wise')">
-                    <label class="form-check-label" for="student-wise-radio">Student Wise</label>
+                    <label class="form-check-label" for="student-wise-radio">Student-wise</label>
                 </div>
 
                 <div class="form-check w-100">
                     <input class="form-check-input" type="radio" value="Batch" name="selected_radio"
                         id="batch-wise-radio" onclick="showFields('batch-wise', 'student-wise')">
-                    <label class="form-check-label" for="batch-wise-radio">Batch Wise</label>
+                    <label class="form-check-label" for="batch-wise-radio">Batch-wise</label>
                 </div>
             </div>
         </div>
@@ -59,14 +59,8 @@
         <!-- ======================= STUDENT WISE ======================= -->
         <div class="user-table" style="display: none;" id="student-wise">
             <div class="input-group mb-3">
-                <select name="student_wise_details" class="form-select" aria-label="Default select example">
-                    <option value="null">Open this menu for options</option>
-                    <option value="1">Name</option>
-                    <option value="2">UID</option>
-                    <option value="3">Contact Number</option>
-                </select>
-                <input type="text" name="student_wise_data" class="form-control"
-                    aria-label="Text input with dropdown button">
+                <input type="text" name="student_wise_data" class="form-control w-100"
+                    aria-label="Text input with dropdown button" placeholder="Enter UID">
             </div>
 
             <button type="submit" name="generate_student_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate

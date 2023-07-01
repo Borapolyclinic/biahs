@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="add-course.php">Courses</a>
+                    <a class="nav-link" aria-current="page" href="add-course.php">Courses</a>
                 </li>
 
                 <li class="nav-item">

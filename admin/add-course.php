@@ -8,6 +8,8 @@
         <h5>Add Course</h5>
     </div>
 
+
+
     <?php
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
@@ -71,6 +73,14 @@
         </div>
     </form>
 
+    <script>
+    function deletePop(courseId) {
+        $(document).ready(function() {
+            $("#deleteModal").modal("show");
+        });
+    }
+    </script>
+
     <div class="table-responsive user-table">
         <table class="table table-bordered">
             <thead>
@@ -88,6 +98,11 @@
             </thead>
             <tbody>
                 <?php
+                if (isset($_POST['delete_confirm'])) {
+                    $course_id = $_POST['course_id'];
+                    $del_query = "DELETE FROM `bora_course` WHERE `course_id` = '$course_id'";
+                    $del_query_res = mysqli_query($connection, $del_query);
+                }
 
                 // ====================== UPDATE ======================
                 if (isset($_POST['update-course'])) {
@@ -117,8 +132,36 @@
                 // ====================== DELETE ======================
                 if (isset($_POST['del'])) {
                     $course_id = $_POST['course_id'];
-                    $del_query = "DELETE FROM `bora_course` WHERE `course_id` = '$course_id'";
-                    $del_query_res = mysqli_query($connection, $del_query);
+                    echo '<script>deletePop(' . $course_id . ');</script>'; ?>
+                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Delete</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="modal-body">
+                                    <div>
+                                        <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                        <p>Are you sure you want to delete this course?</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="delete_confirm" class="btn btn-danger">Delete</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <?php
+
                 }
 
                 // ====================== UPDATE YEAR 1 FEE ======================
@@ -188,7 +231,7 @@
                     $course_year_2_fee = $row['course_year_2_fee'];
                     $course_year_3_fee = $row['course_year_3_fee'];
                     $course_year_4_fee = $row['course_year_4_fee'];
-                    ?>
+                ?>
                 <tr>
                     <th scope="row" class="w-30"><?php echo $course_name; ?></th>
                     <td><?php echo $course_tenure ?> Year</td>
@@ -198,7 +241,8 @@
                     <form action="" method="POST">
                         <td>
                             <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹₹<?php echo $course_year_1_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹₹<?php echo $course_year_1_fee ?>"
+                                disabled>
                         </td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
@@ -228,12 +272,14 @@
                     <?php } else if ($course_tenure == '2') { ?>
                     <form action="" method="POST">
                         <td>
-                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?> "
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>"
+                                disabled>
                         </td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
@@ -264,15 +310,18 @@
                     <form action="" method="POST">
                         <td>
                             <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>"
+                                disabled>
                         </td>
                         <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                         <!-- <td>
@@ -301,19 +350,23 @@
                     <form action="" method="POST">
                         <td>
                             <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>"
+                                disabled>
                         </td>
                         <td>
                             <input type="number" name="course_year_4_fee" value="<?php echo $course_year_4_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_4_fee ?>">
+                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_4_fee ?>"
+                                disabled>
                         </td>
 
                         <!-- <td>

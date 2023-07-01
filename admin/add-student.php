@@ -1,20 +1,5 @@
 <?php include('includes/header.php') ?>
 <?php include('components/navbar/admin-navbar.php') ?>
-
-<script>
-function hideInputField() {
-    var addressCheckBox = document.getElementById("addressCheckBox");
-    var inputField = document.getElementById("communicationAddress");
-
-    if (addressCheckBox.checked) {
-        inputField.style.display = "none";
-        inputField.setAttribute("disabled", true); // Add this line
-    } else {
-        inputField.style.display = "block";
-        inputField.removeAttribute("disabled"); // Add this line
-    }
-}
-</script>
 <div class="container user-form-container">
     <div class="page-marker-row">
         <div class="page-marker">
@@ -28,6 +13,7 @@ function hideInputField() {
             <ion-icon name="cloud-upload-outline"></ion-icon> Bulk Upload Student Data
         </a>
     </div>
+
     <form class="w-100" method="POST" action="add-student-success.php" enctype="multipart/form-data">
         <div class="add-user-form">
             <div class="add-user-form-row mb-3">
@@ -246,7 +232,25 @@ function hideInputField() {
                     rows="3"></textarea>
             </div>
             <button type="submit" name="submit" class="w-100 btn btn-outline-primary">Add Student</button>
+            <!-- <button type="button" class="w-100 btn btn-outline-primary" data-bs-toggle="modal"
+                data-bs-target="#confirmModal">
+                Add Student
+            </button> -->
         </div>
     </form>
 </div>
+<script>
+function hideInputField() {
+    var addressCheckBox = document.getElementById("addressCheckBox");
+    var inputField = document.getElementById("communicationAddress");
+
+    if (addressCheckBox.checked) {
+        inputField.style.display = "none";
+        inputField.setAttribute("disabled", true); // Add this line
+    } else {
+        inputField.style.display = "block";
+        inputField.removeAttribute("disabled"); // Add this line
+    }
+}
+</script>
 <?php include('includes/footer.php') ?>

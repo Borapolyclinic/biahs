@@ -35,7 +35,7 @@
         while ($row = mysqli_fetch_assoc($fetch_data_res)) {
             $student_id = $row['student_id'];
             $student_name = $row['student_name'];
-            $student_enrollment_number = $row['student_enrollment_number'];
+            $student_roll = $row['student_roll'];
             $student_course_id = $row['student_course'];
             $student_aadhar_address = $row['student_aadhar_address'];
             $student_contact = $row['student_contact'];
@@ -47,13 +47,13 @@
     ?>
     <form class="add-user-form" method="POST" action="generate-invoice.php">
         <input type="text" name="bora_invoice_student_id" value="<?php echo $student_id ?>" hidden>
-        <input type="text" name="bora_invoice_student_en_no" value="<?php echo $student_enrollment_number ?>" hidden>
+        <input type="text" name="bora_invoice_student_en_no" value="<?php echo $student_roll ?>" hidden>
 
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
             <h5>Bora Institute of Allied Health Sciences</h5>
-            <p>Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong>
+            <p>Sewa Nagar, NH-24, Sitapur Road. Lucknow - 226201.
+                <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
                 info@borainstitute.com.
                 <strong>Website:</strong> borainstitute.com
             </p>
@@ -187,7 +187,7 @@
                                     $course_year_4_fee = $row['course_year_4_fee'];
                                 }
                                 if ($course_tenure == '1') { ?>
-                                <option value="<?php echo $course_year_1_fee ?>">Year 1 Fee</option>
+                                <option value="Year 1 Fee">Year 1 Fee</option>
                                 <?php }
                                 if ($course_tenure == '2') { ?>
                                 <option value="Year 1 Fee">Year 1 Fee</option>

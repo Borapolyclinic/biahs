@@ -8,58 +8,6 @@
         });
     }
     </script>
-    <!-- ======================= MODAL ======================= -->
-    <!-- <div class="modal fade hide" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <p>Are you sure you want to add this student?</p>
-                    </div>
-                </div>
-                <form action="" method="POST" class="modal-footer">
-                    <input type="text" name="student_img" value="<?php echo $student_img ?>">
-                    <input type="text" name="student_enrollment_number"
-                        value="<?php echo $student_enrollment_number ?>">
-                    <input type="text" name="student_name" value="<?php echo $student_name ?>">
-                    <input type="text" name="student_contact" value="<?php echo $student_contact ?>">
-                    <input type="text" name="student_email" value="<?php echo $student_email ?>">
-                    <input type="text" name="student_dob" value="<?php echo $student_dob ?>">
-                    <input type="text" name="student_roll" value="<?php echo $student_roll ?>">
-                    <input type="text" name="student_course" value="<?php echo $student_course ?>">
-                    <input type="text" name="student_admission_date" value="<?php echo $student_admission_date ?>">
-                    <input type="text" name="student_admission_year" value="<?php echo $student_admission_year ?>">
-                    <input type="text" name="student_10th_marksheet" value="<?php echo $student_10th_marksheet ?>">
-                    <input type="text" name="student_12th_marksheet" value="<?php echo $student_12th_marksheet ?>">
-                    <input type="text" name="student_tc_certificate" value="<?php echo $student_tc_certificate ?>">
-                    <input type="text" name="student_alot_letter" value="<?php echo $student_alot_letter ?>">
-                    <input type="text" name="student_cast_certificate" value="<?php echo $student_cast_certificate ?>">
-                    <input type="text" name="student_category" value="<?php echo $student_category ?>">
-                    <input type="text" name="student_admission_mode" value="<?php echo $student_admission_mode ?>">
-                    <input type="text" name="student_gender" value="<?php echo $student_gender ?>">
-                    <input type="text" name="student_father" value="<?php echo $student_father ?>">
-                    <input type="text" name="student_guardian_name" value="<?php echo $student_guardian_name ?>">
-                    <input type="text" name="student_guardian_contact" value="<?php echo $student_guardian_contact ?>">
-                    <input type="text" name="student_guardian_contact_2"
-                        value="<?php echo $student_guardian_contact_2 ?>">
-                    <input type="text" name="student_aadhar_number" value="<?php echo $student_aadhar_number ?>">
-                    <input type="text" name="student_aadhar_file" value="<?php echo $student_aadhar_file ?>">
-                    <input type="text" name="student_aadhar_address" value="<?php echo $student_aadhar_address ?>">
-                    <input type="text" name="student_comm_address" value="<?php echo $student_comm_address ?>">
-                    <input type="text" name="student_added_by" value="<?php echo $student_added_by ?>">
-
-
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Yes</button>
-                </form>
-            </div>
-        </div>
-    </div> -->
-
     <?php
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
@@ -73,6 +21,7 @@
     }
 
     if (isset($_POST['submit'])) {
+        echo "Hello World";
         $student_img = $_FILES["student_img"]["name"];
         $student_enrollment_number = mysqli_real_escape_string($connection, $_POST['student_enrollment_number']);
         $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
