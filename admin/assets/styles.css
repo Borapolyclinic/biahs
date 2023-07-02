@@ -41,6 +41,23 @@ input::-webkit-inner-spin-button {
   background-color: #e7e7e7e7 !important;
   z-index: 999;
 }
+.nav-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.nav-item ion-icon {
+  font-size: 24px;
+}
+.nav-link {
+  margin: 0 !important;
+  text-decoration: none;
+}
+.nav-link ion-icon {
+  font-size: 24px;
+  margin-right: 5px !important;
+}
 
 /* ============ DASHBOARD ============ */
 .dashboard-greeting {
@@ -453,6 +470,29 @@ input::-webkit-inner-spin-button {
     border-radius: 10px;
     padding: 25px;
     background-color: #fff;
+  }
+
+  /* ============ NAVBAR ============ */
+  .navbar {
+    border: 1px solid #e7e7e7e7 !important;
+    background-color: #e7e7e7e7 !important;
+    z-index: 999;
+  }
+  .nav-item {
+    display: block;
+  }
+  .nav-item ion-icon {
+    font-size: 16px;
+    margin-right: 5px !important;
+    display: none;
+  }
+  .nav-link {
+    margin: 0 !important;
+    text-decoration: none;
+  }
+  .nav-link ion-icon {
+    font-size: 24px;
+    margin-right: 5px !important;
   }
 
   /* ============ ADD USER ============ */

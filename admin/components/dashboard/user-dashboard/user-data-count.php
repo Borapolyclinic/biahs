@@ -4,7 +4,6 @@
         <p><?php echo $user_name ?></p>
     </div>
 
-
     <?php
     $query = "SELECT * FROM `bora_student`";
     $res = mysqli_query($connection, $query);
@@ -15,7 +14,7 @@
         <form action="user-search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
             <div class="w-100 m-1">
                 <select name="search_type" class="form-select" aria-label="Default select example">
-                    <option selected>Click here for options</option>
+                    <option value="null">Click here for options</option>
                     <option value="1">Name</option>
                     <option value="2">Mobile Number</option>
                     <option value="3">UID</option>
@@ -23,7 +22,7 @@
             </div>
             <div class="w-100 m-1">
                 <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+                    id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
@@ -49,7 +48,7 @@
 
                 <div class="w-100 m-1">
                     <input type="number" maxlength="4" min="1999" max="2025" name="course_year" class="form-control"
-                        id="exampleFormControlInput1" placeholder="Enter Year (YYYY)">
+                        id="exampleFormControlInput1" placeholder="Enter Year">
                 </div>
 
                 <!-- <select name="course_year" class="form-select m-1" aria-label="Default select example" required>

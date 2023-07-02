@@ -29,7 +29,7 @@
             </div>
             <div class="w-100 m-1">
                 <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+                    id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>

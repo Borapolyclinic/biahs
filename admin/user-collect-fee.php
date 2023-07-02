@@ -164,6 +164,7 @@
                             ?>
                         </td>
                         <td>
+
                             <select name="invoice_tenure" class="form-select w-100" aria-label="Default select example">
                                 <option selected>Click here to open menu</option>
                                 <?php
@@ -172,6 +173,7 @@
 
                                 $course_id = "";
                                 $course_name = "";
+                                $course_tenure = "";
                                 $course_year_1_fee = "";
                                 $course_year_2_fee = "";
                                 $course_year_3_fee = "";
@@ -205,9 +207,12 @@
                                 <option value="Year 4 Fee">Year 4 Fee</option>
                                 <?php } ?>
                             </select>
+                            <input type="text" name="bora_invoice_tenure_id" value="<?php echo $course_tenure ?>"
+                                hidden>
                         </td>
 
                         <td>
+
                             <div>
                                 <input type="number" name="invoice_value" id="collectingAmount" class="form-control"
                                     id="exampleFormControlInput1" placeholder="">

@@ -15,10 +15,10 @@
     $user_query = "SELECT * FROM `bora_users` WHERE `user_type` = '2'";
     $user_res = mysqli_query($connection, $user_query);
     $count = mysqli_num_rows($user_res);
-    ?>
-    <?php
+
     if ($student_count > 0) {
     ?>
+
     <div class="w-100 mb-3">
         <form action="search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
             <div class="w-100 m-1">
@@ -38,9 +38,15 @@
     </div>
 
     <script>
-    function deletePop(studentId) {
+    function openModal(studentId) {
         $(document).ready(function() {
             $("#exampleModal").modal("show");
+        });
+    }
+
+    function deleteStudentModal(studentId) {
+        $(document).ready(function() {
+            $("#deleteStudent").modal("show");
         });
     }
     </script>
@@ -63,16 +69,50 @@
             </thead>
             <tbody>
                 <?php
-                    if (isset($_POST['delete'])) {
+
+                    if (isset($_POST['delete_success'])) {
                         $student_id = $_POST['student_id'];
+
                         $delete_query = "DELETE FROM `bora_student` WHERE `student_id` = '$student_id'";
                         $delete_res = mysqli_query($connection, $delete_query);
 
                         if ($delete_res) { ?>
                 <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
-
                 <?php
                         }
+                    }
+
+                    if (isset($_POST['delete'])) {
+                        $student_id = $_POST['student_id'];
+                        echo '<script>deleteStudentModal(' . $student_id . ');</script>'; ?>
+
+                <div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Student</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <form action="" method="POST">
+                                <div class="modal-body">
+                                    <div>
+                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                                        <p>Are you sure you want to delete this student?</p>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="delete_success" class="btn btn-success">Yes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php
+
                     }
 
                     if (isset($_POST['update_status'])) {
@@ -91,7 +131,7 @@
                     if (isset($_POST['change'])) {
                         $student_id = $_POST['student_id'];
                         echo '<script>openModal(' . $student_id . ');</script>';
-                        ?>
+                    ?>
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

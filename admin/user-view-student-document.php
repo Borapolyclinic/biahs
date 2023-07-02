@@ -24,18 +24,27 @@ if (isset($_POST['view'])) {
 
 ?>
 <div class="container user-form-container">
-    <div class="page-marker">
-        <a href="view-students.php">
+    <form action="user-student-details.php" method="POST" class="page-marker">
+        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+        <button type="submit" name="edit_back" class="page-marker no-btn">
+            <a href="#">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+            </a>
+            <h5>Aadhaar Card Image</h5>
+        </button>
+    </form>
+    <!-- <div class="page-marker">
+        <a href="user-view-students.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Aadhaar Card Images</h5>
-    </div>
+    </div> -->
     <div class="doc-row w-100">
         <div class="col-md-6 doc-img">
             <form action="aadhar-image-update.php" method="POST" enctype="multipart/form-data" class="">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <img src="<?php echo $student_aadhar_file ?>" alt="">
-                <p>Front Image</p>
+                <!-- <p>Front Image</p> -->
                 <div class="mb-3">
                     <input class="form-control" name="student_aadhar_file" type="file" id="formFile">
                 </div>
@@ -43,7 +52,7 @@ if (isset($_POST['view'])) {
             </form>
         </div>
 
-        <div class="col-md-6 doc-img">
+        <!-- <div class="col-md-6 doc-img">
             <form action="aadhar-back-image-update.php" method="POST" enctype="multipart/form-data">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <img src="<?php echo $student_aadhar_back_file ?>" alt="">
@@ -53,7 +62,7 @@ if (isset($_POST['view'])) {
                 </div>
                 <button type="submit" name="back" class="w-100 btn btn-outline-success">Change/Upload Image</button>
             </form>
-        </div>
+        </div> -->
     </div>
 </div>
 <?php include('includes/footer.php') ?>

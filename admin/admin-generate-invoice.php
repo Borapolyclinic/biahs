@@ -33,7 +33,6 @@ include('includes/header.php') ?>
             $course_name = $row['course_name'];
         }
         $bora_invoice_for = $_POST['invoice_for'];
-        $bora_invoice_tenure_id = $_POST['bora_invoice_tenure_id'];
         $bora_invoice_tenure = $_POST['invoice_tenure'];
         $bora_invoice_payment_mode = $_POST['bora_invoice_payment_mode'];
         $bora_invoice_value = $_POST['invoice_value'];
@@ -64,7 +63,6 @@ include('includes/header.php') ?>
                 `bora_invoice_student_admission_year`,
                 `bora_invoice_for`,
                 `bora_invoice_tenure`,
-                `bora_invoice_tenure_id`,
                 `bora_invoice_payment_mode`,
                 `bora_invoice_cheque_number`,
                 `bora_invoice_bank_name`,
@@ -88,7 +86,6 @@ include('includes/header.php') ?>
                 '$bora_invoice_student_admission_year',
                 '$bora_invoice_for',
                 '$bora_invoice_tenure',
-                '$bora_invoice_tenure_id',
                 '$bora_invoice_payment_mode',
                 '$bora_invoice_cheque_number',
                 '$bora_invoice_bank_name',
@@ -116,7 +113,6 @@ include('includes/header.php') ?>
                 `bora_invoice_student_admission_year`,
                 `bora_invoice_for`,
                 `bora_invoice_tenure`,
-                `bora_invoice_tenure_id`,
                 `bora_invoice_payment_mode`,
                 `bora_invoice_payment_id`,
                 `bora_invoice_value`,
@@ -138,7 +134,6 @@ include('includes/header.php') ?>
                 '$bora_invoice_student_admission_year',
                 '$bora_invoice_for',
                 '$bora_invoice_tenure',
-                '$bora_invoice_tenure_id',
                 '$bora_invoice_payment_mode',
                 '$bora_invoice_payment_id',
                 '$bora_invoice_value',
@@ -162,7 +157,6 @@ include('includes/header.php') ?>
                     `bora_invoice_student_admission_year`,
                     `bora_invoice_for`,
                     `bora_invoice_tenure`,
-                    `bora_invoice_tenure_id`,
                     `bora_invoice_payment_mode`,
                     `bora_invoice_value`,
                     `bora_invoice_disc`,
@@ -183,7 +177,6 @@ include('includes/header.php') ?>
                     '$bora_invoice_student_admission_year',
                     '$bora_invoice_for',
                     '$bora_invoice_tenure',
-                    '$bora_invoice_tenure_id',
                     '$bora_invoice_payment_mode',
                     '$bora_invoice_value',
                     '$bora_invoice_disc',
@@ -195,14 +188,13 @@ include('includes/header.php') ?>
         }
         if ($result) {
     ?>
-    <form action="invoice-format.php" method="POST" target="_blank">
-        <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
+            <form action="invoice-format.php" method="POST" target="_blank">
+                <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
 
-        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent"
-            speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-        <p>Success! Invoice generated.</p>
-        <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
-    </form>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <p>Success! Invoice generated.</p>
+                <button type="submit" name="invoice" class="w-100 btn btn-success">Download Invoice</button>
+            </form>
 
     <?php
         } else {

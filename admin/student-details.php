@@ -177,11 +177,11 @@
                         $new_course_name = $row['course_name'];
                     }
                     ?>
-                    <div class="w-100 mobile-input m-1">
+                    <!-- <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Selected Course</label>
                         <input type="text" class="form-control" value="<?php echo $new_course_name  ?>"
                             id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
-                    </div>
+                    </div> -->
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Change Course</label>
                         <select class="form-select" name="student_course" aria-label="Default select example">
@@ -223,7 +223,8 @@
                                 $student_category = $row['student_category'];
                             }
                             ?>
-                            <option selected><?php echo $student_category ?>(Selected)</option>
+                            <!-- <option selected><?php echo $student_category ?>Click here for options</option> -->
+                            <option selected>Click here for options</option>
                             <option value="General">General</option>
                             <option value="SC">SC</option>
                             <option value="ST">ST</option>
@@ -243,7 +244,8 @@
                                 $student_admission_mode = $row['student_admission_mode'];
                             }
                             ?>
-                            <option selected><?php echo $student_admission_mode ?></option>
+                            <!-- <option selected><?php echo $student_admission_mode ?></option> -->
+                            <option selected>Click here for options</option>
                             <option value="Counselling">Counselling</option>
                             <option value="Direct">Direct</option>
                         </select>
@@ -260,7 +262,8 @@
                                 $student_gender = $row['student_gender'];
                             }
                             ?>
-                            <option selected><?php echo $student_gender ?></option>
+                            <!-- <option selected><?php echo $student_gender ?></option> -->
+                            <option selected>Click here for options</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Other">Other</option>
@@ -310,8 +313,9 @@
                         <label for="mothersName" class="form-label">Relation</label>
                         <select class="form-select" name="student_guardian_relation"
                             aria-label="Default select example">
-                            <option value="<?php echo $student_guardian_relation ?>" selected>
-                                <?php echo $student_guardian_relation ?>(Selected)</option>
+                            <!-- <option value="<?php echo $student_guardian_relation ?>" selected>
+                                <?php echo $student_guardian_relation ?>(Selected)</option> -->
+                            <option selected>Click here for options</option>
                             <option value="Father">Father</option>
                             <option value="Mother">Mother</option>
                             <option value="Brother">Brother</option>
