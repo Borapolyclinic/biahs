@@ -21,23 +21,7 @@
     }
     ?>
 
-    <form target="_blank" action="admin-generated-report.php" class="w-100" method="POST">
-        <div class="user-table">
-            <div class="filter-row">
-                <div class="w-100 m-1">
-                    <label for="exampleInputEmail1" class="form-label">From</label>
-                    <input type="date" name="date_from" class="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
-                </div>
-
-                <div class="w-100 m-1">
-                    <label for="exampleInputEmail1" class="form-label">To</label>
-                    <input type="date" name="date_to" class="form-control" id="exampleInputEmail1"
-                        aria-describedby="emailHelp">
-                </div>
-            </div>
-        </div>
-
+    <div class="w-100">
         <!-- ======================= RADIO BUTTONS ======================= -->
         <div class="user-table">
             <div class="filter-row">
@@ -57,66 +41,79 @@
 
 
         <!-- ======================= STUDENT WISE ======================= -->
-        <div class="user-table" style="display: none;" id="student-wise">
-            <div class="input-group mb-3">
-                <input type="text" name="student_wise_data" class="form-control w-100"
-                    aria-label="Text input with dropdown button" placeholder="Enter UID">
-            </div>
+        <form method="POST" target="_blank" action="admin-student-wise-generated-report.php">
+            <div class="user-table" style="display: none;" id="student-wise">
+                <input type="text" name="selected_radio" value="Student" hidden>
+                <div class="filter-row w-100 mb-3">
+                    <div class="w-100">
+                        <label for="exampleInputEmail1" class="form-label">From</label>
+                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
 
-            <button type="submit" name="generate_student_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
-                Report</button>
-        </div>
+                    <div class="w-100">
+                        <label for="exampleInputEmail1" class="form-label">To</label>
+                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="student_wise_data" class="form-control w-100"
+                        aria-label="Text input with dropdown button" placeholder="Enter UID">
+                </div>
+
+                <button type="submit" name="generate_student_wise"
+                    class="mt-3 p-2 btn btn-outline-success w-100">Generate
+                    Report</button>
+            </div>
+        </form>
+
 
 
         <!-- ======================= BATCH WISE ======================= -->
-        <div class="user-table" id="batch-wise" style="display: none;">
-            <div class="filter-row">
-                <div class="form-check w-100">
-                    <label class="form-check-label">Course</label>
-                    <select name="batch_wise_course" class="form-select" aria-label="Default select example">
-                        <option value="null">Click here to open courses</option>
-                        <?php
-                        $fetch_course = "SELECT * FROM `bora_course`";
-                        $fetch_course_r = mysqli_query($connection, $fetch_course);
+        <form action="admin-batch-wise-generated-report.php" method="POST" target="_blank">
+            <div class="user-table" id="batch-wise" style="display: none;">
+                <div class="filter-row mb-3">
+                    <div class="w-100 m-1">
+                        <label for="exampleInputEmail1" class="form-label">From</label>
+                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
 
-                        while ($row = mysqli_fetch_assoc($fetch_course_r)) {
-                            $course_id = $row['course_id'];
-                            $course_name = $row['course_name'];
-                        ?>
-                        <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
-                        <?php } ?>
-                    </select>
+                    <div class="w-100 m-1">
+                        <label for="exampleInputEmail1" class="form-label">To</label>
+                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
                 </div>
+                <div class="filter-row ">
+                    <div class="w-100 m-1">
+                        <label class="form-check-label mb-2">Course</label>
+                        <select name="batch_wise_course" class="form-select" aria-label="Default select example">
+                            <option value="null">Click here to open courses</option>
+                            <?php
+                            $fetch_course = "SELECT * FROM `bora_course`";
+                            $fetch_course_r = mysqli_query($connection, $fetch_course);
 
-                <div class="form-check w-100">
-                    <label for="exampleFormControlInput1" class="form-label">Enter Admission Year</label>
-                    <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control"
-                        id="exampleFormControlInput1" placeholder="">
+                            while ($row = mysqli_fetch_assoc($fetch_course_r)) {
+                                $course_id = $row['course_id'];
+                                $course_name = $row['course_name'];
+                            ?>
+                            <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+
+                    <div class="w-100 m-1">
+                        <label for="exampleFormControlInput1" class="form-label">Enter Admission Year</label>
+                        <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control"
+                            id="exampleFormControlInput1" placeholder="">
+                    </div>
                 </div>
-
-                <!-- <div class="form-check w-100">
-                    <label class="form-check-label">Admission Year</label>
-                    <select name="batch_wise_year" class="form-select" aria-label="Default select example">
-                        <option selected>Click here for options</option>
-                        <?php
-                        $fetch_stu = "SELECT * FROM `bora_student`";
-                        $fetch_stu_r = mysqli_query($connection, $fetch_stu);
-
-                        while ($row = mysqli_fetch_assoc($fetch_stu_r)) {
-                            $student_admission_year = $row['student_admission_year'];
-                        ?>
-                        <option value="<?php echo $student_admission_year ?>"><?php echo $student_admission_year ?>
-                        </option>
-                        <?php } ?>
-                    </select>
-                </div> -->
-
+                <button type="submit" name="generate_batch_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
+                    Report</button>
             </div>
-            <button type="submit" name="generate_batch_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
-                Report</button>
-        </div>
-
-
-    </form>
+        </form>
+    </div>
 </div>
 <?php include('includes/footer.php') ?>

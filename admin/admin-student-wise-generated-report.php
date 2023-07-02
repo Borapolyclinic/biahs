@@ -49,6 +49,10 @@ include('components/navbar/admin-navbar.php');
         }
         </script>
 
+        <!-- ========================================================================================================================================== 
+                                                                        MODAL SECTION 
+        ============================================================================================================================================== -->
+
         <!-- ======================= DATE FROM MODAL ======================= -->
         <div class="modal fade hide" id="dateFrom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -178,13 +182,15 @@ include('components/navbar/admin-navbar.php');
                 </div>
             </div>
         </div>
-
+        <!-- ========================================================================================================================================== 
+                                                                        STUDENT WISE 
+        ============================================================================================================================================== -->
         <?php
         require('includes/connection.php');
         if (isset($_POST['generate_student_wise'])) {
             $date_from = date('Y-m-d', strtotime($_POST['date_from']));
             $date_to = date('Y-m-d', strtotime($_POST['date_to']));
-            $selected_radio = $_POST['selected_radio'];
+            // $selected_radio = $_POST['selected_radio'];
             $student_wise_data = $_POST['student_wise_data'];
             if ($date_from == '1970-01-01') {
                 echo "<script>dateFromModal()</script>";
@@ -256,7 +262,7 @@ include('components/navbar/admin-navbar.php');
                 if (isset($_POST['generate_student_wise'])) {
                     $date_from = date('Y-m-d', strtotime($_POST['date_from']));
                     $date_to = date('Y-m-d', strtotime($_POST['date_to']));
-                    $selected_radio = $_POST['selected_radio'];
+                    // $selected_radio = $_POST['selected_radio'];
                     $student_wise_data = $_POST['student_wise_data'];
 
                     if ($date_from == '1970-01-01') {
@@ -336,7 +342,7 @@ include('components/navbar/admin-navbar.php');
                                 if (isset($_POST['generate_student_wise'])) {
                                     $date_from = date('Y-m-d', strtotime($_POST['date_from']));
                                     $date_to = date('Y-m-d', strtotime($_POST['date_to']));
-                                    $selected_radio = $_POST['selected_radio'];
+                                    // $selected_radio = $_POST['selected_radio'];
                                     $student_wise_data = $_POST['student_wise_data'];
                                     if ($date_from == '1970-01-01') {
                                         echo "<script>dateFromModal()</script>";
@@ -382,16 +388,15 @@ include('components/navbar/admin-navbar.php');
                                 <td>₹<?php echo $year_1 + $year_2 +  $year_3 + $year_4 ?> </td>
                                 <?php
                                         }
-                                        if ($bora_invoice_payment_mode == 'cash') {
-                                            $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id'";
-                                            // $fetch_cash = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = '$bora_invoice_payment_mode'";
-                                            $fetch_cash_r = mysqli_query($connection, $fetch_cash);
-                                            $total_cash = "";
-                                            while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
-                                                $total_cash = $row['total_cash'];
-                                            } ?>
+
+                                        $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id'";
+                                        $fetch_cash_r = mysqli_query($connection, $fetch_cash);
+                                        $total_cash = "";
+                                        while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
+                                            $total_cash = $row['total_cash'];
+                                        } ?>
                                 <td>₹<?php echo $total_cash ?> </td>
-                                <?php }
+                                <?php
                                         if ($tenure == '1') { ?>
                                 <td>₹<?php echo $year_1 - $total_cash ?></td>
 
@@ -412,94 +417,8 @@ include('components/navbar/admin-navbar.php');
                         </tbody>
                     </table>
                 </div>
-
-                <?php
-
-                // =========== BATCH WISE ===========
-                if (isset($_POST['generate_batch_wise'])) {
-                    $date_from = date('Y-m-d', strtotime($_POST['date_from']));
-                    $date_to = date('Y-m-d', strtotime($_POST['date_to']));
-                    $selected_radio = $_POST['selected_radio'];
-                    $batch_wise_course = $_POST['batch_wise_course'];
-                    $batch_wise_year = $_POST['batch_wise_year'];
-
-                    if ($date_from == '1970-01-01') {
-                        echo "<script>dateFromModal()</script>";
-                    } else if ($date_to == '1970-01-01') {
-                        echo "<script>dateToModal()</script>";
-                    } else if ($batch_wise_course == 'null') {
-                        echo "<script>batchWiseModal()</script>";
-                    } else if (empty($batch_wise_year)) {
-                        echo "<script>batchWiseDataModal()</script>";
-                    } else {
-                        $batch_query = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_student_course_id` = '$batch_wise_course' AND `bora_invoice_student_admission_year` = '$batch_wise_year'";
-                        $batch_query .= "AND `bora_invoice_generation_date` BETWEEN '$date_from' AND '$date_to'";
-
-
-                        $res = mysqli_query($connection, $batch_query);
-
-                        while ($row = mysqli_fetch_assoc($res)) {
-                            $bora_invoice_number = $row['bora_invoice_number'];
-                            $bora_invoice_student_id = $row['bora_invoice_student_id'];
-                            $bora_invoice_student = $row['bora_invoice_student'];
-                            $bora_invoice_student_en_no = $row['bora_invoice_student_en_no'];
-                            $bora_invoice_student_contact = $row['bora_invoice_student_contact'];
-                            $bora_invoice_student_course = $row['bora_invoice_student_course'];
-                            $bora_invoice_for = $row['bora_invoice_for'];
-                            $bora_invoice_tenure = $row['bora_invoice_tenure'];
-                            $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
-                            $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
-                            $bora_invoice_student_admission_year = $row['bora_invoice_student_admission_year'];
-                            $bora_invoice_date = $row['bora_invoice_date'];
-                ?>
-                <tr>
-                    <th scope="row"><?php echo $bora_invoice_student ?></th>
-                    <td><?php echo $bora_invoice_student_en_no ?></td>
-                    <td><?php echo $bora_invoice_student_contact ?></td>
-
-                    <td><?php echo $bora_invoice_student_course; ?></td>
-                    <td><?php echo $bora_invoice_student_admission_year ?></td>
-                    <td><?php echo $bora_invoice_number ?></td>
-                    <td><?php echo $bora_invoice_date ?></td>
-                    <td><?php echo $bora_invoice_for ?></td>
-                    <td><?php echo $bora_invoice_tenure ?></td>
-
-                    <?php if ($bora_invoice_payment_mode == 'cash') { ?>
-                    <td>₹<?php echo $bora_invoice_grand_total ?></td>
-                    <td class="text-center">-</td>
-                    <td class="text-center">-</td>
-                    <td>
-                        <form action="" method="post">
-                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
-                                hidden>
-                            <button class="btn btn-sm btn-outline-success">SHOW RECEIPT</button>
-                        </form>
-                    </td>
-                    <?php } ?>
-
-                    <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
-                    <td class="text-center">-</td>
-                    <td class="text-center">-</td>
-                    <td>₹<?php echo $bora_invoice_grand_total ?></td>
-
-                    <td>
-                        <form action="" method="post">
-                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
-                                hidden>
-                            <button class="btn btn-sm btn-outline-success">SHOW RECEIPT</button>
-                        </form>
-                    </td>
-                    <?php } ?>
-                </tr>
-                <?php
-                        }
-                    }
-                } ?>
-
             </tbody>
         </table>
-
-
     </div>
 </div>
 
