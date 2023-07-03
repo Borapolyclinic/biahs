@@ -33,7 +33,7 @@
         <form action="user-view-students-by-course.php" method="POST" class="dashboard-tab p-4">
             <div class="filter-row">
                 <select name="course_id" class="form-select m-1" aria-label="Default select example">
-                    <option selected>Select Course</option>
+                    <option value="null">Select Course</option>
                     <?php
                     $fetch_course = "SELECT * FROM `bora_course`";
                     $fetch_course_res = mysqli_query($connection, $fetch_course);

@@ -5,7 +5,7 @@
         $user_id = $_POST['user_id'];
         $user_name = $_POST['user_name'];
         $user_contact = $_POST['user_contact'];
-        $user_password = $_POST['user_password'];
+        $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
         $encrypted_password = password_hash($user_password, PASSWORD_DEFAULT);
 
         $update = "UPDATE `bora_users` SET `user_name` = '$user_name', `user_contact` = '$user_contact', `user_password` = '$encrypted_password' WHERE `user_id` = '$user_id'";
