@@ -1,6 +1,6 @@
 <?php
 include('includes/header.php');
-include('components/navbar/admin-navbar.php');
+include('components/navbar/user-navbar.php');
 ?>
 
 <div class="container user-form-container">
@@ -68,7 +68,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +133,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -177,7 +177,7 @@ include('components/navbar/admin-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -300,7 +300,7 @@ include('components/navbar/admin-navbar.php');
                     <td class="text-center">-</td>
 
                     <td>
-                        <form action="admin-invoice-format.php" method="post" target="_blank">
+                        <form action="user-invoice-format.php" method="post" target="_blank">
                             <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
                                 hidden>
@@ -317,7 +317,7 @@ include('components/navbar/admin-navbar.php');
 
 
                     <td>
-                        <form action="admin-invoice-format.php" method="post" target="_blank">
+                        <form action="user-invoice-format.php" method="post" target="_blank">
                             <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
                                 hidden>

@@ -25,6 +25,12 @@
                         Payment History
                     </a>
                 </li>
+                <li class="nav-item">
+                    <ion-icon name="document-attach-outline"></ion-icon>
+                    <a class="nav-link" aria-current="page" href="user-reports.php">
+                        Reports
+                    </a>
+                </li>
                 <!-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
