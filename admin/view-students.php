@@ -178,7 +178,7 @@
                         $page = $_GET['page'];
                     }
                     $page_first_result = ($page - 1) * $results_per_page;
-                    $page_query = "SELECT * FROM `bora_student` ORDER BY `student_added_date` DESC LIMIT "  . $page_first_result . ',' . $results_per_page;
+                    $page_query = "SELECT * FROM `bora_student` ORDER BY `student_admission_year` DESC LIMIT "  . $page_first_result . ',' . $results_per_page;
                     $page_result = mysqli_query($connection, $page_query);
                     while ($row = mysqli_fetch_assoc($page_result)) {
                         $student_id = $row['student_id'];
