@@ -1,8 +1,7 @@
 <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -13,19 +12,17 @@
                 </li>
                 <li class="nav-item dropdown">
                     <ion-icon name="person-circle-outline"></ion-icon>
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Users
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="users.php">Add User</a></li>
-                        <li><a class="dropdown-item" href="view-user.php">View User</a></li>
+                        <li><a class="dropdown-item" href="view-user.php">View Users</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <ion-icon name="people-outline"></ion-icon>
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Students
                     </a>
                     <ul class="dropdown-menu">

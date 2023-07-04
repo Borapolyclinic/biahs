@@ -47,7 +47,7 @@
         <p>Filter Students by Course and Year</p>
         <form action="view-students-by-course.php" method="POST" class="dashboard-tab p-4">
             <div class="filter-row">
-                <select name="course_id" class="form-select m-1" aria-label="Default select example">
+                <select name="course_id" class="form-select m-1" aria-label="Default select example" required>
                     <option value="null">Select Course</option>
                     <?php
                     $fetch_course = "SELECT * FROM `bora_course`";
@@ -61,7 +61,7 @@
                 </select>
 
                 <div class="w-100 m-1">
-                    <input type="number" name="course_year" placeholder="Enter Year" min="1999" max="2025"
+                    <input type="number" name="course_year" placeholder="" min="1999" max="2025"
                         class="form-control filter-input-box w-100" required>
                 </div>
                 <button type="submit" name="filter-course" class="ml-2 btn w-100 btn-success">Filter</button>

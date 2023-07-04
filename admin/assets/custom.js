@@ -65,3 +65,16 @@ function showFields(showId, hideId) {
     hideRadioButtons[i].checked = false;
   }
 }
+
+function disableInput() {
+  var admissionModeSelect = document.getElementById("admissionMode");
+  var allotmentLetterInput = document.getElementById("alotLetterFile");
+
+  admissionModeSelect.addEventListener("change", function () {
+    if (admissionModeSelect.value === "Direct") {
+      allotmentLetterInput.disabled = true;
+    } else {
+      allotmentLetterInput.disabled = false;
+    }
+  });
+}

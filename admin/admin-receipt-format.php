@@ -97,8 +97,7 @@ if (isset($_POST['download'])) {
 <body>   
     <div>
         <div>
-            <h1>Bora Institute of Allied Health Sciences</h1>
-            <p>Bora Institute of Nursing & Paramedical Sciences. Sewa Nagar, NH-24, Sitpaur Road. Lucknow - 226201.
+            <p>Bora Institute of Allied Health Sciences. Sewa Nagar, NH-24, Sitapur Road. Lucknow - 226201.
                 <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong> info@borainstitute.com
                 <strong>Website:</strong> borainstitute.com
             </p>
@@ -107,8 +106,8 @@ if (isset($_POST['download'])) {
         <table style="margin-bottom: 5px;">
             <thead>
                 <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> INVOICE NUMBER</th>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> INVOICE DATE</th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> RECEIPT NUMBER</th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> RECEIPT DATE</th>
                 </tr>
             </thead>
             <tbody>

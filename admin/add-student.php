@@ -26,39 +26,37 @@
             <div class="add-user-form-row mb-3 w-100">
                 <div class="mobile-input m-1 w-100">
                     <label for="studentName" class="form-label">Student Name</label>
-                    <input type="text" class="form-control w-100" name="student_name" id="studentName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control w-100" name="student_name" id="studentName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mobile-input m-1 w-100">
                     <label for="studentNumber" class="form-label">Mobile Number</label>
-                    <input type="number" class="form-control w-100" name="student_contact" id="studentNumber"
-                        aria-describedby="emailHelp" required>
+                    <input type="number" class="form-control w-100" name="student_contact" id="studentNumber" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mobile-input m-1 w-100">
+                    <label for="studentNumber" class="form-label">Whatsapp Number</label>
+                    <input type="number" class="form-control w-100" name="student_whatsapp" id="studentNumber" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mobile-input m-1 w-100">
                     <label for="studentEmail" class="form-label">Email Address</label>
-                    <input type="email" class="form-control w-100" name="student_email" id="studentEmail"
-                        aria-describedby="emailHelp" required>
+                    <input type="email" class="form-control w-100" name="student_email" id="studentEmail" aria-describedby="emailHelp" required>
                 </div>
                 <div class="mobile-input m-1 w-100">
                     <label for="studentNumber" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control w-100" name="student_dob" id="studentNumber"
-                        aria-describedby="emailHelp" required>
+                    <input type="date" class="form-control w-100" name="student_dob" id="studentNumber" aria-describedby="emailHelp" required>
                 </div>
             </div>
 
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input">
                     <label for="studentName" class="form-label">Enrollment Number</label>
-                    <input type="text" class="form-control" name="student_enrollment_number" id="studentName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" name="student_enrollment_number" id="studentName" aria-describedby="emailHelp">
                 </div>
             </div>
 
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="studentName" class="form-label">UID</label>
-                    <input type="text" class="form-control" name="student_roll" id="studentName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" name="student_roll" id="studentName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Selected Course</label>
@@ -73,19 +71,17 @@
                             $course_id = $row['course_id'];
                             $course_name = $row['course_name'];
                         ?>
-                        <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                            <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
                         <?php } ?>
                     </select>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="studentAdmissionDate" class="form-label">Admission Date</label>
-                    <input type="date" class="form-control" placeholder="Enter Year" name="student_admission_date"
-                        id="studentAdmissionDate" aria-describedby="emailHelp" required>
+                    <input type="date" class="form-control" placeholder="Enter Year" name="student_admission_date" id="studentAdmissionDate" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="studentAdmissionDate" class="form-label">Admission Year</label>
-                    <input type="number" class="form-control" placeholder="Enter Year" name="student_admission_year"
-                        id="studentAdmissionDate" aria-describedby="emailHelp" required>
+                    <input type="number" class="form-control" placeholder="Enter Year" name="student_admission_year" id="studentAdmissionDate" aria-describedby="emailHelp" required>
                 </div>
             </div>
 
@@ -103,8 +99,7 @@
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Mode of Admission</label>
-                    <select required class="form-select" name="student_admission_mode"
-                        aria-label="Default select example">
+                    <select onchange="disableInput()" class="form-select" name="student_admission_mode" aria-label="Default select example" id="admissionMode">
                         <option selected>Open this select menu</option>
                         <option value="Counselling">Counselling</option>
                         <option value="Direct">Direct</option>
@@ -140,7 +135,7 @@
             <div class="add-user-form-row mb-3">
                 <div class="m-1 w-100 mobile-input">
                     <label for="formFile" class="form-label">Upload Allotment Letter</label>
-                    <input class="form-control" name="student_alot_letter" type="file" id="formFile" required>
+                    <input class="form-control" name="student_alot_letter" type="file" id="alotLetterFile">
                 </div>
                 <div class="m-1 w-100 mobile-input">
                     <label for="formFile" class="form-label">Upload Cast Certificate</label>
@@ -153,41 +148,34 @@
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="fathersName" class="form-label">Father's Name</label>
-                    <input type="text" class="form-control" name="student_father" id="fathersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" name="student_father" id="fathersName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="mothersName" class="form-label">Mother's Name</label>
-                    <input type="text" class="form-control" name="student_mother" id="mothersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" name="student_mother" id="mothersName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="fathersName" class="form-label">Father's Contact Number</label>
-                    <input type="number" class="form-control" name="student_father_contact" id="fathersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="number" class="form-control" name="student_father_contact" id="fathersName" aria-describedby="emailHelp" required>
                 </div>
             </div>
 
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="fathersName" class="form-label">Guardian's Name</label>
-                    <input type="text" class="form-control" name="student_guardian_name" id="fathersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="text" class="form-control" name="student_guardian_name" id="fathersName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="fathersName" class="form-label">Guardian's Contact Number</label>
-                    <input type="number" class="form-control" name="student_guardian_contact" id="fathersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="number" class="form-control" name="student_guardian_contact" id="fathersName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="fathersName" class="form-label">Additional Number (Optional)</label>
-                    <input type="number" class="form-control" name="student_guardian_contact_2" id="fathersName"
-                        aria-describedby="emailHelp">
+                    <input type="number" class="form-control" name="student_guardian_contact_2" id="fathersName" aria-describedby="emailHelp">
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="mothersName" class="form-label">Relationship with Student</label>
-                    <select name="student_guardian_relation" class="form-select" aria-label="Default select example"
-                        required>
+                    <select name="student_guardian_relation" class="form-select" aria-label="Default select example" required>
                         <option selected>Click here to open menu</option>
                         <option value="Father">Father</option>
                         <option value="Mother">Mother</option>
@@ -203,8 +191,7 @@
             <div class="add-user-form-row mb-3">
                 <div class="col-md-6 mobile-input m-1">
                     <label for="fathersName" class="form-label">Aadhaar Card Number</label>
-                    <input type="number" class="form-control" name="student_aadhar_number" id="fathersName"
-                        aria-describedby="emailHelp" required>
+                    <input type="number" class="form-control" name="student_aadhar_number" id="fathersName" aria-describedby="emailHelp" required>
                 </div>
                 <div class="m-1 col-md-6 mobile-input">
                     <label for="formFile" class="form-label">Upload Aadhaar Card Image *</label>
@@ -217,8 +204,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Permanent Address</label>
-                <textarea class="form-control" name="student_aadhar_address" id="exampleFormControlTextarea1" required
-                    rows="3"></textarea>
+                <textarea class="form-control" name="student_aadhar_address" id="exampleFormControlTextarea1" required rows="3"></textarea>
             </div>
             <div class="form-check mb-3" onclick="hideInputField()">
                 <input class="form-check-input" type="checkbox" value="1" id="addressCheckBox">
@@ -228,8 +214,7 @@
             </div>
             <div class="mb-3" id="communicationAddress">
                 <label for="exampleFormControlTextarea1" class="form-label">Mailing Address</label>
-                <textarea class="form-control" name="student_comm_address" id="exampleFormControlTextarea1"
-                    rows="3"></textarea>
+                <textarea class="form-control" name="student_comm_address" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <button type="submit" name="submit" class="w-100 btn btn-outline-primary">Add Student</button>
             <!-- <button type="button" class="w-100 btn btn-outline-primary" data-bs-toggle="modal"
@@ -240,17 +225,17 @@
     </form>
 </div>
 <script>
-function hideInputField() {
-    var addressCheckBox = document.getElementById("addressCheckBox");
-    var inputField = document.getElementById("communicationAddress");
+    function hideInputField() {
+        var addressCheckBox = document.getElementById("addressCheckBox");
+        var inputField = document.getElementById("communicationAddress");
 
-    if (addressCheckBox.checked) {
-        inputField.style.display = "none";
-        inputField.setAttribute("disabled", true); // Add this line
-    } else {
-        inputField.style.display = "block";
-        inputField.removeAttribute("disabled"); // Add this line
+        if (addressCheckBox.checked) {
+            inputField.style.display = "none";
+            inputField.setAttribute("disabled", true); // Add this line
+        } else {
+            inputField.style.display = "block";
+            inputField.removeAttribute("disabled"); // Add this line
+        }
     }
-}
 </script>
 <?php include('includes/footer.php') ?>

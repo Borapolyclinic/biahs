@@ -1,6 +1,6 @@
 <?php include('includes/header.php') ?>
 <?php include('components/navbar/admin-navbar.php') ?>
-<div class="container w-100 user-form-container">
+<div class="container-fluid w-100 user-form-container">
     <div class="page-marker">
         <a href="view-students.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
@@ -10,51 +10,6 @@
 
     <?php
     require('includes/connection.php');
-    if (isset($_POST['edit_back'])) {
-        $student_id = $_POST['student_id'];
-        $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
-        $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
-        $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
-        $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
-        $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
-        $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
-        $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
-        $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
-        $student_aadhar_number = mysqli_real_escape_string($connection, $_POST['student_aadhar_number']);
-        $student_aadhar_address = mysqli_real_escape_string($connection, $_POST['student_aadhar_address']);
-        $student_comm_address = mysqli_real_escape_string($connection, $_POST['student_comm_address']);
-        $student_category = mysqli_real_escape_string($connection, $_POST['student_category']);
-        $student_admission_mode = mysqli_real_escape_string($connection, $_POST['student_admission_mode']);
-
-        if (empty($student_comm_address)) {
-            $student_comm_address = "Same as Aadhar Address";
-        }
-
-        $update_query = "UPDATE
-                `bora_student`
-            SET
-                `student_name` = '$student_name',
-                `student_contact` = '$student_contact',
-                `student_father` = '$student_father',
-                `student_mother` = '$student_mother',
-                `student_guardian_contact` = '$student_guardian_contact',
-                `student_category` = '$student_category',
-                `student_admission_mode` = '$student_admission_mode',
-                `student_roll` = '$student_roll',
-                `student_course` = '$student_course',
-                `student_admission_date` = '$student_admission_date',
-                `student_aadhar_number` = '$student_aadhar_number',
-                `student_aadhar_address` = '$student_aadhar_address',
-                `student_comm_address` = '$student_comm_address'
-            WHERE
-                `student_id` = '$student_id'";
-
-        $update_res = mysqli_query($connection, $update_query);
-
-        if ($update_res) {
-            echo "<div class='alert alert-primary w-100' role='alert'>Student details updated!</div>";
-        }
-    }
     if (isset($_POST['edit']) || isset($_POST['edit_back'])) {
         $student_id = $_POST['student_id'];
 
@@ -66,6 +21,7 @@
         $student_enrollment_number = "";
         $student_name = "";
         $student_contact = "";
+        $student_email = "";
         $student_dob = "";
         $student_father = "";
         $student_mother = "";
@@ -96,6 +52,7 @@
             $student_enrollment_number = $row['student_enrollment_number'];
             $student_name = $row['student_name'];
             $student_contact = $row['student_contact'];
+            $student_email = $row['student_email'];
             $student_dob = $row['student_dob'];
             $student_father = $row['student_father'];
             $student_mother = $row['student_mother'];
@@ -136,6 +93,10 @@
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Mobile Number</label>
                         <input type="number" class="form-control" name="student_contact" value="<?php echo $student_contact ?>" id="studentNumber" aria-describedby="emailHelp">
+                    </div>
+                    <div class="w-100 mobile-input m-1">
+                        <label for="studentEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentEmail" aria-describedby="emailHelp">
                     </div>
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">DOB</label>
@@ -321,7 +282,7 @@
                         <input type="text" class="form-control" name="student_guardian_contact" value="<?php echo $student_guardian_contact ?>" id="fathersName" aria-describedby="emailHelp">
                     </div>
                     <div class="w-100 mobile-input m-1">
-                        <label for="fathersName" class="form-label">Contact No. (Optional)</label>
+                        <label for="fathersName" class="form-label">Additional Number (Optional)</label>
                         <input type="text" class="form-control" name="student_guardian_contact_2" value="<?php echo $student_guardian_contact_2 ?>" id="fathersName" aria-describedby="emailHelp">
                     </div>
                     <div class="w-100 mobile-input m-1">
@@ -425,6 +386,12 @@
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
                     Upload | View Transfer Certificate
+                </button>
+            </form>
+            <form method="POST" action="alot-update.php" class="add-user-form-tab">
+                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                <button type="submit" name="view" class="student-doc-btn">
+                    Upload | View Allotment Letter
                 </button>
             </form>
         </div>
