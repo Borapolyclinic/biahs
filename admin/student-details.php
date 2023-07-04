@@ -10,6 +10,7 @@
 
     <?php
     require('includes/connection.php');
+
     if (isset($_POST['edit']) || isset($_POST['edit_back'])) {
         $student_id = $_POST['student_id'];
 
@@ -95,8 +96,8 @@
                         <input type="number" class="form-control" name="student_contact" value="<?php echo $student_contact ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
                     <div class="w-100 mobile-input m-1">
-                        <label for="studentEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentEmail" aria-describedby="emailHelp">
+                        <label for="studentNumber" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">DOB</label>

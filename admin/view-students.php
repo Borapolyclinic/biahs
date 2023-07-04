@@ -48,6 +48,19 @@
                     $("#deleteStudent").modal("show");
                 });
             }
+
+            function hideDisplay() {
+                const selectMenu = document.getElementById('studentStatus');
+                const castCertificateDiv = document.getElementById('castCertificateDiv');
+
+                selectMenu.addEventListener('change', function() {
+                    if (selectMenu.value !== '1') {
+                        castCertificateDiv.style.display = 'none';
+                    } else {
+                        castCertificateDiv.style.display = 'block';
+                    }
+                });
+            }
         </script>
 
 
@@ -112,6 +125,9 @@
                     if (isset($_POST['update_status'])) {
                         $student_id = $_POST['student_id'];
                         $student_status = $_POST['student_status'];
+                        $student_graduation_marksheet = $_POST['student_graduation_marksheet'];
+
+
                         $change_status_query = "UPDATE
                         `bora_student`
                     SET
@@ -132,16 +148,20 @@
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form action="" method="POST">
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                                         <div class="modal-body">
                                             <div>
-                                                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                                                <select name="student_status" class="form-select" aria-label="Default select example">
+                                                <select onchange="hideDisplay()" name="student_status" id="studentStatus" class="form-select" aria-label="Default select example">
                                                     <option selected>Open this select menu</option>
                                                     <option value="1">Graduated</option>
                                                     <option value="2">Active</option>
                                                     <option value="3">Left</option>
                                                 </select>
+                                            </div>
+                                            <div id="castCertificateDiv" class="mt-3 w-100" style="display: none;">
+                                                <label for="formFile" class="form-label">Upload Marksheet</label>
+                                                <input class="form-control" name="student_graduation_marksheet" type="file" id="formFile" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

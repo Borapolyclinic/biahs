@@ -8,10 +8,12 @@
             $student_id = $_POST['student_id'];
             $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
+            $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
             $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
             $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
             $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
             $student_guardian_contact_2 = mysqli_real_escape_string($connection, $_POST['student_guardian_contact_2']);
+            $student_enrollment_number = mysqli_real_escape_string($connection, $_POST['student_enrollment_number']);
             $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
             $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
             $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
@@ -26,16 +28,18 @@
             }
         }
         ?>
-        <form action="student-details.php" method="POST" class="w-50">
+        <form action="update-student-details.php" method="POST" class="w-50">
             <input hidden type="text" name="student_id" value="<?php echo $student_id ?>">
             <input hidden type="text" name="student_name" value="<?php echo $student_name ?>">
             <input hidden type="text" name="student_contact" value="<?php echo $student_contact ?>">
+            <input hidden type="text" name="student_email" value="<?php echo $student_email ?>">
             <input hidden type="text" name="student_father" value="<?php echo $student_father ?>">
             <input hidden type="text" name="student_mother" value="<?php echo $student_mother ?>">
             <input hidden type="text" name="student_guardian_contact" value="<?php echo $student_guardian_contact ?>">
             <input hidden type="text" name="student_guardian_contact_2"
                 value="<?php echo $student_guardian_contact_2 ?>">
             <input hidden type="text" name="student_roll" value="<?php echo $student_roll ?>">
+            <input hidden type="text" name="student_enrollment_number" value="<?php echo $student_enrollment_number ?>">
             <input hidden type="text" name="student_course" value="<?php echo $student_course ?>">
             <input hidden type="text" name="student_admission_date" value="<?php echo $student_admission_date ?>">
             <input hidden type="text" name="student_aadhar_number" value="<?php echo $student_aadhar_number ?>">
