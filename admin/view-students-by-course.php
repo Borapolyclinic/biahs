@@ -13,6 +13,18 @@
             $("#catModal").modal("show");
         });
     }
+
+    function openModal(studentId) {
+        $(document).ready(function() {
+            $("#exampleModal").modal("show");
+        });
+    }
+
+    function deleteStudentModal(studentId) {
+        $(document).ready(function() {
+            $("#deleteStudent").modal("show");
+        });
+    }
     </script>
 
     <!-- ======================= MODAL ======================= -->
@@ -37,6 +49,96 @@
 
     <?php
     require('includes/connection.php');
+
+    if (isset($_POST['delete_success'])) {
+        $student_id = $_POST['student_id'];
+        $delete_query = "DELETE FROM `bora_student` WHERE `student_id` = '$student_id'";
+        $delete_res = mysqli_query($connection, $delete_query);
+        if ($delete_res) { ?>
+    <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
+    <?php
+        }
+    }
+
+    if (isset($_POST['delete'])) {
+        $student_id = $_POST['student_id'];
+        echo '<script>deleteStudentModal(' . $student_id . ');</script>'; ?>
+    <div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Student</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div>
+                            <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                            <p>Are you sure you want to delete this student?</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="delete_success" class="btn btn-success">Yes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+    }
+
+    if (isset($_POST['update_status'])) {
+        $student_id = $_POST['student_id'];
+        $student_status = $_POST['student_status'];
+        $change_status_query = "UPDATE
+        `bora_student`
+    SET
+        `student_status` = '$student_status'
+    WHERE
+        `student_id` = '$student_id'";
+        $change_status_query_r = mysqli_query($connection, $change_status_query);
+        if ($change_status_query_r) { ?>
+    <div class=" mt-3 mb-3 w-100 alert alert-success" role="alert">
+        Student Status Updated! <a href="dashboard.php">Click here</a> to go back to Dashboard.
+    </div>
+    <?php
+        }
+    }
+
+    if (isset($_POST['change'])) {
+        $student_id = $_POST['student_id'];
+        echo '<script>openModal(' . $student_id . ');</script>'; ?>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <div>
+                            <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                            <select name="student_status" class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">Graduated</option>
+                                <option value="2">Active</option>
+                                <option value="3">Left</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="update_status" class="btn btn-primary">Save
+                            changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+    }
     if (isset($_POST['filter-course'])) {
         $course_id = $_POST['course_id'];
         $course_year = $_POST['course_year'];
@@ -46,7 +148,7 @@
         } else {
             $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' AND `student_admission_year` = '$course_year'";
             $page_result = mysqli_query($connection, $page_query);
-    ?>
+        ?>
 
     <div class="table-responsive user-table">
         <table class="table table-bordered table-striped">
@@ -57,8 +159,10 @@
                     <th scope="col">Contact</th>
                     <th scope="col">Course</th>
                     <th scope="col">Admission Year</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                     <th scope="col">Delete</th>
+                    <th scope="col">Admission Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,6 +178,7 @@
                             $student_admission_date = $row['student_admission_date'];
                             $student_admission_year = $row['student_admission_year'];
                             $student_added_by = $row['student_added_by'];
+                            $student_status = $row['student_status'];
                         ?>
                 <!-- Table rows for each student -->
                 <tr>
@@ -93,6 +198,18 @@
                     </td>
                     <td><?php echo $student_admission_year ?></td>
                     <td>
+                        <?php
+                                    if ($student_status == '1') { ?>
+                        <p class="btn btn-sm btn-dark">Graduated</p>
+                        <?php } elseif ($student_status == '2') { ?>
+                        <p class="btn btn-sm btn-success">Active</p>
+                        <?php } elseif ($student_status == '3') { ?>
+                        <p class="btn btn-sm btn-primary">Left</p>
+                        <?php } elseif (empty($student_status)) { ?>
+                        <p class="btn btn-sm btn-info">Not Updated</p>
+                        <?php } ?>
+                    </td>
+                    <td>
                         <form action="student-details.php" method="post">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
                             <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
@@ -103,6 +220,12 @@
                         <form action="" method="POST">
                             <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
                             <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="" method="POST">
+                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                            <button type="submit" name="change" class="btn btn-sm btn-primary">Change Status</button>
                         </form>
                     </td>
                 </tr>
