@@ -38,6 +38,7 @@
         $student_10th_marksheet = "";
         $student_tc_certificate = "";
         $student_alot_letter = "";
+        $student_graduation_marksheet = "";
         $student_category = "";
         $student_admission_mode = "";
         $student_gender = "";
@@ -46,6 +47,7 @@
         $student_aadhar_back_file = "";
         $student_aadhar_address = "";
         $student_comm_address = "";
+        $student_status = "";
 
         while ($row = mysqli_fetch_assoc($result)) {
             $student_id = $row['student_id'];
@@ -70,6 +72,7 @@
             $student_10th_marksheet = "assets/marksheet/" . $row['student_10th_marksheet'];
             $student_tc_certificate = "assets/tc_certificate/" . $row['student_tc_certificate'];
             $student_alot_letter = "assets/alot_letter/" . $row['student_alot_letter'];
+            $student_graduation_marksheet = "assets/grad_marksheet/" . $row['student_graduation_marksheet'];
             $student_category = $row['student_category'];
             $student_admission_mode = $row['student_admission_mode'];
             $student_gender = $row['student_gender'];
@@ -78,6 +81,7 @@
             $student_aadhar_back_file = "assets/student_aadhar_image/" . $row['student_aadhar_back_file'];
             $student_aadhar_address = $row['student_aadhar_address'];
             $student_comm_address = $row['student_comm_address'];
+            $student_status = $row['student_status'];
         }
     }
     ?>
@@ -386,7 +390,7 @@
             <form method="POST" action="tc-update.php" class="add-user-form-tab">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
-                    Upload | View Transfer Certificate
+                    Upload | View Transfer/Migration Certificate
                 </button>
             </form>
             <form method="POST" action="alot-update.php" class="add-user-form-tab">
@@ -395,6 +399,16 @@
                     Upload | View Allotment Letter
                 </button>
             </form>
+            <?php
+            if ($student_status == '1') {
+            ?>
+                <form method="POST" action="grad-marksheet.php" class="add-user-form-tab">
+                    <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                    <button type="submit" name="view" class="student-doc-btn">
+                        View Graduation Marksheet
+                    </button>
+                </form>
+            <?php } ?>
         </div>
     </div>
 </div>

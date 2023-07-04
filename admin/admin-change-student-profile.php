@@ -16,11 +16,10 @@ if (isset($_POST['change_picture'])) {
     while ($row = mysqli_fetch_assoc($res)) {
         $student_id = $row['student_id'];
         $student_name = $row['student_name'];
-        $student_img = "assets/student_aadhar_image/" . $row['student_img'];
-        $student_aadhar_back_file = "assets/student_aadhar_image/" . $row['student_aadhar_back_file'];
+        $student_img = "assets/student/" . $row['student_img'];
+        $student_aadhar_back_file = "assets/student/" . $row['student_aadhar_back_file'];
     }
 }
-
 ?>
 <div class="container user-form-container">
     <form action="student-details.php" method="POST" class="page-marker">
@@ -29,7 +28,7 @@ if (isset($_POST['change_picture'])) {
             <a href="#">
                 <ion-icon name="arrow-back-outline"></ion-icon>
             </a>
-            <h5>Change Profile Image</h5>
+            <h5>Change Profile Picture</h5>
         </button>
     </form>
     <div class="w-100">

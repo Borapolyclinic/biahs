@@ -22,7 +22,7 @@ if (isset($_POST['view'])) {
     <form action="student-details.php" method="POST" class="page-marker">
         <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
         <button type="submit" name="edit_back" class="page-marker no-btn">
-            <a href="">
+            <a href="#">
                 <ion-icon name="arrow-back-outline"></ion-icon>
             </a>
             <h5>Allotment Letter</h5>
