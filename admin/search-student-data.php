@@ -58,6 +58,19 @@
             $("#deleteStudent").modal("show");
         });
     }
+
+    function hideDisplay() {
+        const selectMenu = document.getElementById('studentStatus');
+        const castCertificateDiv = document.getElementById('castCertificateDiv');
+
+        selectMenu.addEventListener('change', function() {
+            if (selectMenu.value === '1') {
+                castCertificateDiv.style.display = 'block';
+            } else {
+                castCertificateDiv.style.display = 'none';
+            }
+        });
+    }
     </script>
     <!-- ======================= MODAL ======================= -->
     <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -193,24 +206,28 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form action="view-students.php" method="POST">
+                            <form action="upload-grad-marksheet.php" method="POST" enctype="multipart/form-data">
+                                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                                 <div class="modal-body">
                                     <div>
-                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-
-                                        <select name="student_status" class="form-select"
-                                            aria-label="Default select example">
+                                        <select onclick="hideDisplay()" name="student_status" id="studentStatus"
+                                            class="form-select" aria-label="Default select example">
                                             <option selected>Open this select menu</option>
                                             <option value="1">Graduated</option>
                                             <option value="2">Active</option>
                                             <option value="3">Left</option>
                                         </select>
                                     </div>
+                                    <div id="castCertificateDiv" class="mt-3 w-100" style="display: none;">
+                                        <label for="formFile" class="form-label">Upload Marksheet</label>
+                                        <input class="form-control" name="student_graduation_marksheet" type="file"
+                                            id="formFile">
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_status" class="btn btn-primary">Save
+                                    <button type="submit" name="update_marksheet" class="btn btn-primary">Save
                                         changes</button>
                                 </div>
                             </form>

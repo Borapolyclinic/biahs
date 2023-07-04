@@ -9,12 +9,11 @@
         $tempname = $_FILES["student_graduation_marksheet"]["tmp_name"];
         $folder = "assets/grad_marksheet/" . $student_graduation_marksheet;
 
-        if (empty($student_graduation_marksheet)) { ?>
+        if ($student_status == '1' && empty($student_graduation_marksheet)) { ?>
             <div class="alert alert-danger" role="alert">
-                Please upload an image to update Transfer Certificate.
+                Error! No file selected to upload.
             </div>
             <?php } else {
-
             $update_query = "UPDATE
             `bora_student`
         SET

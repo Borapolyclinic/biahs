@@ -169,7 +169,7 @@
                                     <div id="castCertificateDiv" class="mt-3 w-100" style="display: none;">
                                         <label for="formFile" class="form-label">Upload Marksheet</label>
                                         <input class="form-control" name="student_graduation_marksheet" type="file"
-                                            id="formFile" required>
+                                            id="formFile">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
