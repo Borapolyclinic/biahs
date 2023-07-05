@@ -378,13 +378,33 @@ include('components/navbar/admin-navbar.php');
                                         $year_3 = $row['course_year_3_fee'];
                                         $year_4 = $row['course_year_4_fee'];
                                     }
-                            ?>
-                                    <?php
+
                                     $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_1` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 1 Fee' ";
                                     $fetch_cash_r = mysqli_query($connection, $fetch_cash);
                                     $total_cash_year_1 = "";
                                     while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
                                         $total_cash_year_1 = $row['total_cash_year_1'];
+                                    }
+
+                                    $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_2` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 2 Fee' ";
+                                    $fetch_cash_r = mysqli_query($connection, $fetch_cash);
+                                    $total_cash_year_2 = "";
+                                    while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
+                                        $total_cash_year_2 = $row['total_cash_year_2'];
+                                    }
+
+                                    $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_3` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 3 Fee' ";
+                                    $fetch_cash_r = mysqli_query($connection, $fetch_cash);
+                                    $total_cash_year_3 = "";
+                                    while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
+                                        $total_cash_year_3 = $row['total_cash_year_3'];
+                                    }
+
+                                    $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_4` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 4 Fee' ";
+                                    $fetch_cash_r = mysqli_query($connection, $fetch_cash);
+                                    $total_cash_year_4 = "";
+                                    while ($row = mysqli_fetch_assoc($fetch_cash_r)) {
+                                        $total_cash_year_4 = $row['total_cash_year_4'];
                                     }
 
                                     $fetch_cheque_year_1 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_1` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' OR `bora_invoice_payment_mode` = 'online' AND `bora_invoice_tenure` = 'Year 1 Fee'";
@@ -393,121 +413,241 @@ include('components/navbar/admin-navbar.php');
                                     while ($row = mysqli_fetch_assoc($fetch_cheque_year_1_r)) {
                                         $total_cheque_year_1 = $row['total_cheque_year_1'];
                                     }
-                                    ?>
-                                    <tr>
-                                        <td>1 YEAR</td>
-                                        <td><?php echo $year_1  ?></td>
-                                        <td><?php echo $total_cash_year_1 ?></td>
-                                        <td><?php echo $total_cheque_year_1 ?></td>
-                                        <td><?php $total_cash_bank = $total_cash_year_1 + $total_cheque_year_1;
-                                            echo $total_cash_bank; ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $total_remainder = $year_1 - $total_cash_bank;
-                                            echo $total_remainder;
-                                            ?>
-                                        </td>
-                                    </tr>
 
-                                    <?php
-                                    $fetch_cash_2 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_2` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 2 Fee'";
-                                    $fetch_cash_2_r = mysqli_query($connection, $fetch_cash_2);
-                                    $total_cash_year_2 = "";
-                                    while ($row = mysqli_fetch_assoc($fetch_cash_2_r)) {
-                                        $total_cash_year_2 = $row['total_cash_year_2'];
-                                    }
-
-                                    $fetch_cheque_year_2 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_2` FROM `bora_invoice`  WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' AND `bora_invoice_tenure` = 'Year 2 Fee'";
+                                    $fetch_cheque_year_2 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_2` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' OR `bora_invoice_payment_mode` = 'online' AND `bora_invoice_tenure` = 'Year 2 Fee'";
                                     $fetch_cheque_year_2_r = mysqli_query($connection, $fetch_cheque_year_2);
                                     $total_cheque_year_2 = "";
                                     while ($row = mysqli_fetch_assoc($fetch_cheque_year_2_r)) {
                                         $total_cheque_year_2 = $row['total_cheque_year_2'];
                                     }
 
-                                    ?>
-
-                                    <tr>
-                                        <td>2 YEARS</td>
-                                        <td><?php echo $year_2  ?></td>
-                                        <td><?php echo $total_cash_year_2 ?></td>
-                                        <td><?php echo $total_cheque_year_2 ?></td>
-                                        <td><?php $total_cash_bank = $total_cash_year_2 + $total_cheque_year_2;
-                                            echo $total_cash_bank; ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $total_remainder = $year_2 - $total_cash_bank;
-                                            echo $total_remainder;
-                                            ?>
-                                        </td>
-                                    </tr>
-
-                                    <?php
-                                    $fetch_cash_3 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_3` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 3 Fee'";
-                                    $fetch_cash_3_r = mysqli_query($connection, $fetch_cash_3);
-                                    $total_cash_year_3 = "";
-                                    while ($row = mysqli_fetch_assoc($fetch_cash_3_r)) {
-                                        $total_cash_year_3 = $row['total_cash_year_3'];
-                                    }
-
-                                    $fetch_cheque_year_3 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_3` FROM `bora_invoice`  WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' AND `bora_invoice_tenure` = 'Year 3 Fee'";
+                                    $fetch_cheque_year_3 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_3` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' OR `bora_invoice_payment_mode` = 'online' AND `bora_invoice_tenure` = 'Year 3 Fee'";
                                     $fetch_cheque_year_3_r = mysqli_query($connection, $fetch_cheque_year_3);
                                     $total_cheque_year_3 = "";
                                     while ($row = mysqli_fetch_assoc($fetch_cheque_year_3_r)) {
                                         $total_cheque_year_3 = $row['total_cheque_year_3'];
                                     }
-                                    ?>
-                                    <tr>
-                                        <td>3 YEARS</td>
-                                        <td><?php echo $year_3  ?></td>
-                                        <td><?php echo $total_cash_year_3 ?></td>
-                                        <td><?php echo $total_cheque_year_3 ?></td>
-                                        <td><?php $total_cash_bank = $total_cash_year_3 + $total_cheque_year_3;
-                                            echo $total_cash_bank; ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $total_remainder = $year_3 - $total_cash_bank;
-                                            echo $total_remainder;
-                                            ?>
-                                        </td>
-                                    </tr>
 
-                                    <?php
-                                    $fetch_cash_4 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_4` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 4 Fee'";
-                                    $fetch_cash_4_r = mysqli_query($connection, $fetch_cash_4);
-                                    $total_cash_year_4 = "";
-                                    while ($row = mysqli_fetch_assoc($fetch_cash_4_r)) {
-                                        $total_cash_year_4 = $row['total_cash_year_4'];
-                                    }
-
-                                    $fetch_cheque_year_4 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_4` FROM `bora_invoice`  WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' AND `bora_invoice_tenure` = 'Year 4 Fee'";
+                                    $fetch_cheque_year_4 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cheque_year_4` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' OR `bora_invoice_payment_mode` = 'online' AND `bora_invoice_tenure` = 'Year 4 Fee'";
                                     $fetch_cheque_year_4_r = mysqli_query($connection, $fetch_cheque_year_4);
                                     $total_cheque_year_4 = "";
                                     while ($row = mysqli_fetch_assoc($fetch_cheque_year_4_r)) {
                                         $total_cheque_year_4 = $row['total_cheque_year_4'];
                                     }
-                                    ?>
-                                    <tr>
-                                        <td>4 YEARS</td>
-                                        <td><?php echo $year_4  ?></td>
-                                        <td><?php echo $total_cash_year_4 ?></td>
-                                        <td><?php echo $total_cheque_year_4 ?></td>
-                                        <td><?php $total_cash_bank = $total_cash_year_4 + $total_cheque_year_4;
-                                            echo $total_cash_bank; ?>
-                                        </td>
-                                        <td>
-                                            <?php
-                                            $total_remainder = $year_4 - $total_cash_bank;
-                                            echo $total_remainder;
-                                            ?>
-                                        </td>
-                                    </tr>
+                            ?>
+                                    <!-- ============ YEAR 1  ============  -->
+                                    <?php if ($tenure == '1') { ?>
+                                        <tr>
+                                            <td>1 YEAR</td>
+                                            <td>₹<?php echo $year_1 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1  + $total_cash_year_1 ?></td>
+                                            <td>₹<?php echo $year_1 - ($total_cheque_year_1 + $total_cash_year_1) ?></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>2 YEARS</td>
+                                            <td>₹<?php echo $year_2 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2  + $total_cash_year_2 ?></td>
+                                            <td>₹<?php echo $year_2 - ($total_cheque_year_2 + $total_cash_year_2) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>3 YEARS</td>
+                                            <td>₹<?php echo $year_3 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3  + $total_cash_year_3 ?></td>
+                                            <td>₹<?php echo $year_3 - ($total_cheque_year_3 + $total_cash_year_3) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>4 YEARS</td>
+                                            <td>₹<?php echo $year_4 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4  + $total_cash_year_4 ?></td>
+                                            <td>₹<?php echo $year_4 - ($total_cheque_year_4 + $total_cash_year_4) ?></td>
+                                        </tr>
+
+                                        <!-- ============ YEAR 2  ============  -->
+                                    <?php }
+                                    if ($tenure == '2') { ?>
+                                        <tr>
+                                            <td>1 YEAR</td>
+                                            <td>₹<?php echo $year_1 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1  + $total_cash_year_1 ?></td>
+                                            <td>₹<?php echo $year_1 - ($total_cheque_year_1 + $total_cash_year_1) ?></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>2 YEARS</td>
+                                            <td>₹<?php echo $year_2 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2  + $total_cash_year_2 ?></td>
+                                            <td>₹<?php echo $year_2 - ($total_cheque_year_2 + $total_cash_year_2) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>3 YEARS</td>
+                                            <td>₹<?php echo $year_3 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3  + $total_cash_year_3 ?></td>
+                                            <td>₹<?php echo $year_3 - ($total_cheque_year_3 + $total_cash_year_3) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>4 YEARS</td>
+                                            <td>₹<?php echo $year_4 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4  + $total_cash_year_4 ?></td>
+                                            <td>₹<?php echo $year_4 - ($total_cheque_year_4 + $total_cash_year_4) ?></td>
+                                        </tr>
+
+                                        <!-- ============ YEAR 3  ============  -->
+                                    <?php }
+                                    if ($tenure == '3') { ?>
+                                        <tr>
+                                            <td>1 YEAR</td>
+                                            <td>₹<?php echo $year_1 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_1  + $total_cash_year_1 ?></td>
+                                            <td>₹<?php echo $year_1 - ($total_cheque_year_1 + $total_cash_year_1) ?></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>2 YEARS</td>
+                                            <td>₹<?php echo $year_2 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_2  + $total_cash_year_2 ?></td>
+                                            <td>₹<?php echo $year_2 - ($total_cheque_year_2 + $total_cash_year_2) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>3 YEARS</td>
+                                            <td>₹<?php echo $year_3 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_3  + $total_cash_year_3 ?></td>
+                                            <td>₹<?php echo $year_3 - ($total_cheque_year_3 + $total_cash_year_3) ?></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>4 YEARS</td>
+                                            <td>₹<?php echo $year_4 ?> </td>
+                                            <td>₹<?php echo $total_cash_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4 ?> </td>
+                                            <td>₹<?php echo $total_cheque_year_4  + $total_cash_year_4 ?></td>
+                                            <td>₹<?php echo $year_4 - ($total_cheque_year_4 + $total_cash_year_4) ?></td>
+                                        </tr>
+
+                                        <!-- ============ YEAR 4  ============  -->
+                                    <?php }
+                                    if ($tenure == '4') { ?>
+                                        <?php if ($bora_invoice_tenure != 'Year 1 Fee') { ?>
+                                            <tr>
+                                                <td>1 YEAR</td>
+                                                <td>₹<?php echo $year_1 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_1 ?> </td>
+                                                <td>₹NA </td>
+                                                <td>₹NA </td>
+                                                <td>₹<?php echo (int)$year_1 - ((int)$total_cheque_year_1 + (int)$total_cash_year_1) ?>
+                                                </td>
+                                            </tr>
+
+                                        <?php } else if ($bora_invoice_tenure == 'Year 1 Fee') { ?>
+                                            <tr>
+                                                <td>1 YEAR</td>
+                                                <td>₹<?php echo $year_1 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_1 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_1 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_1  + $total_cash_year_1 ?></td>
+                                                <td>₹<?php echo (int)$year_1 - (int)($total_cheque_year_1 + (int)$total_cash_year_1) ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+
+                                        <?php if ($bora_invoice_tenure != 'Year 2 Fee') { ?>
+                                            <tr>
+                                                <td>2 YEARS</td>
+                                                <td>₹<?php echo $year_2 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_2 ?> </td>
+                                                <td>₹NA </td>
+                                                <td>₹NA </td>
+                                                <td>₹<?php echo (int)$year_2 - ((int)$total_cheque_year_2 + (int)$total_cash_year_2)  ?>
+                                                </td>
+                                            </tr>
+                                        <?php } else if ($bora_invoice_tenure == 'Year 2 Fee') { ?>
+                                            <tr>
+                                                <td>2 YEARS</td>
+                                                <td>₹<?php echo $year_2 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_2 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_2 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_2  + $total_cash_year_2 ?></td>
+                                                <td>₹<?php echo (int)$year_2 - ((int)$total_cheque_year_2 + (int)$total_cash_year_2) ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+
+                                        <?php if ($bora_invoice_tenure != 'Year 3 Fee') { ?>
+                                            <tr>
+                                                <td>3 YEARS</td>
+                                                <td>₹<?php echo $year_3 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_3 ?> </td>
+                                                <td>₹NA </td>
+                                                <td>₹NA </td>
+                                                <td>₹<?php echo $year_3 - ($total_cheque_year_3 + $total_cash_year_3) ?></td>
+                                            </tr>
+                                        <?php } else { ?>
+                                            <tr>
+                                                <td>3 YEARS</td>
+                                                <td>₹<?php echo $year_3 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_3 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_3 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_3  + $total_cash_year_3 ?></td>
+                                                <td>₹<?php echo $year_3 - ($total_cheque_year_3 + $total_cash_year_3) ?></td>
+                                            </tr>
+                                        <?php } ?>
+
+                                        <?php if ($bora_invoice_tenure != 'Year 4 Fee') { ?>
+                                            <tr>
+                                                <td>4 YEARS</td>
+                                                <td>₹<?php echo $year_4 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_4 ?> </td>
+                                                <td>₹NA</td>
+                                                <td>₹NA</td>
+                                                <td>₹<?php echo $year_4  ?></td>
+                                            </tr>
+                                        <?php } else { ?>
+                                            <tr>
+                                                <td>4 YEARS</td>
+                                                <td>₹<?php echo $year_4 ?> </td>
+                                                <td>₹<?php echo $total_cash_year_4 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_4 ?> </td>
+                                                <td>₹<?php echo $total_cheque_year_4  + $total_cash_year_4 ?></td>
+                                                <td>₹<?php echo $year_4 - ($total_cheque_year_4 + $total_cash_year_4) ?></td>
+                                            </tr>
+                                        <?php } ?>
+
                             <?php
+                                    }
                                 }
                             }
                             ?>
+
                         </tbody>
                     </table>
                 </div>
