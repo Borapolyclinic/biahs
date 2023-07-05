@@ -18,14 +18,22 @@ if (isset($_POST['download'])) {
         $bora_invoice_student_contact = $row['bora_invoice_student_contact'];
         $bora_invoice_student_course = $row['bora_invoice_student_course'];
 
+        $bora_invoice_cheque_number = $row['bora_invoice_cheque_number'];
+        $bora_invoice_bank_name = $row['bora_invoice_bank_name'];
+        $bora_invoice_ifsc = $row['bora_invoice_ifsc'];
+
         $bora_invoice_for = $row['bora_invoice_for'];
         $bora_invoice_tenure = $row['bora_invoice_tenure'];
         $bora_invoice_value = $row['bora_invoice_value'];
         $bora_invoice_disc = $row['bora_invoice_disc'];
         $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
 
-        $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
+        if (empty($bora_invoice_disc)) {
+            $bora_invoice_disc = '0';
+        }
 
+        $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
+        $bora_invoice_payment_id = $row['bora_invoice_payment_id'];
         if ($bora_invoice_payment_mode == 'cheque') {
             $bora_invoice_payment_mode = 'CHEQUE';
         } else if ($bora_invoice_payment_mode == 'online') {
@@ -55,6 +63,54 @@ if (isset($_POST['download'])) {
         $pdf->SetFont('helvetica', '', 12);
         $pdf->SetDisplayMode('fullwidth', 'single');
         ob_start();
+
+        $tableContent = '';
+
+        if ($bora_invoice_payment_mode == 'ONLINE') {
+            $tableContent .= '
+        <thead>
+            <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT ID:<strong> ' . $bora_invoice_payment_id . '</strong></th>
+            </tr>
+        </thead>';
+        } elseif ($bora_invoice_payment_mode == 'CHEQUE') {
+            $tableContent .= '
+        <thead>
+            <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+            </tr>
+        </thead>
+        <thead>
+        <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">DD | CHEQUE NUMBER:<strong> ' . $bora_invoice_cheque_number . '</strong></th>
+            </tr>
+            
+        </thead>
+        <thead>
+        <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">BANK NAME:<strong> ' . htmlspecialchars($bora_invoice_bank_name) . '</strong></th>
+            </tr>
+            
+        </thead>
+        <thead>
+        <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">IFSC CODE:<strong> ' . htmlspecialchars($bora_invoice_ifsc) . '</strong></th>
+            </tr>
+        </thead>
+        ';
+        } elseif ($bora_invoice_payment_mode == 'CASH') {
+            $tableContent .= '
+        <thead>
+            <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+            </tr>
+        </thead>';
+        }
 
         $content = '
 <!doctype html>
@@ -170,14 +226,7 @@ if (isset($_POST['download'])) {
                     </tbody>
                     </table>
 
-                    <table style="margin-top: 5px;">
-                        <thead>
-                            <tr>
-                                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' .
-            $bora_invoice_payment_mode . '</strong></th>
-                            </tr>
-                        </thead>
-                    </table>
+                    <table style="margin-top: 5px;">' . $tableContent . '</table>
 
                     <div>
                         <p>Authorized Signatory: </p>

@@ -4,7 +4,7 @@
 
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="admin-past-payments.php">
+        <a href="dashboard.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Edit Receipt</h5>
@@ -25,7 +25,6 @@
         $bora_invoice_id = $_POST['bora_invoice_id'];
         $fetch_data = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_id` = '$bora_invoice_id'";
         $fetch_data_res = mysqli_query($connection, $fetch_data);
-
         $bora_invoice_id = "";
         $bora_invoice_number = "";
         $bora_invoice_date = "";
@@ -46,7 +45,6 @@
         $bora_invoice_disc = "";
         $bora_invoice_grand_total = "";
         $bora_invoice_by = "";
-
         while ($row = mysqli_fetch_assoc($fetch_data_res)) {
             $bora_invoice_id = $row['bora_invoice_id'];
             $bora_invoice_number = $row['bora_invoice_number'];
@@ -58,6 +56,7 @@
             $bora_invoice_student_course = $row['bora_invoice_student_course'];
 
             $bora_invoice_for = $row['bora_invoice_for'];
+            $bora_invoice_tenure_id = $row['bora_invoice_tenure_id'];
             $bora_invoice_tenure = $row['bora_invoice_tenure'];
             $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
 
@@ -75,15 +74,15 @@
     }
 
     ?>
-    <form class="add-user-form" method="POST" action="generate-invoice.php">
-        <input type="text" name="bora_invoice_student_id" value="<?php echo $bora_invoice_id ?>" hidden>
+    <form class="add-user-form" method="POST" action="admin-edit-receipt-confirmation.php">
+        <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
         <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
 
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
             <h5>Bora Institute of Allied Health Sciences</h5>
             <p>Sewa Nagar, NH-24, Sitapur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong>
+                <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
                 info@borainstitute.com.
                 <strong>Website:</strong> borainstitute.com
             </p>
@@ -98,13 +97,29 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    $current_month = date('m');
+                    $current_year = date('y');
+                    $new_query = "SELECT * FROM `bora_invoice`";
+                    $new_res = mysqli_query($connection, $new_query);
+                    $bora_invoice_number = "";
+                    while ($row = mysqli_fetch_assoc($new_res)) {
+                        $bora_invoice_number = $row['bora_invoice_number'];
+                    }
+                    if ($bora_invoice_number && strpos($bora_invoice_number, $current_month . $current_year) !== false) {
+                        $last_number = intval(substr($bora_invoice_number, -4)) + 1;
+                    } else {
+                        $last_number = 1;
+                    }
+                    $receipt_number = 'BIAHS' . $current_month . $current_year . str_pad($last_number, 4, '0', STR_PAD_LEFT);
+                    ?>
                     <tr>
-                        <th scope="row" colspan="4"><strong><?php echo $bora_invoice_number; ?></strong></th>
+                        <th scope="row" colspan="4"><strong><?php echo $receipt_number; ?></strong></th>
                         <td>
-                            <p><?php echo $bora_invoice_date; ?></p>
+                            <?php echo date('d-m-Y'); ?>
                         </td>
                     </tr>
-
+                    <input type="text" name="bora_invoice_number" value="<?php echo $receipt_number ?>" hidden>
                 </tbody>
             </table>
         </div>
@@ -135,15 +150,10 @@
                 <thead class="table-active">
                     <tr>
                         <th scope="col">FEE TYPE</th>
-                        <th scope="col">COURSE</th>
+                        <th scope="col" style="width: 15%;">COURSE NAME</th>
                         <th scope="col">PAID FOR</th>
-                        <th scope="col">AMOUNT</th>
-                        <?php
-                        if (!empty($bora_invoice_disc)) { ?>
-                            <th scope="col">DISCOUNT</th>
-                        <?php } ?>
-
-                        <th scope="col">TOTAL</th>
+                        <th scope="col">RECEIPT AMOUNT</th>
+                        <th scope="col">DISCOUNT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -282,18 +292,22 @@
                                 <?php } ?>
                             </select>
                         </th>
-                        <!-- <th scope="row">
-                            <p><?php echo $bora_invoice_for ?></p>
-                        </th> -->
-                        <td>
-                            <p><?php echo $bora_invoice_student_course ?></p>
+                        <td style="width: 15%;">
+                            <?php
+                            $get_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$bora_invoice_student_course_id'";
+                            $get_course_res = mysqli_query($connection, $get_course);
+                            $course_name = "";
+                            while ($row = mysqli_fetch_assoc($get_course_res)) {
+                                $course_name = $row['course_name'];
+                            }
+                            echo $course_name;
+                            ?>
                         </td>
-                        <!-- <td>
-                            <p><?php echo $bora_invoice_tenure ?></p>
-                        </td> -->
                         <td>
-                            <select name="invoice_tenure" class="form-select w-100" aria-label="Default select example">
-                                <option selected>Click here to open menu</option>
+                            <input type="text" name="bora_invoice_tenure_id" value="<?php echo $bora_invoice_tenure_id ?>" hidden>
+                            <select name="bora_invoice_tenure" class="form-select w-100" aria-label="Default select example">
+                                <option value="<?php echo $bora_invoice_tenure ?>"><?php echo $bora_invoice_tenure ?>
+                                    (Selected)</option>
                                 <?php
                                 $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$bora_invoice_student_course_id'";
                                 $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
@@ -315,51 +329,176 @@
                                     $course_year_3_fee = $row['course_year_3_fee'];
                                     $course_year_4_fee = $row['course_year_4_fee'];
                                 }
-                                if ($course_tenure == '1') { ?>
-                                    <option value="Year 1 Fee">Year 1 Fee</option>
-                                <?php }
-                                if ($course_tenure == '2') { ?>
-                                    <option value="Year 1 Fee">Year 1 Fee</option>
-                                    <option value="Year 2 Fee">Year 2 Fee</option>
-                                <?php }
-                                if ($course_tenure == '3') { ?>
-                                    <option value="Year 1 Fee">Year 1 Fee</option>
-                                    <option value="Year 2 Fee">Year 2 Fee</option>
-                                    <option value="Year 3 Fee">Year 3 Fee</option>
-                                <?php }
-                                if ($course_tenure == '4') { ?>
-                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                if ($bora_invoice_tenure == 'Year 1 Fee') { ?>
                                     <option value="Year 2 Fee">Year 2 Fee</option>
                                     <option value="Year 3 Fee">Year 3 Fee</option>
                                     <option value="Year 4 Fee">Year 4 Fee</option>
+                                <?php } else if ($bora_invoice_tenure == 'Year 2 Fee') { ?>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 3 Fee">Year 3 Fee</option>
+                                    <option value="Year 4 Fee">Year 4 Fee</option>
+                                <?php } else if ($bora_invoice_tenure == 'Year 3 Fee') { ?>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 2 Fee">Year 2 Fee</option>
+                                    <option value="Year 4 Fee">Year 4 Fee</option>
+                                <?php } else if ($bora_invoice_tenure == 'Year 4 Fee') { ?>
+                                    <option value="Year 1 Fee">Year 1 Fee</option>
+                                    <option value="Year 2 Fee">Year 2 Fee</option>
+                                    <option value="Year 3 Fee">Year 3 Fee</option>
                                 <?php } ?>
                             </select>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="bora_invoice_value" value="<?php echo $bora_invoice_value  ?>" id="collectingAmount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="bora_invoice_value" value="<?php echo $bora_invoice_value ?>" id="collectingAmount" class="form-control" placeholder="">
                             </div>
                         </td>
-                        <?php if (!empty($bora_invoice_disc)) { ?>
+
+                        <?php
+                        if (empty($bora_invoice_disc)) { ?>
                             <td>
                                 <div>
-                                    <input type="number" name="invoice_disc" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                    <input type="number" name="bora_invoice_disc" id="discount" value="0" class="form-control" placeholder="">
+                                </div>
+                            </td>
+                        <?php } else { ?>
+                            <td>
+                                <div>
+                                    <input type="number" name="bora_invoice_disc" id="discount" value="<?php echo $bora_invoice_disc ?>" class="form-control" placeholder="">
                                 </div>
                             </td>
                         <?php } ?>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                        <!-- <td>
-                            <p>₹<?php echo $bora_invoice_value ?></p>
-                        </td>
-                        <?php if (!empty($bora_invoice_disc)) { ?>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <?php
+                if ($bora_invoice_payment_mode == 'cash') {
+                    $new_payment_mode = "CASH";
+                ?>
+                    <thead class="table-active">
+                        <tr>
+                            <th>SELECTED PAYMENT MODE: <?php echo $new_payment_mode  ?></th>
+                        </tr>
+                    </thead>
+                <?php } else if ($bora_invoice_payment_mode == 'cheque') {
+                    $new_payment_mode = "CHEQUE";
+                ?>
+                    <thead class="table-active">
+                        <tr>
+                            <th>SELECTED PAYMENT MODE: <?php echo $new_payment_mode  ?></th>
+                        </tr>
+                    </thead>
+                    <thead class="table-active">
+                        <tr>
+                            <th>CHEQUE | DD NUMBER: <?php echo $bora_invoice_cheque_number  ?></th>
+                        </tr>
+                    </thead>
+                    <thead class="table-active">
+                        <tr>
+                            <th>BANK NAME: <?php echo $bora_invoice_bank_name  ?></th>
+                        </tr>
+                    </thead>
+                    <thead class="table-active">
+                        <tr>
+                            <th>IFSC CODE: <?php echo $bora_invoice_ifsc  ?></th>
+                        </tr>
+                    </thead>
+                <?php } ?>
+
+            </table>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-active">
+                    <tr>
+                        <th scope="col" colspan="4">Payment Mode</th>
+                        <th scope="col">Selection</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" colspan="4">Cash</th>
                         <td>
-                            <p>₹<?php echo $bora_invoice_disc ?></p>
+                            <div class="form-check">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                            </div>
                         </td>
-                        <?php } ?>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="4">Cheque | Demand Draft</th>
                         <td>
-                            <p>₹<?php echo $bora_invoice_grand_total ?></p>
-                        </td> -->
+                            <div class="form-check">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
+                        <td>
+                            <div class="form-check">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="paymentIdField" style="display: none;" class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-active">
+                    <tr>
+                        <th scope="col">Transaction ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="text" name="bora_invoice_payment_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive" id="chequeFields" style="display: none;">
+            <table class="table table-bordered">
+                <thead class="table-active">
+                    <tr>
+                        <th scope="col">Cheque Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="text" name="bora_invoice_cheque_number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cheque Number | DD Number">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="text" name="bora_invoice_bank_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank Name">
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="text" name="bora_invoice_ifsc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Bank IFSC Code">
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -367,74 +506,20 @@
 
 
 
-        <table style="margin-top: 5px; width: 100%; ">
-            <?php
-            if ($bora_invoice_payment_mode == 'cash') {
-            ?>
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                            MODE:<strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </strong></th>
-                    </tr>
-                </thead>
-            <?php } else if ($bora_invoice_payment_mode == 'cheque') { ?>
-                <thead>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?></th>
-                </thead>
-                <thead>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">CHEQUE
-                        NUMBER:
-                        <?php echo strtoupper($bora_invoice_cheque_number) ?></th>
-                </thead>
-                <thead>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK NAME:
-                        <?php echo strtoupper($bora_invoice_bank_name) ?></th>
-                </thead>
-                <thead>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK IFSC
-                        CODE:
-                        <?php echo strtoupper($bora_invoice_ifsc) ?></th>
-                </thead>
-
-            <?php } else if ($bora_invoice_payment_mode == 'online') { ?>
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                            MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                            ID:
-                            <?php echo $bora_invoice_payment_id ?>
-                        </th>
-                    </tr>
-                </thead>
-
-            <?php } else if ($bora_invoice_payment_mode == 'DemandDraft') { ?>
-                <thead>
-                    <tr>
-                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                            MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">DD
-                            NUMBER:
-                            <?php echo $bora_invoice_dd_number ?>
-                        </th>
-                    </tr>
-                </thead>
-            <?php } ?>
-        </table>
-
         <div class="table-responsive mt-5">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col" class="table-active">
                             <div class="receipt-calculation">
-                                <h6>Collected By: <?php echo $bora_invoice_by; ?></h6>
+                                <h6>Discount:</h6>
                                 <p id="difference"></p>
+                            </div>
+                        </th>
+                        <th scope="col" class="table-active">
+                            <div class="receipt-calculation">
+                                <h6>Total Amount: </h6>
+                                <p id="output"> </p>
                             </div>
                         </th>
                     </tr>

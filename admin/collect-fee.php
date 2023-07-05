@@ -82,8 +82,7 @@
                             </select>
                         </th>
                         <td>
-                            <select id="mySelect" onchange="showSelectedValue()" class="form-select w-100"
-                                aria-label="Default select example">
+                            <select id="mySelect" onchange="showSelectedValue()" class="form-select w-100" aria-label="Default select example">
                                 <option selected>Click here to open menu</option>
                                 <option value="Monthly">Monthly</option>
                                 <option value="Quarterly">Quarterly</option>

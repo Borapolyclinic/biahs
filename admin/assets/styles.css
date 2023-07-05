@@ -34,6 +34,22 @@ input::-webkit-inner-spin-button {
   padding: 50px;
   background-color: #fff;
 }
+.password-textbox-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.password-input-box {
+  width: 95% !important;
+}
+.password-button {
+  background-color: #fff;
+  border: 0;
+}
+.password-button ion-icon {
+  font-size: 20px;
+  color: green;
+}
 
 /* ============ NAVBAR ============ */
 .navbar {
@@ -338,6 +354,9 @@ input::-webkit-inner-spin-button {
   font-size: 18px !important;
   color: green !important;
   margin-left: 5px;
+}
+.table-disabled {
+  background-color: #f5bac4 !important;
 }
 
 /* ============ VIEW USER ============ */

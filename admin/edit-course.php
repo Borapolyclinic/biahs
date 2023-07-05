@@ -21,21 +21,6 @@
     }
 
 
-    if (isset($_POST['edit-fee'])) {
-        $course_id = $_POST['course_id'];
-        $fetch_course_query = "SELECT * FROM `bora_course` WHERE `course_id` = '$course_id'";
-        $fetch_course_query_res = mysqli_query($connection, $fetch_course_query);
-
-        $course_id = "";
-        $course_name = "";
-        $course_tenure = "";
-
-        while ($row = mysqli_fetch_assoc($fetch_course_query_res)) {
-            $course_id = $row['course_id'];
-            $course_name = $row['course_name'];
-            $course_tenure = $row['course_tenure'];
-        }
-    }
     ?>
 
     <div class="table-responsive user-table">
@@ -43,7 +28,7 @@
             <thead>
                 <tr>
                     <th scope="col" style="width: 25%;">COURSE NAME</th>
-                    <th scope="col">TENURE</th>
+                    <th scope="col">COURSE LENGTH</th>
                     <th scope="col">YEAR 1</th>
                     <th scope="col">YEAR 2</th>
                     <th scope="col">YEAR 3</th>
@@ -56,30 +41,7 @@
             <tbody>
                 <?php
 
-                // ====================== UPDATE ======================
-                if (isset($_POST['update-course'])) {
-                    $course_id = $_POST['course_id'];
-                    $course_name = $_POST['course_name'];
-                    $course_tenure = $_POST['course_tenure'];
 
-                    $update_query = "UPDATE
-                        `bora_course`
-                    SET
-                        `course_name` = '$course_name',
-                        `course_tenure` = '$course_tenure'
-                    WHERE
-                        `course_id` = '$course_id'";
-
-                    $update_res = mysqli_query($connection, $update_query);
-
-                    if ($update_res) { ?>
-                <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
-                    Course Updated!
-                </div>
-
-                <?php
-                    }
-                }
                 // ====================== UPDATE YEAR 1 FEE ======================
                 if (isset($_POST['add-fee-1'])) {
                     $course_id = $_POST['course_id'];
@@ -148,158 +110,111 @@
                     }
                 }
 
-                // ====================== FETCH COURSE DETAILS ======================
-                $fetch_course = "SELECT * FROM `bora_course`";
-                $fetch_course_res = mysqli_query($connection, $fetch_course);
-                while ($row = mysqli_fetch_assoc($fetch_course_res)) {
-                    $course_id = $row['course_id'];
-                    $course_name = $row['course_name'];
-                    $course_tenure = $row['course_tenure'];
-                    $course_year_1_fee = $row['course_year_1_fee'];
-                    $course_year_2_fee = $row['course_year_2_fee'];
-                    $course_year_3_fee = $row['course_year_3_fee'];
-                    $course_year_4_fee = $row['course_year_4_fee'];
-                    ?>
+
+                if (isset($_POST['edit-fee']) || isset($_POST['update_success_1']) || isset($_POST['update_success_2']) || isset($_POST['update_success_3']) || isset($_POST['update_success_4'])) {
+                    $course_id = $_POST['course_id'];
+                    $fetch_course_query = "SELECT * FROM `bora_course` WHERE `course_id` = '$course_id'";
+                    $fetch_course_query_res = mysqli_query($connection, $fetch_course_query);
+
+                    $course_id = "";
+                    $course_name = "";
+                    $course_tenure = "";
+
+                    while ($row = mysqli_fetch_assoc($fetch_course_query_res)) {
+                        $course_id = $row['course_id'];
+                        $course_name = $row['course_name'];
+                        $course_tenure = $row['course_tenure'];
+                        $course_year_1_fee = $row['course_year_1_fee'];
+                        $course_year_2_fee = $row['course_year_2_fee'];
+                        $course_year_3_fee = $row['course_year_3_fee'];
+                        $course_year_4_fee = $row['course_year_4_fee'];
+                    }
+                }
+                ?>
                 <tr>
                     <th scope="row" class="w-30"><?php echo $course_name; ?></th>
                     <td><?php echo $course_tenure ?> Year</td>
 
                     <!-- =========== COURSE TENURE 1 =========== -->
                     <?php if ($course_tenure == '1') { ?>
-                    <form action="" method="POST">
-                        <td>
-                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹₹<?php echo $course_year_1_fee ?>">
-                        </td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button type="submit" name="add-fee-1"
-                                class="btn btn-sm btn-outline-success">Update</button>
-                        </td>
-                    </form>
+                        <form action="update-course-fee-success.php" method="POST">
+                            <td>
+                                <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹₹<?php echo $course_year_1_fee ?>">
+                            </td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td>
+                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                <button type="submit" name="add-fee-1" class="btn btn-sm btn-outline-success">Update</button>
+                            </td>
+                        </form>
 
-                    <!-- =========== COURSE TENURE 2 =========== -->
+                        <!-- =========== COURSE TENURE 2 =========== -->
                     <?php } else if ($course_tenure == '2') { ?>
-                    <form action="" method="POST">
-                        <td>
-                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
-                        </td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
+                        <form action="update-course-fee-success.php" method="POST">
+                            <td>
+                                <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                            </td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td>
 
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button type="submit" name="add-fee-2"
-                                class="btn btn-sm btn-outline-success">Update</button>
+                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                <button type="submit" name="add-fee-2" class="btn btn-sm btn-outline-success">Update</button>
 
-                        </td>
-                    </form>
-                    <!-- <td>
-                        <form action="edit-course.php" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            </td>
                         </form>
-                    </td>
-
-                    <td>
-                        <form action="" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="del" type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td> -->
-
-                    <!-- =========== COURSE TENURE 3 =========== -->
+                        <!-- =========== COURSE TENURE 3 =========== -->
                     <?php } else if ($course_tenure == '3') {  ?>
-                    <form action="" method="POST">
-                        <td>
-                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
-                        </td>
-                        <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
-                        <td>
+                        <form action="update-course-fee-success.php" method="POST">
+                            <td>
+                                <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
+                            </td>
+                            <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
+                            <td>
 
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button type="submit" name="add-fee-3"
-                                class="btn btn-sm btn-outline-success">Update</button>
+                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                <button type="submit" name="add-fee-3" class="btn btn-sm btn-outline-success">Update</button>
 
-                        </td>
-                    </form>
-                    <!-- <td>
-                        <form action="edit-course.php" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            </td>
                         </form>
-                    </td>
-
-                    <td>
-                        <form action="" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="del" type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td> -->
-
-
-                    <!-- =========== COURSE TENURE 4 =========== -->
+                        <!-- =========== COURSE TENURE 4 =========== -->
                     <?php } else if ($course_tenure == '4') { ?>
-                    <form action="" method="POST">
-                        <td>
-                            <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
-                        </td>
-                        <td>
-                            <input type="number" name="course_year_4_fee" value="<?php echo $course_year_4_fee ?>"
-                                class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_4_fee ?>">
-                        </td>
+                        <form action="update-course-fee-success.php" method="POST">
+                            <td>
+                                <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_2_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_3_fee ?>">
+                            </td>
+                            <td>
+                                <input type="number" name="course_year_4_fee" value="<?php echo $course_year_4_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_4_fee ?>">
+                            </td>
 
-                        <td>
+                            <td>
 
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button type="submit" name="add-fee-4"
-                                class="btn btn-sm btn-outline-success">Update</button>
+                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                <button type="submit" name="add-fee-4" class="btn btn-sm btn-outline-success">Update</button>
 
-                        </td>
-                    </form>
-                    <!-- <td>
-                        <form action="edit-course.php" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="edit-fee" type="submit" class="btn btn-sm btn-outline-danger">Edit</button>
+                            </td>
                         </form>
-                    </td> -->
-
-                    <!-- <td>
-                        <form action="" method="POST">
-                            <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                            <button name="del" type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td> -->
                     <?php } ?>
 
                 </tr>
-                <?php } ?>
+
             </tbody>
         </table>
 
