@@ -25,6 +25,7 @@
         $bora_invoice_id = $_POST['bora_invoice_id'];
         $fetch_data = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_id` = '$bora_invoice_id'";
         $fetch_data_res = mysqli_query($connection, $fetch_data);
+
         $bora_invoice_id = "";
         $bora_invoice_number = "";
         $bora_invoice_date = "";
@@ -81,7 +82,7 @@
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
             <h5>Bora Institute of Allied Health Sciences</h5>
-            <p>Sewa Nagar, NH-24, Sitapur Road. Lucknow - 226201.
+            <p>Sewa Nagar, NH-24, Sitapur Road, Lucknow - 226201.
                 <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
                 info@borainstitute.com.
                 <strong>Website:</strong> borainstitute.com
@@ -390,7 +391,7 @@
                 ?>
                     <thead class="table-active">
                         <tr>
-                            <th>SELECTED PAYMENT MODE: <?php echo $new_payment_mode  ?></th>
+                            <th>SELECTED PAYMENT MODE: CHEQUE | DEMAND DRAFT | ONLINE</th>
                         </tr>
                     </thead>
                     <thead class="table-active">
@@ -406,6 +407,11 @@
                     <thead class="table-active">
                         <tr>
                             <th>IFSC CODE: <?php echo $bora_invoice_ifsc  ?></th>
+                        </tr>
+                    </thead>
+                    <thead class="table-active">
+                        <tr>
+                            <th>TRANSACTION ID: <?php echo $bora_invoice_ifsc  ?></th>
                         </tr>
                     </thead>
                 <?php } ?>

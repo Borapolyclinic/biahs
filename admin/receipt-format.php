@@ -96,18 +96,19 @@ if (isset($_POST['invoice'])) {
 <body>   
     <div>
         <div>
-            <h1>Bora Institute of Allied Health Sciences</h1>
-            <p>Bora Institute of Nursing & Paramedical Sciences. Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong> info@borainstitute.com
-                <strong>Website:</strong> borainstitute.com
-            </p>
+        <h1>Bora Institute of Allied Health Sciences</h1>
+        <p>Sewa Nagar, NH-24, Sitaur Road, Lucknow - 226201.
+            <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
+            info@borainstitue.com.
+            <strong>Website:</strong> borainstitute.com
+        </p>
         </div>
 
         <table style="margin-bottom: 5px;">
             <thead>
                 <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> INVOICE NUMBER</th>
-                    <th scope="col" colspan="4" style="border: 1px solid #000"> INVOICE DATE</th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> RECEIPT NUMBER</th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000"> RECEIPT DATE</th>
                 </tr>
             </thead>
             <tbody>
@@ -135,8 +136,8 @@ if (isset($_POST['invoice'])) {
                 <tr>
                     <th style="border: 1px solid #000" scope="col"> FEE TYPE</th>
                     <th style="border: 1px solid #000" scope="col"> COURSE</th>
-                    <th style="border: 1px solid #000" scope="col"> YEAR</th>
-                    <th style="border: 1px solid #000" scope="col"> INVOICE AMOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> PAID FOR</th>
+                    <th style="border: 1px solid #000" scope="col"> RECEIPT AMOUNT</th>
                     <th style="border: 1px solid #000" scope="col"> DISCOUNT</th>
                     <th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
                 </tr>

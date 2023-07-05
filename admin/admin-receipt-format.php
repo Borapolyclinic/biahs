@@ -82,7 +82,7 @@ if (isset($_POST['download'])) {
             $tableContent .= '
         <thead>
             <tr>
-                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong>CHEQUE | DEMAND DRAFT | ONLINE</strong></th>
             </tr>
         </thead>
         <thead>
@@ -100,6 +100,11 @@ if (isset($_POST['download'])) {
         <thead>
         <tr>
                 <th scope="col" colspan="4" style="border: 1px solid #000">IFSC CODE:<strong> ' . htmlspecialchars($bora_invoice_ifsc) . '</strong></th>
+            </tr>
+        </thead>
+        <thead>
+        <tr>
+                <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID :<strong> ' . htmlspecialchars($bora_invoice_payment_id) . '</strong></th>
             </tr>
         </thead>
         ';
@@ -153,7 +158,8 @@ if (isset($_POST['download'])) {
 <body>   
     <div>
         <div>
-            <p>Bora Institute of Allied Health Sciences. Sewa Nagar, NH-24, Sitapur Road. Lucknow - 226201.
+            <h1>Bora Institute of Allied Health Sciences</h1>
+            <p>Sewa Nagar, NH-24, Sitapur Road, Lucknow - 226201.
                 <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong> info@borainstitute.com
                 <strong>Website:</strong> borainstitute.com
             </p>
