@@ -8,6 +8,7 @@
             $student_id = $_POST['student_id'];
             $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
+            $student_whatsapp = mysqli_real_escape_string($connection, $_POST['student_whatsapp']);
             $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
             $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
             $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
@@ -31,6 +32,7 @@
                 SET
                     `student_name` = '$student_name',
                     `student_contact` = '$student_contact',
+                    `student_whatsapp` = '$student_whatsapp',
                     `student_email` = '$student_email',
                     `student_father` = '$student_father',
                     `student_mother` = '$student_mother',

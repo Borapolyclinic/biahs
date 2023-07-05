@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <form action="user-search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
+        <!-- <form action="user-search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
             <div class="w-100 m-1">
                 <select name="search_type" class="form-select" aria-label="Default select example">
                     <option selected>Click here for options</option>
@@ -90,7 +90,7 @@
                     id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
-        </form>
+        </form> -->
     </div>
 
     <div class="table-responsive user-table">

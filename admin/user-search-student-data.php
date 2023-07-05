@@ -20,45 +20,24 @@
 
     <div class="w-100 mb-3">
         <script>
-        function openEmptyModal() {
-            $(document).ready(function() {
-                $("#emptyModal").modal("show");
-            });
-        }
+            function openEmptyModal() {
+                $(document).ready(function() {
+                    $("#emptyModal").modal("show");
+                });
+            }
 
-        function notFound() {
-            $(document).ready(function() {
-                $("#notFoundModal").modal("show");
-            });
-        }
+            function notFound() {
+                $(document).ready(function() {
+                    $("#notFoundModal").modal("show");
+                });
+            }
         </script>
-        <!-- ======================= MODAL ======================= -->
-        <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Error!</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <p>Search category cannot be empty!</p>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="dashboard.php" class="btn btn-primary">Go back</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
 
 
         <!-- ======================= NOT FOUND ======================= -->
-        <div class="modal fade hide" id="notFoundModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="notFoundModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -87,18 +66,17 @@
                 </select>
             </div>
             <div class="w-100 m-1">
-                <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
+                <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="Enter Name, Mobile Number, UID to search user" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
     </div>
     <script>
-    function openModal(studentId) {
-        $(document).ready(function() {
-            $("#exampleModal").modal("show");
-        });
-    }
+        function openModal(studentId) {
+            $(document).ready(function() {
+                $("#exampleModal").modal("show");
+            });
+        }
     </script>
 
     <div class="table-responsive user-table">
@@ -136,47 +114,64 @@
                 if (isset($_POST['change'])) {
                     $student_id = $_POST['student_id'];
                     echo '<script>openModal(' . $student_id . ');</script>'; ?>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                                        <select name="student_status" class="form-select"
-                                            aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">Graduated</option>
-                                            <option value="2">Active</option>
-                                            <option value="3">Left</option>
-                                        </select>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                        <div>
+                                            <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                                            <select name="student_status" class="form-select" aria-label="Default select example">
+                                                <option selected>Open this select menu</option>
+                                                <option value="1">Graduated</option>
+                                                <option value="2">Active</option>
+                                                <option value="3">Left</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_status" class="btn btn-primary">Save
-                                        changes</button>
-                                </div>
-                            </form>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="update_status" class="btn btn-primary">Save
+                                            changes</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php
+                    <?php
                 }
                 if (isset($_POST['search'])) {
                     $search_type = $_POST['search_type'];
                     $student_search = $_POST['student_search'];
 
-                    if ($search_type = 'null') {
-                        echo "<script>openEmptyModal()</script>";
-                    } else {
+                    if ($search_type == 'null') {
+                        echo "<script>openEmptyModal()</script>"; ?>
+
+                        <!-- ======================= MODAL ======================= -->
+                        <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Error!</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <p>Search category cannot be empty!</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                        <a href="dashboard.php" class="btn btn-primary">Go back</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php      } else {
                         $query = "SELECT * FROM `bora_student` WHERE ";
                         if ($search_type == '1') {
                             $query .= "`student_name` LIKE '%$student_search%'";
@@ -198,12 +193,12 @@
                                 $student_admission_year = $row['student_admission_year'];
                                 $student_added_by = $row['student_added_by'];
                                 $student_status = $row['student_status'];
-                    ?>
-                <tr>
-                    <td><?php echo $student_roll ?></td>
-                    <th scope="row"><?php echo $student_name ?></th>
-                    <td><?php echo $student_contact ?></td>
-                    <td><?php
+                        ?>
+                                <tr>
+                                    <td><?php echo $student_roll ?></td>
+                                    <th scope="row"><?php echo $student_name ?></th>
+                                    <td><?php echo $student_contact ?></td>
+                                    <td><?php
 
                                         $fetch_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                                         $fetch_course_r = mysqli_query($connection, $fetch_course);
@@ -212,39 +207,33 @@
                                             $course_name = $row['course_name'];
                                         }
                                         echo $course_name ?></td>
-                    <td><?php echo $student_admission_year ?></td>
-                    <td>
-                        <?php if ($student_status == '1') { ?>
-                        <p class="btn btn-sm btn-dark">Graduated</p>
-                        <?php } elseif ($student_status == '2') { ?>
-                        <p class="btn btn-sm btn-success">Active</p>
-                        <?php } elseif ($student_status == '3') { ?>
-                        <p class="btn btn-sm btn-primary">Left</p>
-                        <?php } elseif (empty($student_status)) { ?>
-                        <p class="btn btn-sm btn-info">Not Updated</p>
-                        <?php } ?>
-                    </td>
-                    <td>
-                        <form action="user-student-details.php" method="post">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
-                                Details</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="user-collect-fee.php" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
-                                Fee</button>
-                        </form>
-                    </td>
-                    <!-- <td>
-                        <form action="" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="change" class="btn btn-sm btn-primary">Change Status</button>
-                        </form>
-                    </td> -->
-                </tr>
+                                    <td><?php echo $student_admission_year ?></td>
+                                    <td>
+                                        <?php if ($student_status == '1') { ?>
+                                            <p class="btn btn-sm btn-dark">Graduated</p>
+                                        <?php } elseif ($student_status == '2') { ?>
+                                            <p class="btn btn-sm btn-success">Active</p>
+                                        <?php } elseif ($student_status == '3') { ?>
+                                            <p class="btn btn-sm btn-primary">Left</p>
+                                        <?php } elseif (empty($student_status)) { ?>
+                                            <p class="btn btn-sm btn-info">Not Updated</p>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <form action="user-student-details.php" method="post">
+                                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
+                                                Details</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="user-collect-fee.php" method="POST">
+                                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                            <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
+                                                Fee</button>
+                                        </form>
+                                    </td>
+                                </tr>
                 <?php
                             }
                         } else {

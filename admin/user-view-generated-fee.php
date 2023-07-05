@@ -4,7 +4,7 @@
 
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="dashboard.php">
+        <a href="user-past-payments.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Collect Fee</h5>
@@ -73,15 +73,15 @@
     }
 
     ?>
-    <form class="add-user-form" method="POST" action="generate-invoice.php">
+    <form target="_blank" class="add-user-form" method="POST" action="generate-invoice.php">
         <input type="text" name="bora_invoice_student_id" value="<?php echo $bora_invoice_id ?>" hidden>
         <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
 
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
             <h5>Bora Institute of Allied Health Sciences</h5>
-            <p>Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201.
-                <strong>Contact:</strong> +91 9569863933 | +91 9305748634. <br><strong>Email:</strong>
+            <p>Sewa Nagar, NH-24, Sitaur Road, Lucknow - 226201.
+                <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
                 info@borainstitue.com.
                 <strong>Website:</strong> borainstitute.com
             </p>
@@ -134,7 +134,7 @@
                     <tr>
                         <th scope="col">FEE TYPE</th>
                         <th scope="col">COURSE</th>
-                        <th scope="col">YEAR</th>
+                        <th scope="col">PAID FOR</th>
                         <th scope="col">RECEIPT AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                         <th scope="col">GRAND TOTAL</th>
@@ -155,9 +155,16 @@
                         <td>
                             <p>₹<?php echo $bora_invoice_value ?></p>
                         </td>
+                        <?php if (empty($bora_invoice_disc)) { ?>
+                        <td>
+                            <p>₹0</p>
+                        </td>
+                        <?php } else { ?>
                         <td>
                             <p>₹<?php echo $bora_invoice_disc ?></p>
                         </td>
+                        <?php } ?>
+
                         <td>
                             <p>₹<?php echo $bora_invoice_grand_total ?></p>
                         </td>
@@ -179,7 +186,7 @@
             <?php } else if ($bora_invoice_payment_mode == 'cheque') { ?>
             <thead>
                 <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                    MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?></th>
+                    MODE: <strong>CHEQUE | DEMAND DRAFT | ONLINE</th>
             </thead>
             <thead>
                 <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">CHEQUE
@@ -194,6 +201,12 @@
                 <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK IFSC
                     CODE:
                     <?php echo strtoupper($bora_invoice_ifsc) ?></th>
+            </thead>
+            <thead>
+                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">TRANSACTION
+                    ID:
+                    <?php echo $bora_invoice_payment_id ?>
+                </th>
             </thead>
 
             <?php } else if ($bora_invoice_payment_mode == 'online') { ?>

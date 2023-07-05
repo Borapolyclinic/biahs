@@ -172,6 +172,7 @@ function batchWiseDataModal() {
                     <th scope="col">CONTACT NUMBER</th>
                     <th scope="col">CASH</th>
                     <th scope="col">BANK</th>
+                    <th scope="col">CASH + BANK</th>
                     <th scope="col">DUE</th>
                     <th scope="col">ACTION</th>
                 </tr>
@@ -208,13 +209,6 @@ function batchWiseDataModal() {
                         while ($row = mysqli_fetch_assoc($fetch_total_bank_r)) {
                             $total_bank = $row['total_bank'];
                         }
-
-                        // $fetch_total_online = "SELECT SUM(`bora_invoice_grand_total`) AS `total_online` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'online'";
-                        // $fetch_total_online_r = mysqli_query($connection, $fetch_total_online);
-                        // $total_online = "";
-                        // while ($row = mysqli_fetch_assoc($fetch_total_online_r)) {
-                        //     $total_online = $row['total_online'];
-                        // }
                 ?>
                 <tr>
                     <td><?php echo $bora_invoice_student  ?></td>
@@ -223,6 +217,7 @@ function batchWiseDataModal() {
 
                     <td><?php echo $total_cash  ?></td>
                     <td><?php echo $total_bank  ?></td>
+                    <td><?php echo $total_cash + $total_bank ?></td>
                     <td>
                         <?php
                                 $fetch_due = "SELECT * FROM `bora_course` WHERE `course_id` = '$batch_wise_course'";
