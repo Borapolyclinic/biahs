@@ -33,36 +33,19 @@ if (isset($_POST['view'])) {
             <h5>Aadhaar Card Image</h5>
         </button>
     </form>
-    <!-- <div class="page-marker">
-        <a href="user-view-students.php">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-        </a>
-        <h5>Aadhaar Card Images</h5>
-    </div> -->
+    <?php
+    if (!empty($student_aadhar_file)) {
+    ?>
     <div class="doc-row w-100">
         <div class="col-md-6 doc-img">
             <form action="aadhar-image-update.php" method="POST" enctype="multipart/form-data" class="">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <img src="<?php echo $student_aadhar_file ?>" alt="">
-                <!-- <p>Front Image</p> -->
-                <!-- <div class="mb-3">
-                    <input class="form-control" name="student_aadhar_file" type="file" id="formFile">
-                </div>
-                <button type="submit" name="front" class="w-100 btn btn-outline-success">Change/Upload Image</button> -->
             </form>
         </div>
-
-        <!-- <div class="col-md-6 doc-img">
-            <form action="aadhar-back-image-update.php" method="POST" enctype="multipart/form-data">
-                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                <img src="<?php echo $student_aadhar_back_file ?>" alt="">
-                <p>Back Image</p>
-                <div class="mb-3">
-                    <input class="form-control" name="student_aadhar_back_file" type="file" id="formFile">
-                </div>
-                <button type="submit" name="back" class="w-100 btn btn-outline-success">Change/Upload Image</button>
-            </form>
-        </div> -->
     </div>
+    <?php } else { ?>
+    <div class="w-100 mt-3 mb-3 alert alert-danger" role="alert">Aadhaar Card Image has not been uploaded yet.</div>
+    <?php } ?>
 </div>
 <?php include('includes/footer.php') ?>

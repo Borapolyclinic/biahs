@@ -17,7 +17,6 @@ if (isset($_POST['change_picture'])) {
         $student_id = $row['student_id'];
         $student_name = $row['student_name'];
         $student_img = "assets/student_aadhar_image/" . $row['student_img'];
-        $student_aadhar_back_file = "assets/student_aadhar_image/" . $row['student_aadhar_back_file'];
     }
 }
 
@@ -32,6 +31,9 @@ if (isset($_POST['change_picture'])) {
             <h5>Change Profile Image</h5>
         </button>
     </form>
+    <?php
+    if (!empty($student_img)) {
+    ?>
     <div class="w-100">
         <div class="doc-img">
             <form action="user-student-profile-change-success.php" method="POST" enctype="multipart/form-data" class="">
@@ -45,5 +47,8 @@ if (isset($_POST['change_picture'])) {
             </form>
         </div>
     </div>
+    <?php } else { ?>
+    <div class="w-100 mt-3 mb-3 alert alert-danger" role="alert">Profile picture has not been uploaded yet.</div>
+    <?php } ?>
 </div>
 <?php include('includes/footer.php') ?>
