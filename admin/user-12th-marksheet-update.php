@@ -25,7 +25,7 @@ if (isset($_POST['view'])) {
     <form action="user-student-details.php" method="POST" class="page-marker">
         <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
         <button type="submit" name="edit_back" class="page-marker no-btn">
-            <a href="view-students.php">
+            <a href="#">
                 <ion-icon name="arrow-back-outline"></ion-icon>
             </a>
             <h5>12th Marksheet</h5>
