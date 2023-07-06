@@ -36,23 +36,25 @@
         ?>
 
         <form action="admin-edit-receipt-success.php" method="POST">
-            <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>">
-            <input type="text" name="bora_invoice_for" value="<?php echo $bora_invoice_for ?>">
-            <input type="text" name="bora_invoice_tenure_id" value="<?php echo $bora_invoice_tenure_id ?>">
-            <input type="text" name="bora_invoice_tenure" value="<?php echo $bora_invoice_tenure ?>">
-            <input type="text" name="bora_invoice_payment_mode" value="<?php echo $bora_invoice_payment_mode ?>">
-            <input type="text" name="bora_invoice_payment_id" value="<?php echo $bora_invoice_payment_id ?>">
-            <input type="text" name="bora_invoice_cheque_number" value="<?php echo $bora_invoice_cheque_number ?>">
-            <input type="text" name="bora_invoice_bank_name" value="<?php echo $bora_invoice_bank_name ?>">
-            <input type="text" name="bora_invoice_ifsc" value="<?php echo $bora_invoice_ifsc ?>">
-            <input type="text" name="bora_invoice_value" value="<?php echo $bora_invoice_value ?>">
-            <input type="text" name="bora_invoice_disc" value="<?php echo $bora_invoice_disc ?>">
-            <input type="text" name="bora_invoice_grand_total" value="<?php echo $bora_invoice_grand_total ?>">
+            <input hidden type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>">
+            <input hidden type="text" name="bora_invoice_for" value="<?php echo $bora_invoice_for ?>">
+            <input hidden type="text" name="bora_invoice_tenure_id" value="<?php echo $bora_invoice_tenure_id ?>">
+            <input hidden type="text" name="bora_invoice_tenure" value="<?php echo $bora_invoice_tenure ?>">
+            <input hidden type="text" name="bora_invoice_payment_mode" value="<?php echo $bora_invoice_payment_mode ?>">
+            <input hidden type="text" name="bora_invoice_payment_id" value="<?php echo $bora_invoice_payment_id ?>">
+            <input hidden type="text" name="bora_invoice_cheque_number"
+                value="<?php echo $bora_invoice_cheque_number ?>">
+            <input hidden type="text" name="bora_invoice_bank_name" value="<?php echo $bora_invoice_bank_name ?>">
+            <input hidden type="text" name="bora_invoice_ifsc" value="<?php echo $bora_invoice_ifsc ?>">
+            <input hidden type="text" name="bora_invoice_value" value="<?php echo $bora_invoice_value ?>">
+            <input hidden type="text" name="bora_invoice_disc" value="<?php echo $bora_invoice_disc ?>">
+            <input hidden type="text" name="bora_invoice_grand_total" value="<?php echo $bora_invoice_grand_total ?>">
             <div class="alert alert-info" role="alert w-100">
                 Are you sure you want to update this Receipt?
             </div>
 
-            <button type="submit" name="edit" href="admin-edit-receipt.php" class="btn w-100 btn-outline-primary">No</button>
+            <button type="submit" name="edit" href="admin-edit-receipt.php"
+                class="btn w-100 btn-outline-primary">No</button>
             <button type="submit" name="update_success" class="btn w-100 btn-outline-success mt-3">Yes</button>
         </form>
     </div>
