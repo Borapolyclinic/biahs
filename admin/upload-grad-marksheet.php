@@ -28,7 +28,7 @@
     <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
         style="width: 300px; height: 300px;" loop autoplay></lottie-player>
     <p>Success! Student status updated.</p>
-    <form action="student-details.php" method="POST" class="w-100 d-flex justify-content-center align-items-center">
+    <form action="view-students.php" method="POST" class="w-100 d-flex justify-content-center align-items-center">
         <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
         <button type="submit" name="edit_back" class="btn btn-sm btn-outline-success">Go Back</button>
     </form>
