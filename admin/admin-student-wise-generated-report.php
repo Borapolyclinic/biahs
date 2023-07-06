@@ -12,41 +12,41 @@ include('components/navbar/admin-navbar.php');
     </div>
     <div class="user-table table-responsive">
         <script>
-        function dateFromModal() {
-            $(document).ready(function() {
-                $("#dateFrom").modal("show");
-            });
-        }
+            function dateFromModal() {
+                $(document).ready(function() {
+                    $("#dateFrom").modal("show");
+                });
+            }
 
-        function dateToModal() {
-            $(document).ready(function() {
-                $("#dateTo").modal("show");
-            });
-        }
+            function dateToModal() {
+                $(document).ready(function() {
+                    $("#dateTo").modal("show");
+                });
+            }
 
-        function studentWiseModal() {
-            $(document).ready(function() {
-                $("#studentWise").modal("show");
-            });
-        }
+            function studentWiseModal() {
+                $(document).ready(function() {
+                    $("#studentWise").modal("show");
+                });
+            }
 
-        function studentWiseDataModal() {
-            $(document).ready(function() {
-                $("#studentWiseData").modal("show");
-            });
-        }
+            function studentWiseDataModal() {
+                $(document).ready(function() {
+                    $("#studentWiseData").modal("show");
+                });
+            }
 
-        function batchWiseModal() {
-            $(document).ready(function() {
-                $("#batchWise").modal("show");
-            });
-        }
+            function batchWiseModal() {
+                $(document).ready(function() {
+                    $("#batchWise").modal("show");
+                });
+            }
 
-        function batchWiseDataModal() {
-            $(document).ready(function() {
-                $("#batchWiseYear").modal("show");
-            });
-        }
+            function batchWiseDataModal() {
+                $(document).ready(function() {
+                    $("#batchWiseYear").modal("show");
+                });
+            }
         </script>
 
         <!-- ========================================================================================================================================== 
@@ -96,8 +96,7 @@ include('components/navbar/admin-navbar.php');
         </div>
 
         <!-- ======================= STUDENT WISE MODAL ======================= -->
-        <div class="modal fade hide" id="studentWise" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="studentWise" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -118,8 +117,7 @@ include('components/navbar/admin-navbar.php');
         </div>
 
         <!-- ======================= STUDENT WISE DATA MODAL ======================= -->
-        <div class="modal fade hide" id="studentWiseData" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="studentWiseData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -140,8 +138,7 @@ include('components/navbar/admin-navbar.php');
         </div>
 
         <!-- ======================= BATCH WISE MODAL ======================= -->
-        <div class="modal fade hide" id="batchWise" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="batchWise" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -162,8 +159,7 @@ include('components/navbar/admin-navbar.php');
         </div>
 
         <!-- ======================= BATCH WISE YEAR MODAL ======================= -->
-        <div class="modal fade hide" id="batchWiseYear" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="batchWiseYear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -292,44 +288,42 @@ include('components/navbar/admin-navbar.php');
                                 $bora_invoice_student_admission_year = $row['bora_invoice_student_admission_year'];
                                 $bora_invoice_date = $row['bora_invoice_date'];
                 ?>
-                <tr>
-                    <td><?php echo $bora_invoice_number ?></td>
-                    <td><?php echo $bora_invoice_date ?></td>
-                    <td><?php echo $bora_invoice_for ?></td>
-                    <td><?php echo $bora_invoice_tenure ?></td>
+                                <tr>
+                                    <td><?php echo $bora_invoice_number ?></td>
+                                    <td><?php echo $bora_invoice_date ?></td>
+                                    <td><?php echo $bora_invoice_for ?></td>
+                                    <td><?php echo $bora_invoice_tenure ?></td>
 
-                    <?php if ($bora_invoice_payment_mode == 'cash') { ?>
-                    <td>₹<?php echo $bora_invoice_grand_total ?></td>
-                    <td class="text-center">-</td>
+                                    <?php if ($bora_invoice_payment_mode == 'cash') { ?>
+                                        <td>₹<?php echo $bora_invoice_grand_total ?></td>
+                                        <td class="text-center">-</td>
 
-                    <td>
-                        <form action="admin-receipt-format.php" method="post" target="_blank">
-                            <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
-                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
-                                hidden>
-                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
-                                RECEIPT</button>
-                        </form>
-                    </td>
-                    <?php } ?>
+                                        <td>
+                                            <form action="admin-receipt-format.php" method="post" target="_blank">
+                                                <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
+                                                <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
+                                                <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
+                                                    RECEIPT</button>
+                                            </form>
+                                        </td>
+                                    <?php } ?>
 
-                    <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
-                    <td class="text-center">-</td>
-                    <td>₹<?php echo $bora_invoice_grand_total ?></td>
-
+                                    <?php if ($bora_invoice_payment_mode == 'cheque' || $bora_invoice_payment_mode == 'online') { ?>
+                                        <td class="text-center">-</td>
+                                        <td>₹<?php echo $bora_invoice_grand_total ?></td>
 
 
-                    <td>
-                        <form action="admin-receipt-format.php" method="post" target="_blank">
-                            <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
-                            <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>"
-                                hidden>
-                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
-                                RECEIPT</button>
-                        </form>
-                    </td>
-                    <?php } ?>
-                </tr>
+
+                                        <td>
+                                            <form action="admin-receipt-format.php" method="post" target="_blank">
+                                                <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
+                                                <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
+                                                <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
+                                                    RECEIPT</button>
+                                            </form>
+                                        </td>
+                                    <?php } ?>
+                                </tr>
                 <?php
                             }
                         }
@@ -392,7 +386,7 @@ include('components/navbar/admin-navbar.php');
                                             $year_4 = $row['course_year_4_fee'];
                                         }
                             ?>
-                            <?php
+                                        <?php
                                         $fetch_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_1` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 1' ";
                                         $fetch_cash_r = mysqli_query($connection, $fetch_cash);
                                         $total_cash_year_1 = "";
@@ -407,23 +401,23 @@ include('components/navbar/admin-navbar.php');
                                             $total_cheque_year_1 = $row['total_cheque_year_1'];
                                         }
                                         ?>
-                            <tr>
-                                <td>1 YEARS</td>
-                                <td><?php echo $year_1  ?></td>
-                                <td><?php echo $total_cash_year_1 ?></td>
-                                <td><?php echo $total_cheque_year_1 ?></td>
-                                <td><?php $total_cash_bank = $total_cash_year_1 + $total_cheque_year_1;
+                                        <tr>
+                                            <td>1 YEAR</td>
+                                            <td><?php echo $year_1  ?></td>
+                                            <td><?php echo $total_cash_year_1 ?></td>
+                                            <td><?php echo $total_cheque_year_1 ?></td>
+                                            <td><?php $total_cash_bank = $total_cash_year_1 + $total_cheque_year_1;
                                                 echo $total_cash_bank; ?>
-                                </td>
-                                <td>
-                                    <?php
+                                            </td>
+                                            <td>
+                                                <?php
                                                 $total_remainder = $year_1 - $total_cash_bank;
                                                 echo $total_remainder;
                                                 ?>
-                                </td>
-                            </tr>
+                                            </td>
+                                        </tr>
 
-                            <?php
+                                        <?php
                                         $fetch_cash_2 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_2` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 2'";
                                         $fetch_cash_2_r = mysqli_query($connection, $fetch_cash_2);
                                         $total_cash_year_2 = "";
@@ -440,23 +434,23 @@ include('components/navbar/admin-navbar.php');
 
                                         ?>
 
-                            <tr>
-                                <td>2 YEARS</td>
-                                <td><?php echo $year_2  ?></td>
-                                <td><?php echo $total_cash_year_2 ?></td>
-                                <td><?php echo $total_cheque_year_2 ?></td>
-                                <td><?php $total_cash_bank = $total_cash_year_2 + $total_cheque_year_2;
+                                        <tr>
+                                            <td>2 YEARS</td>
+                                            <td><?php echo $year_2  ?></td>
+                                            <td><?php echo $total_cash_year_2 ?></td>
+                                            <td><?php echo $total_cheque_year_2 ?></td>
+                                            <td><?php $total_cash_bank = $total_cash_year_2 + $total_cheque_year_2;
                                                 echo $total_cash_bank; ?>
-                                </td>
-                                <td>
-                                    <?php
+                                            </td>
+                                            <td>
+                                                <?php
                                                 $total_remainder = $year_2 - $total_cash_bank;
                                                 echo $total_remainder;
                                                 ?>
-                                </td>
-                            </tr>
+                                            </td>
+                                        </tr>
 
-                            <?php
+                                        <?php
                                         $fetch_cash_3 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_3` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 3'";
                                         $fetch_cash_3_r = mysqli_query($connection, $fetch_cash_3);
                                         $total_cash_year_3 = "";
@@ -471,23 +465,23 @@ include('components/navbar/admin-navbar.php');
                                             $total_cheque_year_3 = $row['total_cheque_year_3'];
                                         }
                                         ?>
-                            <tr>
-                                <td>3 YEARS</td>
-                                <td><?php echo $year_3  ?></td>
-                                <td><?php echo $total_cash_year_3 ?></td>
-                                <td><?php echo $total_cheque_year_3 ?></td>
-                                <td><?php $total_cash_bank = $total_cash_year_3 + $total_cheque_year_3;
+                                        <tr>
+                                            <td>3 YEARS</td>
+                                            <td><?php echo $year_3  ?></td>
+                                            <td><?php echo $total_cash_year_3 ?></td>
+                                            <td><?php echo $total_cheque_year_3 ?></td>
+                                            <td><?php $total_cash_bank = $total_cash_year_3 + $total_cheque_year_3;
                                                 echo $total_cash_bank; ?>
-                                </td>
-                                <td>
-                                    <?php
+                                            </td>
+                                            <td>
+                                                <?php
                                                 $total_remainder = $year_3 - $total_cash_bank;
                                                 echo $total_remainder;
                                                 ?>
-                                </td>
-                            </tr>
+                                            </td>
+                                        </tr>
 
-                            <?php
+                                        <?php
                                         $fetch_cash_4 = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash_year_4` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = 'Year 4'";
                                         $fetch_cash_4_r = mysqli_query($connection, $fetch_cash_4);
                                         $total_cash_year_4 = "";
@@ -502,26 +496,26 @@ include('components/navbar/admin-navbar.php');
                                             $total_cheque_year_4 = $row['total_cheque_year_4'];
                                         }
                                         ?>
-                            <tr>
-                                <td>4 YEARS</td>
-                                <td><?php echo $year_4  ?></td>
-                                <td><?php echo $total_cash_year_4 ?></td>
-                                <td><?php echo $total_cheque_year_4 ?></td>
-                                <td><?php $total_cash_bank = $total_cash_year_4 + $total_cheque_year_4;
+                                        <tr>
+                                            <td>4 YEARS</td>
+                                            <td><?php echo $year_4  ?></td>
+                                            <td><?php echo $total_cash_year_4 ?></td>
+                                            <td><?php echo $total_cheque_year_4 ?></td>
+                                            <td><?php $total_cash_bank = $total_cash_year_4 + $total_cheque_year_4;
                                                 echo $total_cash_bank; ?>
-                                </td>
-                                <td>
-                                    <?php
+                                            </td>
+                                            <td>
+                                                <?php
                                                 $total_remainder = $year_4 - $total_cash_bank;
                                                 echo $total_remainder;
                                                 ?>
-                                </td>
-                            </tr>
-                            <?php
+                                            </td>
+                                        </tr>
+                                    <?php
                                     } else if ($count == '0') { ?>
 
-                            <div class="w-100 mt-3 mb-3 alert alert-danger" role="alert">No Receipts generated for this
-                                student.</div>
+                                        <div class="w-100 mt-3 mb-3 alert alert-danger" role="alert">No Receipts generated for this
+                                            student.</div>
                             <?php
                                     }
                                 }
