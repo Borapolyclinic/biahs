@@ -4,7 +4,7 @@
 
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="dashboard.php">
+        <a href="admin-past-payments.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Edit Receipt</h5>
