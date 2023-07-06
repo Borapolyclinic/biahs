@@ -38,10 +38,10 @@ if (isset($_POST['change_picture'])) {
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <img src="<?php echo $student_img ?>" alt="">
                 <!-- <p>Front Image</p> -->
-                <div class="mb-3">
+                <!-- <div class="mb-3">
                     <input class="form-control" name="student_img" type="file" id="formFile">
                 </div>
-                <button type="submit" name="front" class="w-100 btn btn-outline-success">Change/Upload Image</button>
+                <button type="submit" name="front" class="w-100 btn btn-outline-success">Change/Upload Image</button> -->
             </form>
         </div>
     </div>
