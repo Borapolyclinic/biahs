@@ -2,7 +2,7 @@
 <?php include('components/navbar/user-navbar.php') ?>
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="index.php">
+        <a href="user-view-students.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>View Students</h5>
