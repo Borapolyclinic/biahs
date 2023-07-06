@@ -1,23 +1,23 @@
-// let logoutTimer;
+let logoutTimer;
 
-// function startLogoutTimer() {
-//   logoutTimer = setTimeout(logoutUser, 600000);
-// }
+function startLogoutTimer() {
+  logoutTimer = setTimeout(logoutUser, 600000);
+}
 
-// function resetLogoutTimer() {
-//   clearTimeout(logoutTimer);
-//   startLogoutTimer();
-// }
+function resetLogoutTimer() {
+  clearTimeout(logoutTimer);
+  startLogoutTimer();
+}
 
-// function logoutUser() {
-//   window.location.href = "logout.php";
-// }
+function logoutUser() {
+  window.location.href = "logout.php";
+}
 
-// function handleTabClosure() {
-//   logoutUser();
-// }
+function handleTabClosure() {
+  logoutUser();
+}
 
-// startLogoutTimer();
+startLogoutTimer();
 
 document.addEventListener("mousemove", resetLogoutTimer);
 document.addEventListener("mousedown", resetLogoutTimer);
