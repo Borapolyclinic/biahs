@@ -28,6 +28,9 @@
 
             $bora_invoice_value = $_POST['bora_invoice_value'];
             $bora_invoice_disc = $_POST['bora_invoice_disc'];
+            if (empty($bora_invoice_disc)) {
+                $bora_invoice_disc = "0";
+            }
             $bora_invoice_grand_total = $bora_invoice_value - $bora_invoice_disc;
         }
         ?>
