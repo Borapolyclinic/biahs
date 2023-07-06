@@ -38,6 +38,11 @@ include('includes/header.php') ?>
         $bora_invoice_payment_mode = $_POST['bora_invoice_payment_mode'];
         $bora_invoice_value = $_POST['invoice_value'];
         $bora_invoice_disc = $_POST['invoice_disc'];
+
+        if (empty($bora_invoice_disc)) {
+            $bora_invoice_disc = "0";
+        }
+
         $bora_invoice_generation_date = date('Y-m-d');
 
         if (empty($bora_invoice_disc) || $bora_invoice_disc == '0') {
