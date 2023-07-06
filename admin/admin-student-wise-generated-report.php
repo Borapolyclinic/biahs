@@ -218,6 +218,10 @@ include('components/navbar/admin-navbar.php');
             }
         }
         ?>
+        <div>
+            <p>Displaying Data From: <strong><?php echo date('(D) d M Y', strtotime($date_from)) ?> to
+                    <?php echo date('(D) d M Y', strtotime($date_to)) ?></strong></p>
+        </div>
         <div class="table-responsive w-100">
             <table class="w-100 table table-bordered table-striped ">
                 <thead class="table-secondary">
