@@ -97,7 +97,7 @@ if (isset($_POST['invoice'])) {
     <div>
         <div>
         <h1>Bora Institute of Allied Health Sciences</h1>
-        <p>Sewa Nagar, NH-24, Sitaur Road, Lucknow - 226201.
+        <p>Sewa Nagar, NH-24, Sitapur Road, Lucknow - 226201.
             <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
             info@borainstitue.com.
             <strong>Website:</strong> borainstitute.com
@@ -137,7 +137,7 @@ if (isset($_POST['invoice'])) {
                     <th style="border: 1px solid #000" scope="col"> FEE TYPE</th>
                     <th style="border: 1px solid #000" scope="col"> COURSE</th>
                     <th style="border: 1px solid #000" scope="col"> PAID FOR</th>
-                    <th style="border: 1px solid #000" scope="col"> RECEIPT AMOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> AMOUNT</th>
                     <th style="border: 1px solid #000" scope="col"> DISCOUNT</th>
                     <th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
                 </tr>
