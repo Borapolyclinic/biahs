@@ -156,20 +156,19 @@ include('includes/header.php') ?>
         }
         if ($result) {
     ?>
-    <form action="receipt-format.php" method="POST" target="_blank">
-        <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
+            <form action="receipt-format.php" method="POST" target="_blank">
+                <input type="text" name="bora_receipt_number" value="<?php echo $bora_receipt_number ?>" hidden>
 
-        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent"
-            speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-        <p>Success! Receipt generated.</p>
-        <button type="submit" name="invoice" class="w-100 btn btn-success">Download Receipt</button>
-    </form>
+                <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <p>Success! Receipt generated.</p>
+                <button type="submit" name="invoice" class="w-100 btn btn-success">Download Receipt</button>
+            </form>
 
-    <?php
+        <?php
         } else { ?>
-    <div class="alert alert-danger" role="alert">
-        Error: Some fields are mandatory!
-    </div>
+            <div class="alert alert-danger" role="alert">
+                Error: Some fields are mandatory!
+            </div>
     <?php
         }
     }
