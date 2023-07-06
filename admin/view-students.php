@@ -23,7 +23,7 @@
         <form action="search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
             <div class="w-100 m-1">
                 <select name="search_type" class="form-select" aria-label="Default select example">
-                    <option selected>Click here for options</option>
+                    <option value="null">Click here for options</option>
                     <option value="1">Name</option>
                     <option value="2">Mobile Number</option>
                     <option value="3">UID</option>
