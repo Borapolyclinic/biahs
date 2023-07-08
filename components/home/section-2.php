@@ -3,7 +3,7 @@
         <div class="home-section-2-content">
             <img alt="Nurture your nursing career at Bora Institute of Allied Health Sciences"
                 src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/null/external-career-startup-flatart-icons-outline-flatarticons.png" />
-            <h2>Nurture your nursing career</h2>
+            <h1>Nurture your nursing career</h1>
             <p>Bora Institute of Allied Health Sciences is the best nursing college in Lucknow, offering high-quality
                 courses, state-of-the-art facilities, and a supportive learning environment.</p>
         </div>

@@ -81,6 +81,12 @@ input::-webkit-inner-spin-button {
   height: auto;
   margin-bottom: 25px;
 }
+.home-section-2-content h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #ec7f0d;
+}
 .home-section-2-content h2 {
   font-size: 18px;
   font-weight: bold;
