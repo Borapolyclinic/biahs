@@ -14,6 +14,7 @@
         <a href="about.php">Read More</a>
     </div>
     <div class="col-md-6 home-section-4-img-container order-lg-1 order-0">
-        <img src="assets/images/banners/temp-1.png" alt="">
+        <img src="assets/images/banners/temp-1.png"
+            alt="Bora Institute of Allied Health Sciences is a premier nursing college in Lucknow">
     </div>
 </div>

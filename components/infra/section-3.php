@@ -1,6 +1,7 @@
 <div class="container infra-section-3">
     <div class="col-md-6 infra-section-3-img">
-        <img src="assets/images/temp/team-1.png" alt="">
+        <img src="assets/images/temp/team-1.png"
+            alt="Anti Ragging Committee at Bora Institute of Allied Health Sciences">
     </div>
     <div class="col-md-6">
         <h4>Anti-<span>Ragging</span> Committee</h4>

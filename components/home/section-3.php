@@ -8,6 +8,7 @@
         to build a successful career in nursing.</p>
 
     <div class="container home-section-3-img-container">
-        <img src="assets/images/banners/banner-1.png" alt="">
+        <img src="assets/images/banners/banner-1.png"
+            alt="Bora Institute of Allied Health Sciences, a top nursing college in Lucknow">
     </div>
 </div>

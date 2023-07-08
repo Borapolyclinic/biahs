@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="col-md-6 footer-inner">
-        <img src="assets/images/logo/footer-logo.webp" alt="">
+        <img src="assets/images/logo/footer-logo.webp" alt="Bora Institute of Allied Health Sciences Footer Logo">
         <hr class="footer-divider">
         <p class="footer-text">Recognized by Indian Nursing Council, New Delhi</p>
         <p class="footer-text">Affiliated to Atal Bihari Vajpayee Medical University</p>
@@ -24,7 +24,8 @@
 
 
 <!-- =============================== BOOTSTRAP =============================== -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
 </script>
 
 <!-- =============================== IONICONS =============================== -->

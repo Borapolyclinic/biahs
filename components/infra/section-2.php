@@ -1,7 +1,8 @@
 <div class="container mt-5 mb-5">
     <div class="infra-section-2-wrapper">
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/classrooms.webp" alt="">
+            <img src="assets/images/icons/classrooms.webp"
+                alt="Teaching Faculty at Bora Institite of Allied Health Sciences">
             <h2>Teaching Faculty</h2>
             <p>Our Respected faculty of the college provide all round development of students with a sense of
                 discipline, responsibility and integrity...</p>
@@ -11,7 +12,7 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/classrooms.webp" alt="">
+            <img src="assets/images/icons/classrooms.webp" alt="Classrooms at Bora Institite of Allied Health Sciences">
             <h2>Classrooms</h2>
             <p>The academic institutions are provided with excellent infrastructure and modern facilities needed for the
                 education and practice of the students...</p>
@@ -21,7 +22,7 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/lab.webp" alt="">
+            <img src="assets/images/icons/lab.webp" alt="Laboratories at Bora Institite of Allied Health Sciences">
             <h2>Laboratories</h2>
             <p>Laboratories are spacious and have area as per the standard requirement of Indian Nursing Council. There
                 are Advanced Nursing Skill Laboratory...</p>
@@ -31,7 +32,8 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/compLab.webp" alt="">
+            <img src="assets/images/icons/compLab.webp"
+                alt="Computer Laboratory at Bora Institite of Allied Health Sciences">
             <h2>Computer Laboratory</h2>
             <p>A computer lab has been set up for providing updated knowledge to the students with internet and
                 e-library facilities....</p>
@@ -41,7 +43,7 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/lib.webp" alt="">
+            <img src="assets/images/icons/lib.webp" alt="Library at Bora Institite of Allied Health Sciences">
             <h2>Library</h2>
             <p>The college has spacious Central Library with Books more than 3000 , latest National and international
                 Journals and Periodicals... </p>
@@ -51,7 +53,8 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/clinic.webp" alt="">
+            <img src="assets/images/icons/clinic.webp"
+                alt="Clinical Facilities at Bora Institite of Allied Health Sciences">
             <h2>Clinical Facilities</h2>
             <p>Students get in house practical training in our Parent Hospital “SEWA HOSPITAL AND RESEARCH CENTRE” (A
                 super speciality hospital)...</p>
@@ -61,7 +64,8 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/hostel.webp" alt="">
+            <img src="assets/images/icons/hostel.webp"
+                alt="Hostel and Mess at Bora Institite of Allied Health Sciences">
             <h2>Hostel & Mess</h2>
             <p>There are separate hostels for boys and girls. The girls hostel is being located in the campus itself.
                 The hostel amenities and ...</p>
@@ -71,7 +75,8 @@
         </div>
 
         <div class="infra-section-2-card">
-            <img src="assets/images/icons/sports.webp" alt="">
+            <img src="assets/images/icons/sports.webp"
+                alt="Sports and Cultural Activities at Bora Institite of Allied Health Sciences">
             <h2>Sports and Cultural Activities</h2>
             <p>Facilities are provided for the students to participate in various sports and games. Outdoor and indoor
                 games are being arranged in college ...</p>

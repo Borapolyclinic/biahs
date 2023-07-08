@@ -1,6 +1,6 @@
 <div class="about-section-3-row" id="founders">
     <div class="col-md-6 about-section-3-img">
-        <img src="assets/images/temp/team-2.png" alt="">
+        <img src="assets/images/temp/team-2.png" alt="Chairman of Bora Institute of Allied Health Sciences">
     </div>
 
     <div class="col-md-6 about-section-3-txt">

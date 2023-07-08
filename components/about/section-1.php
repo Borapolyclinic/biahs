@@ -26,6 +26,6 @@
             and secure your future with great nursing placements in Lucknow.</p>
     </div>
     <div class="col-md-6 about-section-1-img order-lg-1 order-0">
-        <img src="assets/images/banners/temp-2.png" alt="">
+        <img src="assets/images/banners/temp-2.png" alt="Best nursing college in Lucknow">
     </div>
 </div>
