@@ -7,7 +7,8 @@
 
     <!-- ============ SEO ============ -->
     <meta name="keywords"
-        content="Nursing college in Lucknow, Best nursing college in Lucknow, Nursing courses in Lucknow, Nursing degree programs in Lucknow, Nursing admission in Lucknow, Nursing placements in Lucknow">
+        content="Nursing college in Lucknow, Best nursing college in Lucknow, Nursing courses in Lucknow, 
+        Nursing degree programs in Lucknow, Nursing admission in Lucknow, Nursing placements in Lucknow, bachelor in medical laboratory science, bpt course">
     <meta name="description"
         content="Looking for the best nursing college in Lucknow? Bora Institute offers top-notch nursing courses and degree programs in Lucknow. Get admission to our nursing college and secure your future with great placements in Lucknow. Apply now!">
 
