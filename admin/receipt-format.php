@@ -96,7 +96,7 @@ if (isset($_POST['invoice'])) {
 <body>   
     <div>
         <div>
-        <h1>Bora Institute of Allied Health Sciences</h1>
+        <h1>Bora Institute of Allied Health Sciences.</h1>
         <p>Sewa Nagar, NH-24, Sitapur Road, Lucknow - 226201.
             <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
             info@borainstitue.com.
