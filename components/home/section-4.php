@@ -1,6 +1,6 @@
 <div class="container home-section-4">
     <div class="col-md-6 home-section-4-text-container order-lg-0 order-1">
-        <h3>WHAT WE OFFER</h3>
+        <h4>WHAT WE OFFER</h4>
         <p class="home-section-4-heading">Transforming Healthcare through Compassionate Education
         </p>
         <p>Bora Institute of Allied Health Sciences is a premier nursing college in Lucknow, offering the best nursing

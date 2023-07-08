@@ -26,7 +26,7 @@
             </div>
             <div>
                 <h2>Address</h2>
-                <p>Bora Institute of Nursing & Paramedical Sciences. Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201</p>
+                <p>Bora Institute of Allied Health Sciences. Sewa Nagar, NH-24 Sitaur Road. Lucknow - 226201</p>
             </div>
         </div>
     </div>
