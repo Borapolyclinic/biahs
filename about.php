@@ -1,5 +1,5 @@
 <?php
-$title = "About | Bora Institute of Allied Health Sciences";
+$title = "About | Bora Institute of Allied Health Sciences | BIAHS";
 include('include/header.php') ?>
 <?php include('include/top-nav.php') ?>
 <?php include('include/navbar.php') ?>
