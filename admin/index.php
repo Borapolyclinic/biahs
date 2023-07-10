@@ -56,12 +56,14 @@
     <form class="login-form" method="POST" action="">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Registered Mobile Number</label>
-            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1"
+                aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <div class="password-textbox-row">
-                <input type="password" name="user_password" class="form-control password-input-box" id="exampleInputPassword1">
+                <input type="password" name="user_password" class="form-control password-input-box"
+                    id="exampleInputPassword1">
                 <button type="button" id="unlockButton" class="password-button" style="display: none;">
                     <ion-icon name="lock-open-outline"></ion-icon>
                 </button>
@@ -75,24 +77,24 @@
 </div>
 
 <script>
-    const unlockButton = document.getElementById('unlockButton');
-    const lockButton = document.getElementById('lockButton');
-    const passwordInput = document.getElementById('exampleInputPassword1');
+const unlockButton = document.getElementById('unlockButton');
+const lockButton = document.getElementById('lockButton');
+const passwordInput = document.getElementById('exampleInputPassword1');
 
-    lockButton.addEventListener('click', function() {
-        passwordInput.type = 'text';
-        lockButton.style.display = 'none';
-        unlockButton.style.display = 'block';
-    });
+lockButton.addEventListener('click', function() {
+    passwordInput.type = 'text';
+    lockButton.style.display = 'none';
+    unlockButton.style.display = 'block';
+});
 
-    unlockButton.addEventListener('click', function() {
-        passwordInput.type = 'password';
-        unlockButton.style.display = 'none';
-        lockButton.style.display = 'block';
-    });
-
-    // Hide the password initially
+unlockButton.addEventListener('click', function() {
     passwordInput.type = 'password';
+    unlockButton.style.display = 'none';
+    lockButton.style.display = 'block';
+});
+
+// Hide the password initially
+passwordInput.type = 'password';
 </script>
 
 <?php include('includes/footer.php') ?>
