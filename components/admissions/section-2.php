@@ -2,6 +2,7 @@
     <div class="col-md-6 admission-section-2-img">
         <img src="assets/images/banners/temp-9.png" alt="Admissions in Bora Institute of Allied Health Sciences">
     </div>
+
     <div class="col-md-6 admission-section-2-form">
         <?php
         require('include/db.php');
@@ -12,31 +13,47 @@
             $admission_qual = mysqli_real_escape_string($connection, $_POST['admission_qual']);
             $admission_program = mysqli_real_escape_string($connection, $_POST['admission_program']);
 
-            if ($admission_program == 'null') {
-                die("Please select a program!" . " " . mysqli_error($connection));
-            } else if ($admission_program == "Masters Degree Programme") {
+            if ($admission_program == 'null') { ?>
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            Please select a program!
+        </div>
+        <?php } else if ($admission_program == "Masters Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_1']);
-                if ($admission_course == 'null') {
-                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                if ($admission_course == 'null') { ?>
+
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            Course selection is mandatory!
+        </div>
+        <?php
                 }
             } else if ($admission_program == "Basic Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_2']);
-                if ($admission_course == 'null') {
-                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                if ($admission_course == 'null') { ?>
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            Course selection is mandatory!
+        </div>
+        <?php
                 }
             } else if ($admission_program == "Diploma Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_3']);
-                if ($admission_course == 'null') {
-                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
+                if ($admission_course == 'null') { ?>
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            Course selection is mandatory!
+        </div>
+        <?php
                 }
             } else if ($admission_program == "Certificate Course") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_4']);
-                if ($admission_course == 'null') {
-                    die("Course selection is mandatory!" . " " . mysqli_error($connection));
-                }
-            }
+                if ($admission_course == 'null') { ?>
+        <div class="alert alert-danger mb-3 mt-3" role="alert">
+            Course selection is mandatory!
+        </div>
 
-            $query = "INSERT INTO `bora_admissions`(
+        <?php
+                }
+            } else {
+
+                $query = "INSERT INTO `bora_admissions`(
                  `admission_name`,
                  `admission_contact`,
                  `admission_email`,
@@ -53,22 +70,23 @@
                  '$admission_course'
              )";
 
-            $result = mysqli_query($connection, $query);
+                $result = mysqli_query($connection, $query);
 
-            if (!$result) {
+                if (!$result) {
 
-        ?>
+                ?>
 
         <div class="alert alert-danger mb-3 mt-3" role="alert">
             Oops! Looks like there was some error processing your form. Please try again!
         </div>
         <?php
-            } else {
-            ?>
+                } else {
+                ?>
         <div class="alert alert-success mb-3 mt-3" role="alert">
             Thank you for applying for <?php echo $admission_course; ?>. We will connect with you shortly.
         </div>
         <?php
+                }
             }
         }
 
@@ -96,7 +114,7 @@
             </div>
             <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">Select Programme</label>
-                <select required onclick="showOption()" class="form-select mb-3" name="admission_program"
+                <select required onchange="showOption()" class="form-select mb-3" name="admission_program"
                     id="programOption" aria-label="Default select example" required>
                     <option value="null">Click here to open menu</option>
                     <option value="Masters Degree Programme">Masters Degree Programme</option>

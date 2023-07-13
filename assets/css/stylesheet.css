@@ -645,6 +645,19 @@ input::-webkit-inner-spin-button {
 }
 
 /* =========== ADMISSION SECTION 2 =========== */
+.admissions-section-1-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ec7f0d;
+  background-image: url("../images/banners/popup-image.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 100%;
+  width: 100%;
+  height: 1000px;
+}
 .admission-section-2 {
   margin-top: 100px;
   margin-bottom: 100px;
