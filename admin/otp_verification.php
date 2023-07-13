@@ -50,9 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($search_user_count == 1) {
                 while ($row = mysqli_fetch_assoc($search_user_statement)) {
                     setcookie("loggedin", "true", time() + (86400 * 30), "/");
+                    // setcookie("user_id", $user_contact, time() + (86400 * 30), "/");
                     setcookie("user_id", $user_id, time() + (86400 * 30), "/");
-                    setcookie("user_contact", $row['user_contact'], time() + (86400 * 30), "/");
                     setcookie("user_type", $row['user_type'], time() + (86400 * 30), "/");
+                    // setcookie("loggedin", "true", time() + (86400 * 30), "/");
+                    // setcookie("user_id", $user_id, time() + (86400 * 30), "/");
+                    // setcookie("user_contact", $row['user_contact'], time() + (86400 * 30), "/");
+                    // setcookie("user_type", $row['user_type'], time() + (86400 * 30), "/");
                     if ($row['user_type'] == 2) {
                         $login_time = date('Y-m-d H:i:s');
                         $user_contact = $row['user_id'];

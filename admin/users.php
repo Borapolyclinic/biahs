@@ -21,55 +21,55 @@
             <label for="eMail" class="form-label">Email</label>
             <input type="email" name="user_email" required class="form-control" id="eMail">
         </div> -->
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="userPassword" class="form-label">Password</label>
             <input type="password" name="user_password" class="form-control" required id="userPassword"
                 onkeyup="checkPassword()">
-        </div>
+        </div> -->
 
-        <ul id="passwordRequirements">
+        <!-- <ul id="passwordRequirements">
             <li id="passwordLength">Password should be at least 8 characters</li>
             <li id="passwordSpecialChar">Password should have at least 1 special character</li>
             <li id="passwordUppercase">Password should have at least 1 uppercase character</li>
-        </ul>
+        </ul> -->
         <button type="submit" name="submit" class="btn btn-primary" id="createButton" disabled>Create</button>
     </form>
 </div>
 
 <script>
-function checkPassword() {
-    var password = document.getElementById("userPassword").value;
-    var requirements = document.getElementById("passwordRequirements");
-    var passwordLength = document.getElementById("passwordLength");
-    var passwordSpecialChar = document.getElementById("passwordSpecialChar");
-    var passwordUppercase = document.getElementById("passwordUppercase");
-    var createButton = document.getElementById("createButton");
+// function checkPassword() {
+//     var password = document.getElementById("userPassword").value;
+//     var requirements = document.getElementById("passwordRequirements");
+//     var passwordLength = document.getElementById("passwordLength");
+//     var passwordSpecialChar = document.getElementById("passwordSpecialChar");
+//     var passwordUppercase = document.getElementById("passwordUppercase");
+//     var createButton = document.getElementById("createButton");
 
-    // Reset styles
-    requirements.style.color = "";
-    passwordLength.style.textDecoration = "";
-    passwordSpecialChar.style.textDecoration = "";
-    passwordUppercase.style.textDecoration = "";
+//     // Reset styles
+//     requirements.style.color = "";
+//     passwordLength.style.textDecoration = "";
+//     passwordSpecialChar.style.textDecoration = "";
+//     passwordUppercase.style.textDecoration = "";
 
-    if (password.length >= 8) {
-        passwordLength.style.textDecoration = "line-through";
-    }
+//     if (password.length >= 8) {
+//         passwordLength.style.textDecoration = "line-through";
+//     }
 
-    if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-        passwordSpecialChar.style.textDecoration = "line-through";
-    }
+//     if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+//         passwordSpecialChar.style.textDecoration = "line-through";
+//     }
 
-    if (/[A-Z]/.test(password)) {
-        passwordUppercase.style.textDecoration = "line-through";
-    }
+//     if (/[A-Z]/.test(password)) {
+//         passwordUppercase.style.textDecoration = "line-through";
+//     }
 
-    if (password.length >= 8 && /[!@#$%^&*(),.?":{}|<>]/.test(password) && /[A-Z]/.test(password)) {
-        requirements.style.color = "green";
-        createButton.disabled = false;
-    } else {
-        createButton.disabled = true;
-    }
-}
+//     if (password.length >= 8 && /[!@#$%^&*(),.?":{}|<>]/.test(password) && /[A-Z]/.test(password)) {
+//         requirements.style.color = "green";
+//         createButton.disabled = false;
+//     } else {
+//         createButton.disabled = true;
+//     }
+// }
 </script>
 
 <?php include('includes/footer.php') ?>

@@ -4,10 +4,10 @@
     if (isset($_POST['submit'])) {
         $user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
         $user_contact = mysqli_real_escape_string($connection, $_POST['user_contact']);
-        $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
+        // $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
         $user_type = mysqli_real_escape_string($connection, '2');
 
-        $encrypted_password = password_hash($user_password, PASSWORD_DEFAULT);
+        // $encrypted_password = password_hash($user_password, PASSWORD_DEFAULT);
 
         $check = "SELECT * FROM `bora_users` WHERE `user_contact` = $user_contact";
         $check_res = mysqli_query($connection, $check);
@@ -18,13 +18,11 @@
             $query = "INSERT INTO `bora_users`(
                 `user_name`,
                 `user_contact`,
-                `user_password`,
                 `user_type`
             )
             VALUES(
                 '$user_name',
                 '$user_contact',
-                '$encrypted_password',
                 '$user_type'
             )";
 
