@@ -1,10 +1,11 @@
 <?php
 $title = "BIAHS | Bora Institute of Allied Health Sciences";
-include('include/header.php') ?>
-<?php include('include/top-nav.php') ?>
-<?php include('include/navbar.php') ?>
-<?php include('components/home/section-1.php') ?>
-<?php include('components/home/section-2.php') ?>
-<?php include('components/home/section-3.php') ?>
-<?php include('components/home/section-4.php') ?>
-<?php include('include/footer.php') ?>
+include('include/header.php');
+include('include/top-nav.php');
+include('include/navbar.php');
+include('include/modal.php');
+include('components/home/section-1.php');
+include('components/home/section-2.php');
+include('components/home/section-3.php');
+include('components/home/section-4.php');
+include('include/footer.php');

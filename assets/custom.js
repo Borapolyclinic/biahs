@@ -29,3 +29,7 @@ function showOption() {
     hiddenOption4.style.display = "none";
   }
 }
+
+$(document).ready(function () {
+  $("#admissionsAdvModal").modal("show");
+});

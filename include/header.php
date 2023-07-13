@@ -31,6 +31,9 @@
     <meta name="description"
         content="Looking for the best nursing college in Lucknow? Bora Institute offers top-notch nursing courses and degree programs in Lucknow. Get admission to our nursing college and secure your future with great placements in Lucknow. Apply now!">
 
+    <!-- ============ JQUERY ============ -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
     <!-- ============ TITLE ============ -->
     <title><?php echo $title; ?></title>
