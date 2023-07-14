@@ -1,11 +1,11 @@
 <!-- HTML code for OTP verification form -->
 <?php include('includes/header.php') ?>
 <?php
-function generateOTP()
-{
-    $otp = rand(100000, 999999);
-    return $otp;
-}
+// function generateOTP()
+// {
+//     $otp = rand(100000, 999999);
+//     return $otp;
+// }
 
 require('includes/connection.php');
 ini_set('display_errors', 1);
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $get_otp_statement = mysqli_query($connection, $get_otp_query);
     $get_otp_count = mysqli_num_rows($get_otp_statement);
 
-    if ($get_otp_count == 1) {
+    if ($get_otp_count > 0) {
         $otp_user_id = "";
         $stored_otp = "";
         while ($row = mysqli_fetch_assoc($get_otp_statement)) {
@@ -50,13 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($search_user_count == 1) {
                 while ($row = mysqli_fetch_assoc($search_user_statement)) {
                     setcookie("loggedin", "true", time() + (86400 * 30), "/");
-                    // setcookie("user_id", $user_contact, time() + (86400 * 30), "/");
                     setcookie("user_id", $user_id, time() + (86400 * 30), "/");
                     setcookie("user_type", $row['user_type'], time() + (86400 * 30), "/");
-                    // setcookie("loggedin", "true", time() + (86400 * 30), "/");
-                    // setcookie("user_id", $user_id, time() + (86400 * 30), "/");
-                    // setcookie("user_contact", $row['user_contact'], time() + (86400 * 30), "/");
-                    // setcookie("user_type", $row['user_type'], time() + (86400 * 30), "/");
                     if ($row['user_type'] == 2) {
                         $login_time = date('Y-m-d H:i:s');
                         $user_contact = $row['user_id'];
