@@ -2,11 +2,11 @@
 <?php include('components/navbar/admin-navbar.php') ?>
 <div class="container mt-5 add-user-success">
     <script>
-        function openModal() {
-            $(document).ready(function() {
-                $("#exampleModal").modal("show");
-            });
-        }
+    function openModal() {
+        $(document).ready(function() {
+            $("#exampleModal").modal("show");
+        });
+    }
     </script>
     <?php
     require('includes/connection.php');
@@ -167,10 +167,11 @@
                     $insert_res = mysqli_query($connection, $insert);
 
                     if ($insert_res) {  ?>
-                        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                        <p>Success! Student added.</p>
-                        <a href="add-student.php" class="go-back-btn">Go Back</a>
-                    <?php
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <p>Success! Student added.</p>
+    <a href="add-student.php" class="go-back-btn">Go Back</a>
+    <?php
                     } elseif (!$insert_res) {
                         echo "Error: " . mysqli_error($connection);
                     }
@@ -254,10 +255,11 @@
                     $insert_res = mysqli_query($connection, $insert);
 
                     if ($insert_res) {  ?>
-                        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-                        <p>Success! Student added.</p>
-                        <a href="add-student.php" class="go-back-btn">Go Back</a>
-            <?php
+    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <p>Success! Student added.</p>
+    <a href="add-student.php" class="go-back-btn">Go Back</a>
+    <?php
                     } elseif (!$insert_res) {
                         echo "Error: " . mysqli_error($connection);
                     }
@@ -266,9 +268,10 @@
         } else if ($count > 0) {
             ?>
 
-            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-            <p>This student already exists in our system.</p>
-            <a href="users.php" class="go-back-btn">Go Back</a>
+    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <p>This student already exists in our system.</p>
+    <a href="users.php" class="go-back-btn">Go Back</a>
 
     <?php
         }
