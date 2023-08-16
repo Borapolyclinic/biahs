@@ -5,31 +5,41 @@
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
         $user_contact = $_COOKIE['user_id'];
-        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_id` = '$user_contact'";
         $fetch_res = mysqli_query($connection, $fetch_data);
         $user_name = "";
         while ($row = mysqli_fetch_assoc($fetch_res)) {
             $user_name = $row['user_name'];
         }
+        // echo "USER NAME : " . $user_name;
     }
+    if (isset($_POST["submit"])) {
+        $csvFile = $_FILES["csvFile"]["tmp_name"];
+        $course_name = $_POST['course_name'];
 
-    if (isset($_FILES['csvFile'])) {
-        $csvFile = $_FILES['csvFile']['tmp_name'];
-        $handle = fopen($csvFile, "r");
-        $columnNames = fgetcsv($handle);
+        if (empty($csvFile) || $course_name == 'null') { ?>
+            <div class="alert alert-danger w-100 mt-3 mb-3" role="alert">
+                Looks like you have not uploaded any file or you have not selected any course!
+            </div>
 
-        $sql = "INSERT INTO `bora_student` (
-            `student_enrollment_number`,
-            `student_name`,
-            `student_contact`,
-            `student_dob`,
+            <?php } else {            // $phonebook_cat = $_POST['phonebook_cat'];
+            if (($handle = fopen($csvFile, "r")) !== false) {
+                $sql = "INSERT INTO `bora_student` (
+            `student_enrollment_number`, 
+            `student_name`, 
+            `student_contact`, 
+            `student_email`, 
+            `student_whatsapp`, 
+            `student_dob`, 
             `student_father`,
-            `student_mother`,
-            `student_father_contact`,
-            `student_guardian_name`,
-            `student_guardian_contact`,
-            `student_guardian_relation`,
-            `student_roll`,
+            `student_mother`, 
+            `student_father_contact`, 
+            `student_guardian_name`, 
+            `student_guardian_contact`, 
+            `student_guardian_contact_2`, 
+            `student_guardian_relation`, 
+            `student_roll`, 
+            `student_course`,
             `student_admission_date`,
             `student_admission_year`,
             `student_category`,
@@ -37,70 +47,78 @@
             `student_gender`,
             `student_aadhar_number`,
             `student_aadhar_address`,
-            `student_comm_address`
-        ) VALUES (
-            ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?
-        )";
-        $stmt = $connection->prepare($sql);
+            `student_comm_address`,
+            `student_status`,
+            `student_added_by`) VALUES ";
 
-        if (!$stmt) {
-            die('Error: ' . $connection->error);
-        }
+                while (($data = fgetcsv($handle, 1000, ",")) !== false) {
+                    $student_enrollment_number = mysqli_real_escape_string($connection, $data[0]);
+                    $student_name = mysqli_real_escape_string($connection, $data[1]);
+                    $student_contact = mysqli_real_escape_string($connection, $data[2]);
+                    $student_email = mysqli_real_escape_string($connection, $data[3]);
+                    $student_whatsapp = mysqli_real_escape_string($connection, $data[4]);
+                    $student_dob = mysqli_real_escape_string($connection, $data[5]);
+                    $student_father = mysqli_real_escape_string($connection, $data[6]);
+                    $student_mother = mysqli_real_escape_string($connection, $data[7]);
+                    $student_father_contact = mysqli_real_escape_string($connection, $data[8]);
+                    $student_guardian_name = mysqli_real_escape_string($connection, $data[9]);
+                    $student_guardian_contact = mysqli_real_escape_string($connection, $data[10]);
+                    $student_guardian_contact_2 = mysqli_real_escape_string($connection, $data[11]);
+                    $student_guardian_relation = mysqli_real_escape_string($connection, $data[12]);
+                    $student_roll = mysqli_real_escape_string($connection, $data[13]);
+                    $student_admission_date = mysqli_real_escape_string($connection, $data[14]);
+                    $student_admission_year = mysqli_real_escape_string($connection, $data[15]);
+                    $student_category = mysqli_real_escape_string($connection, $data[16]);
+                    $student_admission_mode = mysqli_real_escape_string($connection, $data[17]);
+                    $student_gender = mysqli_real_escape_string($connection, $data[18]);
+                    $student_aadhar_number = mysqli_real_escape_string($connection, $data[19]);
+                    $student_aadhar_address = mysqli_real_escape_string($connection, $data[20]);
+                    $student_comm_address = mysqli_real_escape_string($connection, $data[21]);
 
-        $stmt->bind_param(
-            "sssssssssssssssssss",
-            $column1,
-            $column2,
-            $column3,
-            $column4,
-            $column5,
-            $column6,
-            $column7,
-            $column8,
-            $column9,
-            $column10,
-            $column11,
-            $column12,
-            $column13,
-            $column14,
-            $column15,
-            $column16,
-            $column17,
-            $column18,
-            $column19
-        );
+                    $sql .= "(
+                '$student_enrollment_number', 
+                '$student_name', 
+                '$student_contact', 
+                '$student_email', 
+                '$student_whatsapp', 
+                '$student_dob', 
+                '$student_father', 
+                '$student_mother', 
+                '$student_father_contact', 
+                '$student_guardian_name', 
+                '$student_guardian_contact' , 
+                '$student_guardian_contact_2',
+                '$student_guardian_relation',
+                '$student_roll',
+                '$course_name',
+                '$student_admission_date',
+                '$student_admission_year',
+                '$student_category',
+                '$student_admission_mode',
+                '$student_gender',
+                '$student_aadhar_number',
+                '$student_aadhar_address',
+                '$student_comm_address',
+                '2',
+                '$user_name'
+            ), ";
+                }
+                $sql = rtrim($sql, ", ");
+                $res = mysqli_query($connection, $sql);
+                if ($res) { ?>
+                    <lottie-player src='https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json' background='transparent' speed='1' style='width: 300px; height: 300px;' loop autoplay></lottie-player>
+                    <p>Student Data Uploaded</p>
+                    <a href='dashboard.php' class='go-back-btn'>Go Back</a>
+    <?php } else {
+                    echo "Error";
+                    // $toast_class = "class='toast align-items-center text-bg-danger border-0'";
+                    // $toast_message = "Error: " . $sql . "<br>" . $mysqli->error;
+                    // echo "<script>showToast()</script>";
+                }
 
-        while (($data = fgetcsv($handle)) !== false) {
-            $column1 = $data[2] ?? '';
-            $column2 = $data[3] ?? '';
-            $column3 = $data[4] ?? '';
-            $column4 = $data[5] ?? '';
-            $column5 = $data[6] ?? '';
-            $column6 = $data[7] ?? '';
-            $column7 = $data[8] ?? '';
-            $column8 = $data[9] ?? '';
-            $column9 = $data[10] ?? '';
-            $column10 = $data[11] ?? '';
-            $column11 = $data[12] ?? '';
-            $column12 = $data[14] ?? '';
-            $column13 = $data[15] ?? '';
-            $column14 = $data[19] ?? '';
-            $column15 = $data[20] ?? '';
-            $column16 = $data[21] ?? '';
-            $column17 = $data[22] ?? '';
-            $column18 = $data[25] ?? '';
-            $column19 = $data[26] ?? '';
-
-            if (!$stmt->execute()) {
-                die('Error: ' . $stmt->error);
+                fclose($handle);
             }
         }
-
-        fclose($handle);
-        echo "
-        <lottie-player src='https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json' background='transparent' speed='1' style='width: 300px; height: 300px;' loop autoplay></lottie-player>
-        <p>Student Data Uploaded</p>
-        <a href='dashboard.php' class='go-back-btn'>Go Back</a>";
     }
     ?>
 </div>

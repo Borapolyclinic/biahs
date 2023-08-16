@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <!-- Google Search Console ID: media@borapolyclinic.com -->
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
