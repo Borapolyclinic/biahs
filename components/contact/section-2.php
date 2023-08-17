@@ -6,7 +6,8 @@
             </div>
             <div>
                 <h2>Contact Number</h2>
-                <p>+91 9569863933 | +91 9305748634</p>
+                <a href="tel:+919569863933">+91 9569863933</a>
+                <a href="tel:+919305748634">| +91 9305748634</a>
             </div>
         </div>
 
@@ -16,7 +17,7 @@
             </div>
             <div>
                 <h2>Email</h2>
-                <p>info@borainstitute.com</p>
+                <a href="mailto:info@borainstitute.com">info@borainstitute.com</a>
             </div>
         </div>
 
@@ -58,8 +59,8 @@
             $result = mysqli_query($connection, $query);
 
             if ($result) { ?>
-        <div class="alert alert-success mt-3 mb-3" role="alert">Thank you for contact us. We will connect with you
-            shortly.</div>
+                <div class="alert alert-success mt-3 mb-3" role="alert">Thank you for contact us. We will connect with you
+                    shortly.</div>
         <?php
             }
         }
@@ -67,18 +68,15 @@
         <form action="" method="POST" class="contact-section-2-form">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                <input type="text" name="contact_name" class="form-control" id="exampleFormControlInput1"
-                    placeholder="Your Name" required>
+                <input type="text" name="contact_name" class="form-control" id="exampleFormControlInput1" placeholder="Your Name" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
-                <input type="number" name="contact_number" class="form-control" id="exampleFormControlInput1"
-                    placeholder="XXXXX XXXXX" required>
+                <input type="number" name="contact_number" class="form-control" id="exampleFormControlInput1" placeholder="XXXXX XXXXX" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" name="contact_email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="name@example.com">
+                <input type="email" name="contact_email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Contact About?</label>
@@ -93,8 +91,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Details</label>
-                <textarea class="form-control" name="contact_details" id="exampleFormControlTextarea1"
-                    rows="3"></textarea>
+                <textarea class="form-control" name="contact_details" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
             <button type="submit" name="submit" class="contact-section-2-btn">Submit</button>

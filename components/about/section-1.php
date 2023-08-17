@@ -1,5 +1,5 @@
 <div id="about-college" class="about-section-1-heading">
-    <h1>COMMITTED TO <strong>EXCELLENCE</strong> IN NURSING</h1>
+    <h2>COMMITTED TO <strong>EXCELLENCE</strong> IN NURSING</h2>
     <p>Aiming at preparing professional nurses, competent to render qualitative care and and helping individuals
         value and pursue life-long learning</p>
 </div>
@@ -26,6 +26,6 @@
             and secure your future with great nursing placements in Lucknow.</p>
     </div>
     <div class="col-md-6 about-section-1-img order-lg-1 order-0">
-        <img src="assets/images/banners/temp-2.png" alt="Best nursing college in Lucknow">
+        <img src="assets/images/banners/temp-2.webp" alt="Best nursing college in Lucknow">
     </div>
 </div>

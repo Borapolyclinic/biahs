@@ -8,7 +8,7 @@
             </div> -->
             <div class="modal-body">
                 <div class="modal-popup-image-container">
-                    <img src="assets/images/banners/popup-image.jpeg" alt="Admissions Modal Popup Image for BIAHS">
+                    <img src="assets/images/banners/popup-image.webp" alt="Admissions Modal Popup Image for BIAHS">
                 </div>
             </div>
             <div class="modal-footer">

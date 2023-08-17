@@ -1,6 +1,6 @@
 <div class="container admission-section-2">
     <div class="col-md-6 admission-section-2-img">
-        <img src="assets/images/banners/temp-9.png" alt="Admissions in Bora Institute of Allied Health Sciences">
+        <img src="assets/images/banners/temp-9.webp" alt="Admissions in Bora Institute of Allied Health Sciences">
     </div>
 
     <div class="col-md-6 admission-section-2-form">
@@ -14,42 +14,42 @@
             $admission_program = mysqli_real_escape_string($connection, $_POST['admission_program']);
 
             if ($admission_program == 'null') { ?>
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Please select a program!
-        </div>
-        <?php } else if ($admission_program == "Masters Degree Programme") {
+                <div class="alert alert-danger mb-3 mt-3" role="alert">
+                    Please select a program!
+                </div>
+                <?php } else if ($admission_program == "Masters Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_1']);
                 if ($admission_course == 'null') { ?>
 
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Course selection is mandatory!
-        </div>
-        <?php
+                    <div class="alert alert-danger mb-3 mt-3" role="alert">
+                        Course selection is mandatory!
+                    </div>
+                <?php
                 }
             } else if ($admission_program == "Basic Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_2']);
                 if ($admission_course == 'null') { ?>
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Course selection is mandatory!
-        </div>
-        <?php
+                    <div class="alert alert-danger mb-3 mt-3" role="alert">
+                        Course selection is mandatory!
+                    </div>
+                <?php
                 }
             } else if ($admission_program == "Diploma Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_3']);
                 if ($admission_course == 'null') { ?>
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Course selection is mandatory!
-        </div>
-        <?php
+                    <div class="alert alert-danger mb-3 mt-3" role="alert">
+                        Course selection is mandatory!
+                    </div>
+                <?php
                 }
             } else if ($admission_program == "Certificate Course") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_4']);
                 if ($admission_course == 'null') { ?>
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Course selection is mandatory!
-        </div>
+                    <div class="alert alert-danger mb-3 mt-3" role="alert">
+                        Course selection is mandatory!
+                    </div>
 
-        <?php
+                <?php
                 }
             } else {
 
@@ -76,15 +76,15 @@
 
                 ?>
 
-        <div class="alert alert-danger mb-3 mt-3" role="alert">
-            Oops! Looks like there was some error processing your form. Please try again!
-        </div>
-        <?php
+                    <div class="alert alert-danger mb-3 mt-3" role="alert">
+                        Oops! Looks like there was some error processing your form. Please try again!
+                    </div>
+                <?php
                 } else {
                 ?>
-        <div class="alert alert-success mb-3 mt-3" role="alert">
-            Thank you for applying for <?php echo $admission_course; ?>. We will connect with you shortly.
-        </div>
+                    <div class="alert alert-success mb-3 mt-3" role="alert">
+                        Thank you for applying for <?php echo $admission_course; ?>. We will connect with you shortly.
+                    </div>
         <?php
                 }
             }
@@ -94,28 +94,23 @@
         <form action="" method="post">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
-                <input type="text" class="form-control" name="admission_name" id="exampleFormControlInput1"
-                    placeholder="" required>
+                <input type="text" class="form-control" name="admission_name" id="exampleFormControlInput1" placeholder="" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Contact Number</label>
-                <input type="number" class="form-control" name="admission_contact" id="exampleFormControlInput1"
-                    placeholder="" required>
+                <input type="number" class="form-control" name="admission_contact" id="exampleFormControlInput1" placeholder="" required>
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" name="admission_email" id="exampleFormControlInput1"
-                    placeholder="">
+                <input type="email" class="form-control" name="admission_email" id="exampleFormControlInput1" placeholder="">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Qualifications</label>
-                <textarea class="form-control" name="admission_qual" id="exampleFormControlTextarea1"
-                    rows="5"></textarea>
+                <textarea class="form-control" name="admission_qual" id="exampleFormControlTextarea1" rows="5"></textarea>
             </div>
             <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">Select Programme</label>
-                <select required onchange="showOption()" class="form-select mb-3" name="admission_program"
-                    id="programOption" aria-label="Default select example" required>
+                <select required onchange="showOption()" class="form-select mb-3" name="admission_program" id="programOption" aria-label="Default select example" required>
                     <option value="null">Click here to open menu</option>
                     <option value="Masters Degree Programme">Masters Degree Programme</option>
                     <option value="Basic Degree Programme">Basic Degree Programme</option>

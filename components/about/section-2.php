@@ -1,11 +1,11 @@
 <div class="container about-section-2-content-grid">
     <div class="about-section-2-img-grid col-md-6">
-        <img src="assets/images/banners/temp-4.png" alt="Banner 1 Best nursing college in Lucknow">
+        <img src="assets/images/banners/temp-4.webp" alt="Banner 1 Best nursing college in Lucknow">
 
-        <img src="assets/images/banners/temp-8.png" alt="Banner 2 Best nursing college in Lucknow">
+        <img src="assets/images/banners/temp-8.webp" alt="Banner 2 Best nursing college in Lucknow">
 
-        <img src="assets/images/banners/temp-7.png" alt="Banner 3 Best nursing college in Lucknow">
-        <img src="assets/images/banners/temp-3.png" alt="Banner 4 Best nursing college in Lucknow">
+        <img src="assets/images/banners/temp-7.webp" alt="Banner 3 Best nursing college in Lucknow">
+        <img src="assets/images/banners/temp-3.webp" alt="Banner 4 Best nursing college in Lucknow">
     </div>
 
     <div class="col-md-6 about-section-2-text">
@@ -48,13 +48,13 @@
 
     <div class="about-section-2-part-row">
         <div class="col-md-6 about-section-2-part-card">
-            <img src="assets/images/banners/temp-5.png" alt="Vision of Bora Institute of Allied Health Sciences">
+            <img src="assets/images/banners/temp-5.webp" alt="Vision of Bora Institute of Allied Health Sciences">
             <p>To be recognized as a center of excellence in nursing
                 education and to prepare quality nursing</p>
         </div>
 
         <div class="col-md-6 about-section-2-part-card">
-            <img src="assets/images/banners/temp-6.png" alt="Mission Best nursing college in Lucknow">
+            <img src="assets/images/banners/temp-6.webp" alt="Mission Best nursing college in Lucknow">
             <p>Professionals competent enough to meet the emerging health
                 needs of the society.</p>
         </div>

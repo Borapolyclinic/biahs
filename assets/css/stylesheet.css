@@ -262,7 +262,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   flex-direction: column;
   color: #ec7f0d;
-  background-image: url("../images/banners/about-banner.png");
+  background-image: url("../images/banners/about-banner.webp");
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 100%;
@@ -622,6 +622,10 @@ input::-webkit-inner-spin-button {
   color: #000;
   margin: 0;
 }
+.contact-section-2-details a {
+  text-decoration: none;
+  color: #000;
+}
 .contact-section-2-form {
   padding: 20px;
   border: 1px solid #e7e7e7e7;
@@ -651,7 +655,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   flex-direction: column;
   color: #ec7f0d;
-  background-image: url("../images/banners/popup-image.jpeg");
+  background-image: url("../images/banners/popup-image.webp");
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 100%;
@@ -689,7 +693,7 @@ input::-webkit-inner-spin-button {
   margin-top: 100px;
   margin-bottom: 50px;
 }
-.downloads-section h1 {
+.downloads-section h2 {
   font-weight: bold;
   color: #ec7f0d;
   margin: 0;
@@ -714,6 +718,7 @@ input::-webkit-inner-spin-button {
   flex: 1;
   font-size: 24px;
   margin: 0;
+  color: #000 !important;
 }
 .download-section-tab a {
   text-decoration: none !important;

@@ -1,5 +1,5 @@
 <div class="container downloads-section">
-    <h1>Downloads</h1>
+    <h2>Downloads</h2>
     <p>Important documents available for downloads</p>
 
     <div class="download-section-tab" id="blue">
@@ -14,8 +14,7 @@
 
     <div class="download-section-tab" id="blue">
         <h2>Post Basic BSc. Nursing Information Brochure</h2>
-        <a href="assets/docs/PostBasicBScNursingInformationBrochure.pdf" target="_blank"
-            rel="noopener noreferrer">Download</a>
+        <a href="assets/docs/PostBasicBScNursingInformationBrochure.pdf" target="_blank" rel="noopener noreferrer">Download</a>
     </div>
 
 
