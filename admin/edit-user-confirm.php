@@ -8,7 +8,7 @@
             $user_id = mysqli_real_escape_string($connection, $_POST['user_id']);
             $user_name = mysqli_real_escape_string($connection, $_POST['user_name']);
             $user_contact = mysqli_real_escape_string($connection, $_POST['user_contact']);
-            $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
+            // $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
         }
         ?>
 
@@ -16,7 +16,7 @@
             <input hidden type="text" name="user_id" value="<?php echo $user_id ?>">
             <input hidden type="text" name="user_name" value="<?php echo $user_name ?>">
             <input hidden type="text" name="user_contact" value="<?php echo $user_contact ?>">
-            <input hidden type="text" name="user_password" value="<?php echo $user_password ?>">
+            <!-- <input hidden type="text" name="user_password" value="<?php echo $user_password ?>"> -->
             <div class="alert alert-info" role="alert w-100">
                 Are you sure you want to update this user's details?
             </div>

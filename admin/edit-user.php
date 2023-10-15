@@ -13,10 +13,10 @@
         $user_id = $_POST['user_id'];
         $user_name = $_POST['user_name'];
         $user_contact = $_POST['user_contact'];
-        $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
-        $encrypted_password = password_hash($user_password, PASSWORD_DEFAULT);
+        // $user_password = mysqli_real_escape_string($connection, $_POST['user_password']);
+        // $encrypted_password = password_hash($user_password, PASSWORD_DEFAULT);
 
-        $update = "UPDATE `bora_users` SET `user_name` = '$user_name', `user_contact` = '$user_contact', `user_password` = '$encrypted_password' WHERE `user_id` = '$user_id'";
+        $update = "UPDATE `bora_users` SET `user_name` = '$user_name', `user_contact` = '$user_contact' WHERE `user_id` = '$user_id'";
         $res = mysqli_query($connection, $update);
 
         if ($res) { ?>
@@ -40,11 +40,9 @@
 
         $user_name = "";
         $user_contact = "";
-        $user_password = "";
         while ($row = mysqli_fetch_assoc($result)) {
             $user_name = $row['user_name'];
             $user_contact = $row['user_contact'];
-            $user_password = $row['user_password'];
         }
     }
     ?>
@@ -58,21 +56,21 @@
             <label for="contactNumber" class="form-label">Contact Number</label>
             <input type="number" name="user_contact" maxlength="10" required class="form-control" value="<?php echo $user_contact ?>" id="contactNumber">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="userPassword" class="form-label">Password</label>
             <input type="password" name="user_password" value="<?php echo $user_password ?>" class="form-control" required id="userPassword" onkeyup="checkPassword()">
-        </div>
+        </div> -->
 
-        <ul id="passwordRequirements">
+        <!-- <ul id="passwordRequirements">
             <li id="passwordLength">Password should be at least 8 characters</li>
             <li id="passwordSpecialChar">Password should have at least 1 special character</li>
             <li id="passwordUppercase">Password should have at least 1 uppercase character</li>
-        </ul>
+        </ul> -->
         <!-- <button type="submit" name="update" class="btn btn-primary">Update</button> -->
-        <button type="submit" name="update" class="btn btn-primary" id="createButton" disabled>Update</button>
+        <button type="submit" name="update" class="btn btn-primary" id="createButton">Update</button>
     </form>
 </div>
-<script>
+<!-- <script>
     function checkPassword() {
         var password = document.getElementById("userPassword").value;
         var requirements = document.getElementById("passwordRequirements");
@@ -106,5 +104,5 @@
             createButton.disabled = true;
         }
     }
-</script>
+</script> -->
 <?php include('includes/footer.php') ?>
