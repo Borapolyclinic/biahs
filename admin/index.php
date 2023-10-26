@@ -21,9 +21,9 @@
         $user_contact = mysqli_real_escape_string($connection, $_POST['user_contact']);
 
         if (empty($user_contact)) { ?>
-    <div class="alert alert-danger w-50" role="alert">
-        Please enter Registered Mobile Number
-    </div>
+            <div class="alert alert-danger w-50" role="alert">
+                Please enter Registered Mobile Number
+            </div>
     <?php
         } else {
             try {
@@ -109,8 +109,7 @@
     <form class="login-form" method="POST" action="">
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Registered Mobile Number</label>
-            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
+            <input type="number" name="user_contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <button type="submit" name="submit" class="btn btn-outline-success w-100">Login</button>
     </form>

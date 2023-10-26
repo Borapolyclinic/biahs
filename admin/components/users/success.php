@@ -1,4 +1,4 @@
-<div class="container mt-5 add-user-success">
+<div class="container mt-5 ">
     <?php
     require('includes/connection.php');
     if (isset($_POST['submit'])) {
@@ -28,17 +28,19 @@
 
             $result = mysqli_query($connection, $query);
             if ($result) { ?>
-    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1"
-        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    <p>New user added</p>
-    <a href="users.php" class="go-back-btn">Go Back</a>
-    <?php
+                <div class="add-user-success">
+                    <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                    <p>New user added</p>
+                    <a href="users.php" class="go-back-btn">Go Back</a>
+                </div>
+            <?php
             }
         } else { ?>
-    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1"
-        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-    <p>Looks like this user already has an account with us!</p>
-    <a href="users.php" class="go-back-btn">Go Back</a>
+            <div class="add-user-success">
+                <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ckcn4hvm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+                <p>Looks like this user already has an account with us!</p>
+                <a href="users.php" class="go-back-btn">Go Back</a>
+            </div>
     <?php
         }
     }

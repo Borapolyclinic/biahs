@@ -182,11 +182,13 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 250px !important;
 }
 .add-user-success p {
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
+  text-align: center;
 }
 .go-back-btn {
   text-decoration: none !important;
@@ -195,7 +197,7 @@ input::-webkit-inner-spin-button {
   border: 0 !important;
   padding: 8px;
   color: #fff;
-  width: 100%;
+  width: 15%;
   text-align: center;
 }
 .add-user-form-row {
