@@ -85,10 +85,11 @@
                 </div>
             </div>
 
+
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Category</label>
-                    <select required class="form-select" name="student_category" aria-label="Default select example">
+                    <select onclick="getCategory()" required class="form-select" id="selectedCat" name="student_category" aria-label="Default select example">
                         <option selected>Open this select menu</option>
                         <option value="General">General</option>
                         <option value="SC">SC</option>
@@ -99,7 +100,7 @@
                 </div>
                 <div class="w-100 mobile-input m-1">
                     <label for="studentNumber" class="form-label">Mode of Admission</label>
-                    <select onchange="disableInput()" class="form-select" name="student_admission_mode" aria-label="Default select example" id="admissionMode">
+                    <select onclick="disableInput()" class="form-select" name="student_admission_mode" aria-label="Default select example" id="admissionMode">
                         <option selected>Open this select menu</option>
                         <option value="Counselling">Counselling</option>
                         <option value="Direct">Direct</option>
@@ -139,7 +140,7 @@
                 </div>
                 <div class="m-1 w-100 mobile-input">
                     <label for="formFile" class="form-label">Upload Cast Certificate</label>
-                    <input class="form-control" name="student_cast_certificate" type="file" id="formFile" required>
+                    <input class="form-control" name="student_cast_certificate" type="file" required id="castSection">
                 </div>
             </div>
         </div>

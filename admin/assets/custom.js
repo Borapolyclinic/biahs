@@ -80,11 +80,24 @@ function disableInput() {
   var admissionModeSelect = document.getElementById("admissionMode");
   var allotmentLetterInput = document.getElementById("alotLetterFile");
 
-  admissionModeSelect.addEventListener("change", function () {
+  admissionModeSelect.addEventListener("click", function () {
     if (admissionModeSelect.value === "Direct") {
       allotmentLetterInput.disabled = true;
     } else {
       allotmentLetterInput.disabled = false;
+    }
+  });
+}
+
+function getCategory() {
+  var selectedCategory = document.getElementById("selectedCat");
+  var castField = document.getElementById("castSection");
+
+  selectedCategory.addEventListener("click", function () {
+    if (selectedCategory.value === "General") {
+      castField.disabled = true;
+    } else {
+      castField.disabled = false;
     }
   });
 }
