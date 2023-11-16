@@ -35,7 +35,7 @@ if (isset($_POST['download'])) {
         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
         $bora_invoice_payment_id = $row['bora_invoice_payment_id'];
         if ($bora_invoice_payment_mode == 'cheque') {
-            $bora_invoice_payment_mode = 'CHEQUE';
+            $bora_invoice_payment_mode = 'BANK';
         } else if ($bora_invoice_payment_mode == 'online') {
             $bora_invoice_payment_mode = 'ONLINE';
         } else if ($bora_invoice_payment_mode == 'DemandDraft') {
@@ -232,7 +232,35 @@ if (isset($_POST['download'])) {
                     </tbody>
                     </table>
 
-                    <table style="margin-top: 5px;">' . $tableContent . '</table>
+                    <table style="margin-top: 5px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+                            </tr>';
+
+        if ($bora_invoice_payment_mode == 'ONLINE') {
+            $content .= '
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . $bora_invoice_payment_id . '</strong></th>
+                            </tr>';
+        } else if ($bora_invoice_payment_mode == 'BANK') {
+            $content .= '
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">CHEQUE NUMBER | DD NUMBER:<strong> ' . $bora_invoice_cheque_number . '</strong></th>
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">BANK NAME:<strong> ' . $bora_invoice_bank_name . '</strong></th>
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">IFSC CODE:<strong> ' . $bora_invoice_ifsc . '</strong></th>
+                            </tr>';
+        }
+
+        $content .= '
+                        </thead>
+                    </table>
+
+                    
 
                     <div>
                         <p>Authorized Signatory: </p>

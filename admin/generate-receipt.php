@@ -8,7 +8,8 @@ include('includes/header.php') ?>
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
         $user_contact = $_COOKIE['user_id'];
-        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+
+        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_id` = '$user_contact'";
         $fetch_res = mysqli_query($connection, $fetch_data);
         $user_name = "";
         while ($row = mysqli_fetch_assoc($fetch_res)) {
@@ -25,7 +26,7 @@ include('includes/header.php') ?>
         $bora_invoice_student_address = $_POST['bora_invoice_student_address'];
         $bora_invoice_student_contact = $_POST['bora_invoice_student_contact'];
         $bora_invoice_student_course_id = $_POST['bora_invoice_student_course_id'];
-        $bora_invoice_student_admission_year = $_POST['bora_invoice_student_admission_year'];
+        $bora_invoice_student_batch = $_POST['bora_invoice_student_batch'];
         $get_course = "SELECT * FROM `bora_course` WHERE `course_id` = '$bora_invoice_student_course_id'";
         $get_course_res = mysqli_query($connection, $get_course);
         $course_name = "";
@@ -52,7 +53,7 @@ include('includes/header.php') ?>
         }
 
         if ($bora_invoice_payment_mode == 'cheque') {
-            $bora_invoice_payment_id = $_POST['bora_invoice_payment_id'];
+
             $bora_invoice_cheque_number = $_POST['bora_invoice_cheque_number'];
             $bora_invoice_bank_name = $_POST['bora_invoice_bank_name'];
             $bora_invoice_ifsc = $_POST['bora_invoice_ifsc'];
@@ -81,7 +82,6 @@ include('includes/header.php') ?>
                 `bora_invoice_cheque_number`,
                 `bora_invoice_bank_name`,
                 `bora_invoice_ifsc`,
-                `bora_invoice_payment_id`,
                 `bora_invoice_value`,
                 `bora_invoice_disc`,
                 `bora_invoice_grand_total`,
@@ -98,7 +98,7 @@ include('includes/header.php') ?>
                 '$bora_invoice_student_contact',
                 '$bora_invoice_student_course_id',
                 '$course_name',
-                '$bora_invoice_student_admission_year',
+                '$bora_invoice_student_batch',
                 '$bora_invoice_for',
                 '$bora_invoice_tenure',
                 '$bora_invoice_tenure_id',                
@@ -106,7 +106,6 @@ include('includes/header.php') ?>
                 '$bora_invoice_cheque_number',
                 '$bora_invoice_bank_name',
                 '$bora_invoice_ifsc',
-                '$bora_invoice_payment_id',
                 '$bora_invoice_value',
                 '$bora_invoice_disc',
                 '$bora_invoice_grand_total',
@@ -146,7 +145,7 @@ include('includes/header.php') ?>
                     '$bora_invoice_student_contact',
                     '$bora_invoice_student_course_id',
                     '$course_name',
-                    '$bora_invoice_student_admission_year',
+                    '$bora_invoice_student_batch',
                     '$bora_invoice_for',
                     '$bora_invoice_tenure',
                     '$bora_invoice_tenure_id',
@@ -157,6 +156,53 @@ include('includes/header.php') ?>
                     '$user_name',
                     '$bora_invoice_generation_date'
                     )";
+            $result = mysqli_query($connection, $query);
+        } else if ($bora_invoice_payment_mode == 'online') {
+            $bora_invoice_payment_id = $_POST['bora_invoice_payment_id'];
+            $query = "INSERT INTO `bora_invoice`(
+                `bora_invoice_number`,
+                `bora_invoice_date`,
+                `bora_invoice_student_en_no`,
+                `bora_invoice_student_id`,
+                `bora_invoice_student`,
+                `bora_invoice_student_address`,
+                `bora_invoice_student_contact`,
+                `bora_invoice_student_course_id`,
+                `bora_invoice_student_course`,
+                `bora_invoice_student_admission_year`,
+                `bora_invoice_for`,
+                `bora_invoice_tenure`,
+                `bora_invoice_tenure_id`,
+                `bora_invoice_payment_mode`,
+                `bora_invoice_payment_id`,
+                `bora_invoice_value`,
+                `bora_invoice_disc`,
+                `bora_invoice_grand_total`,
+                `bora_invoice_by`,
+                `bora_invoice_generation_date`
+                )
+                VALUES(
+                '$bora_receipt_number',
+                '$bora_invoice_date',
+                '$bora_invoice_student_en_no',
+                '$bora_invoice_student_id',
+                '$bora_invoice_student',
+                '$bora_invoice_student_address',
+                '$bora_invoice_student_contact',
+                '$bora_invoice_student_course_id',
+                '$course_name',
+                '$bora_invoice_student_batch',
+                '$bora_invoice_for',
+                '$bora_invoice_tenure',
+                '$bora_invoice_tenure_id',
+                '$bora_invoice_payment_mode',
+                '$bora_invoice_payment_id',
+                '$bora_invoice_value',
+                '$bora_invoice_disc',
+                '$bora_invoice_grand_total',
+                '$user_name',
+                '$bora_invoice_generation_date'
+                )";
             $result = mysqli_query($connection, $query);
         }
         if ($result) {

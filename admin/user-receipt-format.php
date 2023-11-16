@@ -4,8 +4,6 @@ require('tcpdf/tcpdf.php');
 
 if (isset($_POST['download'])) {
     $bora_invoice_id = $_POST['bora_invoice_id'];
-    // $bora_receipt_number = $_POST['bora_receipt_number'];
-    // $bora_invoice_date = isset($_POST['bora_invoice_date']) ? $_POST['bora_invoice_date'] : '';
 
     $query = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_id` = '$bora_invoice_id'";
     $res = mysqli_query($connection, $query);
@@ -21,6 +19,7 @@ if (isset($_POST['download'])) {
         $bora_invoice_cheque_number = $row['bora_invoice_cheque_number'];
         $bora_invoice_bank_name = $row['bora_invoice_bank_name'];
         $bora_invoice_ifsc = $row['bora_invoice_ifsc'];
+        $bora_invoice_payment_id = $row['bora_invoice_payment_id'];
 
         $bora_invoice_for = $row['bora_invoice_for'];
         $bora_invoice_tenure = $row['bora_invoice_tenure'];
@@ -35,7 +34,7 @@ if (isset($_POST['download'])) {
         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
         $bora_invoice_payment_id = $row['bora_invoice_payment_id'];
         if ($bora_invoice_payment_mode == 'cheque') {
-            $bora_invoice_payment_mode = 'CHEQUE';
+            $bora_invoice_payment_mode = 'BANK';
         } else if ($bora_invoice_payment_mode == 'online') {
             $bora_invoice_payment_mode = 'ONLINE';
         } else if ($bora_invoice_payment_mode == 'DemandDraft') {
@@ -217,8 +216,35 @@ if (isset($_POST['download'])) {
                     </tbody>
                     </table>
 
-                    <table style="margin-top: 5px;">' . $tableContent . '</table>
+                    <table style="margin-top: 5px;">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong> ' . $bora_invoice_payment_mode . '</strong></th>
+                            </tr>';
 
+        if ($bora_invoice_payment_mode == 'ONLINE') {
+            $content .= '
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . $bora_invoice_payment_id . '</strong></th>
+                            </tr>';
+        } else if ($bora_invoice_payment_mode == 'BANK') {
+            $content .= '
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">CHEQUE NUMBER | DD NUMBER:<strong> ' . $bora_invoice_cheque_number . '</strong></th>
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">BANK NAME:<strong> ' . $bora_invoice_bank_name . '</strong></th>
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000">IFSC CODE:<strong> ' . $bora_invoice_ifsc . '</strong></th>
+                            </tr>';
+        }
+
+        $content .= '
+                        </thead>
+                    </table>
+
+                   
                     <div>
                         <p>Authorized Signatory: </p>
                     </div>

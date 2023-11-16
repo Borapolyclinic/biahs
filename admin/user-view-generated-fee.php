@@ -156,13 +156,13 @@
                             <p>₹<?php echo $bora_invoice_value ?></p>
                         </td>
                         <?php if (empty($bora_invoice_disc)) { ?>
-                        <td>
-                            <p>₹0</p>
-                        </td>
+                            <td>
+                                <p>₹0</p>
+                            </td>
                         <?php } else { ?>
-                        <td>
-                            <p>₹<?php echo $bora_invoice_disc ?></p>
-                        </td>
+                            <td>
+                                <p>₹<?php echo $bora_invoice_disc ?></p>
+                            </td>
                         <?php } ?>
 
                         <td>
@@ -177,65 +177,59 @@
             <?php
             if ($bora_invoice_payment_mode == 'cash') {
             ?>
-            <thead>
-                <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        MODE:<strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </strong></th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
+                            MODE:<strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </strong></th>
+                    </tr>
+                </thead>
             <?php } else if ($bora_invoice_payment_mode == 'cheque') { ?>
-            <thead>
-                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                    MODE: <strong>CHEQUE | DEMAND DRAFT | ONLINE</th>
-            </thead>
-            <thead>
-                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">CHEQUE
-                    NUMBER:
-                    <?php echo strtoupper($bora_invoice_cheque_number) ?></th>
-            </thead>
-            <thead>
-                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK NAME:
-                    <?php echo strtoupper($bora_invoice_bank_name) ?></th>
-            </thead>
-            <thead>
-                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK IFSC
-                    CODE:
-                    <?php echo strtoupper($bora_invoice_ifsc) ?></th>
-            </thead>
-            <thead>
-                <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">TRANSACTION
-                    ID:
-                    <?php echo $bora_invoice_payment_id ?>
-                </th>
-            </thead>
+                <thead>
+                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
+                        MODE: <strong>CHEQUE | DEMAND DRAFT | ONLINE</th>
+                </thead>
+                <thead>
+                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">CHEQUE
+                        NUMBER | DD NUMBER:
+                        <?php echo strtoupper($bora_invoice_cheque_number) ?></th>
+                </thead>
+                <thead>
+                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK NAME:
+                        <?php echo strtoupper($bora_invoice_bank_name) ?></th>
+                </thead>
+                <thead>
+                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">BANK IFSC
+                        CODE:
+                        <?php echo strtoupper($bora_invoice_ifsc) ?></th>
+                </thead>
 
             <?php } else if ($bora_invoice_payment_mode == 'online') { ?>
-            <thead>
-                <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
-                </tr>
-                <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        ID:
-                        <?php echo $bora_invoice_payment_id ?>
-                    </th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
+                            MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
+                    </tr>
+                    <tr>
+                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
+                            ID:
+                            <?php echo $bora_invoice_payment_id ?>
+                        </th>
+                    </tr>
+                </thead>
 
             <?php } else if ($bora_invoice_payment_mode == 'DemandDraft') { ?>
-            <thead>
-                <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
-                </tr>
-                <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">DD
-                        NUMBER:
-                        <?php echo $bora_invoice_dd_number ?>
-                    </th>
-                </tr>
-            </thead>
+                <thead>
+                    <tr>
+                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
+                            MODE: <strong><?php echo strtoupper($bora_invoice_payment_mode) ?> </th>
+                    </tr>
+                    <tr>
+                        <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">DD
+                            NUMBER:
+                            <?php echo $bora_invoice_dd_number ?>
+                        </th>
+                    </tr>
+                </thead>
             <?php } ?>
         </table>
 

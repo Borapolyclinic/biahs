@@ -172,7 +172,8 @@ include('components/navbar/user-navbar.php');
                     <th scope="col">CONTACT NUMBER</th>
                     <th scope="col">CASH</th>
                     <th scope="col">BANK</th>
-                    <th scope="col">CASH + BANK</th>
+                    <th scope="col">ONLINE</th>
+                    <th scope="col">CASH + BANK + ONLINE</th>
                     <th scope="col">DUE</th>
                     <th scope="col">ACTION</th>
                 </tr>
@@ -203,11 +204,18 @@ include('components/navbar/user-navbar.php');
                             $total_cash = $row['total_cash'];
                         }
 
-                        $fetch_total_bank = "SELECT SUM(`bora_invoice_grand_total`) AS `total_bank` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' OR `bora_invoice_payment_mode` = 'online'";
+                        $fetch_total_bank = "SELECT SUM(`bora_invoice_grand_total`) AS `total_bank` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque'";
                         $fetch_total_bank_r = mysqli_query($connection, $fetch_total_bank);
                         $total_bank = "";
                         while ($row = mysqli_fetch_assoc($fetch_total_bank_r)) {
                             $total_bank = $row['total_bank'];
+                        }
+
+                        $fetch_total_online = "SELECT SUM(`bora_invoice_grand_total`) AS `total_online` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'online'";
+                        $fetch_total_online_r = mysqli_query($connection, $fetch_total_online);
+                        $total_online = "";
+                        while ($row = mysqli_fetch_assoc($fetch_total_online_r)) {
+                            $total_online = $row['total_online'];
                         }
                 ?>
                         <tr>
@@ -217,7 +225,8 @@ include('components/navbar/user-navbar.php');
 
                             <td><?php echo $total_cash  ?></td>
                             <td><?php echo $total_bank  ?></td>
-                            <td><?php echo $total_cash + $total_bank ?></td>
+                            <td><?php echo $total_online  ?></td>
+                            <td><?php echo $total_cash + $total_bank + $total_online ?></td>
                             <td>
                                 <?php
                                 $fetch_due = "SELECT * FROM `bora_course` WHERE `course_id` = '$batch_wise_course'";
@@ -236,20 +245,21 @@ include('components/navbar/user-navbar.php');
                                 } ?>
 
                                 <?php if ($tenure == '1') { ?>
-                                    ₹<?php echo $year_1 - ($total_cash + $total_bank) ?>
+                                    ₹<?php echo $year_1 - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
                                 if ($tenure == '2') { ?>
-                                    ₹<?php echo ($year_1 + $year_2) - ($total_cash + $total_bank) ?>
+                                    ₹<?php echo ($year_1 + $year_2) - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
                                 if ($tenure == '3') { ?>
-                                    ₹<?php echo ($year_1 + $year_2 + $year_3) - ($total_cash + $total_bank) ?>
+                                    ₹<?php echo ($year_1 + $year_2 + $year_3) - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
                                 if ($tenure == '4') { ?>
-                                    ₹<?php echo ($year_1 + $year_2 +  $year_3 + $year_4) - ($total_cash + $total_bank) ?>
+                                    ₹<?php echo ($year_1 + $year_2 +  $year_3 + $year_4) - ($total_cash + $total_bank + $total_online) ?>
 
                                 <?php
                                 }
                                 ?>
+                            </td>
 
                             <td>
                                 <form target="_blank" action="user-student-wise-generated-report.php" method="POST">

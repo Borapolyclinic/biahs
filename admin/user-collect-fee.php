@@ -13,7 +13,7 @@
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
         $user_contact = $_COOKIE['user_id'];
-        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_id` = '$user_contact'";
         $fetch_res = mysqli_query($connection, $fetch_data);
         $user_name = "";
         while ($row = mysqli_fetch_assoc($fetch_res)) {
@@ -27,6 +27,7 @@
         $fetch_data_res = mysqli_query($connection, $fetch_data);
 
         $student_id = "";
+        $student_batch = "";
         $student_name = "";
         $student_course_id = "";
         $student_contact = "";
@@ -34,13 +35,14 @@
 
         while ($row = mysqli_fetch_assoc($fetch_data_res)) {
             $student_id = $row['student_id'];
+            $student_batch = $row['student_batch'];
             $student_name = $row['student_name'];
             $student_roll = $row['student_roll'];
             $student_course_id = $row['student_course'];
             $student_aadhar_address = $row['student_aadhar_address'];
             $student_contact = $row['student_contact'];
             $student_roll = $row['student_roll'];
-            $student_admission_year = $row['student_admission_year'];
+            $student_batch = $row['student_batch'];
         }
     }
 
@@ -119,7 +121,7 @@
             <input type="text" name="bora_invoice_student_course_id" value="<?php echo $student_course_id ?>" hidden>
             <input type="text" name="bora_invoice_student_address" value="<?php echo $student_aadhar_address ?>" hidden>
             <input type="text" name="bora_invoice_student_contact" value="<?php echo $student_contact ?>" hidden>
-            <input type="text" name="bora_invoice_student_admission_year" value="<?php echo $student_admission_year ?>" hidden>
+            <input type="text" name="bora_invoice_student_batch" value="<?php echo $student_batch ?>" hidden>
         </div>
 
         <div class="table-responsive mt-3">
@@ -245,22 +247,21 @@
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row" colspan="4">Cheque | Demand Draft | Online</th>
+                        <th scope="row" colspan="4">Cheque | Demand Draft</th>
                         <td>
                             <div class="form-check">
                                 <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
                             </div>
                         </td>
                     </tr>
-                    <!-- <tr>
+                    <tr>
                         <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
                         <td>
                             <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio"
-                                    value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
                             </div>
                         </td>
-                    </tr> -->
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -291,13 +292,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td>
                             <div>
                                 <input type="text" name="bora_invoice_payment_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Transaction ID (if in case online)">
                             </div>
                         </td>
-                    </tr>
+                    </tr> -->
 
                     <tr>
                         <td>

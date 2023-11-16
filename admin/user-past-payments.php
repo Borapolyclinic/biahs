@@ -33,8 +33,7 @@
                 </select>
             </div>
             <div class="w-100 m-1">
-                <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="" required>
+                <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
@@ -97,29 +96,29 @@
                     $bora_invoice_for = $row['bora_invoice_for'];
                     $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
                     $bora_invoice_by = $row['bora_invoice_by']; ?>
-                <tr>
-                    <th scope="row"><?php echo $bora_invoice_number ?></th>
-                    <td><?php echo $bora_invoice_date ?></td>
-                    <td><?php echo $bora_invoice_student ?></td>
-                    <td><?php echo $bora_invoice_student_course ?></td>
-                    <td><?php echo $bora_invoice_for ?></td>
-                    <td><?php echo $bora_invoice_tenure ?></td>
+                    <tr>
+                        <th scope="row"><?php echo $bora_invoice_number ?></th>
+                        <td><?php echo $bora_invoice_date ?></td>
+                        <td><?php echo $bora_invoice_student ?></td>
+                        <td><?php echo $bora_invoice_student_course ?></td>
+                        <td><?php echo $bora_invoice_for ?></td>
+                        <td><?php echo $bora_invoice_tenure ?></td>
 
-                    <td><?php echo $bora_invoice_grand_total ?></td>
-                    <td><?php echo $bora_invoice_by ?></td>
-                    <td>
-                        <form action="user-view-generated-fee.php" method="post" target="_blank">
-                            <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Details</button>
-                        </form>
-                    </td>
-                    <!-- <td>
+                        <td><?php echo $bora_invoice_grand_total ?></td>
+                        <td><?php echo $bora_invoice_by ?></td>
+                        <td>
+                            <form action="user-view-generated-fee.php" method="post" target="_blank">
+                                <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
+                                <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Details</button>
+                            </form>
+                        </td>
+                        <!-- <td>
                         <form action="user-edit-fee.php" method="post">
                             <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
                             <button type="submit" name="edit-fee" class="btn btn-sm btn-outline-dark">Edit</button>
                         </form>
                     </td> -->
-                </tr>
+                    </tr>
                 <?php
                 }
                 ?>

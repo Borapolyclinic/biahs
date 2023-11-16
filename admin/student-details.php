@@ -95,7 +95,7 @@
             <div class="add-user-form mb-3">
                 <div class="w-100 mobile-input m-1">
                     <label for="studentName" class="form-label">Student Batch</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="student_batch" aria-label="Default select example">
                         <option value="<?php echo $student_batch ?>"><?php echo $student_batch ?> (Selected)</option>
                         <option value="2015-2016">2015-2016</option>
                         <option value="2016-2017">2016-2017</option>

@@ -23,8 +23,7 @@
                 </select>
             </div>
             <div class="w-100 m-1">
-                <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="" required>
+                <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
@@ -44,7 +43,7 @@
 
 
     <div class="w-100 mt-3">
-        <p>Filter Students by Course and Year</p>
+        <p>Filter Students by Course and Batch</p>
         <form action="view-students-by-course.php" method="POST" class="dashboard-tab p-4">
             <div class="filter-row">
                 <select name="course_id" class="form-select m-1" aria-label="Default select example" required>
@@ -56,14 +55,35 @@
                         $course_id = $row['course_id'];
                         $course_name = $row['course_name'];
                     ?>
-                    <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                        <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
                     <?php } ?>
                 </select>
 
                 <div class="w-100 m-1">
+                    <select class="form-select" name="course_year" aria-label="Default select example">
+                        <option selected>Select Batch</option>
+                        <option value="2015-2016">2015-2016</option>
+                        <option value="2016-2017">2016-2017</option>
+                        <option value="2017-2018">2017-2018</option>
+                        <option value="2018-2019">2018-2019</option>
+                        <option value="2019-2020">2019-2020</option>
+                        <option value="2020-2021">2020-2021</option>
+                        <option value="2021-2022">2021-2022</option>
+                        <option value="2022-2023">2022-2023</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2025-2026">2025-2026</option>
+                        <option value="2026-2027">2026-2027</option>
+                        <option value="2027-2028">2027-2028</option>
+                        <option value="2028-2029">2028-2029</option>
+                        <option value="2029-2030">2029-2030</option>
+                    </select>
+                </div>
+
+                <!-- <div class="w-100 m-1">
                     <input type="number" name="course_year" placeholder="" min="1999" max="2025"
                         class="form-control filter-input-box w-100" required>
-                </div>
+                </div> -->
                 <button type="submit" name="filter-course" class="ml-2 btn w-100 btn-success">Filter</button>
             </div>
         </form>
@@ -104,10 +124,10 @@
                         $activity_tracker_user_contact = $row['activity_tracker_user_contact'];
                         $activity_tracker_time = $row['activity_tracker_time'];
                     ?>
-                    <tr>
-                        <th scope="row">
+                        <tr>
+                            <th scope="row">
 
-                            <?php
+                                <?php
                                 $fetch_user = "SELECT * FROM `bora_users` WHERE `user_id` = '$activity_tracker_user_contact'";
                                 $fetch_user_res = mysqli_query($connection, $fetch_user);
                                 $user_name = "";
@@ -115,9 +135,9 @@
                                     $user_name = $row['user_name'];
                                 }
                                 echo $user_name ?>
-                        </th>
-                        <td><?php echo $activity_tracker_time ?></td>
-                    </tr>
+                            </th>
+                            <td><?php echo $activity_tracker_time ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
 

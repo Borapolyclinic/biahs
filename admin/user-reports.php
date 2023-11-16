@@ -26,14 +26,12 @@
         <div class="user-table">
             <div class="filter-row">
                 <div class="form-check w-100">
-                    <input class="form-check-input" type="radio" value="Student" name="selected_radio"
-                        id="student-wise-radio" onclick="showFields('student-wise', 'batch-wise')">
+                    <input class="form-check-input" type="radio" value="Student" name="selected_radio" id="student-wise-radio" onclick="showFields('student-wise', 'batch-wise')">
                     <label class="form-check-label" for="student-wise-radio">Student-wise</label>
                 </div>
 
                 <div class="form-check w-100">
-                    <input class="form-check-input" type="radio" value="Batch" name="selected_radio"
-                        id="batch-wise-radio" onclick="showFields('batch-wise', 'student-wise')">
+                    <input class="form-check-input" type="radio" value="Batch" name="selected_radio" id="batch-wise-radio" onclick="showFields('batch-wise', 'student-wise')">
                     <label class="form-check-label" for="batch-wise-radio">Batch-wise</label>
                 </div>
             </div>
@@ -47,23 +45,19 @@
                 <div class="filter-row w-100 mb-3">
                     <div class="w-100">
                         <label for="exampleInputEmail1" class="form-label">From</label>
-                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
 
                     <div class="w-100">
                         <label for="exampleInputEmail1" class="form-label">To</label>
-                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text" name="student_wise_data" class="form-control w-100"
-                        aria-label="Text input with dropdown button" placeholder="Enter UID">
+                    <input type="text" name="student_wise_data" class="form-control w-100" aria-label="Text input with dropdown button" placeholder="Enter UID">
                 </div>
 
-                <button type="submit" name="generate_student_wise"
-                    class="mt-3 p-2 btn btn-outline-success w-100">Generate
+                <button type="submit" name="generate_student_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
                     Report</button>
             </div>
         </form>
@@ -76,14 +70,12 @@
                 <div class="filter-row mb-3">
                     <div class="w-100 m-1">
                         <label for="exampleInputEmail1" class="form-label">From</label>
-                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="date" name="date_from" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
 
                     <div class="w-100 m-1">
                         <label for="exampleInputEmail1" class="form-label">To</label>
-                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="date" name="date_to" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                 </div>
                 <div class="filter-row ">
@@ -99,15 +91,32 @@
                                 $course_id = $row['course_id'];
                                 $course_name = $row['course_name'];
                             ?>
-                            <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
+                                <option value="<?php echo $course_id ?>"><?php echo $course_name ?></option>
                             <?php } ?>
                         </select>
                     </div>
 
                     <div class="w-100 m-1">
-                        <label for="exampleFormControlInput1" class="form-label">Enter Admission Year</label>
-                        <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control"
-                            id="exampleFormControlInput1" placeholder="">
+                        <label for="exampleFormControlInput1" class="form-label">Select Batch</label>
+                        <select class="form-select" name="batch_wise_year" aria-label="Default select example">
+                            <option selected>Select Batch</option>
+                            <option value="2015-2016">2015-2016</option>
+                            <option value="2016-2017">2016-2017</option>
+                            <option value="2017-2018">2017-2018</option>
+                            <option value="2018-2019">2018-2019</option>
+                            <option value="2019-2020">2019-2020</option>
+                            <option value="2020-2021">2020-2021</option>
+                            <option value="2021-2022">2021-2022</option>
+                            <option value="2022-2023">2022-2023</option>
+                            <option value="2023-2024">2023-2024</option>
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2025-2026">2025-2026</option>
+                            <option value="2026-2027">2026-2027</option>
+                            <option value="2027-2028">2027-2028</option>
+                            <option value="2028-2029">2028-2029</option>
+                            <option value="2029-2030">2029-2030</option>
+                        </select>
+                        <!-- <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control" id="exampleFormControlInput1" placeholder=""> -->
                     </div>
                 </div>
                 <button type="submit" name="generate_batch_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate

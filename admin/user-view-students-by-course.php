@@ -19,21 +19,20 @@
     ?>
     <div class="w-100 mb-3">
         <script>
-        function openEmptyModal() {
-            $(document).ready(function() {
-                $("#emptyModal").modal("show");
-            });
-        }
+            function openEmptyModal() {
+                $(document).ready(function() {
+                    $("#emptyModal").modal("show");
+                });
+            }
 
-        function notFound() {
-            $(document).ready(function() {
-                $("#notFoundModal").modal("show");
-            });
-        }
+            function notFound() {
+                $(document).ready(function() {
+                    $("#notFoundModal").modal("show");
+                });
+            }
         </script>
         <!-- ======================= MODAL ======================= -->
-        <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="emptyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -56,8 +55,7 @@
 
 
         <!-- ======================= NOT FOUND ======================= -->
-        <div class="modal fade hide" id="notFoundModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade hide" id="notFoundModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -105,28 +103,30 @@
             } elseif (empty($course_year)) {
                 echo "<script>notFound()</script>";
             } else {
-                $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' AND `student_admission_year` = '$course_year'";
+                $page_query = "SELECT * FROM `bora_student` WHERE `student_course` = '$course_id' AND `student_batch` = '$course_year'";
                 $page_result = mysqli_query($connection, $page_query);
                 $page_result_count = mysqli_num_rows($page_result);
                 if ($page_result_count > 0) { ?>
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">UID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Admission Year</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Fee</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Batch</th>
+                                <th scope="col">UID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Admission Year</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
                             while ($row = mysqli_fetch_assoc($page_result)) {
                                 $student_id = $row['student_id'];
                                 $student_img = "assets/student/" . $row['student_img'];
+                                $student_batch = $row['student_batch'];
                                 $student_name = $row['student_name'];
                                 $student_contact = $row['student_contact'];
                                 $student_course = $row['student_course'];
@@ -135,11 +135,12 @@
                                 $student_added_by = $row['student_added_by'];
                                 $student_status = $row['student_status'];
                             ?>
-                <tr>
-                    <td><?php echo $student_roll ?></td>
-                    <th scope="row"><?php echo $student_name ?></th>
-                    <td><?php echo $student_contact ?></td>
-                    <td><?php
+                                <tr>
+                                    <td><?php echo $student_batch ?></td>
+                                    <td><?php echo $student_roll ?></td>
+                                    <th scope="row"><?php echo $student_name ?></th>
+                                    <td><?php echo $student_contact ?></td>
+                                    <td><?php
                                         $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                                         $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
                                         $course_name = "";
@@ -148,41 +149,41 @@
                                         }
                                         echo $course_name ?></td>
 
-                    <td><?php echo $student_admission_year ?></td>
-                    <td>
-                        <?php if ($student_status == '1') { ?>
-                        <p class="btn btn-sm btn-dark">Graduated</p>
-                        <?php } elseif ($student_status == '2') { ?>
-                        <p class="btn btn-sm btn-success">Active</p>
-                        <?php } elseif ($student_status == '3') { ?>
-                        <p class="btn btn-sm btn-primary">Left</p>
-                        <?php } elseif (empty($student_status)) { ?>
-                        <p class="btn btn-sm btn-info">Not Updated</p>
-                        <?php } ?>
-                    </td>
-                    <td>
-                        <form action="user-student-details.php" method="post">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
-                                Details</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="user-collect-fee.php" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
-                                Fee</button>
-                        </form>
-                    </td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-        <?php
+                                    <td><?php echo $student_admission_year ?></td>
+                                    <td>
+                                        <?php if ($student_status == '1') { ?>
+                                            <p class="btn btn-sm btn-dark">Graduated</p>
+                                        <?php } elseif ($student_status == '2') { ?>
+                                            <p class="btn btn-sm btn-success">Active</p>
+                                        <?php } elseif ($student_status == '3') { ?>
+                                            <p class="btn btn-sm btn-primary">Left</p>
+                                        <?php } elseif (empty($student_status)) { ?>
+                                            <p class="btn btn-sm btn-info">Not Updated</p>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <form action="user-student-details.php" method="post">
+                                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
+                                                Details</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="user-collect-fee.php" method="POST">
+                                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                            <button type="submit" name="collect" class="btn btn-sm btn-outline-warning">Collect
+                                                Fee</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                <?php
                 } elseif ($page_result_count == 0) { ?>
-        <div class="alert alert-danger mt-3 mb-3 w-100" role="alert">
-            No Student Found!
-        </div>
+                    <div class="alert alert-danger mt-3 mb-3 w-100" role="alert">
+                        No Student Found!
+                    </div>
         <?php }
             }
         } ?>
