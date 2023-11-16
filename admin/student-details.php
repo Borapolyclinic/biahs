@@ -20,6 +20,7 @@
         $student_id = "";
         $student_img = "";
         $student_enrollment_number = "";
+        $student_batch = "";
         $student_name = "";
         $student_contact = "";
         $student_whatsapp = "";
@@ -54,6 +55,7 @@
             $student_id = $row['student_id'];
             $student_img = "assets/student/" . $row['student_img'];
             $student_enrollment_number = $row['student_enrollment_number'];
+            $student_batch = $row['student_batch'];
             $student_name = $row['student_name'];
             $student_contact = $row['student_contact'];
             $student_whatsapp = $row['student_whatsapp'];
@@ -89,6 +91,30 @@
     ?>
     <div class="container-row w-100">
         <form class="w-100 m-1" method="POST" action="student-details-update-confirmation.php" enctype="multipart/form-data">
+
+            <div class="add-user-form mb-3">
+                <div class="w-100 mobile-input m-1">
+                    <label for="studentName" class="form-label">Student Batch</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="<?php echo $student_batch ?>"><?php echo $student_batch ?> (Selected)</option>
+                        <option value="2015-2016">2015-2016</option>
+                        <option value="2016-2017">2016-2017</option>
+                        <option value="2017-2018">2017-2018</option>
+                        <option value="2018-2019">2018-2019</option>
+                        <option value="2019-2020">2019-2020</option>
+                        <option value="2020-2021">2020-2021</option>
+                        <option value="2021-2022">2021-2022</option>
+                        <option value="2022-2023">2022-2023</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2025-2026">2025-2026</option>
+                        <option value="2026-2027">2026-2027</option>
+                        <option value="2027-2028">2027-2028</option>
+                        <option value="2028-2029">2028-2029</option>
+                        <option value="2029-2030">2029-2030</option>
+                    </select>
+                </div>
+            </div>
             <div class="add-user-form">
                 <input class="form-control" name="student_id" hidden type="text" value="<?php echo $student_id ?>" id="formFile">
 
@@ -387,24 +413,33 @@
                     Upload | View 12th Marksheet
                 </button>
             </form>
-            <form method="POST" action="cast-certificate-update.php" class="add-user-form-tab">
-                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                <button type="submit" name="view" class="student-doc-btn">
-                    Upload | View Cast Certificate
-                </button>
-            </form>
+            <?php
+            if ($student_category !== 'General') {
+            ?>
+                <form method="POST" action="cast-certificate-update.php" class="add-user-form-tab">
+                    <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                    <button type="submit" name="view" class="student-doc-btn">
+                        Upload | View Cast Certificate
+                    </button>
+                </form>
+            <?php } ?>
             <form method="POST" action="tc-update.php" class="add-user-form-tab">
                 <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
                 <button type="submit" name="view" class="student-doc-btn">
                     Upload | View Transfer/Migration Certificate
                 </button>
             </form>
-            <form method="POST" action="alot-update.php" class="add-user-form-tab">
-                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                <button type="submit" name="view" class="student-doc-btn">
-                    Upload | View Allotment Letter
-                </button>
-            </form>
+            <?php
+            if ($student_admission_mode !== 'Direct') {
+
+            ?>
+                <form method="POST" action="alot-update.php" class="add-user-form-tab">
+                    <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                    <button type="submit" name="view" class="student-doc-btn">
+                        Upload | View Allotment Letter
+                    </button>
+                </form>
+            <?php } ?>
             <?php
             if ($student_status === '1') {
             ?>

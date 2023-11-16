@@ -6,6 +6,7 @@
         require('includes/connection.php');
         if (isset($_POST['update'])) {
             $student_id = $_POST['student_id'];
+            $student_batch = mysqli_real_escape_string($connection, $_POST['student_batch']);
             $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
             $student_whatsapp = mysqli_real_escape_string($connection, $_POST['student_whatsapp']);
@@ -32,14 +33,14 @@
         <form action="update-student-details.php" method="POST" class="w-50">
             <input hidden type="text" name="student_id" value="<?php echo $student_id ?>">
             <input hidden type="text" name="student_name" value="<?php echo $student_name ?>">
+            <input hidden type="text" name="student_batch" value="<?php echo $student_batch ?>">
             <input hidden type="text" name="student_contact" value="<?php echo $student_contact ?>">
             <input hidden type="text" name="student_whatsapp" value="<?php echo $student_whatsapp ?>">
             <input hidden type="text" name="student_email" value="<?php echo $student_email ?>">
             <input hidden type="text" name="student_father" value="<?php echo $student_father ?>">
             <input hidden type="text" name="student_mother" value="<?php echo $student_mother ?>">
             <input hidden type="text" name="student_guardian_contact" value="<?php echo $student_guardian_contact ?>">
-            <input hidden type="text" name="student_guardian_contact_2"
-                value="<?php echo $student_guardian_contact_2 ?>">
+            <input hidden type="text" name="student_guardian_contact_2" value="<?php echo $student_guardian_contact_2 ?>">
             <input hidden type="text" name="student_roll" value="<?php echo $student_roll ?>">
             <input hidden type="text" name="student_enrollment_number" value="<?php echo $student_enrollment_number ?>">
             <input hidden type="text" name="student_course" value="<?php echo $student_course ?>">

@@ -14,8 +14,234 @@
         </a>
     </div>
 
-    <form class="w-100" method="POST" action="add-student-success.php" enctype="multipart/form-data">
+
+    <script>
+        function confirmFormSubmission() {
+            var confirmation = confirm("Are you sure you want to submit the form?");
+            return confirmation;
+        }
+    </script>
+
+
+    <?php
+    require('includes/connection.php');
+    if (isset($_COOKIE['user_id'])) {
+        $user_contact = $_COOKIE['user_id'];
+        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+        $fetch_res = mysqli_query($connection, $fetch_data);
+        $user_name = "";
+        while ($row = mysqli_fetch_assoc($fetch_res)) {
+            $user_name = $row['user_name'];
+        }
+        echo $user_name;
+    }
+
+
+    if (isset($_POST['add-student'])) {
+        $student_img = $_FILES["student_img"]["name"];
+        $student_enrollment_number = mysqli_real_escape_string($connection, $_POST['student_enrollment_number']);
+        $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
+        $student_batch = mysqli_real_escape_string($connection, $_POST['student_batch']);
+        $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
+        $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
+        $student_dob = mysqli_real_escape_string($connection, $_POST['student_dob']);
+        $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
+        $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
+        $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
+        $student_admission_year = mysqli_real_escape_string($connection, $_POST['student_admission_year']);
+        $student_10th_marksheet = $_FILES["student_10th_marksheet"]["name"];
+        $student_12th_marksheet = $_FILES["student_12th_marksheet"]["name"];
+        $student_tc_certificate = $_FILES["student_tc_certificate"]["name"];
+        $student_category = mysqli_real_escape_string($connection, $_POST['student_category']);
+        $student_admission_mode = mysqli_real_escape_string($connection, $_POST['student_admission_mode']);
+        $student_gender = mysqli_real_escape_string($connection, $_POST['student_gender']);
+        $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
+        $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
+        $student_father_contact = mysqli_real_escape_string($connection, $_POST['student_father_contact']);
+        $student_guardian_name = mysqli_real_escape_string($connection, $_POST['student_guardian_name']);
+        $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
+        $student_guardian_contact_2 = mysqli_real_escape_string($connection, $_POST['student_guardian_contact_2']);
+        $student_guardian_relation = mysqli_real_escape_string($connection, $_POST['student_guardian_relation']);
+        $student_aadhar_number = mysqli_real_escape_string($connection, $_POST['student_aadhar_number']);
+        $student_aadhar_file = $_FILES["student_aadhar_file"]["name"];
+        $student_aadhar_address = mysqli_real_escape_string($connection, $_POST['student_aadhar_address']);
+        $student_comm_address = mysqli_real_escape_string($connection, $_POST['student_comm_address']);
+        $student_added_by = $user_name;
+        $student_status = "2";
+
+        if ($student_admission_mode == 'Direct') {
+            $student_alot_letter = 'null';
+        } else if ($student_admission_mode == 'Counselling') {
+            $student_alot_letter = $_FILES["student_alot_letter"]["name"];
+            $tempname_alot_letter = $_FILES["student_alot_letter"]["tmp_name"];
+            $folder_alot_letter = "assets/alot_letter/" . $student_alot_letter;
+        }
+
+        if ($student_category == 'General') {
+            $student_cast_certificate = 'General';
+        } else {
+            $student_cast_certificate = $_FILES["student_cast_certificate"]["name"];
+            $tempname_student_cast_certificate = $_FILES["student_cast_certificate"]["tmp_name"];
+            $folder_student_cast_certificate = "assets/cast/" . $student_cast_certificate;
+        }
+
+        $tempname_student = $_FILES["student_img"]["tmp_name"];
+        $tempname = $_FILES["student_aadhar_file"]["tmp_name"];
+        $tempname_marksheet = $_FILES["student_10th_marksheet"]["tmp_name"];
+        $tempname_marksheet_12 = $_FILES["student_12th_marksheet"]["tmp_name"];
+        $tempname_tc_certificate = $_FILES["student_tc_certificate"]["tmp_name"];
+
+        // $tempname_student_cast_certificate = $_FILES["student_cast_certificate"]["tmp_name"];
+
+        $folder = "assets/student_aadhar_image/" . $student_aadhar_file;
+        $folder_student = "assets/student/" . $student_img;
+        $folder_marksheet = "assets/marksheet/" . $student_10th_marksheet;
+        $folder_marksheet_12 = "assets/marksheet/" . $student_12th_marksheet;
+        $folder_tc_certificate = "assets/tc_certificate/" . $student_tc_certificate;
+
+        // $folder_student_cast_certificate = "assets/cast/" . $student_cast_certificate;
+
+        if (empty($student_comm_address)) {
+            $student_comm_address = "Same as Aadhar Address";
+        }
+
+        $fetch_entry = "SELECT * FROM `bora_student` WHERE `student_contact` = '$student_contact' AND `student_roll` = '$student_roll'";
+        $fetch_entry_result = mysqli_query($connection, $fetch_entry);
+        $count = mysqli_num_rows($fetch_entry_result);
+
+        if ($count == 0) {
+
+            $insert = "INSERT INTO `bora_student`(
+                        `student_img`,
+                        `student_enrollment_number`,
+                        `student_name`,
+                        `student_batch`,
+                        `student_contact`,
+                        `student_email`,
+                        `student_dob`,
+                        `student_father`,
+                        `student_mother`,
+                        `student_father_contact`,
+                        `student_guardian_name`,
+                        `student_guardian_contact`,
+                        `student_guardian_contact_2`,
+                        `student_guardian_relation`,
+                        `student_roll`,
+                        `student_course`,
+                        `student_admission_date`,
+                        `student_admission_year`,
+                        `student_10th_marksheet`,
+                        `student_12th_marksheet`,
+                        `student_tc_certificate`,
+                        `student_alot_letter`,
+                        `student_cast_certificate`,
+                        `student_category`,
+                        `student_admission_mode`,
+                        `student_gender`,
+                        `student_aadhar_number`,
+                        `student_aadhar_file`,
+                        `student_aadhar_address`,
+                        `student_comm_address`,
+                        `student_status`,
+                        `student_added_by`
+                    )
+                    VALUES(
+                        '$student_img',
+                        '$student_enrollment_number',
+                        '$student_name',
+                        '$student_batch',
+                        '$student_contact',
+                        '$student_email',
+                        '$student_dob',
+                        '$student_father',
+                        '$student_mother',
+                        '$student_father_contact',
+                        '$student_guardian_name',
+                        '$student_guardian_contact',
+                        '$student_guardian_contact_2',
+                        '$student_guardian_relation',
+                        '$student_roll',
+                        '$student_course',
+                        '$student_admission_date',
+                        '$student_admission_year',
+                        '$student_10th_marksheet',
+                        '$student_12th_marksheet',
+                        '$student_tc_certificate',
+                        '$student_alot_letter',
+                        '$student_cast_certificate',
+                        '$student_category',
+                        '$student_admission_mode',
+                        '$student_gender',
+                        '$student_aadhar_number',
+                        '$student_aadhar_file',
+                        '$student_aadhar_address',
+                        '$student_comm_address',
+                        '$student_status',
+                        '$student_added_by'
+                    )";
+            $insert_res = mysqli_query($connection, $insert);
+
+            if ($insert_res) {
+                if ($student_admission_mode == 'Direct' || $student_category == 'General') {
+                    $success = move_uploaded_file($tempname, $folder) &&
+                        move_uploaded_file($tempname_student, $folder_student) &&
+                        move_uploaded_file($tempname_marksheet, $folder_marksheet) &&
+                        move_uploaded_file($tempname_marksheet_12, $folder_marksheet_12) &&
+                        move_uploaded_file($tempname_tc_certificate, $folder_tc_certificate);
+                } else {
+                    $success = move_uploaded_file($tempname, $folder) &&
+                        move_uploaded_file($tempname_student, $folder_student) &&
+                        move_uploaded_file($tempname_marksheet, $folder_marksheet) &&
+                        move_uploaded_file($tempname_marksheet_12, $folder_marksheet_12) &&
+                        move_uploaded_file($tempname_tc_certificate, $folder_tc_certificate) &&
+                        move_uploaded_file($tempname_alot_letter, $folder_alot_letter) &&
+                        move_uploaded_file($tempname_student_cast_certificate, $folder_student_cast_certificate);
+                }
+
+                if ($success) {
+    ?>
+                    <div class="alert alert-success w-100" role="alert">Student Added!</div>
+            <?php
+                } else {
+                    echo "Error: File upload failed.";
+                }
+            } elseif (!$insert_res) {
+                echo "Error: " . mysqli_error($connection);
+            }
+        } else if ($count > 0) {
+
+            ?>
+            <div class="alert alert-danger w-100" role="alert">This student already exists in the system!</div>
+
+    <?php }
+    } ?>
+
+    <form class="w-100" method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmFormSubmission()">
         <div class="add-user-form">
+            <div class="mobile-input m-1 w-100">
+                <label for="studentName" class="form-label">Select Batch</label>
+                <select class="form-select" name="student_batch" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="2015-2016">2015-2016</option>
+                    <option value="2016-2017">2016-2017</option>
+                    <option value="2017-2018">2017-2018</option>
+                    <option value="2018-2019">2018-2019</option>
+                    <option value="2019-2020">2019-2020</option>
+                    <option value="2020-2021">2020-2021</option>
+                    <option value="2021-2022">2021-2022</option>
+                    <option value="2022-2023">2022-2023</option>
+                    <option value="2023-2024">2023-2024</option>
+                    <option value="2024-2025">2024-2025</option>
+                    <option value="2025-2026">2025-2026</option>
+                    <option value="2026-2027">2026-2027</option>
+                    <option value="2027-2028">2027-2028</option>
+                    <option value="2028-2029">2028-2029</option>
+                    <option value="2029-2030">2029-2030</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="add-user-form mt-3">
             <div class="add-user-form-row mb-3">
                 <div class="w-100 mobile-input">
                     <label for="formFile" class="form-label">Upload Student Image</label>
@@ -217,7 +443,7 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Mailing Address</label>
                 <textarea class="form-control" name="student_comm_address" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" name="submit" class="w-100 btn btn-outline-primary">Add Student</button>
+            <button type="submit" name="add-student" class="w-100 btn btn-outline-primary">Add Student</button>
             <!-- <button type="button" class="w-100 btn btn-outline-primary" data-bs-toggle="modal"
                 data-bs-target="#confirmModal">
                 Add Student
