@@ -7,7 +7,7 @@
         require('includes/connection.php');
         if (isset($_COOKIE['user_id'])) {
             $user_contact = $_COOKIE['user_id'];
-            $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+            $fetch_data = "SELECT * FROM `bora_users` WHERE `user_id` = '$user_contact'";
             $fetch_res = mysqli_query($connection, $fetch_data);
             $user_name = "";
             while ($row = mysqli_fetch_assoc($fetch_res)) {
@@ -44,13 +44,11 @@
             WHERE
                 `bora_invoice_id` = '$bora_invoice_id'";
                 $update_query_r = mysqli_query($connection, $update_query);
-                if ($update_query_r) { ?>
-        <div class="mt-3 mb-3 w-100 alert alert-success" role="alert">Receipt Updated! <a
-                href="admin-past-payments.php">Click here</a> to go back.</div>
+                if ($update_query_r) {
+                    "<div class='mt-3 mb-3 w-100 alert alert-success' role='alert'>Receipt Updated! <a href='admin-past-payments.php'>Click here</a> to go back.</div>";
+                }
+            }
 
-        <?php }
-            } 
-            
             if ($bora_invoice_payment_mode == 'cheque') {
                 $update_query = "UPDATE
                 `bora_invoice`
@@ -69,11 +67,10 @@
             WHERE
                 `bora_invoice_id` = '$bora_invoice_id'";
                 $update_query_r = mysqli_query($connection, $update_query);
-                if ($update_query_r) { ?>
-        <div class="mt-3 mb-3 w-100 alert alert-success" role="alert">Receipt Updated! <a
-                href="admin-past-payments.php">Click here</a> to go back.</div>
-        <?php }
-            } 
+                if ($update_query_r) {
+                    "<div class='mt-3 mb-3 w-100 alert alert-success' role='alert'>Receipt Updated! <a href='admin-past-payments.php'>Click here</a> to go back.</div>";
+                }
+            }
             if ($bora_invoice_payment_mode == 'online') {
                 $update_query = "UPDATE
                 `bora_invoice`
@@ -90,10 +87,8 @@
             WHERE
                 `bora_invoice_id` = '$bora_invoice_id'";
                 $update_query_r = mysqli_query($connection, $update_query);
-                if ($update_query_r) { ?>
-        <div class="mt-3 mb-3 w-100 alert alert-success" role="alert">Receipt Updated! <a
-                href="admin-past-payments.php">Click here</a> to go back.</div>
-        <?php
+                if ($update_query_r) {
+                    "<div class='mt-3 mb-3 w-100 alert alert-success' role='alert'>Receipt Updated! <a href='admin-past-payments.php'>Click here</a> to go back.</div>";
                 }
             }
         }

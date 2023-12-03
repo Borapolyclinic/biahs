@@ -8,6 +8,13 @@
         <h5>View | Edit Student Details</h5>
     </div>
 
+    <script>
+        function confirmFormSubmission() {
+            var confirmation = confirm("Are you sure you want to update the student details?");
+            return confirmation;
+        }
+    </script>
+
     <?php
     require('includes/connection.php');
 
@@ -36,11 +43,11 @@
         $student_roll = "";
         $student_course = "";
         $student_admission_date = "";
-        $student_admission_year = "";
         $student_10th_marksheet = "";
         $student_tc_certificate = "";
         $student_alot_letter = "";
         $student_graduation_marksheet = "";
+        $student_additional_doc = "";
         $student_category = "";
         $student_admission_mode = "";
         $student_gender = "";
@@ -72,11 +79,11 @@
             $student_roll = $row['student_roll'];
             $student_course = $row['student_course'];
             $student_admission_date = $row['student_admission_date'];
-            $student_admission_year = $row['student_admission_year'];
             $student_10th_marksheet = "assets/marksheet/" . $row['student_10th_marksheet'];
             $student_tc_certificate = "assets/tc_certificate/" . $row['student_tc_certificate'];
             $student_alot_letter = "assets/alot_letter/" . $row['student_alot_letter'];
             $student_graduation_marksheet = "assets/grad_marksheet/" . $row['student_graduation_marksheet'];
+            $student_additional_doc = "assets/tc_certificate/" . $row['student_additional_doc'];
             $student_category = $row['student_category'];
             $student_admission_mode = $row['student_admission_mode'];
             $student_gender = $row['student_gender'];
@@ -88,9 +95,69 @@
             $student_status = $row['student_status'];
         }
     }
+
+    if (isset($_POST['update'])) {
+        $student_id = $_POST['student_id'];
+        $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
+        $student_batch = mysqli_real_escape_string($connection, $_POST['student_batch']);
+        $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
+        $student_whatsapp = mysqli_real_escape_string($connection, $_POST['student_whatsapp']);
+        $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
+        $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
+        $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
+        $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
+        $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
+        $student_enrollment_number = mysqli_real_escape_string($connection, $_POST['student_enrollment_number']);
+        $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
+        $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
+        $student_aadhar_number = mysqli_real_escape_string($connection, $_POST['student_aadhar_number']);
+        $student_aadhar_address = mysqli_real_escape_string($connection, $_POST['student_aadhar_address']);
+        $student_comm_address = mysqli_real_escape_string($connection, $_POST['student_comm_address']);
+        $student_category = mysqli_real_escape_string($connection, $_POST['student_category']);
+        $student_admission_mode = mysqli_real_escape_string($connection, $_POST['student_admission_mode']);
+
+        if (empty($student_comm_address)) {
+            $student_comm_address = "Same as Aadhar Address";
+        }
+
+        $update_query = "UPDATE
+                    `bora_student`
+                SET
+                    `student_name` = '$student_name',
+                    `student_batch` = '$student_batch',
+                    `student_contact` = '$student_contact',
+                    `student_whatsapp` = '$student_whatsapp',
+                    `student_email` = '$student_email',
+                    `student_father` = '$student_father',
+                    `student_mother` = '$student_mother',
+                    `student_guardian_contact` = '$student_guardian_contact',
+                    `student_category` = '$student_category',
+                    `student_admission_mode` = '$student_admission_mode',
+                    `student_enrollment_number` = '$student_enrollment_number',
+                    `student_roll` = '$student_roll',
+                    `student_course` = '$student_course',
+                    `student_admission_date` = '$student_admission_date',
+                    `student_aadhar_number` = '$student_aadhar_number',
+                    `student_aadhar_address` = '$student_aadhar_address',
+                    `student_comm_address` = '$student_comm_address'
+                WHERE
+                    `student_id` = '$student_id'";
+
+        $update_res = mysqli_query($connection, $update_query);
+
+        if ($update_res) { ?>
+            <form action="" method="POST" class="w-100">
+                <input hidden type="text" name="student_id" value="<?php echo $student_id ?>">
+                <div class="w-100 alert alert-success" role="alert">
+                    Student Details Updated!
+                </div>
+            </form>
+    <?php
+        }
+    }
     ?>
     <div class="container-row w-100">
-        <form class="w-100 m-1" method="POST" action="student-details-update-confirmation.php" enctype="multipart/form-data">
+        <form class="w-100 m-1" method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmFormSubmission()">
 
             <div class="add-user-form mb-3">
                 <div class="w-100 mobile-input m-1">
@@ -131,6 +198,10 @@
                         <label for="studentNumber" class="form-label">Whatsapp</label>
                         <input type="number" class="form-control" name="student_whatsapp" value="<?php echo $student_whatsapp ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
+
+                </div>
+
+                <div class="add-user-form-row w-100 mb-3">
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Email</label>
                         <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentNumber" aria-describedby="emailHelp">
@@ -139,10 +210,7 @@
                         <label for="studentNumber" class="form-label">DOB</label>
                         <input type="date" class="form-control" name="student_dob" value="<?php echo $student_dob ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
-                </div>
-
-                <div class="w-100 mb-3">
-                    <div class="w-100 mobile-input w-100">
+                    <div class="w-100 mobile-input w-100 m-1">
                         <label for="studentName" class="form-label">Enrollment Number</label>
                         <input type="text" class="form-control" name="student_enrollment_number" value="<?php echo $student_enrollment_number ?>" id="studentName" aria-describedby="emailHelp">
                     </div>
@@ -164,11 +232,6 @@
                         $new_course_name = $row['course_name'];
                     }
                     ?>
-                    <!-- <div class="w-100 mobile-input m-1">
-                        <label for="studentAdmissionDate" class="form-label">Selected Course</label>
-                        <input type="text" class="form-control" value="<?php echo $new_course_name  ?>"
-                            id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
-                    </div> -->
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Change Course</label>
                         <select class="form-select" name="student_course" aria-label="Default select example">
@@ -195,10 +258,6 @@
                     <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Date</label>
                         <input type="date" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
-                    </div>
-                    <div class="w-100 mobile-input m-1">
-                        <label for="studentAdmissionDate" class="form-label">Admission Year</label>
-                        <input type="text" class="form-control" name="student_admission_year" value="<?php echo $student_admission_year  ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
                     </div>
                 </div>
 
@@ -318,6 +377,10 @@
                         <label for="fathersName" class="form-label">Guardian's Contact No.</label>
                         <input type="text" class="form-control" name="student_guardian_contact" value="<?php echo $student_guardian_contact ?>" id="fathersName" aria-describedby="emailHelp">
                     </div>
+
+                </div>
+
+                <div class="add-user-form-row mb-3">
                     <div class="w-100 mobile-input m-1">
                         <label for="fathersName" class="form-label">Additional Number (Optional)</label>
                         <input type="text" class="form-control" name="student_guardian_contact_2" value="<?php echo $student_guardian_contact_2 ?>" id="fathersName" aria-describedby="emailHelp">
@@ -450,6 +513,14 @@
                     </button>
                 </form>
             <?php } ?>
+
+            <form method="POST" action="add-doc.php" class="add-user-form-tab">
+                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                <button type="submit" name="view" class="student-doc-btn">
+                    View Additional Documents
+                </button>
+            </form>
+
         </div>
     </div>
 </div>

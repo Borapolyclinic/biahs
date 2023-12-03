@@ -110,12 +110,11 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Batch</th>
                                 <th scope="col">UID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Course</th>
-                                <th scope="col">Admission Year</th>
+                                <th scope="col">Admission Batch</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                                 <th scope="col">Fee</th>
@@ -131,12 +130,11 @@
                                 $student_contact = $row['student_contact'];
                                 $student_course = $row['student_course'];
                                 $student_roll = $row['student_roll'];
-                                $student_admission_year = $row['student_admission_year'];
+                                $student_batch = $row['student_batch'];
                                 $student_added_by = $row['student_added_by'];
                                 $student_status = $row['student_status'];
                             ?>
                                 <tr>
-                                    <td><?php echo $student_batch ?></td>
                                     <td><?php echo $student_roll ?></td>
                                     <th scope="row"><?php echo $student_name ?></th>
                                     <td><?php echo $student_contact ?></td>
@@ -149,7 +147,7 @@
                                         }
                                         echo $course_name ?></td>
 
-                                    <td><?php echo $student_admission_year ?></td>
+                                    <td><?php echo $student_batch ?></td>
                                     <td>
                                         <?php if ($student_status == '1') { ?>
                                             <p class="btn btn-sm btn-dark">Graduated</p>

@@ -112,6 +112,10 @@
                         <label for="studentNumber" class="form-label">Whatsapp</label>
                         <input type="number" class="form-control" name="student_whatsapp" value="<?php echo $student_whatsapp ?>" id="studentNumber" aria-describedby="emailHelp" disabled>
                     </div>
+
+                </div>
+
+                <div class="add-user-form-row mb-3">
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">Email</label>
                         <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentNumber" aria-describedby="emailHelp" disabled>
@@ -120,9 +124,6 @@
                         <label for="studentNumber" class="form-label">DOB</label>
                         <input type="date" class="form-control" name="student_dob" value="<?php echo $student_dob ?>" id="studentNumber" aria-describedby="emailHelp" disabled>
                     </div>
-                </div>
-
-                <div class="w-100 mb-3">
                     <div class="w-100 mobile-input w-100">
                         <label for="studentName" class="form-label">Enrollment Number</label>
                         <input type="text" class="form-control" name="student_enrollment_number" value="<?php echo $student_enrollment_number ?>" id="studentName" aria-describedby="emailHelp" disabled>
@@ -174,10 +175,10 @@
                         <label for="studentAdmissionDate" class="form-label">Admission Date</label>
                         <input type="date" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date  ?>" id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
                     </div>
-                    <div class="w-100 mobile-input m-1">
+                    <!-- <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Year</label>
                         <input type="text" class="form-control" name="student_admission_year" value="<?php echo $student_admission_year  ?>" id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="add-user-form-row mb-3">

@@ -117,7 +117,7 @@ include('components/navbar/user-navbar.php');
 
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="admin-reports.php">
+        <a href="user-reports.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Generated Report</h5>
@@ -133,7 +133,7 @@ include('components/navbar/user-navbar.php');
             <thead class="table-secondary">
                 <tr>
                     <th scope="col">COURSE</th>
-                    <th scope="col">ADMISSION YEAR</th>
+                    <th scope="col">ADMISSION BATCH</th>
                 </tr>
             </thead>
             <tbody>
@@ -171,9 +171,9 @@ include('components/navbar/user-navbar.php');
                     <th scope="col">UID</th>
                     <th scope="col">CONTACT NUMBER</th>
                     <th scope="col">CASH</th>
-                    <th scope="col">BANK</th>
+                    <th scope="col">CHEQUE | DD</th>
                     <th scope="col">ONLINE</th>
-                    <th scope="col">CASH + BANK + ONLINE</th>
+                    <th scope="col">TOTAL</th>
                     <th scope="col">DUE</th>
                     <th scope="col">ACTION</th>
                 </tr>
@@ -223,10 +223,10 @@ include('components/navbar/user-navbar.php');
                             <td><?php echo $bora_invoice_student_en_no  ?></td>
                             <td><?php echo $bora_invoice_student_contact  ?></td>
 
-                            <td><?php echo $total_cash  ?></td>
-                            <td><?php echo $total_bank  ?></td>
-                            <td><?php echo $total_online  ?></td>
-                            <td><?php echo $total_cash + $total_bank + $total_online ?></td>
+                            <td>₹<?php echo $total_cash  ?></td>
+                            <td>₹<?php echo $total_bank  ?></td>
+                            <td>₹<?php echo $total_online  ?></td>
+                            <td>₹<?php echo $total_cash + $total_bank + $total_online ?></td>
                             <td>
                                 <?php
                                 $fetch_due = "SELECT * FROM `bora_course` WHERE `course_id` = '$batch_wise_course'";

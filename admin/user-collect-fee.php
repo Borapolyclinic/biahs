@@ -131,7 +131,7 @@
                         <th scope="col">FEE TYPE</th>
                         <th scope="col" style="width: 15%;">COURSE NAME</th>
                         <th scope="col">PAID FOR</th>
-                        <th scope="col">RECEIPT AMOUNT</th>
+                        <th scope="col">AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                     </tr>
                 </thead>

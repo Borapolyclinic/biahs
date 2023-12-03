@@ -135,7 +135,7 @@
                         <th scope="col">FEE TYPE</th>
                         <th scope="col">COURSE</th>
                         <th scope="col">PAID FOR</th>
-                        <th scope="col">RECEIPT AMOUNT</th>
+                        <th scope="col">AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                         <th scope="col">GRAND TOTAL</th>
                     </tr>
@@ -186,7 +186,7 @@
             <?php } else if ($bora_invoice_payment_mode == 'cheque') { ?>
                 <thead>
                     <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">PAYMENT
-                        MODE: <strong>CHEQUE | DEMAND DRAFT | ONLINE</th>
+                        MODE: <strong>CHEQUE | DEMAND DRAFT</th>
                 </thead>
                 <thead>
                     <th scope="col" colspan="4" style="border: 1px solid #e7e7e7e7; width: 100%; padding: 5px;">CHEQUE

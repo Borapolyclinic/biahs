@@ -26,6 +26,7 @@
             if (($handle = fopen($csvFile, "r")) !== false) {
                 $sql = "INSERT INTO `bora_student` (
             `student_enrollment_number`, 
+            `student_batch`, 
             `student_name`, 
             `student_contact`, 
             `student_email`, 
@@ -41,7 +42,6 @@
             `student_roll`, 
             `student_course`,
             `student_admission_date`,
-            `student_admission_year`,
             `student_category`,
             `student_admission_mode`,
             `student_gender`,
@@ -53,30 +53,31 @@
 
                 while (($data = fgetcsv($handle, 1000, ",")) !== false) {
                     $student_enrollment_number = mysqli_real_escape_string($connection, $data[0]);
-                    $student_name = mysqli_real_escape_string($connection, $data[1]);
-                    $student_contact = mysqli_real_escape_string($connection, $data[2]);
-                    $student_email = mysqli_real_escape_string($connection, $data[3]);
-                    $student_whatsapp = mysqli_real_escape_string($connection, $data[4]);
-                    $student_dob = mysqli_real_escape_string($connection, $data[5]);
-                    $student_father = mysqli_real_escape_string($connection, $data[6]);
-                    $student_mother = mysqli_real_escape_string($connection, $data[7]);
-                    $student_father_contact = mysqli_real_escape_string($connection, $data[8]);
-                    $student_guardian_name = mysqli_real_escape_string($connection, $data[9]);
-                    $student_guardian_contact = mysqli_real_escape_string($connection, $data[10]);
-                    $student_guardian_contact_2 = mysqli_real_escape_string($connection, $data[11]);
-                    $student_guardian_relation = mysqli_real_escape_string($connection, $data[12]);
-                    $student_roll = mysqli_real_escape_string($connection, $data[13]);
-                    $student_admission_date = mysqli_real_escape_string($connection, $data[14]);
-                    $student_admission_year = mysqli_real_escape_string($connection, $data[15]);
-                    $student_category = mysqli_real_escape_string($connection, $data[16]);
-                    $student_admission_mode = mysqli_real_escape_string($connection, $data[17]);
-                    $student_gender = mysqli_real_escape_string($connection, $data[18]);
-                    $student_aadhar_number = mysqli_real_escape_string($connection, $data[19]);
-                    $student_aadhar_address = mysqli_real_escape_string($connection, $data[20]);
-                    $student_comm_address = mysqli_real_escape_string($connection, $data[21]);
+                    $student_batch = mysqli_real_escape_string($connection, $data[1]);
+                    $student_name = mysqli_real_escape_string($connection, $data[2]);
+                    $student_contact = mysqli_real_escape_string($connection, $data[3]);
+                    $student_email = mysqli_real_escape_string($connection, $data[4]);
+                    $student_whatsapp = mysqli_real_escape_string($connection, $data[5]);
+                    $student_dob = mysqli_real_escape_string($connection, $data[6]);
+                    $student_father = mysqli_real_escape_string($connection, $data[7]);
+                    $student_mother = mysqli_real_escape_string($connection, $data[8]);
+                    $student_father_contact = mysqli_real_escape_string($connection, $data[9]);
+                    $student_guardian_name = mysqli_real_escape_string($connection, $data[10]);
+                    $student_guardian_contact = mysqli_real_escape_string($connection, $data[11]);
+                    $student_guardian_contact_2 = mysqli_real_escape_string($connection, $data[12]);
+                    $student_guardian_relation = mysqli_real_escape_string($connection, $data[13]);
+                    $student_roll = mysqli_real_escape_string($connection, $data[14]);
+                    $student_admission_date = mysqli_real_escape_string($connection, $data[15]);
+                    $student_category = mysqli_real_escape_string($connection, $data[17]);
+                    $student_admission_mode = mysqli_real_escape_string($connection, $data[18]);
+                    $student_gender = mysqli_real_escape_string($connection, $data[19]);
+                    $student_aadhar_number = mysqli_real_escape_string($connection, $data[20]);
+                    $student_aadhar_address = mysqli_real_escape_string($connection, $data[21]);
+                    $student_comm_address = mysqli_real_escape_string($connection, $data[22]);
 
                     $sql .= "(
-                '$student_enrollment_number', 
+                '$student_enrollment_number',
+                '$student_batch', 
                 '$student_name', 
                 '$student_contact', 
                 '$student_email', 
@@ -92,7 +93,6 @@
                 '$student_roll',
                 '$course_name',
                 '$student_admission_date',
-                '$student_admission_year',
                 '$student_category',
                 '$student_admission_mode',
                 '$student_gender',

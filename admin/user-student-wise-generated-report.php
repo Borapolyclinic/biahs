@@ -5,7 +5,7 @@ include('components/navbar/user-navbar.php');
 
 <div class="container user-form-container">
     <div class="page-marker">
-        <a href="admin-reports.php">
+        <a href="user-reports.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
         <h5>Generated Report</h5>
@@ -68,7 +68,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@ include('components/navbar/user-navbar.php');
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <a href="admin-reports.php" class="btn btn-primary">Go back</a>
+                        <a href="user-reports.php" class="btn btn-primary">Go back</a>
                     </div>
                 </div>
             </div>
@@ -226,7 +226,7 @@ include('components/navbar/user-navbar.php');
                         <th scope="col">UID</th>
                         <th scope="col">CONTACT</th>
                         <th scope="col">COURSE</th>
-                        <th scope="col">ADMISSION YEAR</th>
+                        <th scope="col">ADMISSION BATCH</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -304,8 +304,7 @@ include('components/navbar/user-navbar.php');
                                         <form action="user-receipt-format.php" method="post" target="_blank">
                                             <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
                                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
-                                                RECEIPT</button>
+                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">DOWNLOAD</button>
                                         </form>
                                     </td>
                                 <?php } ?>
@@ -320,8 +319,7 @@ include('components/navbar/user-navbar.php');
                                         <form action="user-receipt-format.php" method="post" target="_blank">
                                             <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
                                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
-                                                RECEIPT</button>
+                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">DOWNLOAD</button>
                                         </form>
                                     </td>
                                 <?php } else if ($bora_invoice_payment_mode == 'online') { ?>
@@ -332,8 +330,7 @@ include('components/navbar/user-navbar.php');
                                         <form action="user-receipt-format.php" method="post" target="_blank">
                                             <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
                                             <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
-                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">SHOW
-                                                RECEIPT</button>
+                                            <button type="submit" name="download" class="btn btn-sm btn-outline-success">DOWNLOAD</button>
                                         </form>
                                     </td>
                                 <?php } ?>

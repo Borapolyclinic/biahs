@@ -59,7 +59,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">Contact</th>
                         <th scope="col">Course</th>
-                        <th scope="col">Admission Year</th>
+                        <!-- <th scope="col">Admission Year</th> -->
                         <th scope="col">Batch</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
@@ -157,7 +157,7 @@
                                     $course_name = $row['course_name'];
                                 }
                                 echo $course_name ?></td>
-                            <td><?php echo $student_admission_year ?></td>
+                            <!-- <td><?php echo $student_admission_year ?></td> -->
                             <td><?php echo $student_batch ?></td>
                             <td>
                                 <?php

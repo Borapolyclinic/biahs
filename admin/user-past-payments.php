@@ -104,12 +104,19 @@
                         <td><?php echo $bora_invoice_for ?></td>
                         <td><?php echo $bora_invoice_tenure ?></td>
 
-                        <td><?php echo $bora_invoice_grand_total ?></td>
+                        <td>₹<?php echo $bora_invoice_grand_total ?></td>
                         <td><?php echo $bora_invoice_by ?></td>
-                        <td>
+                        <!-- <td>
                             <form action="user-view-generated-fee.php" method="post" target="_blank">
                                 <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
                                 <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Details</button>
+                            </form>
+                        </td> -->
+                        <td>
+                            <form action="user-receipt-format.php" method="post" target="_blank">
+                                <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
+                                <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
+                                <button type="submit" name="download" class="btn btn-sm btn-outline-success">DOWNLOAD</button>
                             </form>
                         </td>
                         <!-- <td>

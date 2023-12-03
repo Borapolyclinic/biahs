@@ -8,6 +8,13 @@
         <h5>Edit Course</h5>
     </div>
 
+    <script>
+        function confirmFormSubmission() {
+            var confirmation = confirm("Are you sure you want to update?");
+            return confirmation;
+        }
+    </script>
+
     <?php
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
@@ -19,8 +26,6 @@
             $user_name = $row['user_name'];
         }
     }
-
-
     ?>
 
     <div class="table-responsive user-table">
@@ -34,82 +39,107 @@
                     <th scope="col">YEAR 3</th>
                     <th scope="col">YEAR 4</th>
                     <th scope="col">UPDATE</th>
-                    <!-- <th scope="col">ACTION</th>
-                    <th scope="col">DELETE</th> -->
                 </tr>
             </thead>
             <tbody>
                 <?php
 
-
-                // ====================== UPDATE YEAR 1 FEE ======================
-                if (isset($_POST['add-fee-1'])) {
+                // ====================== UPDATE ======================
+                if (isset($_POST['update_success_1'])) {
                     $course_id = $_POST['course_id'];
                     $course_year_1_fee = $_POST['course_year_1_fee'];
+
                     $update_query = "UPDATE
-                    `bora_course`
-                SET
-                    `course_year_1_fee` = '$course_year_1_fee'
-                WHERE
-                    `course_id` = '$course_id'";
-                    $update_query_res = mysqli_query($connection, $update_query);
-                    if ($update_query_res) {
-                        echo "<div class='mt-3 mb-3 alert alert-success' role='alert'>Updated</div>";
+                        `bora_course`
+                    SET
+                        `course_year_1_fee` = '$course_year_1_fee'
+                    WHERE
+                        `course_id` = '$course_id'";
+
+                    $update_res = mysqli_query($connection, $update_query);
+
+                    if ($update_res) { ?>
+                        <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
+                            Course Updated!
+                        </div>
+                    <?php
                     }
                 }
 
-                // ====================== UPDATE YEAR 2 FEE ======================
-                if (isset($_POST['add-fee-2'])) {
+                if (isset($_POST['update_success_2'])) {
                     $course_id = $_POST['course_id'];
                     $course_year_1_fee = $_POST['course_year_1_fee'];
                     $course_year_2_fee = $_POST['course_year_2_fee'];
+
                     $update_query = "UPDATE
-                    `bora_course`
-                SET
-                    `course_year_1_fee` = '$course_year_1_fee',
-                    `course_year_2_fee` = '$course_year_2_fee'
-                WHERE
-                    `course_id` = '$course_id'";
-                    $update_query_res = mysqli_query($connection, $update_query);
-                    if ($update_query_res) {
-                        echo "<div class='mt-3 mb-3 alert alert-success' role='alert'>Updated</div>";
+                        `bora_course`
+                    SET
+                        `course_year_1_fee` = '$course_year_1_fee',
+                        `course_year_2_fee` = '$course_year_2_fee'
+                    WHERE
+                        `course_id` = '$course_id'";
+
+                    $update_res = mysqli_query($connection, $update_query);
+
+                    if ($update_res) { ?>
+                        <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
+                            Course Updated!
+                        </div>
+                    <?php
                     }
                 }
 
-                // ====================== UPDATE YEAR 3 FEE ======================
-                if (isset($_POST['add-fee-3'])) {
+                if (isset($_POST['update_success_3'])) {
                     $course_id = $_POST['course_id'];
                     $course_year_1_fee = $_POST['course_year_1_fee'];
                     $course_year_2_fee = $_POST['course_year_2_fee'];
                     $course_year_3_fee = $_POST['course_year_3_fee'];
+
                     $update_query = "UPDATE
-                    `bora_course`
-                SET
-                    `course_year_1_fee` = '$course_year_1_fee',
-                    `course_year_2_fee` = '$course_year_2_fee',
-                    `course_year_3_fee` = '$course_year_3_fee'
-                WHERE
-                    `course_id` = '$course_id'";
-                    $update_query_res = mysqli_query($connection, $update_query);
-                    if ($update_query_res) {
-                        echo "<div class='mt-3 mb-3 alert alert-success' role='alert'>Updated</div>";
+                        `bora_course`
+                    SET
+                        `course_year_1_fee` = '$course_year_1_fee',
+                        `course_year_2_fee` = '$course_year_2_fee',
+                        `course_year_3_fee` = '$course_year_3_fee'
+                    WHERE
+                        `course_id` = '$course_id'";
+
+                    $update_res = mysqli_query($connection, $update_query);
+
+                    if ($update_res) { ?>
+                        <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
+                            Course Updated!
+                        </div>
+                    <?php
                     }
                 }
 
-                // ====================== UPDATE YEAR 4 FEE ======================
-                if (isset($_POST['add-fee-4'])) {
+                if (isset($_POST['update_success_4'])) {
                     $course_id = $_POST['course_id'];
                     $course_year_1_fee = $_POST['course_year_1_fee'];
                     $course_year_2_fee = $_POST['course_year_2_fee'];
                     $course_year_3_fee = $_POST['course_year_3_fee'];
                     $course_year_4_fee = $_POST['course_year_4_fee'];
-                    $update_query = "UPDATE `bora_course` SET `course_year_1_fee` = '$course_year_1_fee', `course_year_2_fee` = '$course_year_2_fee', `course_year_3_fee` = '$course_year_3_fee', `course_year_4_fee` = '$course_year_4_fee' WHERE `course_id` = '$course_id'";
-                    $update_query_res = mysqli_query($connection, $update_query);
-                    if ($update_query_res) {
-                        echo "<div class='mt-3 mb-3 alert alert-success' role='alert'>Updated</div>";
+
+                    $update_query = "UPDATE
+                        `bora_course`
+                    SET
+                        `course_year_1_fee` = '$course_year_1_fee',
+                        `course_year_2_fee` = '$course_year_2_fee',
+                        `course_year_3_fee` = '$course_year_3_fee',
+                        `course_year_4_fee` = '$course_year_4_fee'
+                    WHERE
+                        `course_id` = '$course_id'";
+
+                    $update_res = mysqli_query($connection, $update_query);
+
+                    if ($update_res) { ?>
+                        <div class="alert alert-success mt-3 mb-3 w-100" role="alert">
+                            Course Updated!
+                        </div>
+                <?php
                     }
                 }
-
 
                 if (isset($_POST['edit-fee']) || isset($_POST['update_success_1']) || isset($_POST['update_success_2']) || isset($_POST['update_success_3']) || isset($_POST['update_success_4'])) {
                     $course_id = $_POST['course_id'];
@@ -137,7 +167,7 @@
 
                     <!-- =========== COURSE TENURE 1 =========== -->
                     <?php if ($course_tenure == '1') { ?>
-                        <form action="update-course-fee-success.php" method="POST">
+                        <form action="" method="POST" onsubmit="return confirmFormSubmission()">
                             <td>
                                 <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹₹<?php echo $course_year_1_fee ?>">
                             </td>
@@ -146,13 +176,13 @@
                             <td><input type="number" class="form-control" id="yearOne" placeholder="NA" disabled></td>
                             <td>
                                 <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button type="submit" name="add-fee-1" class="btn btn-sm btn-outline-success">Update</button>
+                                <button type="submit" name="update_success_1" class="btn btn-sm btn-outline-success">Update</button>
                             </td>
                         </form>
 
                         <!-- =========== COURSE TENURE 2 =========== -->
                     <?php } else if ($course_tenure == '2') { ?>
-                        <form action="update-course-fee-success.php" method="POST">
+                        <form action="" method="POST" onsubmit="return confirmFormSubmission()">
                             <td>
                                 <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
                             </td>
@@ -164,13 +194,13 @@
                             <td>
 
                                 <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button type="submit" name="add-fee-2" class="btn btn-sm btn-outline-success">Update</button>
+                                <button type="submit" name="update_success_2" class="btn btn-sm btn-outline-success">Update</button>
 
                             </td>
                         </form>
                         <!-- =========== COURSE TENURE 3 =========== -->
                     <?php } else if ($course_tenure == '3') {  ?>
-                        <form action="update-course-fee-success.php" method="POST">
+                        <form action="" method="POST" onsubmit="return confirmFormSubmission()">
                             <td>
                                 <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
                             </td>
@@ -184,13 +214,13 @@
                             <td>
 
                                 <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button type="submit" name="add-fee-3" class="btn btn-sm btn-outline-success">Update</button>
+                                <button type="submit" name="update_success_3" class="btn btn-sm btn-outline-success">Update</button>
 
                             </td>
                         </form>
                         <!-- =========== COURSE TENURE 4 =========== -->
                     <?php } else if ($course_tenure == '4') { ?>
-                        <form action="update-course-fee-success.php" method="POST">
+                        <form action="" method="POST" onsubmit="return confirmFormSubmission()">
                             <td>
                                 <input type="number" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" class="form-control" id="yearOne" placeholder="₹<?php echo $course_year_1_fee ?>">
                             </td>
@@ -207,7 +237,7 @@
                             <td>
 
                                 <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                <button type="submit" name="add-fee-4" class="btn btn-sm btn-outline-success">Update</button>
+                                <button type="submit" name="update_success_4" class="btn btn-sm btn-outline-success">Update</button>
 
                             </td>
                         </form>

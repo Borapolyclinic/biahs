@@ -22,7 +22,7 @@
     ?>
 
     <div class="table-responsive user-table">
-        <script>
+        <!-- <script>
         function updateCourse(courseId, courseYear1Fee) {
             $(document).ready(function() {
                 $("#updateCourseModal").modal("show");
@@ -46,7 +46,7 @@
                 $("#updateCourseModal4").modal("show");
             });
         }
-        </script>
+        </script> -->
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -70,34 +70,30 @@
                     echo '<script>updateCourse(' . $course_id . ',' . $course_year_1_fee . ');</script>'; {
 
                 ?>
-                <div class="modal fade" id="updateCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="add-course.php" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                        <input type="text" name="course_year_1_fee"
-                                            value="<?php echo $course_year_1_fee ?>" hidden>
-                                        <p>Are you sure you want to update this course?</p>
+                        <div class="modal fade" id="updateCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="add-course.php" method="POST">
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                                <input type="text" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" hidden>
+                                                <p>Are you sure you want to update this course?</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="update_success_1" class="btn btn-success">Yes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_success_1" class="btn btn-success">Yes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <?php
+                    <?php
                     }
                 }
 
@@ -107,37 +103,32 @@
                     $course_year_1_fee = $_POST['course_year_1_fee'];
                     $course_year_2_fee = $_POST['course_year_2_fee'];
                     echo '<script>updateCourse2(' . $course_id . ',' . $course_year_1_fee . ',' . $course_year_2_fee . ');</script>'; { ?>
-                <div class="modal fade" id="updateCourseModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="add-course.php" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                        <input type="text" name="course_year_1_fee"
-                                            value="<?php echo $course_year_1_fee ?>" hidden>
-                                        <input type="text" name="course_year_2_fee"
-                                            value="<?php echo $course_year_2_fee ?>" hidden>
-                                        <p>Are you sure you want to update this course?</p>
+                        <div class="modal fade" id="updateCourseModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="add-course.php" method="POST">
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                                <input type="text" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" hidden>
+                                                <input type="text" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" hidden>
+                                                <p>Are you sure you want to update this course?</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="update_success_2" class="btn btn-success">Yes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_success_2" class="btn btn-success">Yes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <?php
+                    <?php
                     }
                 }
 
@@ -148,39 +139,33 @@
                     $course_year_2_fee = $_POST['course_year_2_fee'];
                     $course_year_3_fee = $_POST['course_year_3_fee'];
                     echo '<script>updateCourse3(' . $course_id . ',' . $course_year_1_fee . ',' . $course_year_2_fee . ',' . $course_year_3_fee . ');</script>'; { ?>
-                <div class="modal fade" id="updateCourseModal3" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="add-course.php" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                        <input type="text" name="course_year_1_fee"
-                                            value="<?php echo $course_year_1_fee ?>" hidden>
-                                        <input type="text" name="course_year_2_fee"
-                                            value="<?php echo $course_year_2_fee ?>" hidden>
-                                        <input type="text" name="course_year_3_fee"
-                                            value="<?php echo $course_year_3_fee ?>" hidden>
-                                        <p>Are you sure you want to update this course?</p>
+                        <div class="modal fade" id="updateCourseModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="add-course.php" method="POST">
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                                <input type="text" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" hidden>
+                                                <input type="text" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" hidden>
+                                                <input type="text" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>" hidden>
+                                                <p>Are you sure you want to update this course?</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="update_success_3" class="btn btn-success">Yes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_success_3" class="btn btn-success">Yes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <?php
+                    <?php
                     }
                 }
 
@@ -192,39 +177,32 @@
                     $course_year_3_fee = $_POST['course_year_3_fee'];
                     $course_year_4_fee = $_POST['course_year_4_fee'];
                     echo '<script>updateCourse4(' . $course_id . ',' . $course_year_1_fee . ',' . $course_year_2_fee . ',' . $course_year_3_fee . ',' . $course_year_4_fee . ');</script>'; { ?>
-                <div class="modal fade" id="updateCourseModal4" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="add-course.php" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
-                                        <input type="text" name="course_year_1_fee"
-                                            value="<?php echo $course_year_1_fee ?>" hidden>
-                                        <input type="text" name="course_year_2_fee"
-                                            value="<?php echo $course_year_2_fee ?>" hidden>
-                                        <input type="text" name="course_year_3_fee"
-                                            value="<?php echo $course_year_3_fee ?>" hidden>
-                                        <input type="text" name="course_year_4_fee"
-                                            value="<?php echo $course_year_4_fee ?>" hidden>
-                                        <p>Are you sure you want to update this course?</p>
+                        <div class="modal fade" id="updateCourseModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Course</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="add-course.php" method="POST">
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="text" name="course_id" value="<?php echo $course_id ?>" hidden>
+                                                <input type="text" name="course_year_1_fee" value="<?php echo $course_year_1_fee ?>" hidden>
+                                                <input type="text" name="course_year_2_fee" value="<?php echo $course_year_2_fee ?>" hidden>
+                                                <input type="text" name="course_year_3_fee" value="<?php echo $course_year_3_fee ?>" hidden>
+                                                <input type="text" name="course_year_4_fee" value="<?php echo $course_year_4_fee ?>" hidden>
+                                                <p>Are you sure you want to update this course?</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="update_success_4" class="btn btn-success">Yes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_success_4" class="btn btn-success">Yes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
                 <?php
                     }
                 }

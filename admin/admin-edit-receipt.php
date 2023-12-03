@@ -1,7 +1,5 @@
 <?php include('includes/header.php') ?>
 <?php include('components/navbar/admin-navbar.php') ?>
-
-
 <div class="container user-form-container">
     <div class="page-marker">
         <a href="admin-past-payments.php">
@@ -9,11 +7,17 @@
         </a>
         <h5>Edit Receipt</h5>
     </div>
+    <script>
+        function confirmFormSubmission() {
+            var confirmation = confirm("Are you sure you want to update this receipt?");
+            return confirmation;
+        }
+    </script>
     <?php
     require('includes/connection.php');
     if (isset($_COOKIE['user_id'])) {
         $user_contact = $_COOKIE['user_id'];
-        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_contact` = '$user_contact'";
+        $fetch_data = "SELECT * FROM `bora_users` WHERE `user_id` = '$user_contact'";
         $fetch_res = mysqli_query($connection, $fetch_data);
         $user_name = "";
         while ($row = mysqli_fetch_assoc($fetch_res)) {
@@ -73,15 +77,14 @@
             $bora_invoice_by = $row['bora_invoice_by'];
         }
     }
-
     ?>
-    <form class="add-user-form" method="POST" action="admin-edit-receipt-confirmation.php">
+    <form class="add-user-form" method="POST" action="admin-past-payments.php" onsubmit="return confirmFormSubmission()">
         <input type="text" name="bora_invoice_id" value="<?php echo $bora_invoice_id ?>" hidden>
         <input type="text" name="bora_invoice_number" value="<?php echo $bora_invoice_number ?>" hidden>
 
         <div class="receipt-upper-section">
             <img src="../assets/images/logo/brand-logo.webp" alt="">
-            <h5>Bora Institute of Allied Health Sciences</h5>
+            <!-- <h5>Bora Institute of Allied Health Sciences</h5> -->
             <p>Sewa Nagar, NH-24, Sitapur Road, Lucknow - 226201.
                 <strong>Contact:</strong> +91 9305748634 | +91 9569863933. <br><strong>Email:</strong>
                 info@borainstitute.com.
@@ -117,7 +120,7 @@
                     <tr>
                         <th scope="row" colspan="4"><strong><?php echo $receipt_number; ?></strong></th>
                         <td>
-                            <?php echo date('d-m-Y'); ?>
+                            <?php echo $bora_invoice_date; ?>
                         </td>
                     </tr>
                     <input type="text" name="bora_invoice_number" value="<?php echo $receipt_number ?>" hidden>
@@ -153,7 +156,7 @@
                         <th scope="col">FEE TYPE</th>
                         <th scope="col" style="width: 15%;">COURSE NAME</th>
                         <th scope="col">PAID FOR</th>
-                        <th scope="col">RECEIPT AMOUNT</th>
+                        <th scope="col">AMOUNT</th>
                         <th scope="col">DISCOUNT</th>
                     </tr>
                 </thead>
@@ -391,7 +394,7 @@
                 ?>
                     <thead class="table-active">
                         <tr>
-                            <th>SELECTED PAYMENT MODE: CHEQUE | DEMAND DRAFT | ONLINE</th>
+                            <th>SELECTED PAYMENT MODE: CHEQUE | DD NUMBER </th>
                         </tr>
                     </thead>
                     <thead class="table-active">
@@ -409,17 +412,23 @@
                             <th>IFSC CODE: <?php echo $bora_invoice_ifsc  ?></th>
                         </tr>
                     </thead>
+                <?php } else if ($bora_invoice_payment_mode == 'online') {
+                    $new_payment_mode = "ONLINE"; ?>
                     <thead class="table-active">
                         <tr>
-                            <th>TRANSACTION ID: <?php echo $bora_invoice_ifsc  ?></th>
+                            <th>SELECTED PAYMENT MODE: ONLINE</th>
                         </tr>
                     </thead>
+                    <thead class="table-active">
+                        <tr>
+                            <th>TRANSACTION ID: <?php echo $bora_invoice_payment_id  ?></th>
+                        </tr>
+                    </thead>
+
                 <?php } ?>
 
             </table>
         </div>
-
-
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead class="table-active">
@@ -429,30 +438,87 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row" colspan="4">Cash</th>
-                        <td>
-                            <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" colspan="4">Cheque | Demand Draft</th>
-                        <td>
-                            <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
-                        <td>
-                            <div class="form-check">
-                                <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
-                            </div>
-                        </td>
-                    </tr>
+                    <?php
+                    if ($bora_invoice_payment_mode == 'cash') { ?>
+                        <tr>
+                            <th scope="row" colspan="4">Cash</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault" checked>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Cheque | Demand Draft</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                </div>
+                            </td>
+                        </tr>
+                    <?php
+                    } else if ($bora_invoice_payment_mode == 'cheque') { ?>
+                        <tr>
+                            <th scope="row" colspan="4">Cash</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Cheque | Demand Draft</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault" checked>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)">
+                                </div>
+                            </td>
+                        </tr>
+                    <?php
+                    } else if ($bora_invoice_payment_mode == 'online') { ?>
+                        <tr>
+                            <th scope="row" colspan="4">Cash</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cash" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Cheque | Demand Draft</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="cheque" onchange="handleCheckboxChange(this)" id="flexCheckDefault">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row" colspan="4">Online (Bank Transfer/UPI)</th>
+                            <td>
+                                <div class="form-check">
+                                    <input name="bora_invoice_payment_mode" class="form-check-input" type="radio" value="online" id="flexCheckDefault" onchange="handleCheckboxChange(this)" checked>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -533,7 +599,7 @@
             </table>
         </div>
 
-        <button type="submit" name="update" class="btn btn-success mt-3">Update Receipt</button>
+        <button type="submit" name="update_success" class="btn btn-success mt-3">Update Receipt</button>
     </form>
 
 </div>

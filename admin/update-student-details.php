@@ -7,6 +7,7 @@
         if (isset($_POST['edit_back'])) {
             $student_id = $_POST['student_id'];
             $student_name = mysqli_real_escape_string($connection, $_POST['student_name']);
+            $student_batch = mysqli_real_escape_string($connection, $_POST['student_batch']);
             $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
             $student_whatsapp = mysqli_real_escape_string($connection, $_POST['student_whatsapp']);
             $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
@@ -31,6 +32,7 @@
                     `bora_student`
                 SET
                     `student_name` = '$student_name',
+                    `student_batch` = '$student_batch',
                     `student_contact` = '$student_contact',
                     `student_whatsapp` = '$student_whatsapp',
                     `student_email` = '$student_email',

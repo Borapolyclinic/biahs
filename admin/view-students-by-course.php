@@ -176,7 +176,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Contact</th>
                             <th scope="col">Course</th>
-                            <th scope="col">Admission Year</th>
+                            <th scope="col">Batch</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                             <th scope="col">Delete</th>
@@ -191,6 +191,7 @@
                             $student_batch = $row['student_batch'];
                             $student_img = "assets/student/" . $row['student_img'];
                             $student_name = $row['student_name'];
+                            $student_batch = $row['student_batch'];
                             $student_contact = $row['student_contact'];
                             $student_course = $row['student_course'];
                             $student_roll = $row['student_roll'];
@@ -216,7 +217,7 @@
                                     echo $course_name;
                                     ?>
                                 </td>
-                                <td><?php echo $student_admission_year ?></td>
+                                <td><?php echo $student_batch ?></td>
                                 <td>
                                     <?php
                                     if ($student_status == '1') { ?>

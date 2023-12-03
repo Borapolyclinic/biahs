@@ -8,7 +8,7 @@ $password = "Biahs123!@#123";
 // DEVELOPMENT
 // $hostname = "localhost";
 // $username = "root";
-// $database = "sewa_hospital";
+// $database = "biahs";
 // $password = "";
 
 // Validate Connection

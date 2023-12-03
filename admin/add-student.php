@@ -48,10 +48,10 @@
         $student_roll = mysqli_real_escape_string($connection, $_POST['student_roll']);
         $student_course = mysqli_real_escape_string($connection, $_POST['student_course']);
         $student_admission_date = mysqli_real_escape_string($connection, $_POST['student_admission_date']);
-        $student_admission_year = mysqli_real_escape_string($connection, $_POST['student_admission_year']);
         $student_10th_marksheet = $_FILES["student_10th_marksheet"]["name"];
         $student_12th_marksheet = $_FILES["student_12th_marksheet"]["name"];
         $student_tc_certificate = $_FILES["student_tc_certificate"]["name"];
+        $student_additional_doc = $_FILES["student_additional_doc"]["name"];
         $student_category = mysqli_real_escape_string($connection, $_POST['student_category']);
         $student_admission_mode = mysqli_real_escape_string($connection, $_POST['student_admission_mode']);
         $student_gender = mysqli_real_escape_string($connection, $_POST['student_gender']);
@@ -90,6 +90,7 @@
         $tempname_marksheet = $_FILES["student_10th_marksheet"]["tmp_name"];
         $tempname_marksheet_12 = $_FILES["student_12th_marksheet"]["tmp_name"];
         $tempname_tc_certificate = $_FILES["student_tc_certificate"]["tmp_name"];
+        $tempname_student_additional_doc = $_FILES["student_additional_doc"]["tmp_name"];
 
         // $tempname_student_cast_certificate = $_FILES["student_cast_certificate"]["tmp_name"];
 
@@ -98,6 +99,7 @@
         $folder_marksheet = "assets/marksheet/" . $student_10th_marksheet;
         $folder_marksheet_12 = "assets/marksheet/" . $student_12th_marksheet;
         $folder_tc_certificate = "assets/tc_certificate/" . $student_tc_certificate;
+        $folder_student_additional_doc = "assets/add_doc/" . $student_additional_doc;
 
         // $folder_student_cast_certificate = "assets/cast/" . $student_cast_certificate;
 
@@ -105,12 +107,11 @@
             $student_comm_address = "Same as Aadhar Address";
         }
 
-        $fetch_entry = "SELECT * FROM `bora_student` WHERE `student_contact` = '$student_contact' AND `student_roll` = '$student_roll'";
+        $fetch_entry = "SELECT * FROM `bora_student` WHERE `student_contact` = '$student_contact' OR `student_roll` = '$student_roll'";
         $fetch_entry_result = mysqli_query($connection, $fetch_entry);
         $count = mysqli_num_rows($fetch_entry_result);
 
         if ($count == 0) {
-
             $insert = "INSERT INTO `bora_student`(
                         `student_img`,
                         `student_enrollment_number`,
@@ -129,10 +130,10 @@
                         `student_roll`,
                         `student_course`,
                         `student_admission_date`,
-                        `student_admission_year`,
                         `student_10th_marksheet`,
                         `student_12th_marksheet`,
                         `student_tc_certificate`,
+                        `student_additional_doc`,
                         `student_alot_letter`,
                         `student_cast_certificate`,
                         `student_category`,
@@ -163,10 +164,10 @@
                         '$student_roll',
                         '$student_course',
                         '$student_admission_date',
-                        '$student_admission_year',
                         '$student_10th_marksheet',
                         '$student_12th_marksheet',
                         '$student_tc_certificate',
+                        '$student_additional_doc',
                         '$student_alot_letter',
                         '$student_cast_certificate',
                         '$student_category',
@@ -196,6 +197,7 @@
                         move_uploaded_file($tempname_tc_certificate, $folder_tc_certificate) &&
                         move_uploaded_file($tempname_alot_letter, $folder_alot_letter) &&
                         move_uploaded_file($tempname_student_cast_certificate, $folder_student_cast_certificate);
+                    move_uploaded_file($tempname_student_additional_doc, $folder_student_additional_doc);
                 }
 
                 if ($success) {
@@ -205,22 +207,19 @@
                 } else {
                     echo "Error: File upload failed.";
                 }
-            } elseif (!$insert_res) {
+            } else if (!$insert_res) {
                 echo "Error: " . mysqli_error($connection);
             }
-        } else if ($count > 0) {
-
-            ?>
+        } else if ($count > 0) { ?>
             <div class="alert alert-danger w-100" role="alert">This student already exists in the system!</div>
-
     <?php }
     } ?>
 
     <form class="w-100" method="POST" action="" enctype="multipart/form-data" onsubmit="return confirmFormSubmission()">
         <div class="add-user-form">
             <div class="mobile-input m-1 w-100">
-                <label for="studentName" class="form-label">Select Batch</label>
-                <select class="form-select" name="student_batch" aria-label="Default select example">
+                <label for="studentName" class="form-label">Select Batch *</label>
+                <select class="form-select" name="student_batch" aria-label="Default select example" required>
                     <option selected>Open this select menu</option>
                     <option value="2015-2016">2015-2016</option>
                     <option value="2016-2017">2016-2017</option>
@@ -305,10 +304,7 @@
                     <label for="studentAdmissionDate" class="form-label">Admission Date</label>
                     <input type="date" class="form-control" placeholder="Enter Year" name="student_admission_date" id="studentAdmissionDate" aria-describedby="emailHelp" required>
                 </div>
-                <div class="w-100 mobile-input m-1">
-                    <label for="studentAdmissionDate" class="form-label">Admission Year</label>
-                    <input type="number" class="form-control" placeholder="Enter Year" name="student_admission_year" id="studentAdmissionDate" aria-describedby="emailHelp" required>
-                </div>
+
             </div>
 
 
@@ -367,6 +363,10 @@
                 <div class="m-1 w-100 mobile-input">
                     <label for="formFile" class="form-label">Upload Cast Certificate</label>
                     <input class="form-control" name="student_cast_certificate" type="file" required id="castSection">
+                </div>
+                <div class="m-1 w-100 mobile-input">
+                    <label for="formFile" class="form-label">Additional Document</label>
+                    <input class="form-control" name="student_additional_doc" type="file" id="castSection">
                 </div>
             </div>
         </div>
