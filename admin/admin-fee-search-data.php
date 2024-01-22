@@ -2,16 +2,15 @@
 <?php include('components/navbar/admin-navbar.php') ?>
 <div class="container user-form-container">
     <script>
-    function emptyField() {
-        $(document).ready(function() {
-            $("#emptyFieldModal").modal("show");
-        });
-    }
+        function emptyField() {
+            $(document).ready(function() {
+                $("#emptyFieldModal").modal("show");
+            });
+        }
     </script>
 
     <!-- ======================= DATE FROM MODAL ======================= -->
-    <div class="modal fade hide" id="emptyFieldModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade hide" id="emptyFieldModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -60,8 +59,7 @@
                 </select>
             </div>
             <div class="w-100 m-1">
-                <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="" required>
+                <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="" required>
             </div>
             <button type="submit" name="search" class="btn btn-outline-success">Search</button>
         </form>
@@ -116,28 +114,28 @@
                                 $bora_invoice_grand_total = $row['bora_invoice_grand_total'];
                                 $bora_invoice_by = $row['bora_invoice_by'];
                 ?>
-                <tr>
-                    <th scope="row"><?php echo $bora_invoice_number ?></th>
-                    <td><?php echo $bora_invoice_date ?></td>
-                    <td><?php echo $bora_invoice_student ?></td>
-                    <td><?php echo $bora_invoice_student_course ?></td>
-                    <td><?php echo $bora_invoice_tenure ?></td>
-                    <td><?php echo $bora_invoice_grand_total ?></td>
-                    <td><?php echo $bora_invoice_by ?></td>
-                    <td>
-                        <form action="admin-view-generated-fee.php" method="post" target="_blank">
-                            <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-primary">View
-                                Details</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="" method="post">
-                            <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
-                            <button type="submit" name="download" class="btn btn-sm btn-success">Download</button>
-                        </form>
-                    </td>
-                </tr>
+                                <tr>
+                                    <th scope="row"><?php echo $bora_invoice_number ?></th>
+                                    <td><?php echo $bora_invoice_date ?></td>
+                                    <td><?php echo $bora_invoice_student ?></td>
+                                    <td><?php echo $bora_invoice_student_course ?></td>
+                                    <td><?php echo $bora_invoice_tenure ?></td>
+                                    <td><?php echo $bora_invoice_grand_total ?></td>
+                                    <td><?php echo $bora_invoice_by ?></td>
+                                    <td>
+                                        <form action="admin-view-generated-fee.php" method="post" target="_blank">
+                                            <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
+                                            <button type="submit" name="edit" class="btn btn-sm btn-outline-primary">View
+                                                Details</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="" method="post">
+                                            <input type="text" value="<?php echo $bora_invoice_id ?>" name="bora_invoice_id" hidden>
+                                            <button type="submit" name="download" class="btn btn-sm btn-success">Download</button>
+                                        </form>
+                                    </td>
+                                </tr>
                 <?php
                             }
                         } else {
