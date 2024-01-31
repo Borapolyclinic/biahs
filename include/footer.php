@@ -1,6 +1,6 @@
 <div class="footer">
     <div class="col-md-6 footer-inner">
-        <img src="assets/images/logo/footer-logo.webp" alt="Bora Institute of Allied Health Sciences Footer Logo">
+        <img src="assets/images/logo/footer-logo.webp" alt="Bora Institute of Allied Health Sciences">
         <hr class="footer-divider">
         <p class="footer-text">Recognized by Indian Nursing Council, New Delhi</p>
         <p class="footer-text">Affiliated to Atal Bihari Vajpayee Medical University</p>
