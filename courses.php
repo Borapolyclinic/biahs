@@ -6,8 +6,9 @@ $og_image_facebook = "https://www.borainstitute.com/assets/images/banners/banner
 include('include/header.php');
 include('include/top-nav.php');
 include('include/navbar.php');
-include('include/modal.php');
+// include('include/modal.php');
 include('components/courses/section-1.php');
 include('components/courses/section-2.php');
 include('components/courses/section-3.php');
+include('components/courses/section-4.php');
 include('include/footer.php');

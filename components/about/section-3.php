@@ -1,6 +1,7 @@
 <div class="about-section-3-row" id="founders">
     <div class="col-md-6 about-section-3-img">
-        <img src="assets/images/temp/team-2.webp" alt="Chairman of Bora Institute of Allied Health Sciences">
+        <img src="assets/images/temp/team-2.webp" alt="Bora Institute of Allied Health Sciences - Offering bsc nursing syllabus, nursing programs near me, bpt course, ot technician courses, and more">
+
     </div>
 
     <div class="col-md-6 about-section-3-txt">

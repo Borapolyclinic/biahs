@@ -672,7 +672,7 @@ include('components/navbar/user-navbar.php');
                                     <?php } else if ($count == '0') { ?>
 
                                         <div class="w-100 mt-3 mb-3 alert alert-danger" role="alert">No Receipts generated for this
-                                            student.</div>
+                                            student in the selected date range!</div>
                             <?php
                                     }
                                 }

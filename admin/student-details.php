@@ -11,7 +11,30 @@
     <script>
         function confirmFormSubmission() {
             var confirmation = confirm("Are you sure you want to update the student details?");
+            if (confirmation) {
+                // Enable the DOB input field before form submission
+                const dobInput = document.getElementById('studentDOB');
+                dobInput.disabled = false;
+            }
             return confirmation;
+        }
+
+        function enableDOBEdit() {
+            const dobInput = document.getElementById('studentDOB');
+            const editButton = document.getElementById('editDOBButton');
+            dobInput.disabled = false;
+            dobInput.type = 'date';
+            dobInput.focus();
+            editButton.style.display = 'none';
+        }
+
+        function enableAdmissionDateEdit() {
+            const admissionDateInput = document.getElementById('studentAdmissionDate');
+            const editButton = document.getElementById('editAdmissionDateButton');
+            admissionDateInput.disabled = false;
+            admissionDateInput.type = 'date'; // Change input type to 'date' for better user experience
+            admissionDateInput.focus();
+            editButton.style.display = 'none';
         }
     </script>
 
@@ -103,6 +126,7 @@
         $student_contact = mysqli_real_escape_string($connection, $_POST['student_contact']);
         $student_whatsapp = mysqli_real_escape_string($connection, $_POST['student_whatsapp']);
         $student_email = mysqli_real_escape_string($connection, $_POST['student_email']);
+        $student_dob = mysqli_real_escape_string($connection, $_POST['student_dob']);
         $student_father = mysqli_real_escape_string($connection, $_POST['student_father']);
         $student_mother = mysqli_real_escape_string($connection, $_POST['student_mother']);
         $student_guardian_contact = mysqli_real_escape_string($connection, $_POST['student_guardian_contact']);
@@ -128,6 +152,7 @@
                     `student_contact` = '$student_contact',
                     `student_whatsapp` = '$student_whatsapp',
                     `student_email` = '$student_email',
+                    `student_dob` = '$student_dob',
                     `student_father` = '$student_father',
                     `student_mother` = '$student_mother',
                     `student_guardian_contact` = '$student_guardian_contact',
@@ -206,10 +231,17 @@
                         <label for="studentNumber" class="form-label">Email</label>
                         <input type="email" class="form-control" name="student_email" value="<?php echo $student_email ?>" id="studentNumber" aria-describedby="emailHelp">
                     </div>
+
                     <div class="w-100 mobile-input m-1">
-                        <label for="studentNumber" class="form-label">DOB</label>
-                        <input type="date" class="form-control" name="student_dob" value="<?php echo $student_dob ?>" id="studentNumber" aria-describedby="emailHelp">
+                        <label for="studentDOB" class="form-label">DOB</label>
+                        <div class="d-flex justify-content-center align-items-center position-relative">
+                            <input type="text" disabled class="form-control mr-3" name="student_dob" placeholder="<?php echo $student_dob ?>" value="<?php echo $student_dob ?>" id="studentDOB" aria-describedby="emailHelp">
+                            <button type="button" id="editDOBButton" class="btn p-0 position-absolute" style="right: 10px;" onclick="enableDOBEdit()">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </button>
+                        </div>
                     </div>
+
                     <div class="w-100 mobile-input w-100 m-1">
                         <label for="studentName" class="form-label">Enrollment Number</label>
                         <input type="text" class="form-control" name="student_enrollment_number" value="<?php echo $student_enrollment_number ?>" id="studentName" aria-describedby="emailHelp">
@@ -255,10 +287,23 @@
                             <?php } ?>
                         </select>
                     </div>
+                    <!-- <div class="w-100 mobile-input m-1">
+                        <label for="studentAdmissionDate" class="form-label">Admission Date</label>
+                        <input type="text" disabled class="form-control" name="student_admission_date" placeholder="<?php echo $student_admission_date ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
+                    </div> -->
                     <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Date</label>
-                        <input type="date" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
+                        <div class="d-flex justify-content-center align-items-center position-relative">
+                            <input type="text" disabled class="form-control mr-3" name="student_admission_date" placeholder="<?php echo $student_admission_date ?>" value="<?php echo $student_admission_date ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
+                            <button type="button" id="editAdmissionDateButton" class="btn p-0 position-absolute" style="right: 10px;" onclick="enableAdmissionDateEdit()">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </button>
+                        </div>
                     </div>
+                    <!-- <div class="w-100 mobile-input m-1">
+                        <label for="studentAdmissionDate" class="form-label">Change Admission Date</label>
+                        <input type="date" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date ?>" id="studentAdmissionDate" aria-describedby="emailHelp">
+                    </div> -->
                 </div>
 
                 <div class="add-user-form-row mb-3">

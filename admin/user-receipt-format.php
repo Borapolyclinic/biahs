@@ -68,7 +68,7 @@ if (isset($_POST['download'])) {
             $tableContent .= '
         <thead>
             <tr>
-                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong>CHEQUE | DEMAND DRAFT | ONLINE</strong></th>
+                <th scope="col" colspan="4" style="border: 1px solid #000">PAYMENT MODE:<strong>CHEQUE | DEMAND DRAFT</strong></th>
             </tr>
         </thead>
         <thead>
@@ -87,9 +87,9 @@ if (isset($_POST['download'])) {
         <tr>
                 <th scope="col" colspan="4" style="border: 1px solid #000">IFSC CODE:<strong> ' . htmlspecialchars($bora_invoice_ifsc) . '</strong></th>
             </tr>
-            <tr>
-                <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . htmlspecialchars($bora_invoice_payment_id) . '</strong></th>
-            </tr>
+            // <tr>
+            //     <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . htmlspecialchars($bora_invoice_payment_id) . '</strong></th>
+            // </tr>
         </thead>
         ';
         } elseif ($bora_invoice_payment_mode == 'CASH') {
@@ -168,7 +168,8 @@ if (isset($_POST['download'])) {
         <table style="margin-top: 5px;">
             <thead>
                 <tr>
-                    <th scope="col" colspan="4" style="border: 1px solid #000; padding: 10px !important"> BILL TO:<strong> ' . $bora_invoice_student . '<br>' . $bora_invoice_student_address . " | " . $bora_invoice_student_contact . '</strong></th>
+                    <th scope="col" colspan="4" style="border: 1px solid #000; padding: 10px !important"> BILL TO:<strong> ' . $bora_invoice_student . '<br>' . $bora_invoice_student_address . " | " . $bora_invoice_student_contact .
+            '</strong></th>
                 </tr>
             </thead>
         </table>
@@ -182,13 +183,15 @@ if (isset($_POST['download'])) {
                     <th style="border: 1px solid #000" scope="col"> FEE TYPE</th>
                     <th style="border: 1px solid #000" scope="col"> COURSE</th>
                     <th style="border: 1px solid #000" scope="col"> PAID FOR</th>
-                    <th style="border: 1px solid #000" scope="col"> AMOUNT</th> 
-                    
-                    <th style="border: 1px solid #000" scope="col"> DISCOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> AMOUNT</th>';
 
-                    <th style="border: 1px solid #000" scope="col"> TOTAL</th>
-                    </tr>
-                    </thead>
+        if ($bora_invoice_disc > 0) {
+            $content .= '<th style="border: 1px solid #000" scope="col"> DISCOUNT</th>';
+        }
+
+        $content .= '<th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
+                </tr>
+            </thead>
                     <tbody>
                         <tr>
                             <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
@@ -226,7 +229,11 @@ if (isset($_POST['download'])) {
             $content .= '
                             <tr>
                                 <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . $bora_invoice_payment_id . '</strong></th>
-                            </tr>';
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000;">TRANSACTION DATE:<strong> ' . $bora_invoice_payment_date . '</strong></th>
+                            </tr>
+                            ';
         } else if ($bora_invoice_payment_mode == 'BANK') {
             $content .= '
                             <tr>

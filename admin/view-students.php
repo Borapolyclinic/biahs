@@ -19,77 +19,76 @@
     if ($student_count > 0) {
     ?>
 
-    <div class="w-100 mb-3">
-        <form action="search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
-            <div class="w-100 m-1">
-                <select name="search_type" class="form-select" aria-label="Default select example">
-                    <option value="null">Click here for options</option>
-                    <option value="1">Name</option>
-                    <option value="2">Mobile Number</option>
-                    <option value="3">UID</option>
-                </select>
-            </div>
-            <div class="w-100 m-1">
-                <input type="text" name="student_search" class="form-control filter-input-box"
-                    id="exampleFormControlInput1" placeholder="" required>
-            </div>
-            <button type="submit" name="search" class="btn btn-outline-success">Search</button>
-        </form>
-    </div>
+        <div class="w-100 mb-3">
+            <form action="search-student-data.php" method="POST" class="filter-row w-100 dashboard-tab p-3">
+                <div class="w-100 m-1">
+                    <select name="search_type" class="form-select" aria-label="Default select example">
+                        <option value="null">Click here for options</option>
+                        <option value="1">Name</option>
+                        <option value="2">Mobile Number</option>
+                        <option value="3">UID</option>
+                    </select>
+                </div>
+                <div class="w-100 m-1">
+                    <input type="text" name="student_search" class="form-control filter-input-box" id="exampleFormControlInput1" placeholder="" required>
+                </div>
+                <button type="submit" name="search" class="btn btn-outline-success">Search</button>
+            </form>
+        </div>
 
-    <script>
-    function openModal(studentId) {
-        $(document).ready(function() {
-            $("#exampleModal").modal("show");
-        });
-    }
-
-    function deleteStudentModal(studentId) {
-        $(document).ready(function() {
-            $("#deleteStudent").modal("show");
-        });
-    }
-
-    function hideDisplay() {
-        const selectMenu = document.getElementById('studentStatus');
-        const castCertificateDiv = document.getElementById('castCertificateDiv');
-
-        selectMenu.addEventListener('change', function() {
-            if (selectMenu.value === '1') {
-                castCertificateDiv.style.display = 'block';
-            } else {
-                castCertificateDiv.style.display = 'none';
+        <script>
+            function openModal(studentId) {
+                $(document).ready(function() {
+                    $("#exampleModal").modal("show");
+                });
             }
-        });
-    }
-    </script>
+
+            function deleteStudentModal(studentId) {
+                $(document).ready(function() {
+                    $("#deleteStudent").modal("show");
+                });
+            }
+
+            function hideDisplay() {
+                const selectMenu = document.getElementById('studentStatus');
+                const castCertificateDiv = document.getElementById('castCertificateDiv');
+
+                selectMenu.addEventListener('change', function() {
+                    if (selectMenu.value === '1') {
+                        castCertificateDiv.style.display = 'block';
+                    } else {
+                        castCertificateDiv.style.display = 'none';
+                    }
+                });
+            }
+        </script>
 
 
-    <div class="table-responsive user-table">
-        <table class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">UID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Course</th>
-                    <th scope="col">Batch</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Delete</th>
-                    <th scope="col">Admission Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="table-responsive user-table">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">UID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Batch</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Admission Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
                     if (isset($_POST['delete_success'])) {
                         $student_id = $_POST['student_id'];
                         $delete_query = "DELETE FROM `bora_student` WHERE `student_id` = '$student_id'";
                         $delete_res = mysqli_query($connection, $delete_query);
                         if ($delete_res) { ?>
-                <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
-                <?php
+                            <div class="w-100 alert alert-success mt-3 mb-3" role="alert">Student Deleted!</div>
+                        <?php
                         }
                     }
 
@@ -97,32 +96,29 @@
                         $student_id = $_POST['student_id'];
                         echo '<script>deleteStudentModal(' . $student_id . ');</script>'; ?>
 
-                <div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Student</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form action="" method="POST">
-                                <div class="modal-body">
-                                    <div>
-                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                                        <p>Are you sure you want to delete this student?</p>
+                        <div class="modal fade" id="deleteStudent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Student</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
+                                    <form action="" method="POST">
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                                                <p>Are you sure you want to delete this student?</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="delete_success" class="btn btn-success">Yes</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="delete_success" class="btn btn-success">Yes</button>
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <?php
+                    <?php
 
                     }
 
@@ -145,44 +141,39 @@
                         $student_id = $_POST['student_id'];
                         echo '<script>openModal(' . $student_id . ');</script>';
                     ?>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Change Admission Status</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="upload-grad-marksheet.php" method="POST" enctype="multipart/form-data">
+                                        <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
+                                        <div class="modal-body">
+                                            <div>
+                                                <select onclick="hideDisplay()" name="student_status" id="studentStatus" class="form-select" aria-label="Default select example">
+                                                    <option selected>Open this select menu</option>
+                                                    <option value="1">Graduated</option>
+                                                    <option value="2">Active</option>
+                                                    <option value="3">Left</option>
+                                                </select>
+                                            </div>
+                                            <div id="castCertificateDiv" class="mt-3 w-100" style="display: none;">
+                                                <label for="formFile" class="form-label">Upload Marksheet</label>
+                                                <input class="form-control" name="student_graduation_marksheet" type="file" id="formFile">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" name="update_marksheet" class="btn btn-primary">Save
+                                                changes</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <form action="upload-grad-marksheet.php" method="POST" enctype="multipart/form-data">
-                                <input type="text" name="student_id" value="<?php echo $student_id ?>" hidden>
-                                <div class="modal-body">
-                                    <div>
-                                        <select onclick="hideDisplay()" name="student_status" id="studentStatus"
-                                            class="form-select" aria-label="Default select example">
-                                            <option selected>Open this select menu</option>
-                                            <option value="1">Graduated</option>
-                                            <option value="2">Active</option>
-                                            <option value="3">Left</option>
-                                        </select>
-                                    </div>
-                                    <div id="castCertificateDiv" class="mt-3 w-100" style="display: none;">
-                                        <label for="formFile" class="form-label">Upload Marksheet</label>
-                                        <input class="form-control" name="student_graduation_marksheet" type="file"
-                                            id="formFile">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="update_marksheet" class="btn btn-primary">Save
-                                        changes</button>
-                                </div>
-                            </form>
                         </div>
-                    </div>
-                </div>
-                <?php
+                    <?php
                     }
 
                     $results_per_page = 20;
@@ -211,11 +202,11 @@
                         $student_added_by = $row['student_added_by'];
                         $student_status = $row['student_status'];
                     ?>
-                <tr>
-                    <td><?php echo $student_roll ?></td>
-                    <th scope="row"><?php echo $student_name ?></th>
-                    <td><?php echo $student_contact ?></td>
-                    <td><?php
+                        <tr>
+                            <td><?php echo $student_roll ?></td>
+                            <th scope="row"><?php echo $student_name ?></th>
+                            <td><?php echo $student_contact ?></td>
+                            <td><?php
                                 $fetch_course_name = "SELECT * FROM `bora_course` WHERE `course_id` = '$student_course'";
                                 $fetch_course_name_res = mysqli_query($connection, $fetch_course_name);
                                 $course_name = "";
@@ -223,59 +214,83 @@
                                     $course_name = $row['course_name'];
                                 }
                                 echo $course_name ?></td>
-                    <td><?php echo $student_batch ?></td>
-                    <td>
-                        <?php
+                            <td><?php echo $student_batch ?></td>
+                            <td>
+                                <?php
                                 if ($student_status == '1') { ?>
-                        <p class="btn btn-sm btn-dark">Graduated</p>
-                        <?php } elseif ($student_status == '2') { ?>
-                        <p class="btn btn-sm btn-success">Active</p>
-                        <?php } elseif ($student_status == '3') { ?>
-                        <p class="btn btn-sm btn-primary">Left</p>
-                        <?php } elseif (empty($student_status)) { ?>
-                        <p class="btn btn-sm btn-info">Not Updated</p>
-                        <?php } ?>
-                    </td>
-                    <td>
-                        <form action="student-details.php" method="post">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
-                                Details</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="" method="POST">
-                            <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
-                            <button type="submit" name="change" class="btn btn-sm btn-primary">Change Status</button>
-                        </form>
-                    </td>
-                </tr>
-                <?php
+                                    <p class="btn btn-sm btn-dark">Graduated</p>
+                                <?php } elseif ($student_status == '2') { ?>
+                                    <p class="btn btn-sm btn-success">Active</p>
+                                <?php } elseif ($student_status == '3') { ?>
+                                    <p class="btn btn-sm btn-primary">Left</p>
+                                <?php } elseif (empty($student_status)) { ?>
+                                    <p class="btn btn-sm btn-info">Not Updated</p>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <form action="student-details.php" method="post">
+                                    <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                    <button type="submit" name="edit" class="btn btn-sm btn-outline-success">Edit
+                                        Details</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                    <button type="submit" name="delete" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input type="text" value="<?php echo $student_id ?>" name="student_id" hidden>
+                                    <button type="submit" name="change" class="btn btn-sm btn-primary">Change Status</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
                     }
                     ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-        <nav aria-label="Page navigation example" class="w-100 mt-3">
-            <ul class="pagination">
-                <?php
-                    for ($page = 1; $page <= $number_of_page; $page++) {
-                        echo '<li class="page-item"><a class="page-link" href="view-students.php?page=' . $page . '">' . $page . ' </a></li>';
+            <nav aria-label="Page navigation example" class="w-100 mt-3">
+                <ul class="pagination">
+                    <?php
+                    // Check if there are more than 10 pages
+                    if ($number_of_page > 10) {
+                        // If the current page is not the first page, show the "Previous" button
+                        if ($page > 1) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . ($page - 1) . '">Previous</a></li>';
+                        }
+
+                        // Show only 10 pages at a time, starting from the current page
+                        $start_page = max(1, $page - 4);
+                        $end_page = min($start_page + 9, $number_of_page);
+
+                        // Display the page links
+                        for ($i = $start_page; $i <= $end_page; $i++) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . $i . '">' . $i . ' </a></li>';
+                        }
+
+                        // If the current page is not the last page, show the "Next" button
+                        if ($page < $number_of_page) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . ($page + 1) . '">Next</a></li>';
+                        }
+                    } else {
+                        // If there are 10 pages or less, display all page links
+                        for ($i = 1; $i <= $number_of_page; $i++) {
+                            echo '<li class="page-item"><a class="page-link" href="view-students.php?page=' . $i . '">' . $i . ' </a></li>';
+                        }
                     }
                     ?>
-            </ul>
-        </nav>
-    </div>
+                </ul>
+            </nav>
+
+        </div>
     <?php } else if ($student_count == 0) { ?>
-    <div class="alert alert-danger w-100 mt-3 mb-3" role="alert">
-        No students found
-    </div>
+        <div class="alert alert-danger w-100 mt-3 mb-3" role="alert">
+            No students found
+        </div>
     <?php } ?>
 </div>
 <?php include('includes/footer.php') ?>

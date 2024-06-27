@@ -1,4 +1,4 @@
-<div class="courses-section-2-menu">
+<!-- <div class="courses-section-2-menu">
     <a href="#masters-degree" class="courses-section-2-menu-link">
         <p>Masters Degree Programme</p>
     </a>
@@ -14,4 +14,4 @@
     <a href="#certificate-courses" class="courses-section-2-menu-link">
         <p>Certificate Courses</p>
     </a>
-</div>
+</div> -->

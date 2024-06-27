@@ -78,7 +78,7 @@
                         <input type="date" name="date_to" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                 </div>
-                <div class="filter-row ">
+                <div class="filter-row mb-3">
                     <div class="w-100 m-1">
                         <label class="form-check-label mb-2">Course</label>
                         <select name="batch_wise_course" class="form-select" aria-label="Default select example">
@@ -119,6 +119,19 @@
                         <!-- <input type="number" name="batch_wise_year" min="1999" max="2025" class="form-control" id="exampleFormControlInput1" placeholder=""> -->
                     </div>
                 </div>
+
+                <div>
+                    <select class="form-select" aria-label="Default select example" name="bora_invoice_tenure">
+                        <option value="null">Select Year</option>
+                        <option value="Year 1">Year 1</option>
+                        <option value="Year 2">Year 2</option>
+                        <option value="Year 3">Year 3</option>
+                        <option value="Year 4">Year 4</option>
+                        <option value="All Years">All Years</option>
+                    </select>
+                </div>
+
+
                 <button type="submit" name="generate_batch_wise" class="mt-3 p-2 btn btn-outline-success w-100">Generate
                     Report</button>
             </div>

@@ -1,6 +1,42 @@
 <?php include('includes/header.php') ?>
 <?php include('components/navbar/user-navbar.php') ?>
 
+<script>
+    document.getElementById('collectFeeForm').addEventListener('submit', function(event) {
+        var paymentMode = document.querySelector('input[name="bora_invoice_payment_mode"]:checked').value;
+        if (paymentMode === 'cheque') {
+            var chequeNumber = document.getElementById('chequeNumber').value;
+            var bankName = document.getElementById('bankName').value;
+            var ifscCode = document.getElementById('ifscCode').value;
+            if (!chequeNumber || !bankName || !ifscCode) {
+                alert('Please enter all the Cheque details.');
+                event.preventDefault();
+            }
+        }
+        if (paymentMode === 'online') {
+            var transactionId = document.querySelector('input[name="bora_invoice_payment_id"]').value;
+            if (!transactionId) {
+                alert('Please enter the Transaction ID.');
+                event.preventDefault();
+            }
+        }
+    });
+
+    function handleCheckboxChange(radio) {
+        var paymentIdField = document.getElementById('paymentIdField');
+        var chequeFields = document.getElementById('chequeFields');
+        if (radio.value === 'online') {
+            paymentIdField.style.display = 'block';
+            chequeFields.style.display = 'none';
+        } else if (radio.value === 'cheque') {
+            paymentIdField.style.display = 'none';
+            chequeFields.style.display = 'block';
+        } else {
+            paymentIdField.style.display = 'none';
+            chequeFields.style.display = 'none';
+        }
+    }
+</script>
 
 <div class="container user-form-container">
     <div class="page-marker">
@@ -47,7 +83,7 @@
     }
 
     ?>
-    <form class="add-user-form" method="POST" action="generate-receipt.php">
+    <form id="collectFeeForm" class="add-user-form" method="POST" action="generate-receipt.php">
         <input type="text" name="bora_invoice_student_id" value="<?php echo $student_id ?>" hidden>
         <input type="text" name="bora_invoice_student_en_no" value="<?php echo $student_roll ?>" hidden>
 
@@ -213,13 +249,13 @@
                         <td>
 
                             <div>
-                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_value" id="collectingAmount" class="form-control" id="exampleFormControlInput1" placeholder="" required>
                             </div>
                         </td>
 
                         <td>
                             <div>
-                                <input type="number" name="invoice_disc" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                <input type="number" name="invoice_disc" id="discount" class="form-control" id="exampleFormControlInput1" placeholder="" required>
                             </div>
                         </td>
 
@@ -278,6 +314,23 @@
                         <td>
                             <div>
                                 <input type="text" name="bora_invoice_payment_id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead class="table-active">
+                    <tr>
+                        <th scope="col">Transaction Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="date" name="bora_invoice_payment_date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             </div>
                         </td>
                     </tr>
@@ -354,4 +407,5 @@
     </form>
 
 </div>
+
 <?php include('includes/footer.php') ?>

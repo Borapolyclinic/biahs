@@ -1,6 +1,9 @@
 <div class="container downloads-section">
-    <h2>Downloads</h2>
-    <p>Important documents available for downloads</p>
+
+
+    <div class="download-seperator">
+        <h4>Session 2023-24</h4>
+    </div>
 
     <div class="download-section-tab" id="blue">
         <h2>BSc. Nursing Information Brochure</h2>

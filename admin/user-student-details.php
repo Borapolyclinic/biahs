@@ -122,7 +122,7 @@
                     </div>
                     <div class="w-100 mobile-input m-1">
                         <label for="studentNumber" class="form-label">DOB</label>
-                        <input type="date" class="form-control" name="student_dob" value="<?php echo $student_dob ?>" id="studentNumber" aria-describedby="emailHelp" disabled>
+                        <input type="text" class="form-control" name="student_dob" value="<?php echo $student_dob ?>" id="studentNumber" aria-describedby="emailHelp" disabled>
                     </div>
                     <div class="w-100 mobile-input w-100">
                         <label for="studentName" class="form-label">Enrollment Number</label>
@@ -173,7 +173,7 @@
                     </div>
                     <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Date</label>
-                        <input type="date" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date  ?>" id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
+                        <input type="text" class="form-control" name="student_admission_date" value="<?php echo $student_admission_date  ?>" id="studentAdmissionDate" aria-describedby="emailHelp" disabled>
                     </div>
                     <!-- <div class="w-100 mobile-input m-1">
                         <label for="studentAdmissionDate" class="form-label">Admission Year</label>

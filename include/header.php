@@ -27,9 +27,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- ============ SEO ============ -->
-    <meta name="keywords" content="Nursing college in Lucknow, Best nursing college in Lucknow, Nursing courses in Lucknow, 
-        Nursing degree programs in Lucknow, Nursing admission in Lucknow, Nursing placements in Lucknow, bachelor in medical laboratory science, bpt course">
-    <meta name="description" content="Discover top nursing programs at Bora Institute, Lucknow. Secure your future with excellent placements. Apply today!">
+    <meta name="keywords" content="bsc nursing syllabus, nursing programs near me, bpt course, nursing colleges, nursing colleges near me, top colleges in Lucknow,
+    aiims delhi bsc nursing, ot technician courses, Best nursing college in Lucknow, Nursing courses in Lucknow">
+    <meta name="description" content="Explore premier nursing courses at Bora Institute, Lucknow. Secure your career with outstanding placements. Enroll now!">
 
     <!-- ============ OPEN GRAPH - FACEBOOK ============ -->
     <meta property="og:url" content="<?php echo $og_content_facebook ?>">
@@ -68,7 +68,7 @@
     <link rel="stylesheet" href="assets/css/stylesheet.css">
 
     <!-- ============ BOOTSTRAP ============ -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- ============ GOOGLE FONTS ============ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

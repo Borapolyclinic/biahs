@@ -32,6 +32,7 @@ if (isset($_POST['invoice'])) {
         }
         $bora_invoice_payment_mode = $row['bora_invoice_payment_mode'];
         $bora_invoice_payment_id = $row['bora_invoice_payment_id'];
+        $bora_invoice_payment_date = $row['bora_invoice_payment_date'];
         if ($bora_invoice_payment_mode == 'cheque') {
             $bora_invoice_payment_mode = 'BANK';
         } else if ($bora_invoice_payment_mode == 'online') {
@@ -146,9 +147,13 @@ if (isset($_POST['invoice'])) {
                     <th style="border: 1px solid #000" scope="col"> FEE TYPE</th>
                     <th style="border: 1px solid #000" scope="col"> COURSE</th>
                     <th style="border: 1px solid #000" scope="col"> PAID FOR</th>
-                    <th style="border: 1px solid #000" scope="col"> AMOUNT</th>
-                    <th style="border: 1px solid #000" scope="col"> DISCOUNT</th>
-                    <th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
+                    <th style="border: 1px solid #000" scope="col"> AMOUNT</th>';
+
+        if ($bora_invoice_disc > 0) {
+            $content .= '<th style="border: 1px solid #000" scope="col"> DISCOUNT</th>';
+        }
+
+        $content .= '<th style="border: 1px solid #000" scope="col"> TOTAL AMOUNT</th>
                 </tr>
             </thead>
             <tbody>
@@ -165,12 +170,15 @@ if (isset($_POST['invoice'])) {
 
                     <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> Rs.' . $bora_invoice_value . '</p>
-                    </td>
+                    </td>';
 
-                    <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
+        if ($bora_invoice_disc > 0) {
+            $content .= '<td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> Rs.' . $bora_invoice_disc . '</p>
-                    </td>
-                    <td scope="row" style="border: 1px solid #000; padding: 10px !important;">
+                    </td>';
+        }
+
+        $content .= '<td scope="row" style="border: 1px solid #000; padding: 10px !important;">
                         <p> Rs.' . $bora_invoice_grand_total . '</p>
                     </td>
                 </tr>
@@ -187,7 +195,11 @@ if (isset($_POST['invoice'])) {
             $content .= '
                             <tr>
                                 <th scope="col" colspan="4" style="border: 1px solid #000">TRANSACTION ID:<strong> ' . $bora_invoice_payment_id . '</strong></th>
-                            </tr>';
+                            </tr>
+                            <tr>
+                                <th scope="col" colspan="4" style="border: 1px solid #000;">TRANSACTION DATE:<strong> ' . $bora_invoice_payment_date . '</strong></th>
+                            </tr>
+                            ';
         } else if ($bora_invoice_payment_mode == 'BANK') {
             $content .= '
                             <tr>

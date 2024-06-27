@@ -116,11 +116,30 @@ include('components/navbar/user-navbar.php');
 </div>
 
 <div class="container user-form-container">
+    <?php
+    require('includes/connection.php');
+    if (isset($_POST['generate_batch_wise'])) {
+        $date_from = $_POST['date_from'];
+        $date_to = $_POST['date_to'];
+        $batch_wise_course = $_POST['batch_wise_course'];
+        $batch_wise_year = $_POST['batch_wise_year'];
+        $bora_invoice_tenure = $_POST['bora_invoice_tenure'];
+
+        $fetch = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_student_course_id` = '$batch_wise_course' AND `bora_invoice_student_admission_year` = '$batch_wise_year' AND `bora_invoice_generation_date` BETWEEN '$date_from' AND '$date_to'";
+        $fetch_r = mysqli_query($connection, $fetch);
+        $bora_invoice_student_course = "";
+        $bora_invoice_student_admission_year = "";
+        while ($row = mysqli_fetch_assoc($fetch_r)) {
+            $bora_invoice_student_course = $row['bora_invoice_student_course'];
+            $bora_invoice_student_admission_year = $row['bora_invoice_student_admission_year'];
+        }
+    }
+    ?>
     <div class="page-marker">
         <a href="user-reports.php">
             <ion-icon name="arrow-back-outline"></ion-icon>
         </a>
-        <h5>Generated Report</h5>
+        <h5>Generated Report for (<?php echo $bora_invoice_tenure ?>)</h5>
     </div>
 
 
@@ -137,24 +156,6 @@ include('components/navbar/user-navbar.php');
                 </tr>
             </thead>
             <tbody>
-                <?php
-                require('includes/connection.php');
-                if (isset($_POST['generate_batch_wise'])) {
-                    $date_from = $_POST['date_from'];
-                    $date_to = $_POST['date_to'];
-                    $batch_wise_course = $_POST['batch_wise_course'];
-                    $batch_wise_year = $_POST['batch_wise_year'];
-
-                    $fetch = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_student_course_id` = '$batch_wise_course' AND `bora_invoice_student_admission_year` = '$batch_wise_year' AND `bora_invoice_generation_date` BETWEEN '$date_from' AND '$date_to'";
-                    $fetch_r = mysqli_query($connection, $fetch);
-                    $bora_invoice_student_course = "";
-                    $bora_invoice_student_admission_year = "";
-                    while ($row = mysqli_fetch_assoc($fetch_r)) {
-                        $bora_invoice_student_course = $row['bora_invoice_student_course'];
-                        $bora_invoice_student_admission_year = $row['bora_invoice_student_admission_year'];
-                    }
-                }
-                ?>
                 <tr>
                     <td><?php echo $bora_invoice_student_course ?></td>
                     <td><?php echo $bora_invoice_student_admission_year ?></td>
@@ -162,6 +163,8 @@ include('components/navbar/user-navbar.php');
             </tbody>
         </table>
     </div>
+
+
 
     <div class="user-table table-responsive w-100">
         <table class="w-100 table table-bordered">
@@ -185,6 +188,21 @@ include('components/navbar/user-navbar.php');
                     $date_to = $_POST['date_to'];
                     $batch_wise_course = $_POST['batch_wise_course'];
                     $batch_wise_year = $_POST['batch_wise_year'];
+                    $bora_invoice_tenure = $_POST['bora_invoice_tenure'];
+
+                    if ($bora_invoice_tenure == 'Year 1') {
+                        $course_tenure = '1';
+                    } else if ($bora_invoice_tenure == 'Year 2') {
+                        $course_tenure = '2';
+                    } else if ($bora_invoice_tenure == 'Year 3') {
+                        $course_tenure = '3';
+                    } else if ($bora_invoice_tenure == 'Year 4') {
+                        $course_tenure = '4';
+                    } else if ($bora_invoice_tenure == 'All Years') {
+                        $course_tenure = 'All Years';
+                    }
+
+                    // echo $bora_invoice_tenure;
 
                     $fetch_invoice = "SELECT * FROM `bora_invoice` WHERE `bora_invoice_student_course_id` = '$batch_wise_course' AND `bora_invoice_student_admission_year` = '$batch_wise_year' AND `bora_invoice_generation_date` BETWEEN '$date_from' AND '$date_to' GROUP BY `bora_invoice_student_id` ORDER BY `bora_invoice_number` DESC";
                     $fetch_invoice_r = mysqli_query($connection, $fetch_invoice);
@@ -197,25 +215,48 @@ include('components/navbar/user-navbar.php');
                         $bora_invoice_grand_total = $row_new['bora_invoice_grand_total'];
 
 
-                        $fetch_total_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash'";
+                        $fetch_total_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash' AND `bora_invoice_tenure` = '$bora_invoice_tenure'";
                         $fetch_total_cash_r = mysqli_query($connection, $fetch_total_cash);
                         $total_cash = "";
                         while ($row = mysqli_fetch_assoc($fetch_total_cash_r)) {
                             $total_cash = $row['total_cash'];
                         }
 
-                        $fetch_total_bank = "SELECT SUM(`bora_invoice_grand_total`) AS `total_bank` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque'";
+                        $fetch_total_bank = "SELECT SUM(`bora_invoice_grand_total`) AS `total_bank` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque' AND `bora_invoice_tenure` = '$bora_invoice_tenure'";
                         $fetch_total_bank_r = mysqli_query($connection, $fetch_total_bank);
                         $total_bank = "";
                         while ($row = mysqli_fetch_assoc($fetch_total_bank_r)) {
                             $total_bank = $row['total_bank'];
                         }
 
-                        $fetch_total_online = "SELECT SUM(`bora_invoice_grand_total`) AS `total_online` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'online'";
+                        $fetch_total_online = "SELECT SUM(`bora_invoice_grand_total`) AS `total_online` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'online' AND `bora_invoice_tenure` = '$bora_invoice_tenure'";
                         $fetch_total_online_r = mysqli_query($connection, $fetch_total_online);
                         $total_online = "";
                         while ($row = mysqli_fetch_assoc($fetch_total_online_r)) {
                             $total_online = $row['total_online'];
+                        }
+
+                        if ($bora_invoice_tenure == 'All Years') {
+                            $fetch_total_cash = "SELECT SUM(`bora_invoice_grand_total`) AS `total_cash` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cash'";
+                            $fetch_total_cash_r = mysqli_query($connection, $fetch_total_cash);
+                            $total_cash = "";
+                            while ($row = mysqli_fetch_assoc($fetch_total_cash_r)) {
+                                $total_cash = $row['total_cash'];
+                            }
+
+                            $fetch_total_bank = "SELECT SUM(`bora_invoice_grand_total`) AS `total_bank` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'cheque'";
+                            $fetch_total_bank_r = mysqli_query($connection, $fetch_total_bank);
+                            $total_bank = "";
+                            while ($row = mysqli_fetch_assoc($fetch_total_bank_r)) {
+                                $total_bank = $row['total_bank'];
+                            }
+
+                            $fetch_total_online = "SELECT SUM(`bora_invoice_grand_total`) AS `total_online` FROM `bora_invoice` WHERE `bora_invoice_student_id` = '$bora_invoice_student_id' AND `bora_invoice_payment_mode` = 'online'";
+                            $fetch_total_online_r = mysqli_query($connection, $fetch_total_online);
+                            $total_online = "";
+                            while ($row = mysqli_fetch_assoc($fetch_total_online_r)) {
+                                $total_online = $row['total_online'];
+                            }
                         }
                 ?>
                         <tr>
@@ -229,7 +270,7 @@ include('components/navbar/user-navbar.php');
                             <td>₹<?php echo $total_cash + $total_bank + $total_online ?></td>
                             <td>
                                 <?php
-                                $fetch_due = "SELECT * FROM `bora_course` WHERE `course_id` = '$batch_wise_course'";
+                                $fetch_due = "SELECT * FROM `bora_course` WHERE `course_id` = '$batch_wise_course' ";
                                 $fetch_due_r = mysqli_query($connection, $fetch_due);
                                 $tenure = "";
                                 $year_1 = "";
@@ -244,22 +285,32 @@ include('components/navbar/user-navbar.php');
                                     $year_4 = $row['course_year_4_fee'];
                                 } ?>
 
-                                <?php if ($tenure == '1') { ?>
+                                <?php if ($course_tenure == '1') { ?>
                                     ₹<?php echo $year_1 - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
-                                if ($tenure == '2') { ?>
-                                    ₹<?php echo ($year_1 + $year_2) - ($total_cash + $total_bank + $total_online) ?>
+                                if ($course_tenure == '2') { ?>
+                                    ₹<?php echo $year_2 - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
-                                if ($tenure == '3') { ?>
-                                    ₹<?php echo ($year_1 + $year_2 + $year_3) - ($total_cash + $total_bank + $total_online) ?>
+                                if ($course_tenure == '3') { ?>
+                                    ₹<?php echo $year_3 - ($total_cash + $total_bank + $total_online) ?>
                                 <?php }
-                                if ($tenure == '4') { ?>
-                                    ₹<?php echo ($year_1 + $year_2 +  $year_3 + $year_4) - ($total_cash + $total_bank + $total_online) ?>
+                                if ($course_tenure == '4') { ?>
+                                    ₹<?php echo $year_4 - ($total_cash + $total_bank + $total_online) ?>
 
-                                <?php
-                                }
-                                ?>
+                                <?php }
+                                if ($course_tenure == 'All Years') { ?>
+                                    ₹<?php echo ($year_1 + $year_2 +  $year_3 + $year_4) - ($total_cash + $total_bank + $total_online) ?>
+                                <?php } ?>
+
                             </td>
+                            <?php
+                            // echo "COURSE TENURE: " . $course_tenure . "<br>";
+                            // echo "TENURE: " . $tenure . "<br>";
+                            // echo "YEAR 1: " . $year_1 . "<br>";
+                            // echo "TOTAL CASH: " . $total_cash . "<br>";
+                            // echo "TOTAL BANK: " . $total_bank . "<br>";
+                            // echo "TOTAL ONLINE: " . $total_online . "<br>";
+                            ?>
 
                             <td>
                                 <form target="_blank" action="user-student-wise-generated-report.php" method="POST">
@@ -277,14 +328,6 @@ include('components/navbar/user-navbar.php');
             </tbody>
         </table>
     </div>
-</div>
-
-
-
-
-
-
-
 </div>
 
 

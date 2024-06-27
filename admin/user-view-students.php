@@ -60,7 +60,7 @@
                         <th scope="col">Contact</th>
                         <th scope="col">Course</th>
                         <!-- <th scope="col">Admission Year</th> -->
-                        <th scope="col">Batch</th>
+                        <th scope="col">Admission Batch</th>
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                         <!-- <th scope="col">Delete</th> -->
@@ -201,12 +201,36 @@
             <nav aria-label="Page navigation example" class="w-100 mt-3">
                 <ul class="pagination">
                     <?php
-                    for ($page = 1; $page <= $number_of_page; $page++) {
-                        echo '<li class="page-item"><a class="page-link" href="view-students.php?page=' . $page . '">' . $page . ' </a></li>';
+                    // Check if there are more than 10 pages
+                    if ($number_of_page > 10) {
+                        // If the current page is not the first page, show the "Previous" button
+                        if ($page > 1) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . ($page - 1) . '">Previous</a></li>';
+                        }
+
+                        // Show only 10 pages at a time, starting from the current page
+                        $start_page = max(1, $page - 4);
+                        $end_page = min($start_page + 9, $number_of_page);
+
+                        // Display the page links
+                        for ($i = $start_page; $i <= $end_page; $i++) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . $i . '">' . $i . ' </a></li>';
+                        }
+
+                        // If the current page is not the last page, show the "Next" button
+                        if ($page < $number_of_page) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . ($page + 1) . '">Next</a></li>';
+                        }
+                    } else {
+                        // If there are 10 pages or less, display all page links
+                        for ($i = 1; $i <= $number_of_page; $i++) {
+                            echo '<li class="page-item"><a class="page-link" href="user-view-students.php?page=' . $i . '">' . $i . ' </a></li>';
+                        }
                     }
                     ?>
                 </ul>
             </nav>
+
         </div>
 
     <?php } else if ($student_count == 0) { ?>

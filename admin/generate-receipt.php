@@ -159,6 +159,7 @@ include('includes/header.php') ?>
             $result = mysqli_query($connection, $query);
         } else if ($bora_invoice_payment_mode == 'online') {
             $bora_invoice_payment_id = $_POST['bora_invoice_payment_id'];
+            $bora_invoice_payment_date = $_POST['bora_invoice_payment_date'];
             $query = "INSERT INTO `bora_invoice`(
                 `bora_invoice_number`,
                 `bora_invoice_date`,
@@ -175,6 +176,7 @@ include('includes/header.php') ?>
                 `bora_invoice_tenure_id`,
                 `bora_invoice_payment_mode`,
                 `bora_invoice_payment_id`,
+                `bora_invoice_payment_date`,
                 `bora_invoice_value`,
                 `bora_invoice_disc`,
                 `bora_invoice_grand_total`,
@@ -197,6 +199,7 @@ include('includes/header.php') ?>
                 '$bora_invoice_tenure_id',
                 '$bora_invoice_payment_mode',
                 '$bora_invoice_payment_id',
+                '$bora_invoice_payment_date',
                 '$bora_invoice_value',
                 '$bora_invoice_disc',
                 '$bora_invoice_grand_total',
@@ -213,6 +216,7 @@ include('includes/header.php') ?>
                 <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_lk80fpsm.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
                 <p>Success! Receipt generated.</p>
                 <button type="submit" name="invoice" class="w-100 btn btn-success">Download Receipt</button>
+                <a href="user-view-students.php" class="mt-3 btn w-100 btn-outline-primary">Go Back</a>
             </form>
 
         <?php

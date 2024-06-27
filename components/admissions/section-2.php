@@ -5,7 +5,9 @@
 
     <div class="col-md-6 admission-section-2-form">
         <?php
+
         require('include/db.php');
+
         if (isset($_POST['submit'])) {
             $admission_name = mysqli_real_escape_string($connection, $_POST['admission_name']);
             $admission_contact = mysqli_real_escape_string($connection, $_POST['admission_contact']);
@@ -13,46 +15,27 @@
             $admission_qual = mysqli_real_escape_string($connection, $_POST['admission_qual']);
             $admission_program = mysqli_real_escape_string($connection, $_POST['admission_program']);
 
+
             if ($admission_program == 'null') { ?>
                 <div class="alert alert-danger mb-3 mt-3" role="alert">
                     Please select a program!
                 </div>
-                <?php } else if ($admission_program == "Masters Degree Programme") {
+            <?php } else if ($admission_program == "Masters Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_1']);
-                if ($admission_course == 'null') { ?>
-
-                    <div class="alert alert-danger mb-3 mt-3" role="alert">
-                        Course selection is mandatory!
-                    </div>
-                <?php
-                }
             } else if ($admission_program == "Basic Degree Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_2']);
-                if ($admission_course == 'null') { ?>
-                    <div class="alert alert-danger mb-3 mt-3" role="alert">
-                        Course selection is mandatory!
-                    </div>
-                <?php
-                }
             } else if ($admission_program == "Diploma Programme") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_3']);
-                if ($admission_course == 'null') { ?>
-                    <div class="alert alert-danger mb-3 mt-3" role="alert">
-                        Course selection is mandatory!
-                    </div>
-                <?php
-                }
             } else if ($admission_program == "Certificate Course") {
                 $admission_course = mysqli_real_escape_string($connection, $_POST['admission_course_4']);
-                if ($admission_course == 'null') { ?>
-                    <div class="alert alert-danger mb-3 mt-3" role="alert">
-                        Course selection is mandatory!
-                    </div>
+            }
+            if ($admission_course == 'null') { ?>
+                <div class="alert alert-danger mb-3 mt-3" role="alert">
+                    Please select a Course from the Course list!
+                </div>
 
                 <?php
-                }
             } else {
-
                 $query = "INSERT INTO `bora_admissions`(
                  `admission_name`,
                  `admission_contact`,
@@ -72,16 +55,11 @@
 
                 $result = mysqli_query($connection, $query);
 
-                if (!$result) {
-
-                ?>
-
+                if (!$result) { ?>
                     <div class="alert alert-danger mb-3 mt-3" role="alert">
                         Oops! Looks like there was some error processing your form. Please try again!
                     </div>
-                <?php
-                } else {
-                ?>
+                <?php } else { ?>
                     <div class="alert alert-success mb-3 mt-3" role="alert">
                         Thank you for applying for <?php echo $admission_course; ?>. We will connect with you shortly.
                     </div>
@@ -89,9 +67,8 @@
                 }
             }
         }
-
         ?>
-        <form action="" method="post">
+        <form action="" method="POST">
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                 <input type="text" class="form-control" name="admission_name" id="exampleFormControlInput1" placeholder="" required>
@@ -108,9 +85,12 @@
                 <label for="exampleFormControlTextarea1" class="form-label">Qualifications</label>
                 <textarea class="form-control" name="admission_qual" id="exampleFormControlTextarea1" rows="5"></textarea>
             </div>
+
+
+            <!-- ========================= PROGRAMME SECTION START ========================= -->
             <div class="mb-4">
                 <label for="exampleFormControlInput1" class="form-label">Select Programme</label>
-                <select required onchange="showOption()" class="form-select mb-3" name="admission_program" id="programOption" aria-label="Default select example" required>
+                <select onchange="showOption()" class="form-select mb-3" name="admission_program" id="programOption" aria-label="Default select example" required>
                     <option value="null">Click here to open menu</option>
                     <option value="Masters Degree Programme">Masters Degree Programme</option>
                     <option value="Basic Degree Programme">Basic Degree Programme</option>
@@ -118,10 +98,13 @@
                     <option value="Certificate Course">Certificate Course</option>
                 </select>
             </div>
+            <!-- ========================= PROGRAMME SECTION END ========================= -->
 
+
+            <!-- ========================= COURSE SECTION START ========================= -->
             <div class="mb-4" style="display: none" id="option1">
                 <label for="exampleFormControlInput1" class="form-label">Select Masters Degree Programme</label>
-                <select required class="form-select mb-3" name="admission_course_1" aria-label="Default select example">
+                <select class="form-select mb-3" name="admission_course_1" aria-label="Default select example">
                     <option value="null">Click here to Masters Degree Courses</option>
                     <option value="M.Sc. Nursing">M.Sc. Nursing</option>
                 </select>
@@ -129,7 +112,7 @@
 
             <div class="mb-4" style="display: none" id="option2">
                 <label for="exampleFormControlInput1" class="form-label">Select Basic Degree Programme</label>
-                <select required class="form-select mb-3" name="admission_course_2" aria-label="Default select example">
+                <select class="form-select mb-3" name="admission_course_2" aria-label="Default select example">
                     <option value="null">Click here to open Basic Degree Courses</option>
                     <option value="B.Sc. Nursing">B.Sc. Nursing</option>
                     <option value="Post Basic B.Sc. NURSING">Post Basic B.Sc. NURSING</option>
@@ -141,7 +124,7 @@
 
             <div class="mb-4" style="display: none" id="option3">
                 <label for="exampleFormControlInput1" class="form-label">Select Diploma Programme</label>
-                <select required class="form-select mb-3" name="admission_course_3" aria-label="Default select example">
+                <select class="form-select mb-3" name="admission_course_3" aria-label="Default select example">
                     <option value="null">Click here to open Diploma Programme Courses</option>
                     <option value="General Nursing & Midwifery">General Nursing & Midwifery</option>
                     <option value="Auxillary Nurse & Midwifery">Auxillary Nurse & Midwifery</option>
@@ -153,7 +136,7 @@
 
             <div class="mb-4" style="display: none" id="option4">
                 <label for="exampleFormControlInput1" class="form-label">Select Certificate Course</label>
-                <select required class="form-select mb-3" name="admission_course_4" aria-label="Default select example">
+                <select class="form-select mb-3" name="admission_course_4" aria-label="Default select example">
                     <option value="null">Click here to open Certification Courses</option>
                     <option value="Phlebotomoy Technician">Phlebotomoy Technician</option>
                     <option value="Blood Bank Technician">Blood Bank Technician</option>
@@ -162,6 +145,7 @@
                     <option value="Emergency Medical Technician Basic">Emergency Medical Technician Basic</option>
                 </select>
             </div>
+            <!-- ========================= COURSE SECTION END ========================= -->
 
             <button type="submit" name="submit" class="btn btn-outline-primary w-100">Apply</button>
         </form>
